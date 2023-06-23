@@ -1,0 +1,22 @@
+
+main{
+    background-color: white;
+}
+#inputs{
+    padding-left: 90px;
+}
+
+#Usuario{
+    width: 500px;
+}
+#passwd{
+    width: 500px;
+}
+#btn-submit{
+    width: 200px;
+}
+form{
+    margin-top:85px ;
+    border-radius: 5px;
+}
+
