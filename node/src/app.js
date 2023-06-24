@@ -6,17 +6,22 @@ const jwt = require('jsonwebtoken');
 const path = require('path');
 
 const exphbs = require('express-handlebars');
+
 require('dotenv').config();
-app.set('views', path(__dirname,'views'))
-app.engine('.hbs',exphbs({
+const app = express();
+
+app.set('views', path.join(__dirname,'views'))
+
+app.set('view','engine','.hbs');
+app.engine('.hbs', exphbs({
     defaultLayaout: 'main',
     layaoutsDir: path.join(app.get('views'),"layaouts"),
     partialsDir: path.join(app.get('views'),'partials'),
     extname: '.hbs',
     helpers: require('./lib/handlebars')
 }));
-app.set('view','engine','.hbs');
-const app = express();
+
+
 const port = 3000;
 app.use(morgan('dev'));
 app.use(cors());
