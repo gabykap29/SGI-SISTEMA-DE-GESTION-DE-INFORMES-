@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 
 
@@ -18,9 +18,7 @@ app.use(express.json());
 //variables de entorno
 dotenv.config({path: './env/.env'})
 
-app.get('/',(req,res)=>{
-    res.send('Hola mundo')
-});
+app.use(require('./routes/router'))
 
 
 const port = process.env.port || 3000;
