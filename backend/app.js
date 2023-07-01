@@ -19,6 +19,7 @@ app.use(express.json());
 dotenv.config({path: './env/.env'})
 
 app.use(require('./routes/auth.routes'))
+app.use(require('./routes/usuarios.routes'))
 
 
 const port = process.env.port || 3000;
