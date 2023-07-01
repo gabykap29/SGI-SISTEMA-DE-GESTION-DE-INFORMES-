@@ -18,7 +18,7 @@ app.use(express.json());
 //variables de entorno
 dotenv.config({path: './env/.env'})
 
-app.use(require('./routes/router'))
+app.use(require('./routes/auth.routes'))
 
 
 const port = process.env.port || 3000;
