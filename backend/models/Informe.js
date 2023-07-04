@@ -2,8 +2,9 @@ const {sequelize, DataTypes} = require('../db');
 const {Departamento} = require('./Departamento')
 const {Localidad} = require('./Localidad')
 const {Tipo} = require('./Tipo')
+'use strict';
 const Informe = sequelize.define('Informe',{
-    ifInforme: {type: DataTypes.INTEGER, allowNull:false, primaryKey:true},
+    idInforme: {type: DataTypes.INTEGER,  primaryKey:true, autoIncrement:true},
      Departamento_idDepartamento: {
         type: DataTypes.INTEGER,
         allowNull:false,
@@ -47,10 +48,26 @@ const Informe = sequelize.define('Informe',{
     estado:{
         type: DataTypes.BOOLEAN,
         defaultValue:true
-    }
+    },
+    createdAt:{
+      type: DataTypes.DATE,
+      allowNull:false,
+      defaultValue:sequelize.literal('CURRENT_TIMESTAMP')
+  },
+  updatedAt:{
+   type:DataTypes.DATE,
+   allowNull:false,
+   defaultValue:sequelize.literal('CURRENT_TIMESTAMP')
+  },
+  deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true
+  }
 }, {
     sequelize,
     paranoid: true,
+    createdAt:true,
+    deletedAt:true,
     modelName: 'Informe',
     tableName: 'informes',
   //   underscored: true

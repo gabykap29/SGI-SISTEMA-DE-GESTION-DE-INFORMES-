@@ -32,7 +32,7 @@ formNuevoUsuario.addEventListener('submit',async(e)=>{
 
     });
     const respToJson = await response.json();
-    if(response.status !== 201 && response.status !== 201){
+    if(response.status !== 200 && response.status !== 201){
         Swal.fire({
             icon:'error',
             title:respToJson.message,
