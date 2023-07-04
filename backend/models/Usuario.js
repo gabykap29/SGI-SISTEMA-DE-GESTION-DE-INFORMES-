@@ -1,6 +1,6 @@
 const {sequelize, DataTypes} = require('../db');
 
-'use strict';
+// 'use strict';
 const Usuario = sequelize.define('Usuario', {
   firstName: {type: DataTypes.STRING},
   lastName: { type: DataTypes.STRING },

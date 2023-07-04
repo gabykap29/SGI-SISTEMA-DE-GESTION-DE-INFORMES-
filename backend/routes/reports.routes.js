@@ -5,7 +5,7 @@ const {validarJWT} = require('../middlewares/validar_jwt');
 
 router.post('/api/informes/create',create);
 router.get('/api/informe/id:',[validarJWT],Read);
-router.get('/api/informes/id:',[validarJWT],readsAll);
+router.get('/api/informes',readsAll);
 router.put('/api/informes/deleted/id:', validarJWT,deleted)
 
 

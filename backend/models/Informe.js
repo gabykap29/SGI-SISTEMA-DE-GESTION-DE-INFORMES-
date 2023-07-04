@@ -1,7 +1,4 @@
 const {sequelize, DataTypes} = require('../db');
-const {Departamento} = require('./Departamento')
-const {Localidad} = require('./Localidad')
-const {Tipo} = require('./Tipo')
 'use strict';
 const Informe = sequelize.define('Informe',{
     idInforme: {type: DataTypes.INTEGER,  primaryKey:true, autoIncrement:true},

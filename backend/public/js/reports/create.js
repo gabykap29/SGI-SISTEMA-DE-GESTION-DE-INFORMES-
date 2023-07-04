@@ -2,12 +2,13 @@ const formNuevoInforme = document.getElementById('formNuevoInforme');
 
 formNuevoInforme.addEventListener('submit',async(e)=>{
     e.preventDefault();
-    const departamento = document.getElementById('selecDepartamento').value;
-    const localidad = document.getElementById('selecLocalidad').value;
-    const fecha = document.getElementById('fecha').value;
-    const titulo = document.getElementById('titulo').value;
-    const imagen = document.getElementById('rutaImagen').value;
-    const informe = document.getElementById('informe').value;
+    const  Departamento_idDepartamento = document.getElementById('selecDepartamento').value;
+    const Localidad_idLocalidad = document.getElementById('selecLocalidad').value;
+    const Tipo_idTipo = document.getElementById('tipo').value;
+    const Fecha = document.getElementById('fecha').value;
+    const Titulo = document.getElementById('titulo').value;
+    const RutaImagen = document.getElementById('rutaImagen').value;
+    const Informe = document.getElementById('informe').value;
 
     const response = await fetch('http://localhost:3000/api/informes/create',{
         method:'POST',
@@ -15,12 +16,13 @@ formNuevoInforme.addEventListener('submit',async(e)=>{
             'Content-Type':'application/json'
         },
         body:JSON.stringify({
-            departamento,
-            localidad,
-            fecha,
-            titulo,
-            imagen,
-            informe,
+            Departamento_idDepartamento,
+            Localidad_idLocalidad,
+            Tipo_idTipo,
+            Fecha,
+            Titulo,
+            RutaImagen,
+            Informe,
         }),
     });
     const respToJson = await response.json();
@@ -39,6 +41,6 @@ formNuevoInforme.addEventListener('submit',async(e)=>{
     console.log(respToJson);
     formNuevoInforme.reset();
     setTimeout(()=>{
-        window.location.href='/informes/create';
+        window.location.href='/informes';
     },2000);
 })

@@ -1,5 +1,5 @@
 const {sequelize, DataTypes} = require('../db');
-'use strict';
+// 'use strict';
 
 
 const Departamento = sequelize.define('Departamento',{

@@ -1,41 +1,49 @@
 ctrlReports = {};
-const Informe = require('../models/Informe');
+const Report = require('../models/Informe');
 const Departamento = require('../models/Departamento');
 const Localidad = require('../models/Localidad');
 const Tipo = require('../models/Tipo');
 // Crear un Informe
-ctrlReports.create = async (req, res)=>{
-    const {departamento, localidad, tipo, titulo, fecha, rutaImagen, informe} = req.body;
 
-    try{
-        const nuevoInforme = await Informe.create({
-            departamento,
-            localidad, 
-            tipo, 
-            titulo, 
-            fecha, 
-            rutaImagen, 
-            informe,
+
+ctrlReports.create = async (req, res) => {
+    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha, RutaImagen, Informe } = req.body;
+
+    console.log('req.body');
+    console.log(req.body);
+
+    try {
+        const informe = await Report.create({
+            Departamento_idDepartamento,
+            Localidad_idLocalidad,
+            Tipo_idTipo,
+            Titulo,
+            Fecha,
+            RutaImagen,
+            Informe
         });
-        if(!nuevoInforme){
-            throw {
+
+        if(!informe){
+                 throw {
                 message: 'error al crear el Informe'
-            };
-        }
-        res.status(201).json(nuevoInforme);
-    }catch(error){
+                };
+            }
+
+        return res.json(informe);
+    } catch (error) {
         console.log(error);
-        return res.status(error.status|| 500).json({
-            message: error.message || 'Error Interno del Servidor'
-        });
+        return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
     }
 };
+
+
+
 //Obtener un INFORME
 
 ctrlReports.Read = async(req,res)=>{
     const {id} = req.params;
     try{
-        const informe = await Informe.findByPk(id);
+        const informe = await Report.findByPk(id);
 
         if(!informe){
             throw({
@@ -54,7 +62,7 @@ ctrlReports.Read = async(req,res)=>{
 
 ctrlReports.readsAll = async (req, res)=>{
     try{
-        const informes = await Informe.findAll({
+        const informes = await Report.findAll({
             where: {
                 estado:true,
             }
@@ -85,7 +93,7 @@ ctrlReports.update = async(req,res)=>{
         informe,} = req.body;
 
     try{
-        const informeUpdate = await Informe.update({
+        const informeUpdate = await Report.update({
             departamento,
             localidad, 
             tipo, 
@@ -116,7 +124,7 @@ ctrlReports.update = async(req,res)=>{
 ctrlReports.deleted = async(req,res)=>{
     const {id} = req.params;
     try{
-        const informeDeleted = Informe.update({
+        const informeDeleted = Report.update({
             estado:true
         },{
             where:{

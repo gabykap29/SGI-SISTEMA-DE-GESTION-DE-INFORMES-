@@ -1,5 +1,5 @@
 const {sequelize, DataTypes} = require('../db');
-'use strict';
+// 'use strict';
 
 const {Departamento} = require('./Departamento');
 const Localidad = sequelize.define('Localidad',{
