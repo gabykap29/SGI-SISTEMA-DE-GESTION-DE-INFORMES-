@@ -145,7 +145,7 @@ crtlUsuario.userDeteled = async (req,res)=>{
         if(!usuarioEliminado){
             throw({
                 status: 400,
-                message: 'Error al eliminar el mensaje'
+                message: 'Error al eliminar el usuario'
             })
         }
 

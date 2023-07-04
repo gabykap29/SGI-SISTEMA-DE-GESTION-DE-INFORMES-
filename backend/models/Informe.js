@@ -43,6 +43,10 @@ const Informe = sequelize.define('Informe',{
      Informe:{
         type: DataTypes.STRING(888),
         allowNull:false,
+    },
+    estado:{
+        type: DataTypes.BOOLEAN,
+        defaultValue:true
     }
 }, {
     sequelize,
