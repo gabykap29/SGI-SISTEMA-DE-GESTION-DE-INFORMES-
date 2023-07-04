@@ -1,50 +1,50 @@
 const crtlUsuario = {};
 const bcrypt = require('bcryptjs');
 const Usuario = require('../models/Usuario');
-crtlUsuario.create = async(req,res)=>{
-    const {firstName, lastName, username,password, rol}=req.body;
 
-    try{
+crtlUsuario.create = async (req, res) => {
+  const { firstName, lastName, username, password, rol } = req.body;
 
-        const existeUsuario = await Usuario.findOne({
-            where:{
-                username
-            }
-        })
-        if(existeUsuario){
-            throw({
-                status: 400,
-                message: 'El usuario ya existe'
-            })
+  try {
+    const existeUsuario = await Usuario.findOne({
+      where: {
+        username,
+      },
+    });
 
-        };
-
-        const nuevouUsuario = new Usuario({
-            firstName,
-            lastName, 
-            username,
-            password, 
-            rol
-        });
-        //encriptación de contraseña
-
-        const salt = await bcrypt.genSalt(10);
-        nuevouUsuario.password = await bcrypt.hash(password, salt);
-
-        //guardar usuario en bd
-
-        const usuarioCreado = await nuevouUsuario.save();
-        if(!usuarioCreado){
-            throw({
-                message: 'error al crear el usuario'
-            })
-        };
-    }catch(err){
-        console.log(err);
-        return res.status(err.status || 500).json({
-            message: err.message || 'error al crear el usuario'
-        })
+    if (existeUsuario) {
+      throw {
+        status: 400,
+        message: 'El usuario ya existe',
+      };
     }
+
+    // Encriptación de contraseña
+    const salt = await bcrypt.genSalt(10);
+    const passwordEncriptado = await bcrypt.hash(password, salt);
+
+    // Crear el usuario en la base de datos utilizando Sequelize
+    const nuevoUsuario = await Usuario.create({
+      firstName,
+      lastName,
+      username,
+      password: passwordEncriptado,
+      rol,
+    });
+
+    if (!nuevoUsuario) {
+      throw {
+        message: 'Error al crear el usuario',
+      };
+    }
+
+    res.status(201).json(nuevoUsuario);
+  } catch (err) {
+    console.log(err);
+    return res.status(err.status || 500).json({
+      message: err.message || 'Error al crear el usuario',
+    });
+  }
 };
 
 //obtener los datos de un unico usuario
