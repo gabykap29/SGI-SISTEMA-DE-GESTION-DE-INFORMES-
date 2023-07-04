@@ -16,7 +16,7 @@ const Localidad = sequelize.define('Localidad',{
         allowNull:false,
         references:{
             model:'Departamento',
-            key:'id'
+            key:'idDepartamento'
         }
     }
 },{

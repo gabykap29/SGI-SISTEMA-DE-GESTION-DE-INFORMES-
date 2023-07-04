@@ -1,5 +1,8 @@
 ctrlReports = {};
-const Informe = require('../models/Departamento');
+const Informe = require('../models/Informe');
+const Departamento = require('../models/Departamento');
+const Localidad = require('../models/Localidad');
+const Tipo = require('../models/Tipo');
 // Crear un Informe
 ctrlReports.create = async (req, res)=>{
     const {departamento, localidad, tipo, titulo, fecha, rutaImagen, informe} = req.body;

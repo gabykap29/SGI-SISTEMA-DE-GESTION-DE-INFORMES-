@@ -3,13 +3,13 @@ const {Departamento} = require('./Departamento')
 const {Localidad} = require('./Localidad')
 const {Tipo} = require('./Tipo')
 const Informe = sequelize.define('Informe',{
-    ifInforme: {type: DataType.INTEGER, allowNull:false, primaryKey:true},
+    ifInforme: {type: DataTypes.INTEGER, allowNull:false, primaryKey:true},
      Departamento_idDepartamento: {
         type: DataTypes.INTEGER,
         allowNull:false,
         references:{
             model:'Departamento',
-            key:'id'
+            key:'idDepartamento'
         }
      },
      Localidad_idLocalidad:{
@@ -17,7 +17,7 @@ const Informe = sequelize.define('Informe',{
         allowNull:false,
         references:{
             model:'Localidad',
-            key:'id'
+            key:'idLocalidad'
         }
      },
      Tipo_idTipo:{
@@ -25,7 +25,7 @@ const Informe = sequelize.define('Informe',{
         allowNull:false,
         references:{
             model:'Tipo',
-            key:'id'
+            key:'idTipo'
         }
      },
      Fecha:{
