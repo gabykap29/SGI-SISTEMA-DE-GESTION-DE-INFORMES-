@@ -5,8 +5,13 @@ const router = express.Router();
 
 router.get('/login',(req,res)=> res.render('auth/login'));
 router.get('/register',(req,res)=>res.render('auth/register'));
+router.get('/index',(req,res)=>{
+    res.render('index')
+})
 
-
+router.get('/create',(req,res)=>{
+    res.render('create')
+})
 
 router.post('/api/login',login)
 

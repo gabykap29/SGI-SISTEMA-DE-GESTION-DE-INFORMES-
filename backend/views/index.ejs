@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <title>Home</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style-index.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Sistema de Gestión de Informes</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menú</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Informes
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="http://localhost:3000/create">Cargar</a></li>
+                      <li><a class="dropdown-item" href="#">Buscar</a></li>
+                      <li><a class="dropdown-item" href="#">Gráficos</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Personas
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Cargar</a></li>
+                    <li><a class="dropdown-item" href="#">Buscar</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="d-flex mt-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Informes" aria-label="Search">
+                <button class="btn btn-success" type="submit">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+  <main>
+    <h1>Informes por Departamento</h1>
+    <div class="container d-flex flex-wrap" id="div-tarjetas">
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Formosa</h5>
+                  <div class="cantidad" id="">
+                    <h3 class="cantidad" id="cantFormosa">45</h3>
+                  </div>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Pilcomayo</h5>
+                  <h3 class="cantidad" id="cantPilcomayo">45</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Pirané</h5>
+                  <h3 class="cantidad" id="cantPirane">23</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Laishí</h5>
+                  <h3 class="cantidad" id="cantLaishi">8</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Pilagás</h5>
+                  <h3 class="cantidad" id="cantPilagas">5</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Patiño</h5>
+                  <h3 class="cantidad" id="cantPatino">2</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Bermejo</h5>
+                  <h3 class="cantidad" id="cantBermejo">2</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Ramón Lista</h5>
+                  <h3 class="cantidad" id="cantRamonLista">5</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+        <div class="tarjetas">
+            <div class="card">
+                <img src="..." class="card-img-top" alt="">
+              
+                <div class="card-body">
+                  <h5 class="card-title">Matacos</h5>
+                  <h3 class="cantidad" id="cantMatacos">2</h3>
+                  <a href="#" class="btn btn-success">Ver más</a>
+                </div>
+              </div>
+        </div>
+    </div>
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
