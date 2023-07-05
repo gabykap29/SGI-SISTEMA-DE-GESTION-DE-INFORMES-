@@ -8,7 +8,9 @@ router.get('/register',(req,res)=>res.render('auth/register'));
 router.get('/index',(req,res)=>{
     res.render('index')
 })
-
+router.get('/informes/views',(req,res)=>{
+    res.render('views')
+})
 router.get('/create',(req,res)=>{
     res.render('create')
 })

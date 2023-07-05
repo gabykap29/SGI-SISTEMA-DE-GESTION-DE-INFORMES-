@@ -41,6 +41,6 @@ formNuevoInforme.addEventListener('submit',async(e)=>{
     console.log(respToJson);
     formNuevoInforme.reset();
     setTimeout(()=>{
-        window.location.href='/informes';
+        window.location.href='/informes/views';
     },2000);
 })
