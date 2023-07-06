@@ -25,6 +25,24 @@ app.use(require('./routes/reports.routes'));
 
 const port = process.env.port || 3000;
 
+//Si ingresan a una ruta no declarada, se redirigirá al inicio.
+app.use((req, res, next) => {
+    res.write(`<div>
+        <h1>404 - Ruta no encontrada</h1>
+        <hr>
+        <p>La pagina que intentas buscar no existe</p>
+        <p>Redireccionando a la página de inicio...</p>
+        <script>
+        (
+          () => setTimeout(() => {
+            window.location.href='http://localhost:${port}/index';
+           }, 3000)           
+        )();
+        </script>
+    </h1>`)
+});
+
+
 app.listen(port, ()=>{
     console.log(`servidor corriendo en http://localhost:${port}`)
 });
