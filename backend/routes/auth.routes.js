@@ -3,20 +3,14 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
 
+
+//vistas
 router.get('/login',(req,res)=> res.render('auth/login'));
 router.get('/register',(req,res)=>res.render('auth/register'));
-router.get('/index',(req,res)=>{
-    res.render('index')
-})
-router.get('/informes/views',(req,res)=>{
-    res.render('views')
-})
-router.get('/create',(req,res)=>{
-    res.render('create')
-})
 
+//apis
 router.post('/api/login',login)
-
+//validar token
 router.get('/api/validar-token',(req,res)=>{
     const token = req.header('Authorization');
     if(!token){

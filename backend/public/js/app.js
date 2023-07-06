@@ -58,28 +58,27 @@ departamentOption.addEventListener('change',()=>{
     <option value="36">Juan G. Bazan</option>
     <option value="37">Bartolomé De Las Casas</option>
     <option value="38">El Recreo</option>
-    <option value="39">Juan G. Bazan</option>
-    <option value="40">Fortin Sargento 1ro Leyes</option>`
+    <option value="39">Fortin Sargento 1ro Leyes</option>`
 
     let opcionBermejo = `
     <option selected disabled>Bermejo</option>
-    <option value="41">Fortin Soledad</option>
-    <option value="42">Guadalcazar</option>
-    <option value="43">Lamadrid</option>
-    <option value="44">La Rinconada</option>
-    <option value="45">Los Chiriguanos</option>
-    <option value="46">Pozo de Maza</option>
-    <option value="47">Pozo del Mortero</option>
-    <option value="48">Vaca Perdida</option>`
+    <option value="40">Fortin Soledad</option>
+    <option value="41">Guadalcazar</option>
+    <option value="42">Lamadrid</option>
+    <option value="43">La Rinconada</option>
+    <option value="44">Los Chiriguanos</option>
+    <option value="45">Pozo de Maza</option>
+    <option value="46">Pozo del Mortero</option>
+    <option value="47">Vaca Perdida</option>`
     
     let opcionRamonLista = `
     <option selected disabled>Ramon Lista</option>
-    <option value="49">Gral Mosconi</option>
-    <option value="50">El Potrillo</option>`
+    <option value="48">Gral Mosconi</option>
+    <option value="49">El Potrillo</option>`
 
     let opcionMatacos = `
     <option selected disabled>Matacos</option>
-    <option value="51">Ing. Juarez</option>`
+    <option value="50">Ing. Juarez</option>`
 
     if(valorSelect == 1){
        selecLocal.innerHTML = "";
