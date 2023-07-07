@@ -13,6 +13,7 @@
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/style-cargarInforme.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 </head>
 
 <body>
@@ -66,82 +67,18 @@
         </div>
       </nav>
   <main>
-    <h1>Cargar Informes</h1>
-    <div class="form-cargar">
-        <form action="" class="row g-3 needs-validation" id="formNuevoInforme">
-            <div class="col-md-3 position-relative">
-                <label for="validationTooltip04" class="form-label">Departamento</label>
-                <select class="form-select" id="selecDepartamento" required>
-                  <option value="1">Formosa</option>
-                  <option value="2">Pilcomayo</option>
-                  <option value="3">Pilagás</option>
-                  <option value="4">Laishí</option>
-                  <option value="5">Pirané</option>
-                  <option value="6">Patiño</option>
-                  <option value="7">Bermejo</option>
-                  <option value="8">Ramon Lista</option> 
-                  <option value="9">Matacos</option>
-                </select>
-                <div class="invalid-tooltip">
-                  Please select a valid state.
-                </div>
-              </div>
-              <div class="col-md-3 position-relative">
-                <label for="validationTooltip04" class="form-label">Localidad</label>
-                <select class="form-select" id="selecLocalidad" required>
-                  <option selected disabled>Selecciona una opción</option>
-                </select>
-                <div class="invalid-tooltip">
-                  Please select a valid state.
-                </div>
-              </div>
-              <div class="col-md-3 position-relative">
-                <label for="validationTooltip04" class="form-label">Tipo</label>
-                <select class="form-select" id="tipo" required>
-                  <option value="1">Política</option>
-                  <option value="2">Institucional</option>
-                  <option value="3">Educación</option>
-                  <option value="4">Religioso</option>
-                </select>
-                <div class="invalid-tooltip">
-                  Please select a valid state.
-                </div>
-              </div>
-            <div class="col-md-2 position-relative">
-              <label for="validationTooltip02" class="form-label">Fecha</label>
-              <input type="date" class="form-control" id="fecha" value="" required>
-              <div class="valid-tooltip">
-                Looks good!
-              </div>
-            </div>
-            <div class="col-md-3 position-relative">
-              <label for="validationTooltipUsername" class="form-label">Titulo</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
-              </div>
-            </div>
-            <div class="col-md-3 position-relative">
-                <label class="input-group-text" for="inputGroupFile01">Imagenes</label>
-                <input type="file" class="form-control" id="rutaImagen">
-              </div>              
-              <div class="mb-1">
-                <label for="exampleFormControlTextarea1" class="form-label">Informe</label>
-                <textarea class="form-control" id="informe" rows="3" required></textarea>
-                <button class="btn btn-primary" type="submit">Cargar Informe</button>
-                <button class="btn btn-secondary" type="reset">Borrar campos</button>
-              </div>
-          </form>
+    <div class="container" id="info">
+        <section>
+        </section>
+        <section>
+        </section>
     </div>
   </main>
-  <script>
-    // Obtener la fecha actual
-    let fechaActual = new Date().toISOString().split("T")[0];
-    // Asignar la fecha actual al campo de fecha
-    document.getElementById("fecha").value = fechaActual;
-  </script>
+
   <!--scripts Localidades-->
-  <script src="/js/app.js"></script>
-  <script src="/js/reports/create.js" ></script>
+  <!-- <script src="/js/app.js"></script> -->
+  <!-- <script src="/js/reports/create.js" ></script> -->
+  <script src="/js/reports/obtener.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">

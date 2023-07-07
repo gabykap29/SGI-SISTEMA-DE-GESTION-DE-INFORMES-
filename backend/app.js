@@ -44,5 +44,5 @@ app.use((req, res, next) => {
 
 
 app.listen(port, ()=>{
-    console.log(`servidor corriendo en http://localhost:${port}`)
+    console.log(`servidor corriendo en http://localhost:${port}/login`)
 });

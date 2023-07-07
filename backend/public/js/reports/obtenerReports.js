@@ -12,21 +12,18 @@ const obtenerInformes = async () => {
     return data;
 }
 
-const eliminarReservas = async (event) => {
-    const id = event.target.dataset.id;
+const eliminarInforme= async (event) => {
+    const id = event.target.dataset.idInforme;
 
     try {
         const res = await fetch(`http://localhost:3000/api/informes/${id}`, {
             method: 'DELETE'
         });
-
         const data = await res.json();
-
         console.log(data);
-
         Swal.fire({
             icon: 'success',
-            title: 'Reserva eliminada',
+            title: 'Informe eliminada',
             text: data.message,
         });
         
@@ -134,9 +131,9 @@ const mostrarInformes = (informes) => {
                         <td>${informe.Titulo}</td>
                         <td>${informe.Informe}</td>
                         <td>
-                            <a href="http://localhost:3000/api/informe/${informe.id}" class="btn btn-outline-primary btn-sm">Ver</a>
-                            <a href="http://localhost:3000/api/informe/${informe.id}" class="btn btn-outline-success btn-sm">Editar</a>
-                            <button onclick=eliminarReservas(event) class="btn btn-outline-danger btn-sm" data-id="${informe.id}">Eliminar</button>
+                            <a href="http://localhost:3000/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
+                            <a href="http://localhost:3000/api/informe/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
+                            <button onclick=eliminarInforme(event) class="btn btn-outline-danger btn-sm" data-id="${informe.id}">Eliminar</button>
                             
                         </td>
                     </tr>

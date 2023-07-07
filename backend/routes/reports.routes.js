@@ -15,12 +15,15 @@ router.get('/informes/create',(req,res)=>{
 router.get('/index',(req,res)=>{
     res.render('index')
 })
+router.get('/informes/view/:id',(req,res)=>{
+    res.render('view',{ id: req.params.id })
+})
 
 //apis
 router.post('/api/informes/create',create);
-router.get('/api/informe/id:',[validarJWT],Read);
+router.get('/api/informe/:id',Read);
 router.get('/api/informes',readsAll);
-router.put('/api/informes/deleted/id:', validarJWT,deleted)
+router.put('/api/informes/deleted/id:',deleted)
 
 
 module.exports = router;
