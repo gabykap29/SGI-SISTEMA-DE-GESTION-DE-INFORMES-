@@ -23,7 +23,7 @@ router.get('/informes/view/:id',(req,res)=>{
 router.post('/api/informes/create',create);
 router.get('/api/informe/:id',Read);
 router.get('/api/informes',readsAll);
-router.put('/api/informes/deleted/id:',deleted)
+router.put('/api/informes/deleted/:id',deleted)
 
 
 module.exports = router;

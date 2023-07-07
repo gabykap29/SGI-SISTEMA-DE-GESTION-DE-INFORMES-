@@ -1,5 +1,4 @@
-        const id = 2;
-        const Info = document.getElementById('info');
+ const Info = document.getElementById('info');
 
 
 
@@ -69,7 +68,11 @@
 
         // Funcion para obtener los datos de la reserva cuando se carga la página
         document.addEventListener('DOMContentLoaded', async () => {
-            const response = await fetch(`http://localhost:3000/api/informe/${id}`)
+            const url = window.location.href;
+            const parts = url.split('/');
+            const id = parts[parts.length - 1];
+          
+            const response = await fetch(`http://localhost:3000/api/informe/${id}`);
             const data = await response.json();
             console.log(data)
                 let Departamento = departamento[data.Departamento_idDepartamento];
