@@ -6,10 +6,10 @@ main{
     padding-left: 90px;
 }
 
-#Usuario{
+#username{
     width: 500px;
 }
-#passwd{
+#password{
     width: 500px;
 }
 #btn-submit{

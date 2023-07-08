@@ -68,6 +68,7 @@
 
         // Funcion para obtener los datos de la reserva cuando se carga la página
         document.addEventListener('DOMContentLoaded', async () => {
+            //capturar el id desde la url
             const url = window.location.href;
             const parts = url.split('/');
             const id = parts[parts.length - 1];
@@ -81,16 +82,21 @@
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
                 Info.innerHTML += `
                 <section>
-                    <h5>Departamento: <div><p>${Departamento}</p></div></h5>
-                    <h5>Localidad <div><p>${Localidad}</p></div></h5>
-                    <h5>Tipo <div class="Tipo"><p>${Tipo}</p></div></h5>
-                    <h5>Fecha <div class="Fecha"> <p>${fecha}</p></div></h5>
+                    <h5><b>Departamento:</b> ${Departamento}</h5>
+                    <br>
+                    <h5><b>Localidad:</b> ${Localidad}</h5>
+                    <br>
+                    <h5><b>Tipo:</b>  ${Tipo}</h5>
+                    <br>
+                    <h5><b>Fecha:</b> ${fecha}</h5>
                 </section>
                 <section>
-                    <h5>Titulo <p>${data.Titulo}</p></h5>
-                    <h5>Infome</h5>
+                    <br>
+                    <h5><b>Titulo:</b> ${data.Titulo}</h5>
+                    <br>
+                    <h5><b>Infome </b></h5>
                     <div class="Informe">
-                        <p>${data.Informe}</p>
+                        <h5>${data.Informe}</h5>
                     </div>
                 </section>
                         `;

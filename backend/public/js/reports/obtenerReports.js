@@ -12,35 +12,50 @@ const obtenerInformes = async () => {
     return data;
 }
 
-const eliminarInforme= async (event) => {
-    const id = event.target.dataset.idInforme;
-
-    try {
-        const res = await fetch(`http://localhost:3000/api/informes/${id}`, {
-            method: 'DELETE'
-        });
-        const data = await res.json();
-        console.log(data);
-        Swal.fire({
-            icon: 'success',
-            title: 'Informe eliminada',
+const eliminarInforme = async (event) => {
+    const id = event.target.dataset.id;
+  
+    Swal.fire({
+      title: "Estás seguro?",
+      text: `Estás por eliminar un informe del sistema!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Estoy seguro!",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result) {
+        try {
+          const res = await fetch(
+            `http://localhost:3000/api/informes/deleted/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
+  
+          const data = await res.json();
+  
+          Swal.fire({
+            icon: "success",
+            title: "Empleado eliminado",
             text: data.message,
-        });
-        
-        setTimeout(() => {
+          });
+  
+          setTimeout(() => {
             window.location.reload();
-        }, 2200);
-
-    } catch (error) {
-        console.log(error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
+          }, 2200);
+        } catch (error) {
+          console.log(error);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
             text: error.message,
-        })
-    }
-
-}
+          });
+        }
+      }
+    });
+  };
 
 const mostrarInformes = (informes) => {
 
@@ -132,8 +147,8 @@ const mostrarInformes = (informes) => {
                         <td>${informe.Informe}</td>
                         <td>
                             <a href="http://localhost:3000/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
-                            <a href="http://localhost:3000/api/informe/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
-                            <button onclick=eliminarInforme(event) class="btn btn-outline-danger btn-sm" data-id="${informe.id}">Eliminar</button>
+                            <a href="http://localhost:3000/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
+                            <button class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.id}">Eliminar</button>
                             
                         </td>
                     </tr>
@@ -141,23 +156,22 @@ const mostrarInformes = (informes) => {
     });
 }
 
-
 document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const informes = await obtenerInformes();     
+    mostrarInformes(informes);
+} catch (error) {  // Dentro de catch se coloca el código que se ejecutará en caso de que haya un error
+    console.log({ error });
 
-    console.log('DOM cargado')
+    // Mensaje para el usuario
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message,
+    });
+}
 
-    // Dentro de try se coloca el código que se quiere ejecutar
-    try {
-        const informes = await obtenerInformes();     
-        mostrarInformes(informes);
-    } catch (error) {  // Dentro de catch se coloca el código que se ejecutará en caso de que haya un error
-        console.log({ error });
-
-        // Mensaje para el usuario
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: error.message,
-        });
-    }
+  document.querySelectorAll('.eliminar-informe').forEach((boton) => {
+    boton.addEventListener('click', eliminarInforme);
+  });
 });

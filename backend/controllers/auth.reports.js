@@ -125,7 +125,7 @@ ctrlReports.deleted = async(req,res)=>{
     const {id} = req.params;
     try{
         const informeDeleted = Report.update({
-            estado:true
+            estado:false
         },{
             where:{
                 id,
