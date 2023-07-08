@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router();
 const {create, Read, readsAll, deleted, update} = require('../controllers/auth.reports');
 const {validarJWT} = require('../middlewares/validar_jwt');
+const { isAuthenticated } = require('../middlewares/autenticate');
 
 
 
 //vistas
-router.get('/informes/views',(req,res)=>{
+router.get('/informes/views',isAuthenticated,(req,res)=>{
     res.render('views')
 })
 router.get('/informes/create',(req,res)=>{

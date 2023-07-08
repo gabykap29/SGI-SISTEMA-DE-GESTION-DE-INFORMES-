@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('combined'));
 app.use(cors())
+app.use(cookieParser);
 //variables de entorno
 dotenv.config({path: './env/.env'})
 

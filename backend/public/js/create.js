@@ -44,12 +44,6 @@ formNuevoUsuario.addEventListener('submit',async(e)=>{
         title: 'Usuario Creado con éxito',
         text: respToJson.message
     })
-    console.log(            firstName,
-        lastName,
-        username,
-        password,
-        rol)
-    console.log(respToJson.message);
     formNuevoUsuario.reset();
     setTimeout(()=>{
         window.location.href='/login';
