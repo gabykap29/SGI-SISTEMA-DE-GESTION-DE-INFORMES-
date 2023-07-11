@@ -117,8 +117,8 @@ document.getElementById('formSearch').addEventListener('submit', async function(
           <td>${informe.Titulo}</td>
           <td>${informe.Informe}</td>
           <td>
-            <a href="http://localhost:3000/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
-            <a href="http://localhost:3000/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
+            <a href="/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
+            <a href="/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
             <button class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.id}">Eliminar</button>
           </td>
         </tr>

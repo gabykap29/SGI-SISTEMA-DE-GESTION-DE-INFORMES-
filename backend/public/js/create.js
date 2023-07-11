@@ -17,7 +17,7 @@ formNuevoUsuario.addEventListener('submit',async(e)=>{
         })
         return
     }
-    const response = await fetch('http://localhost:3000/api/create',{
+    const response = await fetch('/api/create',{
         method: 'POST',
         headers:{
             'Content-Type':'application/json'

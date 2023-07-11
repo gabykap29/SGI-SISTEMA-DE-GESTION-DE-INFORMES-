@@ -1,7 +1,7 @@
 const listadoInformes = document.querySelector('#registros');
 
 const obtenerInformes = async () => {
-    const res = await fetch('http://localhost:3000/api/informes', {
+    const res = await fetch('/api/informes', {
     });
 
     if(res.status === 404 ) {
@@ -28,7 +28,7 @@ const eliminarInforme = async (event) => {
       if (result) {
         try {
           const res = await fetch(
-            `http://localhost:3000/api/informes/deleted/${id}`,
+            `/api/informes/deleted/${id}`,
             {
               method: "DELETE",
             }
@@ -146,8 +146,8 @@ const mostrarInformes = (informes) => {
                         <td>${informe.Titulo}</td>
                         <td>${informe.Informe}</td>
                         <td>
-                            <a href="http://localhost:3000/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
-                            <a href="http://localhost:3000/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
+                            <a href="/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
+                            <a href="/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
                             <button class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.id}">Eliminar</button>
                             
                         </td>

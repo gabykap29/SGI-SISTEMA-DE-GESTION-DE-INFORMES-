@@ -82,27 +82,29 @@ ctrlReports.readsAll = async (req, res)=>{
     }
 }
 ctrlReports.update = async(req,res)=>{
-    const {id}=req.params;
+    const {idInforme}=req.params;
     const {
-        departamento,
-        localidad, 
-        tipo, 
-        titulo, 
-        fecha, 
-        rutaImagen, 
-        informe,} = req.body;
+        Departamento_idDepartamento,
+        Localidad_idLocalidad,
+        Tipo_idTipo,
+        Titulo,
+        Fecha,
+        RutaImagen,
+        Informe} = req.body;
 
     try{
         const informeUpdate = await Report.update({
-            departamento,
-            localidad, 
-            tipo, 
-            titulo, 
-            fecha, 
-            rutaImagen, 
-            informe,
+            Departamento_idDepartamento,
+            Localidad_idLocalidad,
+            Tipo_idTipo,
+            Titulo,
+            Fecha,
+            RutaImagen,
+            Informe,
         },{
-            where:{id}
+            where:{
+                idInforme:req.params.id,
+            }
         });
         if (!informeUpdate){
            throw({
@@ -122,13 +124,13 @@ ctrlReports.update = async(req,res)=>{
     }
 }
 ctrlReports.deleted = async(req,res)=>{
-    const {id} = req.params;
+    const {idInforme} = req.params;
     try{
         const informeDeleted = Report.update({
             estado:false
         },{
             where:{
-                id,
+                idInforme,
                 estado:true,
             }
         })

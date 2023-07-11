@@ -73,7 +73,7 @@
             const parts = url.split('/');
             const id = parts[parts.length - 1];
           
-            const response = await fetch(`http://localhost:3000/api/informe/${id}`);
+            const response = await fetch(`/api/informe/${id}`);
             const data = await response.json();
             console.log(data)
                 let Departamento = departamento[data.Departamento_idDepartamento];

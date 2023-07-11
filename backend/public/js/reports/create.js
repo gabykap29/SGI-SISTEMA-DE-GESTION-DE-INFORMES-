@@ -10,7 +10,7 @@ formNuevoInforme.addEventListener('submit',async(e)=>{
     const RutaImagen = document.getElementById('rutaImagen').value;
     const Informe = document.getElementById('informe').value;
 
-    const response = await fetch('http://localhost:3000/api/informes/create',{
+    const response = await fetch('/api/informes/create',{
         method:'POST',
         headers:{
             'Content-Type':'application/json'
