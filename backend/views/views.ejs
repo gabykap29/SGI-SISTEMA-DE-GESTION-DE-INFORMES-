@@ -36,7 +36,7 @@
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
                       <li><a class="dropdown-item" href="/index">Buscar</a></li>
-                      <li><a class="dropdown-item" href="#">Gráficos</a></li>
+                      <li><a class="dropdown-item" href="#"></a></li>
                       <li>
                         <hr class="dropdown-divider">
                       </li>
@@ -96,25 +96,40 @@
                       </div>
                       <div class="col-md-3 position-relative">
                         <label for="validationTooltip04" class="form-label">Localidad</label>
-                        <select class="form-select" id="selecLocalidad" required>
+                        <select class="form-select" id="selecLocalidad" >
                           <option selected disabled>Selecciona una opción</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3 position-relative">
+                        <label for="validationTooltip04" class="form-label">Tipo</label>
+                        <select class="form-select" id="tipo" required>
+                          <option value="1">Política</option>
+                          <option value="2">Institucional</option>
+                          <option value="3">Educación</option>
+                          <option value="4">Religioso</option>
                         </select>
                       </div>
                       <div class="col-md-2 position-relative">
                         <label for="validationTooltip02" class="form-label">Fecha Inicio</label>
-                        <input type="date" class="form-control" id="fechaInicio" value="" required>
+                        <input type="date" class="form-control" id="fechaInicio" value="" >
                       </div>
                       <div class="col-md-2 position-relative">
                         <label for="validationTooltip02" class="form-label">Fecha Final</label>
-                        <input type="date" class="form-control" id="fechaFinal" value="" required>
+                        <input type="date" class="form-control" id="fechaFinal" value="" >
                       </div>
                       <div class="col-md-2 position-relative">
                         <label for="validationTooltipUsername" class="form-label">Titulo</label>
                         <div class="input-group has-validation">
-                          <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
+                          <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" >
                         </div>
                       </div>
                       <div class="col-md-3 position-relative">
+                        <label for="validationTooltipUsername" class="form-label">Palabras claves</label>
+                        <div class="input-group has-validation">
+                          <input type="text" class="form-control" id="informe" aria-describedby="validationTooltipUsernamePrepend" >
+                        </div>
+                      </div>
+                      <div class=" position-relative">
                         <button type="submit" class="btn btn-outline-success">Buscar</button>
                       </div>
                       
@@ -147,18 +162,19 @@
         </div>
     </div>
   </main>
-  <script>
+  <!-- <script>
     // Obtener la fecha actual
     let fechaActual = new Date().toISOString().split("T")[0];
     // Asignar la fecha actual al campo de fecha
     document.getElementById("fechaInicio").value = fechaActual;
     document.getElementById("fechaFinal").value = fechaActual;
-  </script>
+  </script> -->
   <!-- Bootstrap JavaScript Libraries -->
   <script src="/popper/popper.min.js">
   </script>
   <script src="/js/app.js"></script>
   <script src="/js/reports/obtenerReports.js"></script>
+  <script src="/js/reports/filtros.js"></script>
   <script src="/bootstrap/bootstrap.min.js">
   </script>
 </body>

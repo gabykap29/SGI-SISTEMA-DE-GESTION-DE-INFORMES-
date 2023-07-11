@@ -3,11 +3,12 @@ const router = express.Router();
 const {create, Read, readsAll, deleted, update} = require('../controllers/auth.reports');
 const {validarJWT} = require('../middlewares/validar_jwt');
 const { isAuthenticated } = require('../middlewares/autenticate');
+const { filtrarInformes } = require('../controllers/filtros');
 
 
 
 //vistas
-router.get('/informes/views',isAuthenticated,(req,res)=>{
+router.get('/informes/views',(req,res)=>{
     res.render('views')
 })
 router.get('/informes/create',(req,res)=>{
@@ -28,6 +29,8 @@ router.get('/api/informe/:id',Read);
 router.get('/api/informes',readsAll);
 router.put('/api/informes/edit/:id',update);
 router.put('/api/informes/deleted/:id',deleted)
+
+router.get('/api/filtrar',filtrarInformes);
 
 
 module.exports = router;

@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('combined'));
 app.use(cors())
-app.use(cookieParser);
+// app.use(cookieParser);
 //variables de entorno
 dotenv.config({path: './env/.env'})
 
