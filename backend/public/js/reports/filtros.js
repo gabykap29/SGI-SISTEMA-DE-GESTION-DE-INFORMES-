@@ -128,4 +128,10 @@ document.getElementById('formSearch').addEventListener('submit', async function(
     listadoInformes.innerHTML = html;
   };
   
-
+document.addEventListener('DOMContentLoaded',async ()=>{
+      // Obtener la fecha actual
+      let fechaActual = new Date().toISOString().split("T")[0];
+      // Asignar la fecha actual al campo de fecha
+      document.getElementById("fechaInicio").value = fechaActual;
+      document.getElementById("fechaFinal").value = fechaActual;
+});

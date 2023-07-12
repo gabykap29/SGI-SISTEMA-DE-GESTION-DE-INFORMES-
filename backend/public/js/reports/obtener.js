@@ -1,6 +1,11 @@
  const Info = document.getElementById('info');
 
-
+    const obtenerImagen = (rutaImagen) => {
+        if (rutaImagen) {
+        return `<img src="${rutaImagen}" alt="Imagen del informe">`;
+        } else {
+        return '';
+        }}
 
         let departamento = [null, 'Formosa','Pilcomayo','Pilagas','Laishi','Pirané','Patiño','Bermejo', 'Ramon Lista', 'Matacos'];
         let localidad = [
@@ -80,6 +85,7 @@
                 let Localidad = localidad[data.Localidad_idLocalidad]
                 let Tipo = tipo[data.Tipo_idTipo]
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
+                let imagen = obtenerImagen(data.RutaImagen);
                 Info.innerHTML += `
                 <section>
                     <h5><b>Departamento:</b> ${Departamento}</h5>
@@ -97,6 +103,7 @@
                     <h5><b>Infome </b></h5>
                     <div class="Informe">
                         <h5>${data.Informe}</h5>
+                        ${imagen} <!-- Mostrar la imagen -->
                     </div>
                 </section>
                         `;

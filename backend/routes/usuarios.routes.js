@@ -6,7 +6,7 @@ const {
     usersRead,
     userRead,
     userUpdate,
-    userDeleted
+    userDeteled
 } = require('../controllers/user');
 
 const {validarJWT} = require('../middlewares/validar_jwt');
@@ -16,13 +16,21 @@ router.get('/register', async(req,res)=>{
     return res.render('register');
 })
 
+router.get('/view/usuarios', (req,res)=>{
+    res.render('users/vistaUsuario')
+})
+
+router.get('/view/usuarios/create',(req,res)=>{
+    res.render('users/vistaCrear')
+})
+
 //APIS
 
-router.get('/api/usuarios', [validarJWT], usersRead);
+router.get('/api/usuarios', usersRead);
 router.get('/api/usuario/:id',userRead);
 router.put('/api/usuario/:id',userUpdate);
 router.post('/api/create',create);
-// router.delete('/api/usuario/id:',userDeleted);
+router.put('/api/usuario/delete/id:',userDeteled);
 
 
 module.exports = router;

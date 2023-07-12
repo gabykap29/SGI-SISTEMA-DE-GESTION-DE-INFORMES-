@@ -12,50 +12,11 @@ const obtenerInformes = async () => {
     return data;
 }
 
-const eliminarInforme = async (event) => {
-    const id = event.target.dataset.id;
-  
-    Swal.fire({
-      title: "Estás seguro?",
-      text: `Estás por eliminar un informe del sistema!`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Estoy seguro!",
-      cancelButtonText: "Cancelar",
-    }).then(async (result) => {
-      if (result) {
-        try {
-          const res = await fetch(
-            `/api/informes/deleted/${id}`,
-            {
-              method: "DELETE",
-            }
-          );
-  
-          const data = await res.json();
-  
-          Swal.fire({
-            icon: "success",
-            title: "Empleado eliminado",
-            text: data.message,
-          });
-  
-          setTimeout(() => {
-            window.location.reload();
-          }, 2200);
-        } catch (error) {
-          console.log(error);
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: error.message,
-          });
-        }
-      }
-    });
-  };
+const deleteButton = document.querySelectorAll('.eliminar-informe');
+deleteButton.forEach((boton) => {
+  boton.addEventListener('click', eliminarInforme);
+});
+
 
 const mostrarInformes = (informes) => {
 
@@ -148,13 +109,61 @@ const mostrarInformes = (informes) => {
                         <td>
                             <a href="/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
                             <a href="/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
-                            <button class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.id}">Eliminar</button>
+                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.id}">Eliminar</button>
                             
                         </td>
                     </tr>
                 `;
     });
 }
+
+
+
+const eliminarInforme = async (event) => {
+  const id = event.target.dataset.id;
+  console.log("The button was clicked!");
+
+  Swal.fire({
+    title: "Estás seguro?",
+    text: `Estás por eliminar un informe del sistema!`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Estoy seguro!",
+    cancelButtonText: "Cancelar",
+  }).then(async (result) => {
+    if (result) {
+      try {
+        const res = await fetch(
+          `/api/informes/deleted/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
+
+        const data = await res.json();
+
+        Swal.fire({
+          icon: "success",
+          title: "Informe eliminado",
+          text: data.message,
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2200);
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+      }
+    }
+  });
+};
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {

@@ -8,7 +8,7 @@ formNuevoUsuario.addEventListener('submit',async(e)=>{
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const rol = document.getElementById('rol').value;
-    const confirmPassword = document.getElementById('confirmPassword').value
+    const confirmPassword = document.getElementById('passwordConfirmation').value
     if(password !== confirmPassword){
         Swal.fire({
             icon: 'error',

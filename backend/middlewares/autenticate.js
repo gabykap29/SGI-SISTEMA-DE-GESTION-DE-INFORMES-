@@ -19,8 +19,6 @@ const isAuthenticated = async (req, res, next) => {
       // Leer el usuario que corresponde al id
       const user = await User.findByPk(decoded?.id);
   
-      // Resto del código...
-  
     } catch (error) {
       console.log('catch (error)');
       console.log(error);

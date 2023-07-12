@@ -5,60 +5,76 @@ const Localidad = require('../models/Localidad');
 const Tipo = require('../models/Tipo');
 // Crear un Informe
 
-
 ctrlReports.create = async (req, res) => {
-    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha, RutaImagen, Informe } = req.body;
-
-    console.log('req.body');
-    console.log(req.body);
-
+    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha, Informe } = req.body;
+  
     try {
-        const informe = await Report.create({
-            Departamento_idDepartamento,
-            Localidad_idLocalidad,
-            Tipo_idTipo,
-            Titulo,
-            Fecha,
-            RutaImagen,
-            Informe
-        });
-
-        if(!informe){
-                 throw {
-                message: 'error al crear el Informe'
-                };
-            }
-
-        return res.json(informe);
+      let rutaImagen = '/imagenes/'; // Variable para almacenar la ruta de la imagen
+  
+      if (req.file) {
+        // Si se ha cargado una imagen, obtener la ruta de la imagen en el sistema de archivos
+        rutaImagen = req.file.path;
+      }
+  
+      const informe = await Report.create({
+        Departamento_idDepartamento,
+        Localidad_idLocalidad,
+        Tipo_idTipo,
+        Titulo,
+        Fecha,
+        RutaImagen: rutaImagen,   // Asignar la ruta de la imagen a la propiedad RutaImagen
+        Informe
+      });
+  
+      if (!informe) {
+        throw {
+          message: 'Error al crear el informe'
+        };
+      }
+  
+      return res.json(informe);
     } catch (error) {
-        console.log(error);
-        return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
+      console.error(error);
+      return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
     }
-};
+  };
 
 
 
 //Obtener un INFORME
 
-ctrlReports.Read = async(req,res)=>{
-    const {id} = req.params;
-    try{
-        const informe = await Report.findByPk(id);
-
-        if(!informe){
-            throw({
-                status: 404,
-                message:'El informe no existe!'
-            });
-        }
-        return res.json(informe)
-    }catch(error){
-        console.log(error);
-        return res.status(error.status|| 500).json({
-            message: error.message || 'Error Interno del Servidor'
-        });
+ctrlReports.Read = async (req, res) => {
+    const { id } = req.params;
+    try {
+      const informe = await Report.findByPk(id);
+  
+      if (!informe) {
+        throw {
+          status: 404,
+          message: 'El informe no existe!'
+        };
+      }
+  
+      // Obtener la ruta de la imagen si existe
+      let rutaImagen = '';
+      if (informe.RutaImagen) {
+        rutaImagen = informe.RutaImagen;
+      }
+  
+      // Crear un nuevo objeto de respuesta con la ruta de la imagen
+      const informeConImagen = {
+        ...informe.toJSON(),
+        RutaImagen: rutaImagen
+      };
+  
+      return res.json(informeConImagen);
+    } catch (error) {
+      console.log(error);
+      return res.status(error.status || 500).json({
+        message: error.message || 'Error Interno del Servidor'
+      });
     }
-}
+  };
 
 ctrlReports.readsAll = async (req, res)=>{
     try{
@@ -124,13 +140,13 @@ ctrlReports.update = async(req,res)=>{
     }
 }
 ctrlReports.deleted = async(req,res)=>{
-    const {idInforme} = req.params;
+    const {id} = req.params;
     try{
         const informeDeleted = Report.update({
             estado:false
         },{
             where:{
-                idInforme,
+                id,
                 estado:true,
             }
         })
