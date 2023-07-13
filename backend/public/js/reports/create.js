@@ -29,7 +29,9 @@ formNuevoInforme.addEventListener('submit',async(e)=>{
     if(response.status !== 201 && response.status !== 200){
         Swal.fire({
             icon:'error',
-            title:respToJson.message,
+            title:'Error!',
+            text:'Algunos campos del formulario estan incompletos!',
+             
         });
         return;
     }

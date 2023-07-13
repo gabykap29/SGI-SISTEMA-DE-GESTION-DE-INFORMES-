@@ -28,10 +28,17 @@ authCtrl.login = async (req,res)=>{
             });
         }
         const token = await generarJWT(existeUsuario.id)
+        const cookiesOptions ={
+            expires:new Date(Date.now()+ process.env.CookiesExpireIn * 24 * 60 * 1000),
+            httpOnly: true
+        }
+        res.cookie('jwt', token, cookiesOptions)
         res.json({
             message:'Login Correcto',
             token,
         });
+
+
 
 
     }catch(error){
@@ -42,5 +49,4 @@ authCtrl.login = async (req,res)=>{
     }
 
 }
-
 module.exports = authCtrl;

@@ -23,12 +23,11 @@ ctrlReports.create = async (req, res) => {
         Titulo,
         Fecha,
         RutaImagen: rutaImagen,   // Asignar la ruta de la imagen a la propiedad RutaImagen
-        Informe
+        Informe,
       });
-  
-      if (!informe) {
+      if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !Informe){
         throw {
-          message: 'Error al crear el informe'
+          mesagge: 'Favor, verifique todos los campos esten completos.'
         };
       }
   

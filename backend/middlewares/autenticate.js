@@ -1,30 +1,24 @@
-const isAuthenticated = async (req, res, next) => {
-    // Leer el token del encabezado
-    let token = req.header('Authorization');
-  
-    if (!token) {
-      return res.redirect("/login");
-    }
-  
-    // Verificar si el token incluye el prefijo 'Bearer'
-    if (token.startsWith('Bearer ')) {
-      // Eliminar el prefijo 'Bearer ' del token
-      token = token.slice(7);
-    }
-  
+const Usuario = require('../models/Usuario');
+const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
+
+const isAutenticated = async (req, res, next) => {
+  if (req.cookies.jwt) {
     try {
-      // Verificar y decodificar el token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      
-      // Leer el usuario que corresponde al id
-      const user = await User.findByPk(decoded?.id);
-  
+      const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+      const user = await Usuario.findOne({ _id: decodificada.id }).exec();
+      if (!user) {
+        return next();
+      }
+      req.user = user;
+      return next();
     } catch (error) {
-      console.log('catch (error)');
       console.log(error);
-      return res.status(401).json({
-        message: 'Token inválido',
-      });
+      return next();
     }
-  };
-module.exports = { isAuthenticated };
+  } else {
+    res.redirect('/login');
+  }
+};
+
+module.exports = isAutenticated;
