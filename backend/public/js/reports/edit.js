@@ -3,7 +3,7 @@ const departamento = document.getElementById('selecDepartamento');
 const localidad = document.getElementById('selecLocalidad');
 const tipo = document.getElementById('tipo');
 const fecha = document.getElementById('fecha');
-const titulo = document.getElementById('fecha');
+const titulo = document.getElementById('titulo');
 const informe = document.getElementById('informe');
 
 // Funcion para obtener los datos del informe cuando se carga la página
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         tipo.value = data.Tipo_idTipo;
         fecha.value = data.Fecha;
         titulo.value=data.Titulo;
-        informe.value = data.Tnforme
+        informe.value = data.Informe
     });
 
 //Enviar los datos al backend

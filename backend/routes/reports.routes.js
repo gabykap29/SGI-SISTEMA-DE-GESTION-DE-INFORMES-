@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const {create, Read, readsAll, deleted, update} = require('../controllers/auth.reports');
-const { filtrarInformes } = require('../controllers/filtros');
+const {create, Read, readsAll, deleted, update} = require('../controllers/reports/auth.reports');
+const { filtrarInformes, filtroDepar } = require('../controllers/reports/filtros');
 const isAutenticated = require('../middlewares/autenticate');
 
 
@@ -29,6 +29,7 @@ router.put('/api/informes/edit/:id',isAutenticated,update);
 router.put('/api/informes/deleted/:id',isAutenticated,deleted)
 
 router.get('/api/filtrar',isAutenticated,filtrarInformes);
+router.get('/api/porDepar',filtroDepar)
 
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
-const Usuario = require('../models/Usuario');
-const {generarJWT}=require('../helpers/generar_jwt');
+const Usuario = require('../../models/Usuario');
+const {generarJWT}=require('../../helpers/generar_jwt');
 const authCtrl = {};
 
 
@@ -30,7 +30,9 @@ authCtrl.login = async (req,res)=>{
         const token = await generarJWT(existeUsuario.id)
         const cookiesOptions ={
             expires:new Date(Date.now()+ process.env.CookiesExpireIn * 24 * 60 * 1000),
-            httpOnly: true
+            httpOnly: true,
+            sameSite: 'strict' // La cookie solo se envía en solicitudes del mismo sitio
+
         }
         res.cookie('jwt', token, cookiesOptions)
         res.json({
@@ -48,5 +50,9 @@ authCtrl.login = async (req,res)=>{
         })
     }
 
+}
+authCtrl.closeSesion = async (req,res)=>{
+    res.clearCookie('jwt')
+    return res.redirect('/login');
 }
 module.exports = authCtrl;

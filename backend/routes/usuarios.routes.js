@@ -8,7 +8,7 @@ const {
     userRead,
     userUpdate,
     userDeteled
-} = require('../controllers/user');
+} = require('../controllers/auth/user');
 
 const {validarJWT} = require('../middlewares/validar_jwt');
 

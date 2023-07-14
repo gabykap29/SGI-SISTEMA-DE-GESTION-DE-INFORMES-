@@ -1,8 +1,8 @@
 ctrlReports = {};
-const Report = require('../models/Informe');
-const Departamento = require('../models/Departamento');
-const Localidad = require('../models/Localidad');
-const Tipo = require('../models/Tipo');
+const Report = require('../../models/Informe');
+const Departamento = require('../../models/Departamento');
+const Localidad = require('../../models/Localidad');
+const Tipo = require('../../models/Tipo');
 // Crear un Informe
 
 ctrlReports.create = async (req, res) => {

@@ -4,7 +4,7 @@ h1{
     padding-bottom: 50px;
 
 }
-main{
+body{
     background-color: #e0e0e0;
 }
 #div-tarjetas{
@@ -15,9 +15,11 @@ main{
     height: 200px;
     padding-right: 30px;
     border-radius: 10px;
+    
 }
 .tarjetas .card-body{
     height: 180px;
+    background-color: white;
     
 }
 .cantidad{
