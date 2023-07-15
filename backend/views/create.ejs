@@ -67,7 +67,7 @@
   <main>
     <h1>Cargar Informes</h1>
     <div class="form-cargar">
-        <form action="" class="row g-3 needs-validation" id="formNuevoInforme">
+        <form action="" class="row g-3 needs-validation" id="formNuevoInforme" enctype="multipart/form-data">
             <div class="col-md-3 position-relative">
                 <label for="validationTooltip04" class="form-label">Departamento</label>
                 <select class="form-select" id="selecDepartamento" required>
@@ -115,7 +115,7 @@
             </div>
             <div class="col-md-3 position-relative">
                 <label class="input-group-text" for="inputGroupFile01">Imagenes</label>
-                <input type="file" class="form-control" id="rutaImagen">
+                <input type="file" class="form-control" id="rutaImagen" name="rutaImagen">
               </div>              
               <div class="mb-1">
                 <label for="exampleFormControlTextarea1" class="form-label">Informe</label>

@@ -1,11 +1,19 @@
  const Info = document.getElementById('info');
 
-    const obtenerImagen = (rutaImagen) => {
-        if (rutaImagen) {
-        return `<img src="${rutaImagen}" alt="Imagen del informe">`;
-        } else {
-        return '';
-        }}
+// ...
+
+const obtenerImagen = (rutaImagen) => {
+    if (rutaImagen) {
+      // Construye la URL completa de la imagen utilizando el origen del sitio web
+      const imageURL = window.location.origin + rutaImagen;
+      return `<img src="${imageURL}" alt="Imagen del informe">`;
+    } else {
+      return '';
+    }
+  }
+  
+  // ...
+  
 
         let departamento = [null, 'Formosa','Pilcomayo','Pilagas','Laishi','Pirané','Patiño','Bermejo', 'Ramon Lista', 'Matacos'];
         let localidad = [

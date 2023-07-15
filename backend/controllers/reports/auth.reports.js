@@ -9,13 +9,14 @@ ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha, Informe } = req.body;
   
     try {
-      let rutaImagen = '/imagenes/'; // Variable para almacenar la ruta de la imagen
-  
+      
+      let rutaImagen  // Variable para almacenar la ruta de la imagen
+    
       if (req.file) {
-        // Si se ha cargado una imagen, obtener la ruta de la imagen en el sistema de archivos
-        rutaImagen = req.file.path;
+        // Si se ha cargado una imagen, obtener la ruta relativa de la imagen
+        rutaImagen =  req.file.filename;
       }
-  
+    
       const informe = await Report.create({
         Departamento_idDepartamento,
         Localidad_idLocalidad,
@@ -30,13 +31,12 @@ ctrlReports.create = async (req, res) => {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
       }
-  
+    
       return res.json(informe);
     } catch (error) {
       console.error(error);
       return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
-    }
-  };
+    }};
 
 
 

@@ -1,4 +1,5 @@
 const {sequelize, DataTypes} = require('../db');
+const Informe = require('./Informe');
 
 const Tipo = sequelize.define('Tipo',{
     idTipo:{
@@ -16,5 +17,9 @@ const Tipo = sequelize.define('Tipo',{
     modelName:'Tipo',
     tableName:'tipo'
 })
+Tipo.hasMany(Informe, {
+    foreignKey: 'Tipo_idTipo',
+    as: 'Informes',
+  });
 Tipo.sync(); 
 module.exports = Tipo;

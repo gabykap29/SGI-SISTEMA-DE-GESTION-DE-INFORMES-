@@ -1,5 +1,6 @@
 const {sequelize, DataTypes} = require('../db');
 const Informe = require('./Informe');
+const Localidad = require('./Localidad')
 
 // 'use strict';
 
@@ -23,7 +24,10 @@ Departamento.hasMany(Informe, {
     foreignKey: 'Departamento_idDepartamento',
     as: 'Informes',
   });
-
+  Departamento.hasMany(Localidad, {
+    foreignKey: 'Departamento_idDepartamento',
+    as: 'Localidad',
+  });
 console.log(Departamento);
 Departamento.sync();
 
