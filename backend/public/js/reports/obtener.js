@@ -3,14 +3,14 @@
 // ...
 
 const obtenerImagen = (rutaImagen) => {
-    if (rutaImagen) {
-      // Construye la URL completa de la imagen utilizando el origen del sitio web
-      const imageURL = window.location.origin + rutaImagen;
-      return `<img src="${imageURL}" alt="Imagen del informe">`;
-    } else {
-      return '';
-    }
+  if (rutaImagen) {
+    // Construye la URL completa de la imagen utilizando el origen del sitio web y la ruta de la imagen
+    const imageURL = window.location.origin + '/uploads/' + rutaImagen;
+    return `<img src="${imageURL}" alt="Imagen del informe">`;
+  } else {
+    return '';
   }
+};
   
   // ...
   
