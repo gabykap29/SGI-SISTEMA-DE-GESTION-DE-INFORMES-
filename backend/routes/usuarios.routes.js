@@ -13,7 +13,7 @@ const {
 const {validarJWT} = require('../middlewares/validar_jwt');
 
 //Vistas
-router.get('/register', isAutenticated,async(req,res)=>{
+router.get('/register',async(req,res)=>{
     return res.render('register');
 })
 
@@ -30,7 +30,7 @@ router.get('/view/usuarios/create',isAutenticated,(req,res)=>{
 router.get('/api/usuarios', isAutenticated,usersRead);
 router.get('/api/usuario/:id',isAutenticated,userRead);
 router.put('/api/usuario/:id',isAutenticated,userUpdate);
-router.post('/api/create',isAutenticated,create);
+router.post('/api/create',create);
 router.put('/api/usuario/delete/id:',isAutenticated,userDeteled);
 
 

@@ -35,7 +35,7 @@ router.post('/api/informes/create', isAutenticated, upload.single('rutaImagen'),
 
 router.get('/api/informe/:id', isAutenticated, ctrlReports.Read);
 router.get('/api/informes', isAutenticated, ctrlReports.readsAll);
-router.put('/api/informes/edit/:id', isAutenticated, ctrlReports.update);
+router.put('/api/informes/edit/:id', isAutenticated, upload.single('rutaImagen'),ctrlReports.update);
 router.put('/api/informes/deleted/:id', isAutenticated, ctrlReports.deleted);
 router.get('/api/filtrar', isAutenticated, filtrarInformes);
 router.get('/api/porDepar', isAutenticated,filtroDepar);

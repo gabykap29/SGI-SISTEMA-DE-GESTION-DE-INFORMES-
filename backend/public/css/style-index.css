@@ -14,12 +14,13 @@ body{
     width: 200px;
     height: 200px;
     padding-right: 30px;
-    border-radius: 10px;
+
     
 }
 .tarjetas .card-body{
     height: 180px;
     background-color: white;
+    border-radius: 30px;
     
 }
 .cantidad{
@@ -36,4 +37,10 @@ body{
 }
 #title{
     padding-left: 37%;
+}
+.card{
+    border-radius: 10px;
+}
+#btn-close{
+    padding-left: 70%;
 }

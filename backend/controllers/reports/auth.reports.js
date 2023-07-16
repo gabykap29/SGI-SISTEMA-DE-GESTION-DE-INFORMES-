@@ -104,9 +104,13 @@ ctrlReports.update = async(req,res)=>{
         Tipo_idTipo,
         Titulo,
         Fecha,
-        RutaImagen,
         Informe} = req.body;
-
+        let rutaImagen  // Variable para almacenar la ruta de la imagen
+    
+        if (req.file) {
+          // Si se ha cargado una imagen, obtener la ruta relativa de la imagen
+          rutaImagen =  req.file.filename;
+        }
     try{
         const informeUpdate = await Report.update({
             Departamento_idDepartamento,
@@ -114,7 +118,7 @@ ctrlReports.update = async(req,res)=>{
             Tipo_idTipo,
             Titulo,
             Fecha,
-            RutaImagen,
+            RutaImagen: rutaImagen,
             Informe,
         },{
             where:{

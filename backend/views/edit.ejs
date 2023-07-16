@@ -15,51 +15,72 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" id="title" href="/index">Sistema de Gestión de Informes</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menú</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Informes
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
-                      <li><a class="dropdown-item" href="/informes/views">Buscar</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Personas
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
-                    <li><a class="dropdown-item" href="/informes/views">Buscar</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Informes" aria-label="Search">
-                <button class="btn btn-success" type="submit">Buscar</button>
-              </form>
-            </div>
-          </div>
+  <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" id="title" href="/index">Sistema de Gestión de Informes</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menú</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </nav>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Informes
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
+                  <li><a class="dropdown-item" href="/informes/views">Filtros</a></li>
+                  <li><a class="dropdown-item" href="#">Gráficos</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Personas
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Cargar</a></li>
+                <li><a class="dropdown-item" href="#">Buscar</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Usuarios
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/view/usuarios">Ver</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Informes" aria-label="Search">
+            <button class="btn btn-success" type="submit">Buscar</button>
+          </form>
+          
+        </div>
+        <div id="btn-close">
+          <a href="/closeSesion" class="btn btn-danger">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+    
+  </nav>
   <main>
     <h1>Editar Informes</h1>
     <div class="form-editar container">
@@ -91,6 +112,11 @@
                   <option value="2">Institucional</option>
                   <option value="3">Educación</option>
                   <option value="4">Religioso</option>
+                  <option value="5">Proselitismo</option>
+                  <option value="6">Salud</option>
+                  <option value="7">Seguridad</option>
+                  <option value="8">Eventos Climáticos</option>
+                  <option value="9">Hídricos</option>
                 </select>
               </div>
             <div class="col-md-2 position-relative">

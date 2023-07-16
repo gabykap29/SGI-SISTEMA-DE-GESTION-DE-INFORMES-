@@ -1,5 +1,5 @@
 let departamentOption = document.getElementById('selecDepartamento');
-
+    // Obtener la fecha actual
 departamentOption.addEventListener('change',()=>{
     let valorSelect = document.getElementById('selecDepartamento').value;
     let selecLocal = document.getElementById('selecLocalidad')
@@ -120,3 +120,6 @@ departamentOption.addEventListener('change',()=>{
         alert("Error: Por favor, elija un Departamento de la lista!")
     }
 })
+let fechaActual = new Date().toISOString().split("T")[0];
+// Asignar la fecha actual al campo de fecha
+document.getElementById("fecha").value = fechaActual;

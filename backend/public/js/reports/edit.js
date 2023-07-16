@@ -36,28 +36,21 @@ formEditar.addEventListener('submit',async(e)=>{
     const Titulo = document.getElementById('titulo').value;
     const RutaImagen = document.getElementById('rutaImagen').value;
     const Informe = document.getElementById('informe').value;
-    console.log(
-        Departamento_idDepartamento,
-        Localidad_idLocalidad,
-        Tipo_idTipo,
-        Fecha,
-        Titulo,
-        RutaImagen,
-        Informe)
+
+    const formData = new FormData();
+    formData.append('Departamento_idDepartamento', Departamento_idDepartamento);
+    formData.append('Localidad_idLocalidad', Localidad_idLocalidad);
+    formData.append('Tipo_idTipo', Tipo_idTipo);
+    formData.append('Fecha', Fecha);
+    formData.append('Titulo', Titulo);
+    formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
+    formData.append('Informe', Informe);
+
+try {
     const response = await fetch(`/api/informes/edit/${id}`,{
         method:'PUT',
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify({
-            Departamento_idDepartamento,
-            Localidad_idLocalidad,
-            Tipo_idTipo,
-            Fecha,
-            Titulo,
-            RutaImagen,
-            Informe,
-        }),
+        body: formData
+        
     });
     const respToJson = await response.json();
     if(response.status !== 201 && response.status !== 200){
@@ -77,5 +70,14 @@ formEditar.addEventListener('submit',async(e)=>{
     setTimeout(()=>{
         window.location.href='/informes/views';
     },2000);
-})
 
+
+} catch (error) {
+    console.log(error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error!',
+      text: 'Ha ocurrido un error al enviar el formulario'
+    });
+  }
+})

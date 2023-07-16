@@ -6,7 +6,7 @@ const obtenerImagen = (rutaImagen) => {
   if (rutaImagen) {
     // Construye la URL completa de la imagen utilizando el origen del sitio web y la ruta de la imagen
     const imageURL = window.location.origin + '/uploads/' + rutaImagen;
-    return `<img src="${imageURL}" alt="Imagen del informe">`;
+    return `<img src="${imageURL}" class="container" alt="Imagen del informe" id="Img-Info">`;
   } else {
     return '';
   }
@@ -74,7 +74,12 @@ const obtenerImagen = (rutaImagen) => {
             "Politica", 
             "Institucional", 
             "Educación",
-            "Religioso"
+            "Religioso",
+            "Proselitismo",
+            "Salud",
+            "Seguridad",
+            "Eventos Climáticos",
+            "Hidricos"
         ]
           
 
@@ -88,7 +93,6 @@ const obtenerImagen = (rutaImagen) => {
           
             const response = await fetch(`/api/informe/${id}`);
             const data = await response.json();
-            console.log(data)
                 let Departamento = departamento[data.Departamento_idDepartamento];
                 let Localidad = localidad[data.Localidad_idLocalidad]
                 let Tipo = tipo[data.Tipo_idTipo]
@@ -111,6 +115,7 @@ const obtenerImagen = (rutaImagen) => {
                     <h5><b>Infome </b></h5>
                     <div class="Informe">
                         <h5>${data.Informe}</h5>
+                        <br><br>
                         ${imagen} <!-- Mostrar la imagen -->
                     </div>
                 </section>

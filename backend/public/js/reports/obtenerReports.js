@@ -89,7 +89,12 @@ const mostrarInformes = (informes) => {
         "Politica", 
         "Institucional", 
         "Educación",
-        "Religioso"
+        "Religioso",
+        "Proselitismo",
+        "Salud",
+        "Seguridad",
+        "Eventos Climáticos",
+        "Hídricos"
     ]
       
 
