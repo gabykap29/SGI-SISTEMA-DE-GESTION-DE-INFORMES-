@@ -112,11 +112,11 @@ const obtenerImagen = (rutaImagen) => {
                     <br>
                     <h5><b>Titulo:</b> ${data.Titulo}</h5>
                     <br>
-                    <h5><b>Infome </b></h5>
+                    <h5><b>Infome: </b></h5>
                     <div class="Informe">
                         <h5>${data.Informe}</h5>
                         <br><br>
-                        ${imagen} <!-- Mostrar la imagen -->
+                    <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
                     </div>
                 </section>
                         `;

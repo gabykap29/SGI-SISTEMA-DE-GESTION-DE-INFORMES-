@@ -8,15 +8,15 @@ authCtrl.login = async (req,res)=>{
     const {username, password} = req.body;
 
     try {
-        const existeUsuario = await Usuario.findOne({username});
+        const existeUsuario = await Usuario.findOne({ where: { username: username }});
         if(!existeUsuario){
-            return res.status(400).json({
+            return res.status(401).json({
                 message: 'Verifique el usuario y/o Contraseña'
             });
         }
 
         if(!existeUsuario.estado){
-            return res.status(400).json({
+            return res.status(402).json({
                 message:'el usuario se encuentra bloqueado'
             });
         }
@@ -28,6 +28,7 @@ authCtrl.login = async (req,res)=>{
             });
         }
         const token = await generarJWT(existeUsuario.id)
+        console.log(existeUsuario.id)
         const cookiesOptions ={
             expires:new Date(Date.now()+ process.env.CookiesExpireIn * 24 * 60 * 1000),
             httpOnly: true,

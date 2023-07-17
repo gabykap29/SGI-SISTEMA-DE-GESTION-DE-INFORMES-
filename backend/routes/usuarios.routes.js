@@ -10,7 +10,7 @@ const {
     userDeteled
 } = require('../controllers/auth/user');
 
-const {validarJWT} = require('../middlewares/validar_jwt');
+const verificarRolAdmin = require('../middlewares/checkRol');
 
 //Vistas
 router.get('/register',async(req,res)=>{
@@ -30,7 +30,7 @@ router.get('/view/usuarios/create',isAutenticated,(req,res)=>{
 router.get('/api/usuarios', isAutenticated,usersRead);
 router.get('/api/usuario/:id',isAutenticated,userRead);
 router.put('/api/usuario/:id',isAutenticated,userUpdate);
-router.post('/api/create',create);
+router.post('/api/create',verificarRolAdmin,create);
 router.put('/api/usuario/delete/id:',isAutenticated,userDeteled);
 
 

@@ -39,7 +39,7 @@ const Informe = sequelize.define('Informe',{
         allowNull:true
      },
      Informe:{
-        type: DataTypes.STRING(888),
+        type: DataTypes.STRING(4000),
         allowNull:false,
     },
     estado:{
