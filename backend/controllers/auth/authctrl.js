@@ -27,7 +27,7 @@ authCtrl.login = async (req,res)=>{
                 message:'Verifique el usuario y/o Contraseña'
             });
         }
-        const token = await generarJWT(existeUsuario.id)
+        const token = await generarJWT(existeUsuario.id,existeUsuario.rol)
         console.log(existeUsuario.id)
         const cookiesOptions ={
             expires:new Date(Date.now()+ process.env.CookiesExpireIn * 24 * 60 * 1000),
@@ -36,6 +36,7 @@ authCtrl.login = async (req,res)=>{
 
         }
         res.cookie('jwt', token, cookiesOptions)
+        res.cookie('rol',existeUsuario.rol, cookiesOptions)
         res.json({
             message:'Login Correcto',
             token,
@@ -54,6 +55,7 @@ authCtrl.login = async (req,res)=>{
 }
 authCtrl.closeSesion = async (req,res)=>{
     res.clearCookie('jwt')
+    res.clearCookie('rol')
     return res.redirect('/login');
 }
 module.exports = authCtrl;
