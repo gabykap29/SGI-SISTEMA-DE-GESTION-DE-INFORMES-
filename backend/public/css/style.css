@@ -2,16 +2,16 @@
 main{
     background-color: white;
 }
-#inputs{
-    padding-left: 70px;
-}
+/* #inputs{
+    padding-left: 10%;
+} */
 
-#username{
-    width: 500px;
+/* #username{
+    width: 200%;
 }
 #password{
-    width: 500px;
-}
+    width: 200%;
+} */
 #btn-submit{
     width: 200px;
 }
