@@ -98,8 +98,13 @@ document.getElementById('formSearch').addEventListener('submit', async function(
       "Politica", 
       "Institucional", 
       "Educación",
-      "Religioso"
-    ];
+      "Religioso",
+      "Proselitismo",
+      "Salud",
+      "Seguridad",
+      "Eventos Climáticos",
+      "Hídricos"
+  ]
   
     let html = '';
     informes.forEach(informe => {

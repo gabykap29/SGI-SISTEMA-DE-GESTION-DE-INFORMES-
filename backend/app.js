@@ -16,14 +16,19 @@ app.set('view engine', 'ejs');
 // Carpeta pública
 app.use(express.static('public'));
 
+//guardar todas las peticiones al servidor en un archivo de texto
+const accessLogStream = fs.createWriteStream('access.log', { flags: 'a' });
+
+
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(helmet());
-app.use(morgan('combined'));
+app.use(morgan('combined', { stream: accessLogStream }));
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json({ limit: '10mb' }));
+
 
 
 

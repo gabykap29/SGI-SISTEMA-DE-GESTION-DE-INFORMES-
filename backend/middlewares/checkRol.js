@@ -9,13 +9,14 @@ checkRol.verificarRolAdmin = (req,res,next)=>{
     try {
         const decoded = jwt.verify(token,process.env.SECRET_KEY);
         const rol = decoded.rol
-        console.log(rol)
 
         if(rol != 'Moderate'){
+            res.redirect('/login');
             return res.status(403).json({message: "Acceso Denegado!, se enviará una notificación a los Administradores!"})
         }
         next()
     } catch (error) {
+        res.redirect('/login');
         return res.status(401).json({message: 'Acceso Denegado!, se enviará una notificación a los Administradores!'})
     }
 }
@@ -23,6 +24,7 @@ checkRol.verificarRolUser = (req,res,next)=>{
     const token = req.cookies.jwt;
 
     if(!token){
+        res.redirect('/login');
         return res.status(401).json({message:'No hay token en la petición'});
     }
     try {
@@ -31,10 +33,12 @@ checkRol.verificarRolUser = (req,res,next)=>{
         console.log(rol)
 
         if(rol != 'Moderate' & rol != 'User'){
+            res.redirect('/login');
             return res.status(403).json({message: "Acceso Denegado!, se enviará una notificación a los Administradores!"})
         }
         next()
     } catch (error) {
+        res.redirect('/login');
         return res.status(401).json({message: 'Acceso Denegado!, se enviará una notificación a los Administradores!'})
     }
 }
