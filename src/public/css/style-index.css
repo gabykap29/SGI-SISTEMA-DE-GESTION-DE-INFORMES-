@@ -1,0 +1,46 @@
+h1{
+    padding-left: 80px;
+    font-size: 30px;
+    padding-bottom: 50px;
+
+}
+body{
+    background-color: #e0e0e0;
+}
+#div-tarjetas{
+    padding-left: 80px;
+}
+.tarjetas{
+    width: 200px;
+    height: 200px;
+    padding-right: 30px;
+
+    
+}
+.tarjetas .card-body{
+    height: 180px;
+    background-color: white;
+    border-radius: 30px;
+    
+}
+.cantidad{
+    display: flex;
+    padding-left: 50px;
+    height: 80px;
+    align-items: center;
+}
+#cantFormosa{
+    padding-left: 10px;
+}
+.card-body a{
+    margin-left: 30px;
+}
+#title{
+    padding-left: 37%;
+}
+.card{
+    border-radius: 10px;
+}
+#btn-close{
+    padding-left: 70%;
+}
