@@ -1,7 +1,7 @@
-# proyectoSGI
+# Sistema de Gestión de Informes.
 Este es un sistema de gestión creado para realizar la creación, Edición, Visualización y Eliminación de Informes, de distintos tipos..
 Este sistema consta de lo siguiente
-- Login 
+- Login
 !["Login"](./images-Readme/login.PNG)
 - Index
 !["seccion de informes cargados"](./images-Readme/index.PNG)
