@@ -24,6 +24,9 @@ router.get('/view/usuarios', isAutenticated,verificarRolAdmin,(req,res)=>{
 router.get('/view/usuarios/create',isAutenticated,verificarRolAdmin,(req,res)=>{
     res.render('users/vistaCrear')
 })
+router.get('/usuario/edit/:id',isAutenticated, verificarRolAdmin,(req,res)=>{
+    res.render('users/vistaEditar',{ id: req.params.id })
+})
 
 //APIS
 

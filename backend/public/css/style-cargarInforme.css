@@ -10,6 +10,7 @@ h1{
 }
 #informe{
     height: 250px;
+    
 }
 #title{
     padding-left: 37%;
@@ -20,3 +21,28 @@ body{
 #btn-close{
     padding-left: 70%;
 }
+/* .seccionInforme{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap; */
+
+.seccionInforme div{
+    padding-right:40px ;
+}
+/* #localidad{
+    padding-left: 15%;
+}
+#fecha{
+    padding-left: 10%;
+}
+#titulo{
+    margin-top: 20%;
+    padding-left: 15%;
+}
+#tipo{
+    margin-top: 60px;
+}
+.Informe{
+    margin-top: 60px;
+} */
