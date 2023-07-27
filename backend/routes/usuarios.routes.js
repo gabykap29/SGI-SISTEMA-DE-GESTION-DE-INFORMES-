@@ -10,28 +10,31 @@ const {
     userDeteled
 } = require('../controllers/auth/user');
 
-const verificarRolAdmin = require('../middlewares/checkRol');
+const {verificarRolAdmin} = require('../middlewares/checkRol');
 
 //Vistas
-router.get('/register',async(req,res)=>{
-    return res.render('register');
-})
+// router.get('/register',async(req,res)=>{
+//     return res.render('register');
+// })
 
-router.get('/view/usuarios', isAutenticated,(req,res)=>{
+router.get('/view/usuarios', isAutenticated,verificarRolAdmin,(req,res)=>{
     res.render('users/vistaUsuario')
 })
 
-router.get('/view/usuarios/create',isAutenticated,(req,res)=>{
+router.get('/view/usuarios/create',isAutenticated,verificarRolAdmin,(req,res)=>{
     res.render('users/vistaCrear')
+})
+router.get('/usuario/edit/:id',isAutenticated, verificarRolAdmin,(req,res)=>{
+    res.render('users/vistaEditar',{ id: req.params.id })
 })
 
 //APIS
 
-router.get('/api/usuarios', isAutenticated,usersRead);
-router.get('/api/usuario/:id',isAutenticated,userRead);
-router.put('/api/usuario/:id',isAutenticated,userUpdate);
-router.post('/api/create',verificarRolAdmin,create);
-router.put('/api/usuario/delete/id:',isAutenticated,userDeteled);
+router.get('/api/usuarios', isAutenticated,verificarRolAdmin,usersRead);
+router.get('/api/usuario/:id',isAutenticated,verificarRolAdmin,userRead);
+router.put('/api/usuario/:id',isAutenticated,verificarRolAdmin,userUpdate);
+router.post('/api/create',verificarRolAdmin,verificarRolAdmin,create);
+router.put('/api/usuario/delete/id:',isAutenticated,verificarRolAdmin,userDeteled);
 
 
 module.exports = router;

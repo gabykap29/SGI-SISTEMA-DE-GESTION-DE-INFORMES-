@@ -40,11 +40,10 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <!-- <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Personas
               </a>
               <ul class="dropdown-menu">
@@ -55,7 +54,7 @@
                 </li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
-            </li>
+            </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Usuarios
@@ -98,7 +97,8 @@
                 <form id="formSearch" action="" class="row g-3 needs-validation" id="formNuevoInforme">
                     <div class="col-md-3 position-relative">
                         <label for="validationTooltip04" class="form-label">Departamento</label>
-                        <select class="form-select" id="selecDepartamento" required>
+                        <select class="form-select" id="selecDepartamento" >
+                          <option selected disabled value="">Selecciona una opción</option>
                           <option value="1">Formosa</option>
                           <option value="2">Pilcomayo</option>
                           <option value="3">Pilagás</option>
@@ -113,13 +113,13 @@
                       <div class="col-md-3 position-relative">
                         <label for="validationTooltip04" class="form-label">Localidad</label>
                         <select class="form-select" id="selecLocalidad" >
-                          <option selected disabled>Selecciona una opción</option>
+                          <option selected disabled value="">Selecciona una opción</option>
                         </select>
                       </div>
                       <div class="col-md-3 position-relative">
                         <label for="validationTooltip04" class="form-label">Tipo</label>
-                        <select class="form-select" id="tipo" required>
-                          <option selected disabled>Selecciona una opción</option>
+                        <select class="form-select" id="tipo" >
+                          <option selected disabled value="">Selecciona una opción</option>
                           <option value="1">Política</option>
                           <option value="2">Institucional</option>
                           <option value="3">Educación</option>
@@ -185,7 +185,7 @@
     </div>
   </main>
   <br>
-  <div class=" bg-dark">
+  <div class=" bg-dark" id="footerView">
     <footer class="py-3 pb-5 ">
       <ul class="nav justify-content-center pb-3 mb-3">
         <p class="text-center text-body-secondary" style="color: white;">© 2023 Todos los derechos reservados.-</p>

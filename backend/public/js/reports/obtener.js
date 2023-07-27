@@ -99,26 +99,26 @@ const obtenerImagen = (rutaImagen) => {
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
                 let imagen = obtenerImagen(data.RutaImagen);
                 Info.innerHTML += `
-                <section>
-                    <h5><b>Departamento:</b> ${Departamento}</h5>
+                <section class="seccionInforme">
+                    <div id="departamento"><h5><b>Departamento:</b> ${Departamento}</h5></div>
                     <br>
-                    <h5><b>Localidad:</b> ${Localidad}</h5>
+                    <div id="localidad"><h5><b>Localidad:</b> ${Localidad}</h5></div>
                     <br>
-                    <h5><b>Tipo:</b>  ${Tipo}</h5>
+                    <div id="fecha"><h5><b>Fecha:</b> ${fecha}</h5></div>
                     <br>
-                    <h5><b>Fecha:</b> ${fecha}</h5>
-                </section>
-                <section>
+                    <div id= "tipo"><h5><b>Tipo de Informe:</b>  ${Tipo}</h5></div>
                     <br>
-                    <h5><b>Titulo:</b> ${data.Titulo}</h5>
+                    <div id="titulo"><h5><b>Titulo:</b> ${data.Titulo}</h5></div>
                     <br>
-                    <h5><b>Infome: </b></h5>
+                    
                     <div class="Informe">
-                        <h5>${data.Informe}</h5>
+                        <h5><b>Infome: </b></h5>
+                        <p>${data.Informe}</p>
                         <br><br>
-                    <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
-                    </div>
+                    
                 </section>
+                <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
+                    </div>
                         `;
             });
 

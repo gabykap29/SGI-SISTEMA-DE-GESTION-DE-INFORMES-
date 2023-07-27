@@ -142,30 +142,36 @@ ctrlReports.update = async(req,res)=>{
         })
     }
 }
-ctrlReports.deleted = async(req,res)=>{
-    const {id} = req.params;
-    try{
-        const informeDeleted = Report.update({
-            estado:false
-        },{
-            where:{
-                id,
-                estado:true,
-            }
-        })
-        if (!informeDeleted){
-            throw({
-                status:400,
-                message: 'Error al eliminar el Informe'
-            })
+ctrlReports.deleted = async (req, res) => {
+  const { id } = req.params;
+  const idInforme = id;
+  try {
+    const informeDeleted = await Report.update(
+      {
+        estado: false
+      },
+      {
+        where: {
+          idInforme,
+          estado: true
         }
-        return res.json({
-            message: 'Informe eliminado con éxito!'
-        });
-    }catch(error){
-        console.log(error);
-        return error.status || 'Error interno del Servidor'
+      }
+    );
+    if (informeDeleted[0] === 0) {
+      throw {
+        status: 400,
+        message: 'Error al eliminar el Informe'
+      };
     }
-}
+    return res.json({
+      message: 'Informe eliminado con éxito!'
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(error.status || 500).json({
+      error: error.message || 'Error interno del servidor'
+    });
+  }
+};
 
 module.exports = ctrlReports;

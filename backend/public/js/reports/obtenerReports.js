@@ -114,7 +114,7 @@ const mostrarInformes = (informes) => {
                         <td>
                             <a href="/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
                             <a href="/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
-                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.id}">Eliminar</button>
+                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>
                             
                         </td>
                     </tr>
@@ -123,29 +123,32 @@ const mostrarInformes = (informes) => {
 }
 
 
+const obtenerIdInforme = (elemento) => {
+  while (elemento) {
+    if (elemento.hasAttribute('data-id')) {
+      return elemento.getAttribute('data-id');
+    }
+    elemento = elemento.parentElement;
+  }
+  return null;
+};
 
-const eliminarInforme = async (event) => {
-  const id = event.target.dataset.id;
-  console.log("The button was clicked!");
-
+const eliminarInforme = async (idInforme) => {
   Swal.fire({
-    title: "Estás seguro?",
-    text: `Estás por eliminar un informe del sistema!`,
+    title: "¿Estás seguro?",
+    text: "Estás por eliminar un informe del sistema.",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
-    confirmButtonText: "Estoy seguro!",
+    confirmButtonText: "Estoy seguro",
     cancelButtonText: "Cancelar",
   }).then(async (result) => {
-    if (result) {
+    if (result.isConfirmed) {
       try {
-        const res = await fetch(
-          `/api/informes/deleted/${id}`,
-          {
-            method: "DELETE",
-          }
-        );
+        const res = await fetch(`/api/informes/deleted/${idInforme}`, {
+          method: "PUT",
+        });
 
         const data = await res.json();
 
@@ -162,7 +165,7 @@ const eliminarInforme = async (event) => {
         console.log(error);
         Swal.fire({
           icon: "error",
-          title: "Oops...",
+          title: "Error",
           text: error.message,
         });
       }
@@ -172,20 +175,23 @@ const eliminarInforme = async (event) => {
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const informes = await obtenerInformes();     
+    const informes = await obtenerInformes();
     mostrarInformes(informes);
-} catch (error) {  // Dentro de catch se coloca el código que se ejecutará en caso de que haya un error
+
+    const deleteButton = document.querySelectorAll('.eliminar-informe');
+    deleteButton.forEach((boton) => {
+      boton.addEventListener('click', (event) => {
+        const idInforme = obtenerIdInforme(event.target);
+        eliminarInforme(idInforme);
+      });
+    });
+  } catch (error) {
     console.log({ error });
 
-    // Mensaje para el usuario
     Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error.message,
+      icon: 'error',
+      title: 'Oops...',
+      text: error.message,
     });
-}
-
-  document.querySelectorAll('.eliminar-informe').forEach((boton) => {
-    boton.addEventListener('click', eliminarInforme);
-  });
+  }
 });

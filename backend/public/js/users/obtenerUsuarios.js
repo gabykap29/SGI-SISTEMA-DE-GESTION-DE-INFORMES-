@@ -41,7 +41,7 @@ const mostrarUsuarios = (usuarios) => {
                         <td>${usuario.rol}</td>
                         <td>${fecha}</td>
                         <td>
-                            <a href="/informe/edit/${usuario.id}" class="btn btn-outline-primary btn-sm">Modificar</a>
+                            <a href="/usuario/edit/${usuario.id}" class="btn btn-outline-primary btn-sm">Modificar</a>
                             <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${usuario.id}">Eliminar</button>
                             
                         </td>
