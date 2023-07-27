@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Sistema de Gestión de Informes
-=======
 # Sistema de Gestión de Informes.
 >>>>>>> ef05b97697d67aa6972c3108c587e2edae4ad2fd
 Este es un sistema de gestión creado para realizar la creación, Edición, Visualización y Eliminación de Informes, de distintos tipos..
