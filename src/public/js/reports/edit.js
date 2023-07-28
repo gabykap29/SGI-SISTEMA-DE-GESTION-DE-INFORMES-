@@ -4,6 +4,7 @@ const localidad = document.getElementById('selecLocalidad');
 const tipo = document.getElementById('tipo');
 const fecha = document.getElementById('fecha');
 const titulo = document.getElementById('titulo');
+const Observaciones = document.getElementById('observaciones');
 const informe = document.getElementById('informe');
 
 // Funcion para obtener los datos del informe cuando se carga la página
@@ -20,6 +21,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         fecha.value = data.Fecha;
         titulo.value=data.Titulo;
         informe.value = data.Informe
+
+
+        // Obtener la fecha actual
+        let fechaActual = new Date().toISOString().split("T")[0];
+        // Asignar la fecha actual al campo de fecha
+        document.getElementById("fecha").value = fechaActual;
     });
 
 //Enviar los datos al backend
@@ -34,6 +41,7 @@ formEditar.addEventListener('submit',async(e)=>{
     const Tipo_idTipo = document.getElementById('tipo').value;
     const Fecha = document.getElementById('fecha').value;
     const Titulo = document.getElementById('titulo').value;
+    const Observaciones = document.getElementById('observaciones').value;
     const RutaImagen = document.getElementById('rutaImagen').value;
     const Informe = document.getElementById('informe').value;
 
@@ -43,6 +51,7 @@ formEditar.addEventListener('submit',async(e)=>{
     formData.append('Tipo_idTipo', Tipo_idTipo);
     formData.append('Fecha', Fecha);
     formData.append('Titulo', Titulo);
+    formData.append('Observaciones',Observaciones)
     formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
     formData.append('Informe', Informe);
 

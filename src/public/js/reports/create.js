@@ -8,6 +8,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   const Tipo_idTipo = document.getElementById('tipo').value;
   const Fecha = document.getElementById('fecha').value;
   const Titulo = document.getElementById('titulo').value;
+  const Observaciones = document.getElementById('observaciones').value
   const Informe = document.getElementById('informe').value;
 
   const formData = new FormData();
@@ -16,6 +17,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   formData.append('Tipo_idTipo', Tipo_idTipo);
   formData.append('Fecha', Fecha);
   formData.append('Titulo', Titulo);
+  formData.append('Observaciones',Observaciones);
   formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
   formData.append('Informe', Informe);
 

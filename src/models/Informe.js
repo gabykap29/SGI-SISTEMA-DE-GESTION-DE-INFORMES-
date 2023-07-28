@@ -40,6 +40,10 @@ const Informe = sequelize.define('Informe',{
         type:DataTypes.STRING,
         allowNull:true
      },
+     Observaciones:{
+            type:DataTypes.STRING,
+            allowNull: true
+        },
      Informe:{
         type: DataTypes.STRING(4000),
         allowNull:false,

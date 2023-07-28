@@ -118,7 +118,8 @@ const obtenerImagen = (rutaImagen) => {
                     
                 </section>
                 <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
-                    </div>
+                <div "><p class="observaciones">${data.Observaciones}</p></div>
+                </div>
                         `;
             });
 

@@ -131,7 +131,13 @@
             <div class="col-md-3 position-relative">
                 <label class="input-group-text" for="inputGroupFile01">Imagenes</label>
                 <input type="file" class="form-control" id="rutaImagen">
-              </div>              
+              </div>        
+              <div class="col-md-3 position-relative">
+                <label for="validationTooltipUsername" class="form-label">Observaciones</label>
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control" id="observaciones" aria-describedby="validationTooltipUsernamePrepend" required>
+                </div>
+              </div>      
               <div class="mb-1">
                 <label for="exampleFormControlTextarea1" class="form-label">Informe</label>
                 <textarea class="form-control" id="informe" rows="3" required></textarea>
@@ -141,12 +147,6 @@
           </form>
     </div>
   </main>
-  <script>
-    // Obtener la fecha actual
-    let fechaActual = new Date().toISOString().split("T")[0];
-    // Asignar la fecha actual al campo de fecha
-    document.getElementById("fecha").value = fechaActual;
-  </script>
   <!--scripts Localidades-->
   <script src="/js/app.js"></script>
   <script src="/js/reports/edit.js" ></script>

@@ -6,7 +6,7 @@ const Tipo = require('../../models/Tipo');
 // Crear un Informe
 
 ctrlReports.create = async (req, res) => {
-    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha, Informe } = req.body;
+    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha,Observaciones ,Informe } = req.body;
   
     try {
       
@@ -23,7 +23,8 @@ ctrlReports.create = async (req, res) => {
         Tipo_idTipo,
         Titulo,
         Fecha,
-        RutaImagen: rutaImagen,   // Asignar la ruta de la imagen a la propiedad RutaImagen
+        RutaImagen: rutaImagen,
+        Observaciones,   // Asignar la ruta de la imagen a la propiedad RutaImagen
         Informe,
       });
       if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !Informe){
@@ -103,7 +104,7 @@ ctrlReports.update = async(req,res)=>{
         Localidad_idLocalidad,
         Tipo_idTipo,
         Titulo,
-        Fecha,
+        Fecha,Observaciones,
         Informe} = req.body;
         let rutaImagen  // Variable para almacenar la ruta de la imagen
     
@@ -117,7 +118,7 @@ ctrlReports.update = async(req,res)=>{
             Localidad_idLocalidad,
             Tipo_idTipo,
             Titulo,
-            Fecha,
+            Fecha,Observaciones,
             RutaImagen: rutaImagen,
             Informe,
         },{
