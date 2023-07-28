@@ -8,7 +8,7 @@ const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol')
 
 
 // Vistas
-router.get('/informes/views', isAutenticated,verificarRolUser ,(req, res) => {
+router.get('/informes/views', isAutenticated ,(req, res) => {
   res.render('views');
 });
 router.get('/informes/create', isAutenticated, verificarRolUser,(req, res) => {
@@ -17,7 +17,7 @@ router.get('/informes/create', isAutenticated, verificarRolUser,(req, res) => {
 router.get('/index', isAutenticated,(req, res) => {
   res.render('index');
 });
-router.get('/informes/view/:id', isAutenticated, verificarRolUser,(req, res) => {
+router.get('/informes/view/:id', isAutenticated,(req, res) => {
   res.render('view', { id: req.params.id });
 });
 router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin,(req, res) => {

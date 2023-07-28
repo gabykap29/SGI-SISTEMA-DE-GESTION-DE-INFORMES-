@@ -6,7 +6,7 @@ const router = express.Router();
 
 //vistas
 router.get('/login',(req,res)=> res.render('auth/login'));
-router.get('/register',(req,res)=>res.render('auth/register'));
+// router.get('/register',(req,res)=>res.render('auth/register'));
 router.get('/closeSesion',closeSesion,(req,res)=>{
     res.render('login')});
 //apis

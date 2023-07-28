@@ -4,6 +4,7 @@ departamentOption.addEventListener('change',()=>{
     let valorSelect = document.getElementById('selecDepartamento').value;
     let selecLocal = document.getElementById('selecLocalidad')
     let opcionFormosa = `
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="1">Formosa</option>
     <option value="2">Colonia Pastoril</option>
     <option value="3">Gran Guardia</option>
@@ -13,28 +14,28 @@ departamentOption.addEventListener('change',()=>{
     
 
     let opcionPilcomayo = `
-    <option selected disabled value="">Pilcomayo</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="7">Clorinda</option>
     <option value="8">Laguna Naick Neck</option>
     <option value="9">Riacho He He</option>
     <option value="10">Monte Lindo Chico</option>`
 
     let opcionPilagas = `
-    <option selected disabled value="">Pilagás</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="15">Misión Tacaagle</option>
     <option value="16">Laguna Gallo</option>
     <option value="17">Tres Lagunas</option>
     <option value="18">El Espinillo</option>`
 
     let opcionLaishi = `
-    <option selected disabled value="">Laishí</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="11">San F. Laishi</option>
     <option value="12">Gral. Mansilla</option>
     <option value="13">Herradura</option>
     <option value="14">Yatai</option>`
     
     let opcionPirane = `
-    <option selected disabled value="">Pirané</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="19">Pirané</option>
     <option value="20">El Colorado</option>
     <option value="21">Villa Dos Trece</option>
@@ -42,7 +43,7 @@ departamentOption.addEventListener('change',()=>{
     <option value="23">Palo Santo</option>`
 
     let opcionPatino = `
-    <option selected disabled value="">Patiño</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="24">Las Lomitas</option>
     <option value="25">Comandante Fontana</option>
     <option value="26">Villa Gral Guemes</option>
@@ -61,7 +62,7 @@ departamentOption.addEventListener('change',()=>{
     <option value="39">Fortin Sargento 1ro Leyes</option>`
 
     let opcionBermejo = `
-    <option selected disabled value="">Bermejo</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="40">Fortin Soledad</option>
     <option value="41">Guadalcazar</option>
     <option value="42">Lamadrid</option>
@@ -72,12 +73,12 @@ departamentOption.addEventListener('change',()=>{
     <option value="47">Vaca Perdida</option>`
     
     let opcionRamonLista = `
-    <option selected disabled value="">Ramon Lista</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="48">Gral Mosconi</option>
     <option value="49">El Potrillo</option>`
 
     let opcionMatacos = `
-    <option selected disabled value="">Matacos</option>
+    <option selected disabled value="">Seleccione una opción</option>
     <option value="50">Ing. Juarez</option>`
 
     if(valorSelect == 1){

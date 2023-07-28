@@ -81,7 +81,9 @@ ctrlReports.readsAll = async (req, res)=>{
         const informes = await Report.findAll({
             where: {
                 estado:true,
-            }
+            },
+          limit:20,
+          order: [['createdAt', 'DESC']],
         });
         if(!informes){
             thow({

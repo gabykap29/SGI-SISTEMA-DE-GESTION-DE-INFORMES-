@@ -32,14 +32,13 @@ formEditar.addEventListener('submit', async (e) => {
     const id = parts[parts.length - 1];
 
     const data = {
-        nombre: nombre.value,
-        apellido: apellido.value,
-        fechaSalida: fechaSalida.value,
-        destino: destino.value,
-        origen: origen.value,
-        codigo: codigo.value
+        lastName: lastName.value,
+        firstName: firstName.value,
+        username: username.value,
+        rol: rol.value,
+        password: password.value,
     };
-
+    console.log(data);
     try {
         const response = await fetch(`/api/usuario/${id}`, {
             method: 'PUT',
@@ -62,20 +61,21 @@ formEditar.addEventListener('submit', async (e) => {
         Swal.fire({
             icon: 'success',
             title: 'Usuario actualizado con éxito',
-            text: respToJson.reservaActualizada.message
+            text: respToJson.message 
+
         });
 
-        console.log(respToJson);
-        setTimeout(() => {
-            window.location.href = '/view/usuarios';
-        }, 2000);
+        // console.log(respToJson);
+        // setTimeout(() => {
+        //     window.location.href = '/view/usuarios';
+        // }, 2000);
 
     } catch (error) {
         console.log(error);
         Swal.fire({
             icon: 'error',
             title: 'Error!',
-            text: 'Ha ocurrido un error al enviar el formulario'
+            text: 'Ha ocurrido un error al enviar el formulario'|| message
         });
     }
 });

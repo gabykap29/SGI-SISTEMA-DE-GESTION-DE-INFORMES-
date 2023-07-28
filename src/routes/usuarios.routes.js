@@ -7,7 +7,7 @@ const {
     usersRead,
     userRead,
     userUpdate,
-    userDeteled
+    userDelete
 } = require('../controllers/auth/user');
 
 const {verificarRolAdmin} = require('../middlewares/checkRol');
@@ -29,12 +29,12 @@ router.get('/usuario/edit/:id',isAutenticated, verificarRolAdmin,(req,res)=>{
 })
 
 //APIS
-
+router.put('/api/usuario/delete/:id',userDelete);
 router.get('/api/usuarios', isAutenticated,verificarRolAdmin,usersRead);
 router.get('/api/usuario/:id',isAutenticated,verificarRolAdmin,userRead);
 router.put('/api/usuario/:id',isAutenticated,verificarRolAdmin,userUpdate);
 router.post('/api/create',verificarRolAdmin,verificarRolAdmin,create);
-router.put('/api/usuario/delete/id:',isAutenticated,verificarRolAdmin,userDeteled);
+
 
 
 module.exports = router;

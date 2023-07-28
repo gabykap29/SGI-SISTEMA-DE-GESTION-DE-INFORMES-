@@ -100,11 +100,21 @@ crtlUsuario.usersRead = async(req, res) =>{
 
 crtlUsuario.userUpdate = async(req,res)=>{
     const {id} = req.params;
-    const {username} = req.body; 
-
+    const {firstName, lastName, username, password, rol} = req.body; 
+        // Encriptación de contraseña
+        let passwordEncriptado;
+        if (password) {
+          // Encriptación de contraseña solo si se proporciona una nueva contraseña
+          const salt = await bcrypt.genSalt(10);
+          passwordEncriptado = await bcrypt.hash(password, salt);
+        }
     try{
         const usuarioActualizado = await Usuario.update({
-            username
+            firstName,
+            lastName,
+            username,
+            password:passwordEncriptado,
+            rol,
         },{
             where:{
                 id
@@ -129,37 +139,49 @@ crtlUsuario.userUpdate = async(req,res)=>{
 
 //Eliminar usuario (metodo lógico)
 
-crtlUsuario.userDeteled = async (req,res)=>{
-    const {id} = req.params;
+crtlUsuario.userDelete = async (req, res) => {
+  const { id } = req.params;
 
-    try{
-        const usuarioEliminado = Usuario.update({
-            estado:true
-        },{
-            where:{
-                id,
-                estado:true
-            }
-        })
+  try {
+    // Verificar si el usuario existe y su estado es true (activo)
+    const usuario = await Usuario.findOne({
+      where: {
+        id: id,
+        estado: true,
+      },
+    });
 
-        if(!usuarioEliminado){
-            throw({
-                status: 400,
-                message: 'Error al eliminar el usuario'
-            })
-        }
-
-        return res.json({
-            message: 'Usuario elimado con éxito'
-        });
-    }catch(err){
-        console.log(err);
-        return res.status(err.status||500).json({
-            message: err.message || 'error del servidor al eliminar'
-        })
+    if (!usuario) {
+      throw {
+        status: 404,
+        message: 'Usuario no encontrado o ya eliminado',
+      };
     }
 
-}
+    // Actualizar el estado del usuario a false (eliminado)
+    await Usuario.update(
+      {
+        estado: false,
+      },
+      {
+        where: {
+          id: id,
+        },
+      }
+    );
+
+    return res.json({
+      message: 'Usuario eliminado con éxito',
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(error.status || 500).json({
+      message: error.message || 'Error del servidor al eliminar',
+    });
+  }
+};
+
+
 
 module.exports = crtlUsuario;
 
