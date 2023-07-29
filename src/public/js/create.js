@@ -46,7 +46,7 @@ formNuevoUsuario.addEventListener('submit',async(e)=>{
     })
     formNuevoUsuario.reset();
     setTimeout(()=>{
-        window.location.href='/login';
+        window.location.href='/view/usuarios';
     },2000);
 
 })
