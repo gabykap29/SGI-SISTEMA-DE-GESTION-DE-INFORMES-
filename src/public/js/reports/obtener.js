@@ -100,6 +100,8 @@ const obtenerImagen = (rutaImagen) => {
                 let imagen = obtenerImagen(data.RutaImagen);
                 Info.innerHTML += `
                 <section class="seccionInforme">
+                    <div id="titulo"><h5><b>Titulo:</b> ${data.Titulo}</h5></div>
+                    <br>
                     <div id="departamento"><h5><b>Departamento:</b> ${Departamento}</h5></div>
                     <br>
                     <div id="localidad"><h5><b>Localidad:</b> ${Localidad}</h5></div>
@@ -108,18 +110,15 @@ const obtenerImagen = (rutaImagen) => {
                     <br>
                     <div id= "tipo"><h5><b>Tipo de Informe:</b>  ${Tipo}</h5></div>
                     <br>
-                    <div id="titulo"><h5><b>Titulo:</b> ${data.Titulo}</h5></div>
-                    <br>
-                    
                     <div class="Informe">
                         <h5><b>Infome: </b></h5>
                         <p>${data.Informe}</p>
                         <br><br>
-                    
+                        </div>
+                        <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
+                        <div "><p class="observaciones">${data.Observaciones}</p></div>
                 </section>
-                <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
-                <div "><p class="observaciones">${data.Observaciones}</p></div>
-                </div>
+
                         `;
             });
 

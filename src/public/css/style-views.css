@@ -1,5 +1,8 @@
+
 #panel-busqueda{
     background-color: rgb(236, 236, 236);
+    border-radius: 20px;
+    padding-bottom: 10px;
 }
 #title{
     padding-left: 37%;
@@ -9,4 +12,8 @@
 }
 #footerView{
     margin-top: 20%;
+}
+#icon-Search{
+    width: 15px;
+    padding-bottom: 5px;
 }

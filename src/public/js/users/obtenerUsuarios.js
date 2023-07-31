@@ -33,16 +33,27 @@ const mostrarUsuarios = (usuarios) => {
 
     usuarios.forEach(usuario => {
         let fecha = dayjs(usuario.CreatedAt).format('DD/MM/YYYY');
+        let rol = usuario.rol;
+        switch(rol){
+          case "Moderate":
+            rol = "Administrador";
+            break;
+          case "User":
+            rol = "Usuario";
+            break;
+          case "Other":
+            rol = "Visualizador"
+            break;
+        }
         listadoUsuarios.innerHTML += `
                     <tr>
                         <td>${usuario.username}</td>
                         <td>${usuario.lastName}</td>
                         <td>${usuario.firstName}</td>
-                        <td>${usuario.rol}</td>
+                        <td>${rol}</td>
                         <td>${fecha}</td>
                         <td>
                             <a href="/usuario/edit/${usuario.id}" class="btn btn-outline-primary btn-sm">Modificar</a>
-                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${usuario.id}">Eliminar</button>
                             
                         </td>
                     </tr>
