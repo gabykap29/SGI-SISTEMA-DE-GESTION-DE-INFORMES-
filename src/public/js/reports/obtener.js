@@ -117,6 +117,7 @@ const obtenerImagen = (rutaImagen) => {
                         </div>
                         <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
                         <div "><p class="observaciones">${data.Observaciones}</p></div>
+                        <div><p>Creado por: ${data.usuario}</p></div>
                 </section>
 
                         `;

@@ -1,22 +1,32 @@
 ctrlReports = {};
+const jwt = require('jsonwebtoken');
 const Report = require('../../models/Informe');
 const Departamento = require('../../models/Departamento');
 const Localidad = require('../../models/Localidad');
 const Tipo = require('../../models/Tipo');
+const Usuario = require('../../models/Usuario')
 // Crear un Informe
 
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha,Observaciones ,Informe } = req.body;
+    const token = req.cookies.jwt;
+
+    if(!token){
+      return res.status(401).json({message:'no hay token en la petición'});
+    }
   
     try {
-      
+
+      //obtener id de usuario
+      const decoded = jwt.verify(token,process.env.SECRET_KEY);
+      const id = decoded.id
+
       let rutaImagen  // Variable para almacenar la ruta de la imagen
     
       if (req.file) {
         // Si se ha cargado una imagen, obtener la ruta relativa de la imagen
         rutaImagen =  req.file.filename;
       }
-    
       const informe = await Report.create({
         Departamento_idDepartamento,
         Localidad_idLocalidad,
@@ -26,6 +36,7 @@ ctrlReports.create = async (req, res) => {
         RutaImagen: rutaImagen,
         Observaciones,   // Asignar la ruta de la imagen a la propiedad RutaImagen
         Informe,
+        id_IdUser:id,
       });
       if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !Informe){
         throw {
@@ -47,7 +58,9 @@ ctrlReports.Read = async (req, res) => {
     const { id } = req.params;
     try {
       const informe = await Report.findByPk(id);
-  
+      const idUser = informe.id_IdUser;
+
+      const usuario = await Usuario.findByPk(idUser)
       if (!informe) {
         throw {
           status: 404,
@@ -64,7 +77,8 @@ ctrlReports.Read = async (req, res) => {
       // Crear un nuevo objeto de respuesta con la ruta de la imagen
       const informeConImagen = {
         ...informe.toJSON(),
-        RutaImagen: rutaImagen
+        RutaImagen: rutaImagen,
+        usuario: usuario.username
       };
   
       return res.json(informeConImagen);

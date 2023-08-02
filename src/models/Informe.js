@@ -48,6 +48,13 @@ const Informe = sequelize.define('Informe',{
         type: DataTypes.STRING(4000),
         allowNull:false,
     },
+    id_IdUser:{
+        type: DataTypes.INTEGER,
+        allowNull:false,
+        references:{
+            model:'Usuarios',
+            key:'id'
+        }},
     estado:{
         type: DataTypes.BOOLEAN,
         defaultValue:true

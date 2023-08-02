@@ -1,4 +1,5 @@
 const { sequelize, DataTypes } = require('../db');
+const Informe = require('./Informe')
 
 const Usuario = sequelize.define('Usuario', {
   id: {
@@ -6,12 +7,12 @@ const Usuario = sequelize.define('Usuario', {
     primaryKey: true,
     autoIncrement: true
   },
-  firstName: { type: DataTypes.STRING, allowNull:false },
-  lastName: { type: DataTypes.STRING, allowNull:false },
-  username: { type: DataTypes.STRING(50),allowNull:false },
-  password: { type: DataTypes.STRING(100),allowNull:false  },
+  firstName: { type: DataTypes.STRING, allowNull: false },
+  lastName: { type: DataTypes.STRING, allowNull: false },
+  username: { type: DataTypes.STRING(50), allowNull: false },
+  password: { type: DataTypes.STRING(100), allowNull: false },
   estado: { type: DataTypes.BOOLEAN, defaultValue: true },
-  rol: { type: DataTypes.STRING(20),allowNull:false  },
+  rol: { type: DataTypes.STRING(20), allowNull: false },
   loginAttempts: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -27,6 +28,11 @@ const Usuario = sequelize.define('Usuario', {
   paranoid: true,
   modelName: 'Usuario',
   tableName: 'Usuarios'
+});
+
+Usuario.hasMany(Informe, {
+  foreignKey: 'id_IdUser', // Nombre correcto de la columna que conecta con la clave primaria en la tabla "Usuario"
+  as: 'Informes',
 });
 
 console.log(Usuario);
