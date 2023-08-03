@@ -4,6 +4,9 @@ h1{
     padding-bottom: 50px;
 
 }
+.input{
+    box-shadow: 1px 1px 3px gray;
+}
 .form-cargar{
     padding-left: 80px;
     padding-right: 80px;
@@ -16,40 +19,38 @@ h1{
     padding-left: 37%;
 }
 body{
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(230, 222, 222);
 }
 #btn-close{
     padding-left: 70%;
 }
-/* .seccionInforme{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap; */
-
-.seccionInforme div{
+#seccionInforme div{
     padding-right:40px ;
 }
-/* #localidad{
-    padding-left: 15%;
+.Informe-Completo{
+    padding-top: 15px;
+    padding-left: 70px;
+    padding-bottom: 5px;
+    font-size: 15px ;
 }
-#fecha{
-    padding-left: 10%;
-}
-#titulo{
-    margin-top: 20%;
-    padding-left: 15%;
-}
-#tipo{
-    margin-top: 60px;
-}
-.Informe{
-    margin-top: 60px;
-} */
 
 .observaciones{
     padding-left: 40%;
 }
-/* .seccionInforme{
-    border: solid 1px #000;
-} */
+#seccionInforme{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px gray;
+}
+.div-imagen{
+    width: 70%;
+}
+#tituloInfo{
+    padding-left: 30%;
+}
+.btn-imprimir{
+    margin-left: 93.5%;   
+}
+#img-imprimir{
+    width: 30px;
+}

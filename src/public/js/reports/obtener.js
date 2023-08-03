@@ -1,7 +1,5 @@
- const Info = document.getElementById('info');
-
-// ...
-
+const Info = document.getElementById('info');
+const btnImprimir = document.getElementById('btn-Imprimir');
 const obtenerImagen = (rutaImagen) => {
   if (rutaImagen) {
     // Construye la URL completa de la imagen utilizando el origen del sitio web y la ruta de la imagen
@@ -12,9 +10,6 @@ const obtenerImagen = (rutaImagen) => {
   }
 };
   
-  // ...
-  
-
         let departamento = [null, 'Formosa','Pilcomayo','Pilagas','Laishi','Pirané','Patiño','Bermejo', 'Ramon Lista', 'Matacos'];
         let localidad = [
             null,
@@ -99,35 +94,42 @@ const obtenerImagen = (rutaImagen) => {
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
                 let imagen = obtenerImagen(data.RutaImagen);
                 Info.innerHTML += `
-                <section class="seccionInforme">
-                    <div id="titulo"><h5><b>Titulo:</b> ${data.Titulo}</h5></div>
-                    <br>
-                    <div id="departamento"><h5><b>Departamento:</b> ${Departamento}</h5></div>
-                    <br>
-                    <div id="localidad"><h5><b>Localidad:</b> ${Localidad}</h5></div>
-                    <br>
-                    <div id="fecha"><h5><b>Fecha:</b> ${fecha}</h5></div>
-                    <br>
-                    <div id= "tipo"><h5><b>Tipo de Informe:</b>  ${Tipo}</h5></div>
-                    <br>
+                <section id="seccionInforme">
+                  <div class="Informe-Completo">
+                    <div id="tituloInfo"><h3>${data.Titulo}</h3></div>
+
+                    <div id="departamento"><p><b>Departamento:</b> ${Departamento}</p></div>
+
+                    <div id="localidad"><p><b>Localidad:</b> ${Localidad}</p></div>
+
+                    <div id="fecha"><p><b>Fecha:</b> ${fecha}</p></div>
+
+                    <div id= "tipo"><p><b>Tipo de Informe:</b>  ${Tipo}</p></div>
+
                     <div class="Informe">
-                        <h5><b>Infome: </b></h5>
+                        <p><b>Infome: </b></p>
                         <p>${data.Informe}</p>
-                        <br><br>
                         </div>
-                        <div class='container'>${imagen}</div> <!-- Mostrar la imagen -->
+                        <div class='container div-imagen'>${imagen}</div> <!-- Mostrar la imagen -->
                         <div "><p class="observaciones">${data.Observaciones}</p></div>
                         <div><p>Creado por: ${data.usuario}</p></div>
+                    </div>
                 </section>
 
                         `;
             });
+            btnImprimir.addEventListener('click', () => {
+              // Ocultar el botón de impresión para que no se imprima en el documento.
+              document.getElementById("btn-Imprimir").style.display = "none";
+            
+              // Obtener el contenido del div con id "info".
+              var contenido = document.getElementById("info").innerHTML;
+              
+              window.print();
 
             
-        // <td>${Departamento}</td>
-        // <td>${Localidad}</td>
-        // <td>${Tipo}</td>
-        // <td>${fecha}</td>
-        // <td>${informe.Titulo}</td>
-        // <td>${informe.Informe}</td>
+              // Mostrar nuevamente el botón de impresión.
+              document.getElementById("btn-Imprimir").style.display = "block";
+            });
+            
 

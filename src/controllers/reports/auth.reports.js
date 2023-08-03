@@ -114,6 +114,7 @@ ctrlReports.readsAll = async (req, res)=>{
     }
 }
 ctrlReports.update = async(req,res)=>{
+    const token = req.cookies.jwt;
     const {idInforme}=req.params;
     const {
         Departamento_idDepartamento,
@@ -122,13 +123,16 @@ ctrlReports.update = async(req,res)=>{
         Titulo,
         Fecha,Observaciones,
         Informe} = req.body;
-        let rutaImagen  // Variable para almacenar la ruta de la imagen
-    
+        let rutaImagen;  // Variable para almacenar la ruta de la imagen
+          //obtener id de usuario
+
         if (req.file) {
           // Si se ha cargado una imagen, obtener la ruta relativa de la imagen
           rutaImagen =  req.file.filename;
         }
     try{
+      const decoded = jwt.verify(token,process.env.SECRET_KEY);
+      const id = decoded.id
         const informeUpdate = await Report.update({
             Departamento_idDepartamento,
             Localidad_idLocalidad,
@@ -136,6 +140,7 @@ ctrlReports.update = async(req,res)=>{
             Titulo,
             Fecha,Observaciones,
             RutaImagen: rutaImagen,
+            id_IdUser:id,
             Informe,
         },{
             where:{

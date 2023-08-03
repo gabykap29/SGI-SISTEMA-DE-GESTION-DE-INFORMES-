@@ -7,8 +7,10 @@
   <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/style-cargarInforme.css">
+  <link href="/bootstrap/bootstrap.min.css" media="print" rel="stylesheet">
+  <link href="/bootstrap/bootstrap.min.css"  rel="stylesheet">
+  <link rel="stylesheet"  media="print" href="/css/style-cargarInforme.css">
+  <link rel="stylesheet"  href="/css/style-cargarInforme.css">
 
 <script src="/sweetalert/sweetalert2@11"></script>
 <script src="/dayjs/dayjs.min.js"></script>
@@ -63,7 +65,6 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-
               </ul>
             </li>
           </ul>
@@ -80,10 +81,12 @@
     </div>
   </nav>
   <main>
+    <button class="btn btn-secondary btn-imprimir" id="btn-Imprimir"><img id="img-imprimir" src="/css/images/imprimir.png" alt=""></button>
     <br>
     <div class="container" id="info">
     </div>
   </main>
+  <br><br>
   <div class=" bg-dark">
     <footer class="py-3 ">
       <ul class="nav justify-content-center pb-3 mb-3">

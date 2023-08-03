@@ -63,7 +63,6 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
           </ul>
@@ -86,7 +85,7 @@
         <form action="" class="row g-3 needs-validation" id="formNuevoInforme" enctype="multipart/form-data">
             <div class="col-md-3 position-relative">
                 <label for="validationTooltip04" class="form-label">Departamento</label>
-                <select class="form-select" id="selecDepartamento" required>
+                <select class="form-select input" id="selecDepartamento" required>
                   <option value="1">Formosa</option>
                   <option value="2">Pilcomayo</option>
                   <option value="3">Pilagás</option>
@@ -103,7 +102,7 @@
               </div>
               <div class="col-md-3 position-relative">
                 <label for="validationTooltip04" class="form-label">Localidad</label>
-                <select class="form-select" id="selecLocalidad" required>
+                <select class="form-select input" id="selecLocalidad" required>
                   <option selected disabled>Selecciona una opción</option>
                 </select>
                 <div class="invalid-tooltip">
@@ -112,7 +111,7 @@
               </div>
               <div class="col-md-3 position-relative">
                 <label for="validationTooltip04" class="form-label">Tipo</label>
-                <select class="form-select" id="tipo" required>
+                <select class="form-select input" id="tipo" required>
                   <option value="1">Política</option>
                   <option value="2">Institucional</option>
                   <option value="3">Educación</option>
@@ -126,27 +125,27 @@
               </div>
             <div class="col-md-2 position-relative">
               <label for="validationTooltip02" class="form-label">Fecha</label>
-              <input type="date" class="form-control" id="fecha" value="" required>
+              <input type="date" class="form-control input" id="fecha" value="" required>
             </div>
             <div class="col-md-3 position-relative">
               <label for="validationTooltipUsername" class="form-label">Titulo</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
+                <input type="text" class="form-control input" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
               </div>
             </div>
             <div class="col-md-3 position-relative">
-                <label class="input-group-text" for="inputGroupFile01">Imagenes</label>
-                <input type="file" class="form-control" id="rutaImagen" name="rutaImagen">
+                <label class="input-group-text " for="inputGroupFile01">Imagenes</label>
+                <input type="file" class="form-control input" id="rutaImagen" name="rutaImagen">
               </div>   
               <div class="col-md-3 position-relative">
                 <label for="validationTooltipUsername" class="form-label">Observaciones</label>
                 <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="observaciones" aria-describedby="validationTooltipUsernamePrepend" required>
+                  <input type="text" class="form-control input" id="observaciones" aria-describedby="validationTooltipUsernamePrepend" required>
                 </div>
               </div>           
               <div class="mb-1">
                 <label for="exampleFormControlTextarea1" class="form-label">Informe</label>
-                <textarea class="form-control" id="informe" rows="3" style="height:180px;"></textarea>
+                <textarea class="form-control input" id="informe" rows="3" style="height:180px;"></textarea>
                 <button class="btn btn-primary" type="submit">Cargar Informe</button>
                 <button class="btn btn-secondary" type="reset">Borrar campos</button>
               </div>
