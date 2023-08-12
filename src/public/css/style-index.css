@@ -10,7 +10,6 @@ h1{
 }
 body{
     background-color: #e0e0e0;
-    font-size: small;
 }
 .menu{
     border-bottom: 1px solid #e0e0e0d3;
@@ -58,6 +57,9 @@ body{
 #btn-close{
     padding-left: 70%;
 }
-nav{
+.header{
     box-shadow: 5px 5px 15px rgb(75, 75, 75);
 }
+/* #aside{
+    margin-left: 5px;
+} */

@@ -7,3 +7,6 @@ body{
 .menu{
     border-bottom: 1px solid #e0e0e0d3;
 }
+.header{
+    box-shadow: 5px 5px 15px rgb(75, 75, 75);
+}

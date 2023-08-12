@@ -1,14 +1,19 @@
-
 #panel-busqueda{
     background-color: rgb(236, 236, 236);
     border-radius: 12px;
     padding-bottom: 10px;
+    border:solid 1px rgb(163, 163, 163);
 }
 #panel-busqueda form{
     padding-left: 40px;
+    margin: 5px;
+}
+h2{
+    padding-top: 5px;
 }
 #title{
     padding-left: 37%;
+    margin-top: 5px;
 }
 #title:hover{
     color: rgb(119, 119, 119);
@@ -19,8 +24,6 @@
 #footerView{
     margin-top: 20%;
 }
-
-
 #icon-Search{
     width: 15px;  
     padding-bottom: 5px;
@@ -34,8 +37,12 @@ body{
 }
 #tablaInformes{
     background-color: white;
+    border:solid 1px rgb(197, 197, 197);
 }
 /* #headers{
     position: fixed;
     width: 100%;
 } */
+.header{
+    box-shadow: 5px 5px 15px rgb(75, 75, 75);
+}
