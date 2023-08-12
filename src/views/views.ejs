@@ -4,20 +4,17 @@
 <head>
   <link rel="icon" href="/css/images/OIG.png">
   <title>SGI - CARGAR INFORMES</title>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/style-views.css">
 <script src="/sweetalert/sweetalert2@11"></script>
 <script src="/dayjs/dayjs.min.js"></script>
 </head>
-
 <body>
-  <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
-    <div class="container-fluid">
+  <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar" id="headers">
+    <div class="container-fluid" >
       <a class="navbar-brand" id="title" href="/index">Sistema de Gestión de Informes</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -85,7 +82,7 @@
       <h2>Informes Cargados</h2>
       <br>
       <div>
-        <nav class="navbar navbar-light bg-light" aria-label="First navbar example">
+        <nav class="navbar navbar-light " aria-label="First navbar example">
           <div class="container-fluid d-flex flex-row">
             <div class="seccionBuscar">
             <span>Buscar por: </span><button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
@@ -163,7 +160,7 @@
     </form>
         <div class="container table-responsive">
             <div class="col ">
-                <table class="container table table-bordered table-hover table-striped ">
+                <table class="container table table-bordered table-hover table-striped" id="tablaInformes">
                     <thead class="table-primary">
                         <tr>
                             <th>Departamento</th>

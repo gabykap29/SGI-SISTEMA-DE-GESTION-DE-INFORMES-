@@ -5,8 +5,12 @@ h1{
     padding-top: 5px;
 
 }
+#title:hover{
+    color: grey;
+}
 body{
     background-color: #e0e0e0;
+    font-size: small;
 }
 .menu{
     border-bottom: 1px solid #e0e0e0d3;
@@ -26,8 +30,14 @@ body{
     border-radius: 20px;
     
 }
+.tarjetas{
+    border-radius: 20px;
+}
 .card{
     border-radius: 20px;
+}
+.card-body:hover{
+    background-color: rgb(212, 212, 212);
 }
 .cantidad{
     display: flex;

@@ -1,7 +1,7 @@
 h1{
     padding-left: 80px;
     font-size: 30px;
-    padding-bottom: 50px;
+    padding-bottom: 3%;
 
 }
 .input{
@@ -18,8 +18,12 @@ h1{
 #title{
     padding-left: 37%;
 }
+#title:hover{
+    color: gray;
+}
 body{
     background-color: rgb(230, 222, 222);
+    font-size: small;
 }
 #btn-close{
     padding-left: 70%;
@@ -33,7 +37,10 @@ body{
     padding-bottom: 5px;
     font-size: 15px ;
 }
-
+#formNuevoInforme{
+    padding-left: 5%;
+    padding-right: 5%;
+}
 .observaciones{
     padding-left: 40%;
 }

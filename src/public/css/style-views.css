@@ -1,11 +1,17 @@
 
 #panel-busqueda{
     background-color: rgb(236, 236, 236);
-    border-radius: 20px;
+    border-radius: 12px;
     padding-bottom: 10px;
+}
+#panel-busqueda form{
+    padding-left: 40px;
 }
 #title{
     padding-left: 37%;
+}
+#title:hover{
+    color: rgb(119, 119, 119);
 }
 #btn-close{
     padding-left: 70%;
@@ -22,3 +28,14 @@
 .menu{
     border-bottom: 1px solid #e0e0e0d3;
 }
+body{
+    background-color: rgb(223, 221, 221);
+    font-size: small;
+}
+#tablaInformes{
+    background-color: white;
+}
+/* #headers{
+    position: fixed;
+    width: 100%;
+} */
