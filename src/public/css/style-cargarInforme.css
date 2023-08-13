@@ -67,3 +67,6 @@ body{
 .header{
     box-shadow: 5px 5px 15px rgb(75, 75, 75);
 }
+#seccionPersonas{
+    border-bottom:  1px solid #333333d3; ;
+}

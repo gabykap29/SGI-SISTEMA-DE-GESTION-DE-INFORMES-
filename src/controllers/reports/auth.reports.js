@@ -1,14 +1,17 @@
 ctrlReports = {};
 const jwt = require('jsonwebtoken');
 const Report = require('../../models/Informe');
+const Person = require('../../models/Person');
 const Departamento = require('../../models/Departamento');
 const Localidad = require('../../models/Localidad');
 const Tipo = require('../../models/Tipo');
 const Usuario = require('../../models/Usuario')
+
 // Crear un Informe
 
 ctrlReports.create = async (req, res) => {
-    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo, Fecha,Observaciones ,Informe } = req.body;
+    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo,
+            Fecha,Observaciones ,Informe,dni,firstName,lastName,adress,description } = req.body;
     const token = req.cookies.jwt;
 
     if(!token){
@@ -16,7 +19,6 @@ ctrlReports.create = async (req, res) => {
     }
   
     try {
-
       //obtener id de usuario
       const decoded = jwt.verify(token,process.env.SECRET_KEY);
       const id = decoded.id
@@ -43,9 +45,15 @@ ctrlReports.create = async (req, res) => {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
       }
-    
+      await informe.addPerson({
+        dni,
+        firstName,
+        lastName,
+        adress,
+        description
+    });
       return res.json(informe);
-    } catch (error) {
+    }catch (error) {
       console.error(error);
       return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
     }};
