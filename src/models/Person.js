@@ -42,5 +42,5 @@ const Person = sequelize.define('Person', {
 //     foreignKey: 'personId',
 // });
 
-Person.sync();
+
 module.exports = Person;

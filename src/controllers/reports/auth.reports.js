@@ -45,7 +45,7 @@ ctrlReports.create = async (req, res) => {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
       }
-      await Person.create({
+      const person =  ({
         dni,
         firstName,
         lastName,

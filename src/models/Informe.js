@@ -1,6 +1,6 @@
 const {sequelize, DataTypes} = require('../db');
-// const InformePerson = require('./InformePerson')
 const Person = require('./Person')
+const InformePerson = require('./InformePerson')
 const Informe = sequelize.define('Informe',{
     idInforme: {type: DataTypes.INTEGER,
         primaryKey:true, 
@@ -88,10 +88,20 @@ const Informe = sequelize.define('Informe',{
     tableName: 'informes',
   //   underscored: true
   })
-//   Informe.belongsToMany(Person, {
-//     through: InformePerson,
-//     foreignKey: 'informeId',
-// })
+  Informe.belongsToMany(Person, {
+    through: InformePerson,
+    foreignKey: 'informeId',
+    as: 'infomePersons'
+})
+  Person.belongsToMany(Informe, {
+        through: InformePerson,
+        foreignKey: 'personId',
+        as: 'infomePersons'
+    })
 Informe.sync();
+
+Person.sync();
+
+
 
 module.exports = Informe;

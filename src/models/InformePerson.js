@@ -13,7 +13,7 @@ const InformePerson = sequelize.define('InformePerson', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Informes',
+            model: 'Informe',
             key: 'idInforme',
         },
     },
@@ -21,20 +21,13 @@ const InformePerson = sequelize.define('InformePerson', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Persons',
+            model: 'Person',
             key: 'idPerson',
         },
     },
 });
 
-// Definición de la relación muchos a muchos
-// Informe.belongsToMany(Person, {
-//     through: InformePerson,
-//     foreignKey: 'idInforme',
-// });
-// Person.belongsToMany(Informe, {
-//     through: InformePerson,
-//     foreignKey: 'idPerson',
-// });
 
+
+InformePerson.sync()
 module.exports = InformePerson;
