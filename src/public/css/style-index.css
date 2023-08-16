@@ -24,8 +24,8 @@ body{
 }
 .tarjetas .card-body{
     height: 180px;
-    background-color: white;
-    box-shadow: 5px 5px 15px gray;
+    background-color: rgb(241, 241, 241);
+    box-shadow: 1px 1px 5px gray;
     border-radius: 20px;
     
 }

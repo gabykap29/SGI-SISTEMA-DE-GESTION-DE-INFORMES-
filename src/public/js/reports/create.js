@@ -108,3 +108,5 @@ formNuevoInforme.addEventListener('submit', async (e) => {
     });
   }
 });
+
+

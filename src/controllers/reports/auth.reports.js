@@ -12,6 +12,7 @@ const Usuario = require('../../models/Usuario')
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo,
             Fecha,Observaciones ,Informe,dni,firstName,lastName,address,description } = req.body;
+            console.log(req.body)
     const token = req.cookies.jwt;
 
     if(!token){
@@ -44,14 +45,18 @@ ctrlReports.create = async (req, res) => {
         throw {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
+        return
       }
-      const person =  ({
-        dni,
-        firstName,
-        lastName,
-        address,
-        description
+      const [person, created] = await Person.findOrCreate({
+        where: { dni },
+        defaults: {
+            firstName,
+            lastName,
+            address,
+            description
+        }
     });
+    await informe.addInformePerson(person);
       return res.json(informe);
     }catch (error) {
       console.error(error);

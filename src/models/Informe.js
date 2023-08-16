@@ -91,12 +91,12 @@ const Informe = sequelize.define('Informe',{
   Informe.belongsToMany(Person, {
     through: InformePerson,
     foreignKey: 'informeId',
-    as: 'infomePersons'
+    as: 'informePersons'
 })
   Person.belongsToMany(Informe, {
         through: InformePerson,
         foreignKey: 'personId',
-        as: 'infomePersons'
+        as: 'informePersons'
     })
 Informe.sync();
 
