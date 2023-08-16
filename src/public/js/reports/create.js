@@ -9,7 +9,7 @@ btnPeople.addEventListener('click', async (e)=>{
       <button class="btn" id="verMenos"><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
       <div class="col-md-4">
         <label for="validationCustom01" class="form-label">DNI</label>
-        <input type="number" class="form-control" id="dni" name="dni" placeholder="41176787" >
+        <input type="text" class="form-control" id="dni" name="dni" placeholder="41176787" >
       </div>
       <div class="col-md-4">
         <label for="validationCustom02" class="form-label">Apellido</label>

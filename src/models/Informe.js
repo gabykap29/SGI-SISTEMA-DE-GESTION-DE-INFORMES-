@@ -1,5 +1,5 @@
 const {sequelize, DataTypes} = require('../db');
-const InformePerson = require('./InformePerson');
+// const InformePerson = require('./InformePerson')
 const Person = require('./Person')
 const Informe = sequelize.define('Informe',{
     idInforme: {type: DataTypes.INTEGER,
@@ -56,6 +56,10 @@ const Informe = sequelize.define('Informe',{
             model:'Usuarios',
             key:'id'
         }},
+        DNI:{
+            type:DataTypes.STRING,
+            allowNull:true
+        },
     estado:{
         type: DataTypes.BOOLEAN,
         defaultValue:true
@@ -84,10 +88,10 @@ const Informe = sequelize.define('Informe',{
     tableName: 'informes',
   //   underscored: true
   })
-  Informe.belongsToMany(Person, {
-    through: InformePerson,
-    foreignKey: 'idInforme',
-})
+//   Informe.belongsToMany(Person, {
+//     through: InformePerson,
+//     foreignKey: 'informeId',
+// })
 Informe.sync();
 
 module.exports = Informe;

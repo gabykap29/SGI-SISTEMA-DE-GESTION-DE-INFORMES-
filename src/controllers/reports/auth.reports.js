@@ -11,13 +11,12 @@ const Usuario = require('../../models/Usuario')
 
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo,
-            Fecha,Observaciones ,Informe,dni,firstName,lastName,adress,description } = req.body;
+            Fecha,Observaciones ,Informe,dni,firstName,lastName,address,description } = req.body;
     const token = req.cookies.jwt;
 
     if(!token){
       return res.status(401).json({message:'no hay token en la petición'});
     }
-  
     try {
       //obtener id de usuario
       const decoded = jwt.verify(token,process.env.SECRET_KEY);
@@ -39,17 +38,18 @@ ctrlReports.create = async (req, res) => {
         Observaciones,   // Asignar la ruta de la imagen a la propiedad RutaImagen
         Informe,
         id_IdUser:id,
+        DNI: dni
       });
       if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !Informe){
         throw {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
       }
-      await informe.addPerson({
+      await Person.create({
         dni,
         firstName,
         lastName,
-        adress,
+        address,
         description
     });
       return res.json(informe);

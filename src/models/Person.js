@@ -1,6 +1,6 @@
 const { sequelize, Model, DataTypes } = require('../db');
 const Informe = require('./Informe');
-const InformePerson = require('./InformePerson');
+// const InformePerson = require('./InformePerson')
 
 const Person = sequelize.define('Person', {
     idPerson: {
@@ -23,7 +23,7 @@ const Person = sequelize.define('Person', {
     },
     address: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     description: {
         type: DataTypes.STRING,
@@ -37,12 +37,10 @@ const Person = sequelize.define('Person', {
     modelName: 'Person',
     tableName: 'Persons',
 });
+// Person.belongsToMany(Informe, {
+//     through: InformePerson,
+//     foreignKey: 'personId',
+// });
 
-// Definición de la relación muchos a muchos
-Person.belongsToMany(Informe, {
-    through: InformePerson, // Modelo de la tabla intermedia
-    foreignKey: 'PersonIdPerson', // Clave foránea en la tabla intermedia que apunta a Person
-    otherKey: 'InformeIdInforme', // Clave foránea en la tabla intermedia que apunta a Informe
-});
 Person.sync();
 module.exports = Person;
