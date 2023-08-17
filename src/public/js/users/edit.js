@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Escuchar el evento submit
 formEditar.addEventListener('submit', async (e) => {
     e.preventDefault();
-    console.log("Enviando formulario...");
 
     const url = window.location.href;
     const parts = url.split('/');
@@ -38,7 +37,6 @@ formEditar.addEventListener('submit', async (e) => {
         rol: rol.value,
         password: password.value,
     };
-    console.log(data);
     try {
         const response = await fetch(`/api/usuario/${id}`, {
             method: 'PUT',

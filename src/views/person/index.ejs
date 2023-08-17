@@ -76,19 +76,28 @@
     
   </nav>
   <main>
-    <h3>Personas</h3>
+
     <div class="container">
+      <br>
         <div class="card ">
             <div class="card-body">
-              <h5 class="card-title">Buscar por:</h5>
+              <h5 class="card-title">Buscar Personas</h5>
               <div class="">
-                <button class="btn btn-primary" id="simpleFind">Nombre y Apellido</button>
-                <button class="btn btn-primary" id="documentFind">Por Documento</button>
-                <form id="find">
-                  <div id="seccionBuscar">
-
+                  <div id="">
+                    <br>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <form id="find">
+                          <label for="validationDefault01" class="form-label">DNI</label>
+                          <input type="text" class="form-control" id="dni" placeholder="32190897" required>
+                          <button class='btn btn-success'>Buscar</button>
+                        </form>
+                      </div>
+                      <div class="col-md-6"id="seccionBuscar">
+                      </div>
                   </div>
-                </form>
+                  </div>
+
               </div>
             </div>
           </div>

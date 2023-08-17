@@ -1,4 +1,4 @@
-ctrlReports = {};
+const ctrlReports = {};
 const jwt = require('jsonwebtoken');
 const Report = require('../../models/Informe');
 const Person = require('../../models/Person');

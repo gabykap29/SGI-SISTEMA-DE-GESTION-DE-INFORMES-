@@ -35,6 +35,7 @@ dotenv.config({ path: './env/.env' });
 app.use(require('./routes/auth.routes'));
 app.use(require('./routes/usuarios.routes'));
 app.use(require('./routes/reports.routes'));
+app.use(require('./routes/person.routes'));
 const server = https.createServer(
   {
     key: fs.readFileSync('./server.key'),      // Ruta al archivo de clave privada

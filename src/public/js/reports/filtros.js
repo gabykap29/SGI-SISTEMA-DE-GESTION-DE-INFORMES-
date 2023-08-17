@@ -124,7 +124,7 @@ document.getElementById('formSearch').addEventListener('submit', async function(
           <td>
             <a href="/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
             <a href="/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
-            <button class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.id}">Eliminar</button>
+            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>
           </td>
         </tr>
       `;
