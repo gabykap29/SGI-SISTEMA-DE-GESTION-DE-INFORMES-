@@ -37,25 +37,39 @@ const mostrarInformes = (informes) => {
     let cantidadRamonLista = 0;
     let cantidadMatacos = 0;
     for (const item of cantidadInformes) {
-        if(item.Departamento === 1){
-            cantidadFormosa = item.CantidadInformes;
-        }else if(item.Departamento === 2){
-            cantidadPilcomayo = item.CantidadInformes;
-        }else if(item.Departamento === 3){
-            cantidadPilagas = item.CantidadInformes;
-        }else if(item.Departamento === 4){
-            cantidadLaishi = item.CantidadInformes;
-        }else if(item.Departamento === 5){
-            cantPirane = item.CantidadInformes;
-        }else if(item.Departamento === 6){
-            cantPatiño = item.CantidadInformes;
-        }else if(item.Departamento === 7){
-            cantidadBermejo = item.CantidadInformes;
-        }else if(item.Departamento === 8){
-            cantidadRamonLista = item.CantidadInformes;
-        }else if(item.Departamento === 9){
-            cantidadMatacos = item.CantidadInformes;
-        }
+      switch (item.Departamento) {
+          case 1:
+              cantidadFormosa = item.CantidadInformes;
+              break;
+          case 2:
+              cantidadPilcomayo = item.CantidadInformes;
+              break;
+          case 3:
+              cantidadPilagas = item.CantidadInformes;
+              break;
+          case 4:
+              cantidadLaishi = item.CantidadInformes;
+              break;
+          case 5:
+              cantPirane = item.CantidadInformes;
+              break;
+          case 6:
+              cantPatiño = item.CantidadInformes;
+              break;
+          case 7:
+              cantidadBermejo = item.CantidadInformes;
+              break;
+          case 8:
+              cantidadRamonLista = item.CantidadInformes;
+              break;
+          case 9:
+              cantidadMatacos = item.CantidadInformes;
+              break;
+          default:
+
+              break;
+      }
+  
 
 }
 listadoInformes.innerHTML += `
@@ -87,7 +101,7 @@ listadoInformes.innerHTML += `
   
     <div class="card-body">
       <h5 class="card-title">Pirané</h5>
-      <h3 class="cantidad" id="cantPirane">${cantidadPilagas}</h3>
+      <h3 class="cantidad" id="cantPirane">${cantPirane}</h3>
     </div>
   </div>
 </div>
@@ -107,7 +121,7 @@ listadoInformes.innerHTML += `
   
     <div class="card-body">
       <h5 class="card-title">Pilagás</h5>
-      <h3 class="cantidad" id="cantPilagas">${cantPirane}</h3>
+      <h3 class="cantidad" id="cantPilagas">${cantidadPilagas}</h3>
     </div>
   </div>
 </div>

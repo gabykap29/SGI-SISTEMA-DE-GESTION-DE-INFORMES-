@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
 const checkRol = {};
+const Swal = require('sweetalert2');
+
+
 checkRol.verificarRolAdmin = (req,res,next)=>{
     const token = req.cookies.jwt;
 
@@ -10,10 +13,10 @@ checkRol.verificarRolAdmin = (req,res,next)=>{
         const decoded = jwt.verify(token,process.env.SECRET_KEY);
         const rol = decoded.rol
 
-        if(rol != 'Moderate'){
-            res.redirect('/login');
-            return res.status(403).json({message: "Acceso Denegado!, se enviará una notificación a los Administradores!"})
-        }
+        if (rol !== 'Moderate') {
+            return res.render('error/error')
+        };
+            
         next()
     } catch (error) {
         res.redirect('/login');

@@ -79,55 +79,70 @@
 
     <div class="container">
       <br>
-        <div class="card ">
+      <div class="container">
+        <div class="row">
+        <div class="card col-6">
             <div class="card-body">
               <h5 class="card-title">Buscar Personas</h5>
               <div class="">
                   <div id="">
                     <br>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <form id="find" style="padding-left: 70px;">
-                          <label for="validationDefault01" class="form-label">DNI</label>
-                          <input type="text" class="form-control" id="dni"name="dni" placeholder="32190897" required>
+                      <div style="padding-left: 70px;">
+                        <form id="find" >
+                          <label for="validationDefault01" class="form-label"><b><u>DNI</u></b></label>
+                          <div class="col-6">
+                            <input type="text" class="form-control" id="dni"name="dni" placeholder="32190897" required>
+                          </div>
                           <br>
                           <button class='btn btn-success'>Buscar</button>
                         </form>
                       </div>
-                      <div class="col-md-6"id="seccionBuscar">
                       </div>
                   </div>
+                </div>
                   </div>
-
+                  <div class="card col-6">
+                    <div class="card-body">
+                      <div class=""id="seccionBuscar">
+                      </div>
+                    </div>
+                    </div>
               </div>
             </div>
           </div>
         <br><br>
-        <div class="card">
-          <div class="card-body">
-            <div class="table-responsive">
-              <div class="col ">
-                  <table class=" table table-bordered table-hover table-striped" id="tablaInformes">
-                      <thead class="table-primary">
-                          <tr>
-                              <th>Departamento</th>
-                              <th>Localidad</th>
-                              <th>Tipo</th>
-                              <th>Fecha </th>
-                              <th>Título </th>
-                              <th>Informe</th>
-                              <th>Acciones</th>
-                          </tr>
-                      </thead>
-                      <tbody  id="registros">
-            
-                      </tbody>
-                  </table>
+        <div class="container">
+          <div class="container">
+          <div class="row">
+            <div class="card col-sm-12">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <div class="">
+                      <table class=" table table-bordered table-hover table-striped" id="tablaInformes">
+                          <thead class="table-primary">
+                              <tr>
+                                  <th>Departamento</th>
+                                  <th>Localidad</th>
+                                  <th>Tipo</th>
+                                  <th>Fecha </th>
+                                  <th>Título </th>
+                                  <th>Informe</th>
+                                  <th>Acciones</th>
+                              </tr>
+                          </thead>
+                          <tbody  id="registros">
+                
+                          </tbody>
+                      </table>
+                  </div>
               </div>
-          </div>
+              </div>
+            </div>
+        </div>
+
           </div>
         </div>
-    </div>
+      </div>
 
     </div>
   </main>

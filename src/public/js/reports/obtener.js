@@ -95,17 +95,20 @@ const obtenerImagen = (rutaImagen) => {
                 let imagen = obtenerImagen(data.RutaImagen);
                 Info.innerHTML += `
                 <section id="seccionInforme">
-                  <div class="Informe-Completo">
-                    <div id="tituloInfo"><h3>${data.Titulo}</h3></div>
-
-                    <div id="departamento"><p><b>Departamento:</b> ${Departamento}</p></div>
-
-                    <div id="localidad"><p><b>Localidad:</b> ${Localidad}</p></div>
-
+                  <div class="Informe-Completo container">
+                  <div class='row'>
+                    <div id="tituloInfo"><h5><u>${data.Titulo}</u></h5></div>
+                    <br>
+                    <div class=''>
+                      <div id="departamento"><p><b>Departamento:</b> ${Departamento}</p></div>
+                      <div id="localidad"><p><b>Localidad:</b> ${Localidad}</p></div>
+                    </div>
+                    <br>
+                  <div class =''>
                     <div id="fecha"><p><b>Fecha:</b> ${fecha}</p></div>
 
-                    <div id= "tipo"><p><b>Tipo de Informe:</b>  ${Tipo}</p></div>
-
+                    <div id= "tipo"><p><b>Tipo:</b>  ${Tipo}</p></div>
+                    </div>
                     <div class="Informe">
                         <p><b>Infome: </b></p>
                         <p>${data.Informe}</p>
@@ -123,13 +126,14 @@ const obtenerImagen = (rutaImagen) => {
               document.getElementById("btn-Imprimir").style.display = "none";
             
               // Obtener el contenido del div con id "info".
-              var contenido = document.getElementById("info").innerHTML;
-              
+              let contenido = document.getElementById("info").innerHTML;
+              document.querySelector('.navbar').style.display = 'none';
               window.print();
 
             
               // Mostrar nuevamente el botón de impresión.
               document.getElementById("btn-Imprimir").style.display = "block";
+              document.querySelector('.navbar').style.display = '';
             });
             
 

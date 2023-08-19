@@ -11,7 +11,7 @@ const Usuario = require('../../models/Usuario')
 
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo,
-            Fecha,Observaciones ,Informe,persons   } = req.body;
+            Fecha,Observaciones ,Informe,persons /* persons es un array de objetos enviados desde el cliente */  } = req.body;
     const token = req.cookies.jwt;
 
     if(!token){

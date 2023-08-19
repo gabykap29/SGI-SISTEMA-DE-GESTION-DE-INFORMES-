@@ -1,40 +1,7 @@
-// const documentFind = document.getElementById('documentFind');
-// const simpleFind = document.getElementById('simpleFind');
 const seccionBuscar = document.getElementById('seccionBuscar');
 const formFind = document.getElementById('find');
 const registros = document.getElementById('registros')
-// documentFind.addEventListener('click',(e)=>{
-//     e.preventDefault();
-//     seccionBuscar.innerHTML = `
-//     <br>
-//         <div class="col-md-4">
-//             <label for="validationDefault01" class="form-label">DNI</label>
-//             <input type="text" class="form-control" id="dni" placeholder="32190897" required>
-//         </div>
-//         <br>
-//         <button class='btn btn-success'>Buscar</button>
-//     `
-// })
-// simpleFind.addEventListener('click',(e)=>{
-//     e.preventDefault();
-//     seccionBuscar.innerHTML = `
-//     <br>
-//     <div class='container'>
-//         <div class='row'>
-//             <div class="col-md-4">
-//                 <label for="validationDefault01" class="form-label">Apellido</label>
-//                 <input type="text" class="form-control" id="firstName" placeholder="Kent" required>
-//             </div>
-//             <div class="col-md-4">
-//             <label for="validationDefault01" class="form-label">Nombre</label>
-//             <input type="text" class="form-control" id="lastName" placeholder="Clark" required>
-//             </div>
-//         </div>
-//         <br>
-//         <button class='btn btn-success'>Buscar</button>
-//     </div>
-//     `
-// })
+
 formFind.addEventListener('submit', async(e)=>{
     e.preventDefault();
     const dni = document.getElementById('dni').value;
@@ -140,6 +107,7 @@ formFind.addEventListener('submit', async(e)=>{
             "Hídricos"
         ]
         if(!res.informePersons){
+            seccionBuscar.innerHTML = '';
             registros.innerHTML='';
             registros.innerHTML = `
                 <tr>
@@ -159,13 +127,13 @@ formFind.addEventListener('submit', async(e)=>{
         seccionBuscar.innerHTML = `<div class='container'>
                                         <div class='row'>
                                             <div class='col-md-3'>
-                                                <img src="/css/images/usuario.png" style="width: 90px;" alt="">
+                                                <img src="/css/images/usuario.png" style="width: 90px;padding-top:20px" alt="">
                                             </div>
-                                            <div class='col-md-7'>
-                                                <p>Nombre y Apellido: ${res.firstName} ${res.lastName}</p>
-                                                <p>Documento: ${res.dni}</p>
-                                                <p>Domicilio: ${res.address}</p>
-                                                <p>Observaciones: ${res.description}</p>
+                                            <div class='col-md-9'>
+                                                <p><b><u>Nombre y Apellido:</u></b> ${res.firstName} ${res.lastName}</p>
+                                                <p><b><u>Documento:</u></b> ${res.dni}</p>
+                                                <p><b><u>Domicilio:</u></b> ${res.address}</p>
+                                                <p><b><u>Observaciones:</u></b> ${res.description}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +143,7 @@ formFind.addEventListener('submit', async(e)=>{
             let Localidad = localidad[informe.Localidad_idLocalidad]
             let Tipo = tipo[informe.Tipo_idTipo]
             let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
-            registros.innerHTML += ''
+            registros.innerHTML = ''
             registros.innerHTML += `
             <tr>
             <td>${Departamento}</td>

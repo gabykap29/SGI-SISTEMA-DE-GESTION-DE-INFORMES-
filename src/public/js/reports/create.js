@@ -4,37 +4,34 @@ const btnPeople = document.getElementById('btnPeople')
 btnPeople.addEventListener('click', async (e)=>{
   e.preventDefault();
   formPeople.innerHTML +=`
-  <div class="container">
-    <div class="col">
-      <button class="btn" id="verMenos"><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
+    <div class="col-md-5">
+      <button class="verMenos" id=""><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
       <div class="col-md-4">
         <label for="validationCustom01" class="form-label">DNI</label>
         <input type="text" class="form-control" id="dni" name="dni" placeholder="41176787" >
       </div>
-      <div class="col-md-4">
+      <div class="col">
         <label for="validationCustom02" class="form-label">Apellido</label>
         <input type="text" class="form-control" id="lastName" name="lastName">
       </div>
-      <div class="col-md-4">
+      <div class="col>
         <label for="validationCustomUsername" class="form-label">Nombres</label>
         <div class="input-group has-validation">
           <input type="text" class="form-control" id="firstName" name="firstName" aria-describedby="inputGroupPrepend">
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col>
         <label for="validationCustom03" class="form-label">Domicilio</label>
         <input type="text" class="form-control" id="address" name="address">
       </div>
-      <div class="col-md-4">
+      <div class="col">
         <label for="validationCustom05" class="form-label">Observaciones</label>
         <textarea type="text" class="form-control" id="description" name="description" ></textarea>
       </div>
       </div>
-  </div>
-  </div>
-  <br>
+    </div>
   `
-  const btnMenos = document.getElementById('verMenos');
+  const btnMenos = document.querySelector('.verMenos');
   btnMenos.addEventListener('click',async(e)=>{
     e.preventDefault();
     formPeople.innerHTML= "";

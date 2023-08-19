@@ -29,7 +29,7 @@ router.get('/usuario/edit/:id',isAutenticated, verificarRolAdmin,(req,res)=>{
 })
 
 //APIS
-router.put('/api/usuario/delete/:id',userDelete);
+router.put('/api/usuario/delete/:id',isAutenticated,userDelete);
 router.get('/api/usuarios', isAutenticated,verificarRolAdmin,usersRead);
 router.get('/api/usuario/:id',isAutenticated,verificarRolAdmin,userRead);
 router.put('/api/usuario/:id',isAutenticated,verificarRolAdmin,userUpdate);
