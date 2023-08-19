@@ -54,7 +54,7 @@ formFind.addEventListener('submit', async(e)=>{
         let timerInterval
         Swal.fire({
         title: 'Buscando en base de datos',
-        html: 'I will close in <b></b> milliseconds.',
+        html: 'Buscando en todos los informes! <b></b>.',
         timer: 1000,
         timerProgressBar: true,
         didOpen: () => {
@@ -139,6 +139,23 @@ formFind.addEventListener('submit', async(e)=>{
             "Eventos Climáticos",
             "Hídricos"
         ]
+        if(!res.informePersons){
+            registros.innerHTML='';
+            registros.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center">El dni ingresado, no coincide con los registros ingresados!</td>
+                </tr>
+            `;
+
+            return            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'La persona que busca no existe en la base de datos',
+
+              })
+ 
+            ;
+        };
         seccionBuscar.innerHTML = `<div class='container'>
                                         <div class='row'>
                                             <div class='col-md-3'>
@@ -152,12 +169,13 @@ formFind.addEventListener('submit', async(e)=>{
                                             </div>
                                         </div>
                                     </div>
-        `
+        ` 
         res.informePersons.forEach(informe =>{
             let Departamento = departamento[informe.Departamento_idDepartamento];
             let Localidad = localidad[informe.Localidad_idLocalidad]
             let Tipo = tipo[informe.Tipo_idTipo]
             let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
+            registros.innerHTML += ''
             registros.innerHTML += `
             <tr>
             <td>${Departamento}</td>

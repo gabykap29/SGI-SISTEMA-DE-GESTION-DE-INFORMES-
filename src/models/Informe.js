@@ -56,10 +56,6 @@ const Informe = sequelize.define('Informe',{
             model:'Usuarios',
             key:'id'
         }},
-        DNI:{
-            type:DataTypes.STRING,
-            allowNull:true
-        },
     estado:{
         type: DataTypes.BOOLEAN,
         defaultValue:true

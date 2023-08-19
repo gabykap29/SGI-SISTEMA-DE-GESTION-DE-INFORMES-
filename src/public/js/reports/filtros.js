@@ -1,3 +1,48 @@
+const deletebtn = document.querySelectorAll('.eliminar-informe');
+deletebtn.forEach((boton) => {
+  boton.addEventListener('click', eliminarInfo);
+});
+
+const eliminarInfo = async (idInforme) => {
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Estás por eliminar un informe del sistema.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Estoy seguro",
+    cancelButtonText: "Cancelar",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const res = await fetch(`/api/informes/deleted/${idInforme}`, {
+          method: "PUT",
+        });
+
+        const data = await res.json();
+
+        Swal.fire({
+          icon: "success",
+          title: "Informe eliminado",
+          text: data.message,
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2200);
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: error.message,
+        });
+      }
+    }
+  });
+};
+
 document.getElementById('formSearch').addEventListener('submit', async function(event) {
     event.preventDefault(); // Evitar el envío del formulario por defecto
   
@@ -124,7 +169,7 @@ document.getElementById('formSearch').addEventListener('submit', async function(
           <td>
             <a href="/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
             <a href="/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
-            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>
+            <button id= "deletebtn" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>
           </td>
         </tr>
       `;

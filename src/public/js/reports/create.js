@@ -45,7 +45,7 @@ btnPeople.addEventListener('click', async (e)=>{
 
 formNuevoInforme.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   const Departamento_idDepartamento = document.getElementById('selecDepartamento').value;
   const Localidad_idLocalidad = document.getElementById('selecLocalidad').value;
   const Tipo_idTipo = document.getElementById('tipo').value;
@@ -53,27 +53,31 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   const Titulo = document.getElementById('titulo').value;
   const Observaciones = document.getElementById('observaciones').value
   const Informe = document.getElementById('informe').value;
-  const dni = document.getElementById('dni').value;
-  const firsName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
-  const address = document.getElementById('address').value;
-  const description = document.getElementById('description').value;
+
+  const dni = document.querySelectorAll('input[id^="dni"]');
+  const firstNames = document.querySelectorAll('input[id^="firstName"]');
+  const lastNames = document.querySelectorAll('input[id^="lastName"]');
+  const addresses = document.querySelectorAll('input[id^="address"]');
+  const descriptions = document.querySelectorAll('textarea[id^="description"]');
 
   const formData = new FormData();
+
   formData.append('Departamento_idDepartamento', Departamento_idDepartamento);
   formData.append('Localidad_idLocalidad', Localidad_idLocalidad);
   formData.append('Tipo_idTipo', Tipo_idTipo);
   formData.append('Fecha', Fecha);
   formData.append('Titulo', Titulo);
-  formData.append('Observaciones',Observaciones);
+  formData.append('Observaciones', Observaciones);
   formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
   formData.append('Informe', Informe);
-  formData.append('dni',dni);
-  formData.append('firstName',firsName);
-  formData.append('lastName',lastName);
-  formData.append('address',address);
-  formData.append('description',description);
 
+  dni.forEach((input, index) => {
+      formData.append(`persons[${index}][dni]`, input.value);
+      formData.append(`persons[${index}][firstName]`, firstNames[index].value);
+      formData.append(`persons[${index}][lastName]`, lastNames[index].value);
+      formData.append(`persons[${index}][address]`, addresses[index].value);
+      formData.append(`persons[${index}][description]`, descriptions[index].value);
+  });
   try {
     const response = await fetch('/api/informes/create', {
       method: 'POST',

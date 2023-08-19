@@ -11,8 +11,7 @@ const Usuario = require('../../models/Usuario')
 
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo,
-            Fecha,Observaciones ,Informe,dni,firstName,lastName,address,description } = req.body;
-            console.log(req.body)
+            Fecha,Observaciones ,Informe,persons   } = req.body;
     const token = req.cookies.jwt;
 
     if(!token){
@@ -39,24 +38,31 @@ ctrlReports.create = async (req, res) => {
         Observaciones,   // Asignar la ruta de la imagen a la propiedad RutaImagen
         Informe,
         id_IdUser:id,
-        DNI: dni
       });
       if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !Informe){
         throw {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
-        return
       }
-      const [person, created] = await Person.findOrCreate({
-        where: { dni },
-        defaults: {
+      for (const personData of persons) {
+        const {
+            dni,
             firstName,
             lastName,
             address,
             description
-        }
-    });
-    await informe.addInformePerson(person);
+        } = personData;
+        
+        const [person, created] = await Person.findOrCreate({
+            where: { dni },
+            defaults: {
+                firstName,
+                lastName,
+                address,
+                description
+            }
+        });
+    await informe.addInformePerson(person);}
       return res.json(informe);
     }catch (error) {
       console.error(error);

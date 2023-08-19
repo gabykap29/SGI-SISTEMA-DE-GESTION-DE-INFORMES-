@@ -8,7 +8,11 @@ const Informe = require('../../models/Informe');
 crtlPerson.findDni = async (req,res)=>{
     const {dni, firstName,lastName} = req.body;
 
+    const token = req.cookies.jwt;
 
+    if(!token){
+      return res.status(401).json({message:'no hay token en la petición'});
+    }
     try {
         const person = await Person.findOne(
             {
@@ -21,9 +25,9 @@ crtlPerson.findDni = async (req,res)=>{
             }
         }
         )
-        if(!person){
-            return res.json('No existe la persona en la base de datos')
-        }
+        if (!person){
+            return res.status(401).json({message:'no hay token en la petición'});
+          }
         return res.json(person);
 
     } catch (error) {
