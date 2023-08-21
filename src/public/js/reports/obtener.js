@@ -95,20 +95,13 @@ const obtenerImagen = (rutaImagen) => {
                 let imagen = obtenerImagen(data.RutaImagen);
                 Info.innerHTML += `
                 <section id="seccionInforme">
-                  <div class="Informe-Completo container">
-                  <div class='row'>
+                  <div class="Informe-Completo ">
                     <div id="tituloInfo"><h5><u>${data.Titulo}</u></h5></div>
                     <br>
-                    <div class=''>
                       <div id="departamento"><p><b>Departamento:</b> ${Departamento}</p></div>
                       <div id="localidad"><p><b>Localidad:</b> ${Localidad}</p></div>
-                    </div>
-                    <br>
-                  <div class =''>
                     <div id="fecha"><p><b>Fecha:</b> ${fecha}</p></div>
-
                     <div id= "tipo"><p><b>Tipo:</b>  ${Tipo}</p></div>
-                    </div>
                     <div class="Informe">
                         <p><b>Infome: </b></p>
                         <p>${data.Informe}</p>
