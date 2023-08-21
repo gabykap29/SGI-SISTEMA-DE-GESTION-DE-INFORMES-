@@ -27,7 +27,9 @@ router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin,(req, res) => 
 router.get('/ver/personas', isAutenticated,(req,res)=>{
   res.render('person/index')
 })
-
+router.get('/informes/graficos',(req,res)=>{
+  res.render('graphics/graphics')
+})
   // Resto de las rutas
 
 
