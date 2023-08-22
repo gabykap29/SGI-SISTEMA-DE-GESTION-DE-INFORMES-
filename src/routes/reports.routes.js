@@ -5,6 +5,7 @@ const { filtrarInformes, filtroDepar } = require('../controllers/reports/filtros
 const isAutenticated = require('../middlewares/autenticate');
 const upload = require('../middlewares/multer');
 const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol');
+const { findDate } = require('../controllers/reports/graphics');
 
 
 // Vistas
@@ -27,7 +28,7 @@ router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin,(req, res) => 
 router.get('/ver/personas', isAutenticated,(req,res)=>{
   res.render('person/index')
 })
-router.get('/informes/graficos',(req,res)=>{
+router.get('/informes/graficos',isAutenticated,verificarRolAdmin,(req,res)=>{
   res.render('graphics/graphics')
 })
   // Resto de las rutas
@@ -35,12 +36,12 @@ router.get('/informes/graficos',(req,res)=>{
 
 // APIs
 router.post('/api/informes/create', isAutenticated, upload.single('rutaImagen'), ctrlReports.create);
-
 router.get('/api/informe/:id', isAutenticated,ctrlReports.Read);
 router.get('/api/informes', isAutenticated,ctrlReports.readsAll);
 router.put('/api/informes/edit/:id', isAutenticated, upload.single('rutaImagen'),verificarRolAdmin,ctrlReports.update);
 router.put('/api/informes/deleted/:id', isAutenticated, verificarRolAdmin,ctrlReports.deleted);
 router.get('/api/filtrar', isAutenticated,filtrarInformes);
 router.get('/api/porDepar', isAutenticated,filtroDepar);
+router.post('/api/informes/findDate',findDate)
 
 module.exports = router;

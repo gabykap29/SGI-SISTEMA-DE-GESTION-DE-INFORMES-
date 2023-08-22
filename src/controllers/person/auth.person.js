@@ -6,7 +6,7 @@ const Informe = require('../../models/Informe');
 
 //BUscar personas
 crtlPerson.findDni = async (req,res)=>{
-    const {dni, firstName,lastName} = req.body;
+    const {dni} = req.body;
 
     const token = req.cookies.jwt;
 
