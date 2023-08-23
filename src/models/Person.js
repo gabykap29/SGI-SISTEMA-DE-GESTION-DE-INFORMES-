@@ -37,10 +37,6 @@ const Person = sequelize.define('Person', {
     modelName: 'Person',
     tableName: 'Persons',
 });
-// Person.belongsToMany(Informe, {
-//     through: InformePerson,
-//     foreignKey: 'personId',
-// });
 
 
 module.exports = Person;

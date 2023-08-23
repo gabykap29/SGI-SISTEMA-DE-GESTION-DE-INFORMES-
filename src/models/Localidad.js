@@ -25,8 +25,6 @@ const Localidad = sequelize.define('Localidad',{
     modelName: 'Localidad',
     tableName: 'localidad'
 })
-
-console.log(Localidad);
 Localidad.sync();
 
 

@@ -95,9 +95,5 @@ const Informe = sequelize.define('Informe',{
         as: 'informePersons'
     })
 Informe.sync();
-
 Person.sync();
-
-
-
 module.exports = Informe;

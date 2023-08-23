@@ -138,12 +138,12 @@ formFind.addEventListener('submit', async(e)=>{
                                         </div>
                                     </div>
         ` 
+        registros.innerHTML = ''
         res.informePersons.forEach(informe =>{
             let Departamento = departamento[informe.Departamento_idDepartamento];
             let Localidad = localidad[informe.Localidad_idLocalidad]
             let Tipo = tipo[informe.Tipo_idTipo]
             let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
-            registros.innerHTML = ''
             registros.innerHTML += `
             <tr>
             <td>${Departamento}</td>
