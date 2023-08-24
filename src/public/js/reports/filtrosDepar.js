@@ -79,7 +79,7 @@ listadoInformes.innerHTML += `
   
     <div class="card-body">
       <h5 class="card-title">Formosa</h5>
-      <div class="cantidad" id="">
+      <div class="" id="">
         <h3 class="cantidad" id="cantFormosa">${cantidadFormosa}</h3>
       </div>
     </div>
@@ -167,56 +167,6 @@ listadoInformes.innerHTML += `
 </div>
         `;
     }
-
-
-
-
-// const eliminarInforme = async (event) => {
-//   const id = event.target.dataset.id;
-//   console.log("The button was clicked!");
-
-//   Swal.fire({
-//     title: "Estás seguro?",
-//     text: `Estás por eliminar un informe del sistema!`,
-//     icon: "warning",
-//     showCancelButton: true,
-//     confirmButtonColor: "#3085d6",
-//     cancelButtonColor: "#d33",
-//     confirmButtonText: "Estoy seguro!",
-//     cancelButtonText: "Cancelar",
-//   }).then(async (result) => {
-//     if (result) {
-//       try {
-//         const res = await fetch(
-//           `/api/informes/deleted/${id}`,
-//           {
-//             method: "DELETE",
-//           }
-//         );
-
-//         const data = await res.json();
-
-//         Swal.fire({
-//           icon: "success",
-//           title: "Informe eliminado",
-//           text: data.message,
-//         });
-
-//         setTimeout(() => {
-//           window.location.reload();
-//         }, 2200);
-//       } catch (error) {
-//         console.log(error);
-//         Swal.fire({
-//           icon: "error",
-//           title: "Oops...",
-//           text: error.message,
-//         });
-//       }
-//     }
-//   });
-// };
-
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const informes = await obtenerInformes();     

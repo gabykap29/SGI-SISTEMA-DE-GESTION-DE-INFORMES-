@@ -33,7 +33,6 @@ checkRol.verificarRolUser = (req,res,next)=>{
     try {
         const decoded = jwt.verify(token,process.env.SECRET_KEY);
         const rol = decoded.rol
-        console.log(rol)
 
         if(rol != 'Moderate' & rol != 'User'){
             res.redirect('/login');
