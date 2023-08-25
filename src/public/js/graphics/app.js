@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
+    const value = `; ${document.cookie}`;
+    console.log('esto es la cookie',value)
     // Obtener una referencia al elemento canvas del DOM
     const $grafica = document.querySelector("#grafica");
     // Las etiquetas son las que van en el eje X. 

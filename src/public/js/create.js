@@ -2,7 +2,7 @@ const formNuevoUsuario = document.querySelector('#formNuevoUsuario');
 
 formNuevoUsuario.addEventListener('submit',async(e)=>{
     e.preventDefault();
-
+    
     const lastName = document.getElementById('lastName').value;
     const firstName = document.getElementById('firstName').value;
     const username = document.getElementById('username').value;
