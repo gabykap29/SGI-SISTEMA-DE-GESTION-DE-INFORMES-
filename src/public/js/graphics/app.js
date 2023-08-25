@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const value = `; ${document.cookie}`;
-    console.log('esto es la cookie',value)
     // Obtener una referencia al elemento canvas del DOM
     const $grafica = document.querySelector("#grafica");
     // Las etiquetas son las que van en el eje X. 
@@ -202,6 +200,35 @@ new Chart(graficaFecha, {
     }
 });
 
+
+//Por localidad
+
+const graficaLocal = document.getElementById('graficaLocal');
+
+const porLocal = {
+    label: 'Localidades',
+    data: [12,33,23,12,35,23],
+    backgroundColor: 'rgba(235, 93, 110, 0.2)',
+    borderColor: 'rgba(211, 93, 110, 1)',
+    borderWidth: 1,
+};
+let labels = ['Formosa', 'Clorinda', 'Pirane', 'S.F.Laishi','Ing. Juarez', 'Vaca Muerta']
+new Chart(graficaLocal , {
+    type: 'polarArea',
+    data: {
+        labels: labels,
+        datasets: [porLocal]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+        },
+    }
+});
 
 })
 
