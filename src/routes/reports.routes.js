@@ -25,9 +25,6 @@ router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin,(req, res) => 
   res.render('edit', { id: req.params.id });
 });
 
-router.get('/ver/personas', isAutenticated,(req,res)=>{
-  res.render('person/index')
-})
 router.get('/informes/graficos',isAutenticated,verificarRolAdmin,(req,res)=>{
   res.render('graphics/graphics')
 })

@@ -1,22 +1,13 @@
 
-main{
-    background-color: white;
+body{
+    background-color: rgb(238, 238, 238);
 }
-/* #inputs{
-    padding-left: 10%;
-} */
-
-/* #username{
-    width: 200%;
-}
-#password{
-    width: 200%;
-} */
 #btn-submit{
     width: 200px;
 }
 form{
     margin-top:85px ;
     border-radius: 5px;
+    background-color: white;
 }
 

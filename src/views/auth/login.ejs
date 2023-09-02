@@ -11,31 +11,35 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="text-center" cz-shortcut-listen="true">   
-<main class="form-signin w-50 m-auto container">
-  <form action="#" id="formLogin">
-    <img class="mb-4" src="/css/images/iconoLogin.png" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Sistema de Gestión de Informes</h1>
+<main class="form-signin  container">
+  <form action="#" id="formLogin" class="col-11 col-lg-6 text-start p-4 rounded border border-2 shadow-sm mx-auto gap-2">
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+      <img class="mb-4 col" src="/css/images/iconoLogin.png" alt="" width="72" height="57">
+      <h1 class="h3 mb-3 fw-normal col">Sistema de Gestión de Informes</h1>
+    </div>
 
-    <div class="container d-flex align-items-center flex-lg-wrap" id="inputs">
-      <div class="container">
+    <div class="container d-flex align-items-center flex-column" id="inputs">
+      <div class="container col">
         <div class="form-floating ">
           <input type="text" class="form-control" id="username" placeholder="admin">
           <label for="floatingInput">Usuario</label>
         </div>
-        <div class="form-floating">
+        <div class="form-floating col">
           <input type="password" class="form-control " id="password" placeholder="Password">
           <label for="floatingPassword">Contraseña</label>
         </div>
       </div>
   </div>
 
-    <div class="checkbox mb-3">
+    <div class="checkbox mb-3 d-flex align-items-center flex-column justify-content-center">
       <label>
         <input type="checkbox" value="remember-me"> Recordar contraseña
       </label>
     </div>
-    <button class=" btn btn-lg btn-primary" id="btn-submit" type="submit">Iniciar</button>
-    <p class="mt-5 mb-3 text-body-secondary">© Todos los derechos reservados 2023</p>
+    <div class="container d-flex justify-content-center flex-column align-items-center">
+      <button class=" btn btn-lg btn-primary " id="btn-submit" type="submit">Iniciar</button>
+      <p class="mt-5 mb-3 text-body-secondary">© Todos los derechos reservados 2023</p>
+    </div>
   </form>
 </main>
 

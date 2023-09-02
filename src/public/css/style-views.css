@@ -52,3 +52,13 @@ body{
     margin-top: 10px;
     margin-left: 300px;
 }
+.footer{
+    position: fixed;
+    margin-top: 25%;
+    width: 100%;
+    bottom: 0;
+    z-index: 999;
+}
+h2{
+    text-shadow: #aaaaaad3 2px 2px 2px;
+}

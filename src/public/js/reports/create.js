@@ -4,8 +4,10 @@ const btnPeople = document.getElementById('btnPeople')
 btnPeople.addEventListener('click', async (e)=>{
   e.preventDefault();
   formPeople.innerHTML +=`
+  <br>
     <div class="col-md-5">
-      <button class="verMenos" id=""><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
+      <button class="verMenos" id="verMenos"><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
+      <br>
       <div class="col-md-4">
         <label for="validationCustom01" class="form-label">DNI</label>
         <input type="text" class="form-control" id="dni" name="dni" placeholder="41176787" >
