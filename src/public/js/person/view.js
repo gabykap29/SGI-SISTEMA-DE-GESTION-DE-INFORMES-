@@ -2,6 +2,16 @@ const seccionBuscar = document.getElementById('seccionBuscar');
 const formFind = document.getElementById('find');
 const registros = document.getElementById('registros')
 
+document.addEventListener('DOMContentLoaded',(e)=>{
+    e.preventDefault();
+    registros.innerHTML = `
+    <tr>
+        <td colspan="7" class="text-center">Aquí aparecerán los informes vinculados a la persona ingresada!</td>
+    </tr>
+`;    
+})
+
+
 formFind.addEventListener('submit', async(e)=>{
     e.preventDefault();
     const dni = document.getElementById('dni').value;
@@ -39,7 +49,6 @@ formFind.addEventListener('submit', async(e)=>{
         if (result.dismiss === Swal.DismissReason.timer) {
             console.log('I was closed by the timer')
         }
-        console.log(res.informePersons)
         let departamento = [null, 'Formosa','Pilcomayo','Pilagas','Laishi','Pirané','Patiño','Bermejo', 'Ramon Lista', 'Matacos'];
         let localidad = [
             null,

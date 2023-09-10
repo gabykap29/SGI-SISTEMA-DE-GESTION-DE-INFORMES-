@@ -53,6 +53,7 @@ const filtrarInformes = async (req, res) => {
   }
 };
 const filtroDepar = async (req, res) => {
+
   try {
     const departamentos = await Departamento.findAll({
       include: [

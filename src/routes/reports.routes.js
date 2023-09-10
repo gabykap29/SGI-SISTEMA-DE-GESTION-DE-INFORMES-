@@ -5,7 +5,7 @@ const { filtrarInformes, filtroDepar } = require('../controllers/reports/filtros
 const isAutenticated = require('../middlewares/autenticate');
 const upload = require('../middlewares/multer');
 const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol');
-const { findDate } = require('../controllers/reports/graphics');
+const { findDate, findTitle } = require('../controllers/reports/graphics');
 
 
 // Vistas
@@ -39,6 +39,7 @@ router.put('/api/informes/edit/:id', isAutenticated, upload.single('rutaImagen')
 router.put('/api/informes/deleted/:id', isAutenticated, verificarRolAdmin,ctrlReports.deleted);
 router.get('/api/filtrar', isAutenticated,filtrarInformes);
 router.get('/api/porDepar', isAutenticated,filtroDepar);
-router.post('/api/informes/findDate',findDate)
+router.post('/api/informes/findDate',findDate);
+router.get('/api/informes/forTitle',findTitle);
 
 module.exports = router;

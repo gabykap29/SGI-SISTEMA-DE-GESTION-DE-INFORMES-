@@ -10,152 +10,96 @@
 
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/style-cargarInforme.css">
+<link rel="stylesheet" href="/css/style.css">
 <script src="/sweetalert/sweetalert2@11"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-dark header" aria-label="Dark offcanvas navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" id="title" href="/index">Sistema de Gestión de Informes</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title menu" id="offcanvasNavbarDarkLabel">Menú</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <%- include('./partials/headers-aside.ejs');%>
+    <div class="form-editar col-10 bgForm py-2" >
+      <br>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">        
+            <div class=" container d-flex">
+            <h4>Editar Informes</h4>
+          </div>
+        </h4>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Informes
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
-                  <li><a class="dropdown-item" href="/informes/views">Filtros</a></li>
-                  <li><a class="dropdown-item" href="#">Gráficos</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                </ul>
-              </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Personas
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Cargar</a></li>
-                <li><a class="dropdown-item" href="#">Buscar</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Usuarios
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/view/usuarios">Ver</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Informes" aria-label="Search">
-            <button class="btn btn-success" type="submit">Buscar</button>
-          </form>
-          
-        </div>
-        <div id="btn-close">
-          <a href="/closeSesion" class="btn btn-danger">Cerrar Sesión</a>
+      </div>
+      <br>
+      <div class="card mb-5">
+        <div class="card-body">
+          <div class="container d-flex">
+            <form action="" class="row g-3 needs-validation" id="form-editar">
+              <div class="col-md-3 position-relative">
+                  <label for="validationTooltip04" class="form-label">Departamento</label>
+                  <select class="form-select" id="selecDepartamento" required>
+                    <option value="1">Formosa</option>
+                    <option value="2">Pilcomayo</option>
+                    <option value="3">Pilagás</option>
+                    <option value="4">Laishí</option>
+                    <option value="5">Pirané</option>
+                    <option value="6">Patiño</option>
+                    <option value="7">Bermejo</option>
+                    <option value="8">Ramon Lista</option> 
+                    <option value="9">Matacos</option>
+                  </select>
+                </div>
+                <div class="col-md-3 position-relative">
+                  <label for="validationTooltip04" class="form-label">Localidad</label>
+                  <select class="form-select" id="selecLocalidad" required>
+                    <option selected disabled>Selecciona una opción</option>
+                  </select>
+                </div>
+                <div class="col-md-3 position-relative">
+                  <label for="validationTooltip04" class="form-label">Tipo</label>
+                  <select class="form-select" id="tipo" required>
+                    <option value="1">Política</option>
+                    <option value="2">Institucional</option>
+                    <option value="3">Educación</option>
+                    <option value="4">Religioso</option>
+                    <option value="5">Proselitismo</option>
+                    <option value="6">Salud</option>
+                    <option value="7">Seguridad</option>
+                    <option value="8">Eventos Climáticos</option>
+                    <option value="9">Hídricos</option>
+                  </select>
+                </div>
+              <div class="col-md-2 position-relative">
+                <label for="validationTooltip02" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="fecha" value="" required>
+              </div>
+              <div class="col-md-3 position-relative">
+                <label for="validationTooltipUsername" class="form-label">Titulo</label>
+                <div class="input-group has-validation">
+                  <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
+                </div>
+              </div>
+              <div class="col-md-3 position-relative">
+                  <label class="input-group-text" for="inputGroupFile01">Imagenes</label>
+                  <input type="file" class="form-control" id="rutaImagen">
+                </div>        
+                <div class="col-md-3 position-relative">
+                  <label for="validationTooltipUsername" class="form-label">Observaciones</label>
+                  <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="observaciones" aria-describedby="validationTooltipUsernamePrepend" required>
+                  </div>
+                </div>      
+                <div class="mb-1">
+                  <label for="exampleFormControlTextarea1" class="form-label">Informe</label>
+                  <textarea class="form-control" id="informe" rows="3" style="height:180px;" required></textarea>
+                  <button class="btn btn-success" type="submit">Editar Informe</button>
+                  <button class="btn btn-secondary" type="reset">Borrar campos</button>
+                </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    
-  </nav>
-  <main>
-    <div class="container d-flex justify-content-center">
-      <h1>Editar Informes</h1>
-    </div>
-
-    <div class="form-editar container">
-        <form action="" class="row g-3 needs-validation" id="form-editar">
-            <div class="col-md-3 position-relative">
-                <label for="validationTooltip04" class="form-label">Departamento</label>
-                <select class="form-select" id="selecDepartamento" required>
-                  <option value="1">Formosa</option>
-                  <option value="2">Pilcomayo</option>
-                  <option value="3">Pilagás</option>
-                  <option value="4">Laishí</option>
-                  <option value="5">Pirané</option>
-                  <option value="6">Patiño</option>
-                  <option value="7">Bermejo</option>
-                  <option value="8">Ramon Lista</option> 
-                  <option value="9">Matacos</option>
-                </select>
-              </div>
-              <div class="col-md-3 position-relative">
-                <label for="validationTooltip04" class="form-label">Localidad</label>
-                <select class="form-select" id="selecLocalidad" required>
-                  <option selected disabled>Selecciona una opción</option>
-                </select>
-              </div>
-              <div class="col-md-3 position-relative">
-                <label for="validationTooltip04" class="form-label">Tipo</label>
-                <select class="form-select" id="tipo" required>
-                  <option value="1">Política</option>
-                  <option value="2">Institucional</option>
-                  <option value="3">Educación</option>
-                  <option value="4">Religioso</option>
-                  <option value="5">Proselitismo</option>
-                  <option value="6">Salud</option>
-                  <option value="7">Seguridad</option>
-                  <option value="8">Eventos Climáticos</option>
-                  <option value="9">Hídricos</option>
-                </select>
-              </div>
-            <div class="col-md-2 position-relative">
-              <label for="validationTooltip02" class="form-label">Fecha</label>
-              <input type="date" class="form-control" id="fecha" value="" required>
-            </div>
-            <div class="col-md-3 position-relative">
-              <label for="validationTooltipUsername" class="form-label">Titulo</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
-              </div>
-            </div>
-            <div class="col-md-3 position-relative">
-                <label class="input-group-text" for="inputGroupFile01">Imagenes</label>
-                <input type="file" class="form-control" id="rutaImagen">
-              </div>        
-              <div class="col-md-3 position-relative">
-                <label for="validationTooltipUsername" class="form-label">Observaciones</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="observaciones" aria-describedby="validationTooltipUsernamePrepend" required>
-                </div>
-              </div>      
-              <div class="mb-1">
-                <label for="exampleFormControlTextarea1" class="form-label">Informe</label>
-                <textarea class="form-control" id="informe" rows="3" required></textarea>
-                <button class="btn btn-success" type="submit">Editar Informe</button>
-                <button class="btn btn-secondary" type="reset">Borrar campos</button>
-              </div>
-          </form>
-    </div>
   </main>
-  <div class=" bg-dark">
-    <footer class="py-3 ">
-      <ul class="nav justify-content-center pb-3 mb-3">
-        <p class="text-center text-body-secondary" style="color: white;">© 2023 Todos los derechos reservados.-</p>
-      </ul>
-    </footer>
+  <div class="">
+    <%- include('./partials/footer.ejs');%>
   </div>
   <!--scripts Localidades-->
   <script src="/js/app.js"></script>

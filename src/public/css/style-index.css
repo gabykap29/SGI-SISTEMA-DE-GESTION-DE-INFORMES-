@@ -13,39 +13,8 @@ body{
 .menu{
     border-bottom: 1px solid #e0e0e0d3;
 }
-#div-tarjetas{
-    padding-left: 80px;
-}
-.tarjetas{
-    width: 200px;
-    height: 200px;
-    padding-right: 30px;    
-}
-.tarjetas .card-body{
-    text-align: center;
-    height: 180px;
-    background-color: rgb(241, 241, 241);
-    box-shadow: 1px 1px 5px gray;
-    border-radius: 20px;
-    
-}
-.tarjetas{
-    border-radius: 20px;
-}
-.card{
-    border-radius: 20px;
-}
-.card-body:hover{
-    background-color: rgb(212, 212, 212);
-}
-.cantidad{
-    padding-top: 30px;
-}
 
-.card-body a{
-    margin-left: 30px;
-    
-}
+
 #title{
     padding-left: 37%;
 }

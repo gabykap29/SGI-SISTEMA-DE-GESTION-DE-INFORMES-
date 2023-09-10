@@ -5,9 +5,39 @@ body{
 #btn-submit{
     width: 200px;
 }
-form{
+#formLogin{
     margin-top:85px ;
     border-radius: 5px;
     background-color: white;
 }
 
+*{
+    margin: 0px;
+    padding: 0px;
+    font-size: small;
+}
+#icons{
+    margin-top: 15px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+}
+.aside{
+    box-shadow: 2px 1px 1px 1px rgb(75, 75, 75);
+    background-color: rgb(230, 230, 230);
+    border: 1px solid rgb(196, 196, 196);
+}
+.bgForm{
+    background-color: rgb(238, 237, 237);
+}
+#iconPerson{
+    width: 30px;
+}
+li{
+    border-radius: 10px;
+}
+li:hover{
+    background-color: rgb(211, 211, 211);
+}
+#footerView{
+    background-color: #0a377a;
+}
