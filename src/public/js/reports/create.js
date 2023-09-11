@@ -109,7 +109,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
     Swal.fire({
       icon: 'error',
       title: 'Error!',
-      text: 'Ha ocurrido un error al enviar el formulario'
+      text: 'Ha ocurrido un error al enviar el formulario, por favor, actualice la pagina!'
     });
   }
 });

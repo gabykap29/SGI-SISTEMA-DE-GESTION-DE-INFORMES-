@@ -18,20 +18,20 @@
 
 <body>
   <%- include('./partials/headers-aside.ejs');%>
-  <div class="container col-10 bgForm">
+  <div class=" graficos col-10 bgForm">
     <div class="row">
         <div class="row">
           <div class="col-6">
             <div class="card">
-              <div class="card-body">
+              <div class="contentCanvas">
                 <h4 class="card-title">Informes por Departamento</h4>
                 <canvas class="" id="grafica"></canvas>
               </div>
             </div>
           </div>
-          <div class="col-6 bgForm">
+          <div class="col-6 ">
             <div class="card">
-              <div class="card-body">
+              <div class="contentCanvas">
                 <h4 class="card-title">Informes por fecha</h4>
                 <canvas id="graficaFecha"></canvas>
               </div>
@@ -39,20 +39,19 @@
           </div>
         </div>
       </div>
-      <div class=" bgForm">
         <div class="row">
-          <div class="col-6" id="cardLocal">
+          <div class="col-6" id="">
             <div class="card ">
-              <div class="card-body">
+              <div class="contentCanvas">
                 <h4 class="card-title">Informes por Localidad</h4>
                 <canvas class="" id="graficaLocal"></canvas>
               </div>
             </div>
           </div>
-          <div class=" col-6 bgForm">
-            <div class="" id="cardLocal">
+          <div class=" col-6 ">
+            <div class="" id="">
               <div class="card ">
-                <div class="card-body">
+                <div class="contentCanvas">
                   <h4 class="card-title">Titulos mas utilizados</h4>
                   <canvas class="" id="graficaTotal"></canvas>
                 </div>
@@ -61,9 +60,6 @@
         </div>
         </div>
       </div>
-    </div>
-
-
 </main>
   <%- include('./partials/footer.ejs');%>
   <!-- Bootstrap JavaScript Libraries -->

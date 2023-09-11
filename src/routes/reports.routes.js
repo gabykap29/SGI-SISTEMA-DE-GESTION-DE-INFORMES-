@@ -6,28 +6,53 @@ const isAutenticated = require('../middlewares/autenticate');
 const upload = require('../middlewares/multer');
 const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol');
 const { findDate, findTitle } = require('../controllers/reports/graphics');
-
+const obtenerUsername = require('../helpers/username');
 
 // Vistas
-router.get('/informes/views', isAutenticated ,(req, res) => {
-  res.render('views');
-});
-router.get('/informes/create', isAutenticated, verificarRolUser,(req, res) => {
-  res.render('create');
-});
-router.get('/index', isAutenticated,(req, res) => {
-  res.render('index');
-});
-router.get('/informes/view/:id', isAutenticated,(req, res) => {
-  res.render('view', { id: req.params.id });
-});
-router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin,(req, res) => {
-  res.render('edit', { id: req.params.id });
+router.get('/informes/views', isAutenticated , async (req, res) => {
+  try {
+    const username = await obtenerUsername(req)
+    res.render('views',{username:username});
+  } catch (error) {
+    console.log('error al obtener el username')
+  }
 });
 
-router.get('/informes/graficos',isAutenticated,verificarRolAdmin,(req,res)=>{
-  res.render('graphics/graphics')
-})
+router.get('/informes/create', isAutenticated, verificarRolUser, async(req, res) => {
+  try {
+    const username = await obtenerUsername(req)
+    res.render('create',{username:username});
+  } catch (error) {
+    console.log('error al obtener el username')
+  }
+});
+
+router.get('/index', isAutenticated, async(req, res) => {
+  try {
+    const username = await obtenerUsername(req)
+    res.render('index',{username:username});
+  } catch (error) {
+    console.log('error al obtener el username')
+  }
+});
+
+router.get('/informes/view/:id', isAutenticated,async(req, res) => {
+  try {
+    const username = await obtenerUsername(req)
+    res.render('view',{ id: req.params.id ,username:username});
+  } catch (error) {
+    console.log('error al obtener el username')
+  }
+});
+router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin, async(req, res) => {
+  try {
+    const username = await obtenerUsername(req)
+    res.render('edit',{username:username,id: req.params.id });
+  } catch (error) {
+    console.log('error al obtener el username')
+  }
+});
+
   // Resto de las rutas
 
 

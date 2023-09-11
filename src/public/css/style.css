@@ -18,11 +18,16 @@ body{
 }
 #icons{
     margin-top: 15px;
-    padding-left: 30px;
+    padding-left: 40px;
     padding-bottom: 5px;
 }
+#home{
+    color: white;
+}
+#home:hover{
+    color: #72a7f5;
+}
 .aside{
-    box-shadow: 2px 1px 1px 1px rgb(75, 75, 75);
     background-color: rgb(230, 230, 230);
     border: 1px solid rgb(196, 196, 196);
 }
@@ -40,4 +45,14 @@ li:hover{
 }
 #footerView{
     background-color: #0a377a;
+    position:relative;
+    bottom: 1;
+    width: 100%;
+}
+.graficos .card{
+    width: 90%;
+    margin: 2px;
+}
+.contentCanvas{
+    margin: 10px;
 }
