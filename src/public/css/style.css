@@ -56,3 +56,9 @@ li:hover{
 .contentCanvas{
     margin: 10px;
 }
+.btnGraphics{
+    background-color: #f0bcc3;
+}
+.btnGraphics:hover{
+    background-color: #bb727c;
+}

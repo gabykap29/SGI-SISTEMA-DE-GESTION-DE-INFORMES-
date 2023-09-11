@@ -1,3 +1,7 @@
+const btnDepart = document.getElementById('btnDepart');
+const btnLocal = document.getElementById('btnLocal');
+const btnTitle = document.getElementById('btnTitle');
+const contentCanvas = document.getElementById('contentCanvas');
 document.addEventListener('DOMContentLoaded', async () => {
     // Obtener una referencia al elemento canvas del DOM
     const $grafica = document.querySelector("#grafica");
@@ -91,8 +95,139 @@ new Chart($grafica, {
         },
     }
 });
-//fecha
-const graficaFecha = document.getElementById('graficaFecha');
+});
+ btnDepart.addEventListener('click',  async  ()=>{
+    const $grafica = document.querySelector("#grafica");
+    // Las etiquetas son las que van en el eje X. 
+    const etiquetas = ['Formosa', 'Pilcomayo', 'Pilagas', 'Laishi', 'Pirané', 'Patiño', 'Bermejo', 'Ramon Lista', 'Matacos']
+    const title = document.getElementById('title');
+    title.innerHTML='Informes por Departamento'
+    const obtenerInformes = async () => {
+        const res = await fetch('/api/porDepar');
+        if (res.status === 404) {
+            return [];
+        }
+        const data = await res.json();
+        return data;
+    }
+
+    const data = await obtenerInformes();
+    const cantidadInformes = data.cantidadInformes;
+    let cantidadFormosa = 0;
+    let cantidadPilcomayo = 0;
+    let cantidadPilagas = 0;
+    let cantidadLaishi = 0;
+    let cantPirane = 0;
+    let cantPatiño = 0;
+    let cantidadBermejo = 0;
+    let cantidadRamonLista = 0;
+    let cantidadMatacos = 0;
+    for (const item of cantidadInformes) {
+      switch (item.Departamento) {
+          case 1:
+              cantidadFormosa = item.CantidadInformes;
+              break;
+          case 2:
+              cantidadPilcomayo = item.CantidadInformes;
+              break;
+          case 3:
+              cantidadPilagas = item.CantidadInformes;
+              break;
+          case 4:
+              cantidadLaishi = item.CantidadInformes;
+              break;
+          case 5:
+              cantPirane = item.CantidadInformes;
+              break;
+          case 6:
+              cantPatiño = item.CantidadInformes;
+              break;
+          case 7:
+              cantidadBermejo = item.CantidadInformes;
+              break;
+          case 8:
+              cantidadRamonLista = item.CantidadInformes;
+              break;
+          case 9:
+              cantidadMatacos = item.CantidadInformes;
+              break;
+          default:
+
+              break;
+      }}
+      let cantidades = [cantidadFormosa,
+        cantidadPilcomayo,
+        cantidadPilagas,
+        cantidadLaishi,
+        cantPirane,
+        cantPatiño,
+        cantidadBermejo,
+        cantidadRamonLista,
+        cantidadMatacos]
+        
+const porDepar = {
+    label: "Informes - 2023",
+    data: cantidades,
+    backgroundColor: 'rgba(211, 93, 110, 0.2)',
+    borderColor: 'rgba(211, 93, 110, 1)',
+    borderWidth: 1,
+};
+
+new Chart($grafica, {
+    type: 'bar',
+    data: {
+        labels: etiquetas,
+        datasets: [porDepar]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+        },
+    }
+});
+
+
+});
+btnLocal.addEventListener('click',(e)=>{
+    e.preventDefault();
+    const $grafica = document.querySelector("#grafica");
+    const title = document.getElementById('title');
+
+    title.innerHTML = "<h4>Informes por Localidad</h4>"
+
+const porLocal = {
+    label: 'Localidades',
+    data: [12,33,23,12,35,23],
+    backgroundColor: 'rgba(235, 93, 110, 0.2)',
+    borderColor: 'rgba(211, 93, 110, 1)',
+    borderWidth: 1,
+};
+let labels = ['Formosa', 'Clorinda', 'Pirane', 'S.F.Laishi','Ing. Juarez', 'Vaca Muerta']
+new Chart($grafica , {
+    type: 'polarArea',
+    data: {
+        labels: labels,
+        datasets: [porLocal]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+        },
+    }
+});
+
+});
+btnDate.addEventListener('click', async(e)=>{
+    e.preventDefault();
+    const graficaFecha = document.getElementById('graficaFecha');
 let  fechas = {
     fechaInicio:'2023/01/01',
     fechaFinal: new Date()
@@ -164,7 +299,7 @@ for (const item of dataReport) {
       default:
 
           break;
-  }}
+  }};
   let cant = [Politica,
   Institucional,
   Educacion,
@@ -174,7 +309,10 @@ for (const item of dataReport) {
   Seguridad,
   Climaticos,
   Hidricos]
+  const $grafica = document.querySelector("#grafica");
+  const title = document.getElementById('title');
 
+  title.innerHTML = "<h4>Informes por Fecha</h4>"
   const porDate = {
     label: `periodos: ${fechas.fechaInicio} a ${fechas.fechaFinal}`,
     data: cant,
@@ -183,7 +321,7 @@ for (const item of dataReport) {
     borderWidth: 1,
 };
 
-new Chart(graficaFecha, {
+new Chart($grafica, {
     type: 'line',
     data: {
         labels: meses,
@@ -200,92 +338,69 @@ new Chart(graficaFecha, {
     }
 });
 
-
-//Por localidad
-
-const graficaLocal = document.getElementById('graficaLocal');
-
-const porLocal = {
-    label: 'Localidades',
-    data: [12,33,23,12,35,23],
-    backgroundColor: 'rgba(235, 93, 110, 0.2)',
-    borderColor: 'rgba(211, 93, 110, 1)',
-    borderWidth: 1,
-};
-let labels = ['Formosa', 'Clorinda', 'Pirane', 'S.F.Laishi','Ing. Juarez', 'Vaca Muerta']
-new Chart(graficaLocal , {
-    type: 'polarArea',
-    data: {
-        labels: labels,
-        datasets: [porLocal]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }],
-        },
-    }
+    
 });
-try {
-    const graficaTotal = document.getElementById('graficaTotal');
+btnTitle.addEventListener('click', async(e)=>{
+    e.preventDefault();
+    const $grafica = document.querySelector("#grafica");
+    const title = document.getElementById('title');
+    title.innerHTML = "<h4>Informes por Título</h4>"
 
-    const reportTitle = async () => {
-        const res = await fetch('/api/informes/forTitle');
-        if (res.status === 404) {
-            return [];
+    try {    
+        const reportTitle = async () => {
+            const res = await fetch('/api/informes/forTitle');
+            if (res.status === 404) {
+                return [];
+            }
+    
+            const data = await res.json();
+            return data.title;
         }
-
-        const data = await res.json();
-        return data.title;
-    }
-
-    let etiq = [];
-    let count = [];
-    const reports = await reportTitle();
-    console.log(reports);
-
-    if (Array.isArray(reports)) {
-        for (const item of reports) {
-            etiq.push(item.Titulo);
-            count.push(item.count);
+    
+        let etiq = [];
+        let count = [];
+        const reports = await reportTitle();
+        console.log(reports);
+    
+        if (Array.isArray(reports)) {
+            for (const item of reports) {
+                etiq.push(item.Titulo);
+                count.push(item.count);
+            }
+            console.log(etiq, count);
+        } else {
+            console.error('Los datos recibidos de la API no son un array válido.');
         }
         console.log(etiq, count);
-    } else {
-        console.error('Los datos recibidos de la API no son un array válido.');
-    }
-    console.log(etiq, count);
-
-    const porTitulo = {
-        label: 'Titulo',
-        data: count,
-        backgroundColor: 'rgba(235, 93, 110, 0.2)',
-        borderColor: 'rgba(211, 93, 110, 1)',
-        borderWidth: 1,
-    };
-
-    new Chart(graficaTotal , {
-        type: 'bar',
-        data: {
-            labels: etiq,
-            datasets: [porTitulo]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }],
+    
+        const porTitulo = {
+            label: 'Titulo',
+            data: count,
+            backgroundColor: 'rgba(235, 93, 110, 0.2)',
+            borderColor: 'rgba(211, 93, 110, 1)',
+            borderWidth: 1,
+        };
+    
+        new Chart($grafica , {
+            type: 'bar',
+            data: {
+                labels: etiq,
+                datasets: [porTitulo]
             },
-        }
-    });
-} catch (error) {
-    console.error(error);
-}
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
+            }
+        });
+    } catch (error) {
+        console.error(error);
+    }
+
 
 
 })
-
