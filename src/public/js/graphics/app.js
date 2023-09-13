@@ -98,6 +98,7 @@ new Chart($grafica, {
 });
  btnDepart.addEventListener('click',  async  ()=>{
     const $grafica = document.querySelector("#grafica");
+    $grafica.innerHTML='';
     // Las etiquetas son las que van en el eje X. 
     const etiquetas = ['Formosa', 'Pilcomayo', 'Pilagas', 'Laishi', 'Pirané', 'Patiño', 'Bermejo', 'Ramon Lista', 'Matacos']
     const title = document.getElementById('title');
@@ -193,10 +194,9 @@ new Chart($grafica, {
 
 });
 btnLocal.addEventListener('click',(e)=>{
-    e.preventDefault();
     const $grafica = document.querySelector("#grafica");
     const title = document.getElementById('title');
-
+    $grafica.innerHTML='';
     title.innerHTML = "<h4>Informes por Localidad</h4>"
 
 const porLocal = {
@@ -226,7 +226,6 @@ new Chart($grafica , {
 
 });
 btnDate.addEventListener('click', async(e)=>{
-    e.preventDefault();
     const graficaFecha = document.getElementById('graficaFecha');
 let  fechas = {
     fechaInicio:'2023/01/01',
@@ -311,7 +310,7 @@ for (const item of dataReport) {
   Hidricos]
   const $grafica = document.querySelector("#grafica");
   const title = document.getElementById('title');
-
+  $grafica.innerHTML='';
   title.innerHTML = "<h4>Informes por Fecha</h4>"
   const porDate = {
     label: `periodos: ${fechas.fechaInicio} a ${fechas.fechaFinal}`,
@@ -341,8 +340,8 @@ new Chart($grafica, {
     
 });
 btnTitle.addEventListener('click', async(e)=>{
-    e.preventDefault();
     const $grafica = document.querySelector("#grafica");
+    $grafica.innerHTML='';
     const title = document.getElementById('title');
     title.innerHTML = "<h4>Informes por Título</h4>"
 

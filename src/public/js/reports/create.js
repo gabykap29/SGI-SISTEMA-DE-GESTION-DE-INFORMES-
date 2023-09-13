@@ -8,7 +8,7 @@ btnPeople.addEventListener('click', async (e)=>{
   <div>
   <button class="verMenos" id="verMenos"><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
   </div>
-    <div class="card col-md-5">
+    <div class="card col-5">
       <br>
       <div class="col-md-4">
         <label for="validationCustom01" class="form-label">DNI</label>

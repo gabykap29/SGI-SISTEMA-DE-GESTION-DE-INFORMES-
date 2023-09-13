@@ -165,10 +165,9 @@ document.getElementById('formSearch').addEventListener('submit', async function(
           <td>${Tipo}</td>
           <td>${fecha}</td>
           <td>${informe.Titulo}</td>
-          <td>${informe.Informe}</td>
           <td>
-            <a href="/informes/view/${informe.idInforme}" class="btn btn-outline-primary btn-sm">Ver</a>
-            <a href="/informe/edit/${informe.idInforme}" class="btn btn-outline-success btn-sm">Editar</a>
+            <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm">Ver</a>
+            <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm">Editar</a>
             <button id= "deletebtn" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>
           </td>
         </tr>
