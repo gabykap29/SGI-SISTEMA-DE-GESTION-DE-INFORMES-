@@ -12,9 +12,9 @@ const isAutenticated = async (req, res, next) => {
       if (!user) {
         return next();
       }
-
+      let username = user.username;
       req.user = user;
-      return next();
+      return  next();
     } catch (error) {
       console.log(error);
       return next();

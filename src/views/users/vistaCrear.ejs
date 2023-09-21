@@ -6,77 +6,35 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="/sweetalert/sweetalert2@11"></script>
-  <link rel="stylesheet" href="/css/styleUserCreate.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
-<body>
-    <nav class="navbar navbar-dark bg-dark" aria-label="Dark offcanvas navbar">
-        <div class="container-fluid">
-          <a class="navbar-brand" id="title" href="/index">Sistema de Gestión de Informes</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menú</h5>
-              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Informes
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
-                      <li><a class="dropdown-item" href="/index">Buscar</a></li>
-                      <li><a class="dropdown-item" href="#"></a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Personas
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
-                    <li><a class="dropdown-item" href="/index">Buscar</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Informes" aria-label="Search">
-                <button class="btn btn-success" type="submit">Buscar</button>
-              </form>
-            </div>
+<body class="">
+  <%- include('../partials/headers-aside.ejs');%>
+      <div class="container form-crear col-10 bgForm">
+        
+        <div class="card mt-2 mb-3">
+          <div class="card-body">
+            <h2>Crear Usuario</h2>
           </div>
         </div>
-      </nav>
-      <div class="container form-crear">
-        <h2>Crear Usuario</h2>
-        <form method="POST" class="col-11 col-lg-4 text-start p-4 rounded border border-2 shadow-sm mx-auto gap-2" id="formNuevoUsuario">
-            <div class="col mt-2">
+
+        <form method="POST" class=" d-flex flex-wrap p-4 rounded border border-2 shadow-sm  gap-2 bg-white mb-5" id="formNuevoUsuario">
+            <div class="col-md-5 mt-2  mb-3">
               <label  class="form-label">Apellido <small class="text-danger">(*)</small></label>
               <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Ingrese su apellido" required>
             </div>
-            <div class="col  mt-2">
+            <div class="col-md-5  mt-2 mb-3">
               <label class="form-label">Nombres <small class="text-danger">(*)</small></label>
               <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Ingrese su nombre" required>
             </div>
-            <div class="col  mt-2">
+            <div class="col-md-5  mt-2 mb-3">
               <label class="form-label">Usuario <small class=" text-danger">(*)</small></label>
               <input type="text" class="form-control" name="username" id="username" placeholder="Ingrese su nombre de usuario" required>
             </div>
-            <div class="col  mt-2">
+            <div class="col-md-5  mt-2 mb-3">
               <label class="form-label">Rol <small class=" text-danger">(*)</small></label>
               <select class="form-select" name="rol" id="rol" required>
                 <option value="User">Usuario</option>
@@ -84,35 +42,33 @@
                 <option value="Other">Visualizador</option>
               </select>
             </div>
-            <div class="d-flex gap-2  mt-2">
-              <div class="col">
+
+              <div class="gap-2 col-md-5  mt-2 mb-3">
                 <label class="form-label">Contraseña <small class=" text-danger">(*)</small></label>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese su contraseña" required>
               </div>
-              <div class="col">
-                <label class="form-label">Confirmar Contraseña <small class=" text-danger">(*)</small></label>
-                <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Repetir su contraseña" required>
-              </div>
+
+            <div class="col-md-5 mt-2 mb-3">
+              <label class="form-label">Confirmar Contraseña <small class=" text-danger">(*)</small></label>
+              <input type="password" class="form-control" name="passwordConfirmation" id="passwordConfirmation" placeholder="Repetir su contraseña" required>
             </div>
-              
-            <div class="col my-3">
-              <label class="form-label text-danger">Verifique las credenciales... </label>
-            </div>
-            <div class="col-12">
+            <div class="col-md-8 mb-3">
               <button class="btn btn-primary" type="submit">Guardar</button>
               <button class="btn btn-secondary" type="reset">Borrar formulario</button>
             </div>
           </form>
-
-      </div>
-
+          <br><br><br><br><br>
+      </div>  
+      <%- include('../partials/footer.ejs');%>
 
       <script src="/js/create.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="/popper/popper.min.js">
   </script>
   <script src="/bootstrap/bootstrap.min.js">
-  </script>
+  </script>  
+  <script src="/js/loaded.js"></script>
+  <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
 </body>
 
 </html>

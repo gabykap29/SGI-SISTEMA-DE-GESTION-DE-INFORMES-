@@ -5,8 +5,10 @@ btnPeople.addEventListener('click', async (e)=>{
   e.preventDefault();
   formPeople.innerHTML +=`
   <br>
-    <div class="col-md-5">
-      <button class="verMenos" id="verMenos"><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
+  <div>
+  <button class="verMenos" id="verMenos"><img src="/css/images/menos.png" style="width: 25px;alt="ver menos"></button>
+  </div>
+    <div class="card col-5">
       <br>
       <div class="col-md-4">
         <label for="validationCustom01" class="form-label">DNI</label>
@@ -107,7 +109,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
     Swal.fire({
       icon: 'error',
       title: 'Error!',
-      text: 'Ha ocurrido un error al enviar el formulario'
+      text: 'Ha ocurrido un error al enviar el formulario, por favor, actualice la pagina!'
     });
   }
 });

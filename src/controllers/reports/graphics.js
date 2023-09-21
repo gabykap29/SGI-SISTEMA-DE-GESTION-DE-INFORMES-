@@ -1,4 +1,5 @@
 const { sequelize } = require('../../db');
+const Informe = require('../../models/Informe');
 const Report = require('../../models/Informe');
 const { Op } = require('sequelize');
 const crtlGraphics = {};
@@ -31,5 +32,23 @@ crtlGraphics.findDate= async(req,res)=> {
         console.log(error)
     }
 
+};
+crtlGraphics.findTitle = async (req,res)=>{
+    try {
+        const title = await Informe.findAll({
+           attributes:['Titulo',[sequelize.fn('COUNT',sequelize.col('Titulo')),'count']],
+           group:['Titulo'],
+           order:[[sequelize.literal('count'),'DESC']],
+           limit:6 
+        });
+        if(!title){
+            throw({
+                message:'error al obtener los informes por titulo!'
+            })
+        }
+        return res.json({title});
+    } catch (error) {
+        console.log(error);
+    }
 }
 module.exports = crtlGraphics;

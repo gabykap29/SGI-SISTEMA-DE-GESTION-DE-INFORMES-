@@ -1,0 +1,97 @@
+<div class="m-0 shadow shadow-left " >
+<div class="contenedorCarga" id="onload">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+</div>
+    <div class="row " style="background-color: #0a377a;">
+      <div class="col-2 d-flex header" id="icons" >
+        <a href="/index" id="">
+          <img src="/css/images/iconoLogin.png"  alt="" style="width: 40px;">
+        </a>
+        <div class="mt-1"> <a href="/index" class=""><h4 id="home">SGI</h4></a></div>
+      </div>
+
+    <header class="col-10 " style="background-color:#0a377a;" >
+      <div class="dropdown d-flex justify-content-end px-5 pt-4 mb-4">
+        <a href="#" class="d-flex  align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="/css/images/perfil.png" alt="" width="32" height="32" class="rounded-circle me-2">
+          <strong><%= username %></strong>
+        </a>
+        <ul class="dropdown-menu text-small shadow">
+          <li><a class="dropdown-item" href="#">Modificar</a></li>
+          <li><a class="dropdown-item" href="#">Perfil</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/closeSesion">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="m-0 ">
+      <main>
+        <div class=" m-0">
+          <div class="row bgForm m-0">
+        <aside class="col-md-2 d-flex flex-column justify-content-between aside">
+          <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            </a>
+            <hr>
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle mx-2" href="/index" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                  <img src="/css/images/analisis.png"  alt="" style="width: 35px;"> Dashboard
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item "  href="/index">Departamentos</a></li>
+                  <li><a class="dropdown-item "  href="/informes/graficos/localidades">Localidades</a></li>
+                  <li><a class="dropdown-item " href="/informes/graficos/fecha">Por fecha</a></li>
+                  <li><a class="dropdown-item " href="/informes/graficos/titulo">Por Titulo</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown ">
+                  <a class="nav-link dropdown-toggle mx-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="/css/images/formulario-de-llenado.png" alt="" style="width: 35px;"> Informes
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item"  href="/informes/create">Cargar</a></li>
+                    <li><a class="dropdown-item" href="/informes/views">Filtros</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                  </ul>
+                </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mx-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="/css/images/persona-de-pie.png" alt="" style="width: 35px;"> Personas
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/ver/personas">Buscar</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mx-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="/css/images/personas.png" alt="" style="width: 35px;"> Usuarios
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/view/usuarios">Ver</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <hr>
+          </div>
+          </aside>

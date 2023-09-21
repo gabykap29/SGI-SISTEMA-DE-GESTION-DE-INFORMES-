@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const checkRol = {};
-const Swal = require('sweetalert2');
 
 
 checkRol.verificarRolAdmin = (req,res,next)=>{
