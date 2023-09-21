@@ -53,6 +53,36 @@ router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin, async(req, re
   }
 });
 
+router.get('/informes/graficos/localidades', isAutenticated,async(req,res)=>{
+  try {
+    const username = await obtenerUsername(req)
+    res.render('graphics/forVillages' ,{ username:username})
+  } catch (error) {
+    console.log('Error al obtener el username del usuario!');
+  }
+ 
+});
+
+router.get('/informes/graficos/fecha', isAutenticated,async(req,res)=>{
+  try {
+    const username = await obtenerUsername(req)
+    res.render('graphics/forDate' ,{ username:username})
+  } catch (error) {
+    console.log('Error al obtener el username del usuario!');
+  }
+ 
+});
+router.get('/informes/graficos/titulo', isAutenticated,async(req,res)=>{
+  try {
+    const username = await obtenerUsername(req)
+    res.render('graphics/forTitle' ,{ username:username})
+  } catch (error) {
+    console.log('Error al obtener el username del usuario!');
+  }
+ 
+})
+
+
   // Resto de las rutas
 
 

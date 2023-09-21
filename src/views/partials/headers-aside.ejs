@@ -1,4 +1,16 @@
 <div class="m-0 shadow shadow-left " >
+<div class="contenedorCarga" id="onload">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+</div>
     <div class="row " style="background-color: #0a377a;">
       <div class="col-2 d-flex header" id="icons" >
         <a href="/index" id="">
@@ -32,12 +44,21 @@
             <hr>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item dropdown ">
-                <a class="nav-link toggle" href="/index" >
-                  <img src="/css/images/analisis.png" alt="" style="width: 35px;"> Dashboard
+                <a class="nav-link dropdown-toggle mx-2" href="/index" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                  <img src="/css/images/analisis.png"  alt="" style="width: 35px;"> Dashboard
                 </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item "  href="/index">Departamentos</a></li>
+                  <li><a class="dropdown-item "  href="/informes/graficos/localidades">Localidades</a></li>
+                  <li><a class="dropdown-item " href="/informes/graficos/fecha">Por fecha</a></li>
+                  <li><a class="dropdown-item " href="/informes/graficos/titulo">Por Titulo</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                </ul>
               </li>
               <li class="nav-item dropdown ">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle mx-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="/css/images/formulario-de-llenado.png" alt="" style="width: 35px;"> Informes
                   </a>
                   <ul class="dropdown-menu">
@@ -49,7 +70,7 @@
                   </ul>
                 </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle mx-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="/css/images/persona-de-pie.png" alt="" style="width: 35px;"> Personas
                 </a>
                 <ul class="dropdown-menu">
@@ -60,7 +81,7 @@
                 </ul>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle mx-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="/css/images/personas.png" alt="" style="width: 35px;"> Usuarios
                 </a>
                 <ul class="dropdown-menu">

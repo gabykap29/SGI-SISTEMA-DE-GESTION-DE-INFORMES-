@@ -3,7 +3,7 @@
 
 <head>
   <link rel="icon" href="/css/images/OIG.png">
-  <title>Inicio-SGI</title>
+  <title>Localidades-SGI</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,10 +16,10 @@
 
 </head>
 
-<body class="hidden">
-  <%- include('./partials/headers-aside.ejs');%>
-  <div class=" graficos col-10 bgForm d-flex flex-wrap">
-    <div class="col-12 mb-5">
+<body>
+  <%- include('../partials/headers-aside.ejs');%>
+  <div class=" graficos col-10 bgForm d-flex flex-wrap mb-5">
+    <div class="col-12">
       <div class="card" id="card">
         <div class="contentCanvas col-12" id="contentCanvas">
           <h4 class="card-title" id="title">Informes por Departamento</h4>
@@ -29,13 +29,14 @@
     </div>
       </div>
 </main>
-  <%- include('./partials/footer.ejs');%>
+
+  <%- include('../partials/footer.ejs');%>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="/popper/popper.min.js">
   </script>
   <script src="/bootstrap/bootstrap.min.js"></script>
   <script src="/chart.js/cdn.jsdelivr.net_npm_chart.js@latest_dist_Chart.min.js"></script>
-  <script src="/js/graphics/app.js"></script>
+  <script src="/js/graphics/fecha.js"></script>
   <script src="/js/loaded.js"></script>
   <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
 </body>
