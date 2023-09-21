@@ -2,19 +2,15 @@
 Este es un sistema de gestión creado para realizar la creación, Edición, Visualización y Eliminación de Informes, de distintos tipos..
 Este sistema consta de lo siguiente
 - Login
-!["Login"](./images-Readme/login.PNG)
 - Index
-!["seccion de informes cargados"](./images-Readme/index.PNG)
 - Carga
-!["seccion carga de Informes"](./images-Readme/carga.PNG)
 - Informes cargados con su respectivo filtro
-!["seccion filtros"](./images-Readme/cargados.PNG)
 - Editar
-!["seccion editar"](./images-Readme/editar.PNG)
 - Vista de Informes
-!["seccion vista"](./images-Readme/vista.PNG)
 - Usuarios
-!["seccion usuarios"](./images-Readme/vista.PNG)
+- Roles de Usuarios.
+- Personas.
+- Personas por Informes.
 
 # Requerimientos:
 - Para poder utilizar este sistema, se requiere tener instalado, node v18.17.0, mysql server, xamp para corroborar datos de la base de datos.
