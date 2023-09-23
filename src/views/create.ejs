@@ -90,7 +90,9 @@
                               <label for="exampleFormControlTextarea1" class="form-label"><b>Informe</b></label>
                               <textarea class="form-control input" id="informe" rows="3" style="height:180px;"></textarea>                
                               <div class="mb-1" id="seccionPersonas">
-                                <button class="btn " id="btnPeople"><img id="iconPerson" src="/css/images/agregar-usuario.png" alt=""></button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCategoryCreate" >
+                                  Personas
+                                </button>
                                 <div>
                                   <div class="container">
                                     <div class="row" id="formPeople">
@@ -98,6 +100,47 @@
                                   </div>
                                 </div>
                               </div>
+                              <!--modal-->
+                              <div class="modal fade" id="modalCategoryCreate" tabindex="-1" aria-labelledby="modalCategoryCreateLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="modalCategoryCreateLabel">Personas</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form action="" id="formPerson">
+                                        <div class="mb-3">
+                                          <label for="dni" class="form-label">DNI</label>
+                                          <input type="text" class="form-control" id="dni" name="dni" placeholder="41176787">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="lastName" class="form-label">Apellido</label>
+                                          <input type="text" class="form-control" id="lastName" name="lastName">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="firstName" class="form-label">Nombres</label>
+                                          <input type="text" class="form-control" id="firstName" name="firstName">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="address" class="form-label">Domicilio</label>
+                                          <input type="text" class="form-control" id="address" name="address">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="description" class="form-label">Observaciones</label>
+                                          <textarea class="form-control" id="description" name="description"></textarea>
+                                        </div>
+                                      </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                      <button  id="guardarPersona" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              
+
                               <button class="btn btn-primary" type="submit">Cargar Informe</button>
                               <button class="btn btn-secondary" type="reset">Borrar campos</button>
                             </div>             
