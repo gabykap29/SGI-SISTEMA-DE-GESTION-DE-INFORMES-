@@ -14,34 +14,15 @@
 </head>
 <body>
   <%- include('../partials/headers-aside.ejs');%>
-    <div class="container col-10 bgForm">
-      <div class="card mt-3 mb-3 ">
+    <div class="container col-10 bgForm" style="margin-bottom: 22%;">
+      <div class="card mt-3 mb-3 shadow">
         <div class="card-body">
           <h4 class="card-title">Buscar Personas</h4>
         </div>
       </div>
       <div class="container">
         <div class="row">
-<<<<<<< HEAD
-        <div class="card col-6">
-            <div class="card-body">
-              <h5 class="card-title">Buscar Personas</h5>
-              <div class="">
-                  <div id="">
-                    <br>
-                      <div >
-                        <form id="find" >
-                          <label for="validationDefault01" class="form-label"><b><u>DNI</u></b></label>
-                          <div class="input-group input-group-sm mb-2 col-md-3">
-                            <input  type="text" class="form-control"  id="dni"name="dni" placeholder="32190897"
-                             required>
-                          </div>
-                          <br>
-                          <button class='btn btn-success'>Buscar</button>
-                        </form>
-                      </div>
-=======
-        <div class="card container">
+        <div class="card container shadow">
           <div class="row">
             <div class="card-body col-5">
               <form id="find" >
@@ -63,7 +44,7 @@
             <div class="">
               <div class="container">
               <div class="row">
-                <div class="card col-sm-12">
+                <div class="card col-sm-12 shadow">
                   <div class="card-body">
                     <div class="table-responsive">
                       <div class="">
@@ -81,7 +62,6 @@
                               <tbody  id="registros">
                               </tbody>
                           </table>
->>>>>>> develop
                       </div>
                       
                   </div>
@@ -91,41 +71,9 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-        <br><br>
-        <div class="container">
-          <div class="container">
-          <div class="row">
-            <div class="card col-sm-12">
-              <div class="card-body">
-                <div class="table-responsive">
-                  <div class="">
-                      <table class=" table table-bordered table-hover table-striped" id="tablaInformes">
-                          <thead class="table-primary">
-                              <tr>
-                                  <th>Departamento</th>
-                                  <th>Localidad</th>
-                                  <th>Tipo</th>
-                                  <th>Fecha </th>
-                                  <th>Título </th>
-                                  <th>Informe</th>
-                                  <th>Acciones</th>
-                              </tr>
-                          </thead>
-                          <tbody  id="registros">
-                            <tr>
-                              <td colspan="7" class="text-center">Ingrese un DNI para visualizar los informes</td>
-                          </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-              </div>
-            </div>
-=======
->>>>>>> develop
         </div>
       </main>
+      <%- include('../partials/footer.ejs');%>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="/popper/popper.min.js">
   </script>
