@@ -30,10 +30,6 @@ guardarPersona.addEventListener('click',(e) => {
     icon: 'success',
   });
 
-
-
-
-  console.log(arrayPersonas);
 });
 
 
@@ -51,7 +47,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
 
 
   const formData = new FormData();
-
+  const personsJson = JSON.stringify(arrayPersonas);
   formData.append('Departamento_idDepartamento', Departamento_idDepartamento);
   formData.append('Localidad_idLocalidad', Localidad_idLocalidad);
   formData.append('Tipo_idTipo', Tipo_idTipo);
@@ -60,14 +56,9 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   formData.append('Observaciones', Observaciones);
   formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
   formData.append('Informe', Informe);
+  console.log(arrayPersonas);
+  formData.append('Persons',personsJson);
 
-  arrayPersonas.forEach((input, index) => {
-      formData.append(`persons[${index}][dni]`, input.value);
-      formData.append(`persons[${index}][firstName]`, firstNames[index].value);
-      formData.append(`persons[${index}][lastName]`, lastNames[index].value);
-      formData.append(`persons[${index}][address]`, addresses[index].value);
-      formData.append(`persons[${index}][description]`, descriptions[index].value);
-  });
   try {
     const response = await fetch('/api/informes/create', {
       method: 'POST',

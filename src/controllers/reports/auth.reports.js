@@ -11,8 +11,9 @@ const Usuario = require('../../models/Usuario')
 
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo,
-            Fecha,Observaciones ,Informe,persons /* persons es un array de objetos enviados desde el cliente */  } = req.body;
-    const token = req.cookies.jwt;
+            Fecha,Observaciones ,Informe,Persons /* persons es un array de objetos enviados desde el cliente */  } = req.body;
+    console.log('Esto es lo que recibe',req.body);
+            const token = req.cookies.jwt;
 
     if(!token){
       return res.status(401).json({message:'no hay token en la petición'});
@@ -44,25 +45,28 @@ ctrlReports.create = async (req, res) => {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
       }
-      for (const personData of persons) {
-        const {
-            dni,
-            firstName,
-            lastName,
-            address,
-            description
-        } = personData;
-        
-        const [person, created] = await Person.findOrCreate({
-            where: { dni },
-            defaults: {
-                firstName,
-                lastName,
-                address,
-                description
-            }
-        });
-    await informe.addInformePerson(person);}
+      console.log('Este es el array',Persons[0]);
+      const personsArray = JSON.parse(Persons);
+
+        for (let i = 0; i < personsArray.length; i++) {
+            let dni = personsArray[i].dni;
+            let firstName = personsArray[i].firstNames; // Corregido a "firstNames"
+            let lastName = personsArray[i].lastNames;   // Corregido a "lastNames"
+            let address = personsArray[i].addresses;
+            let description = personsArray[i].descriptions; // Corregido a "descriptions"
+    
+            const [person, created] = await Person.findOrCreate({
+                where: { dni },
+                defaults: {
+                    firstName,
+                    lastName,
+                    address,
+                    description
+                }
+            });
+            await informe.addInformePerson(person);
+        }
+
       return res.json(informe);
     }catch (error) {
       console.error(error);
