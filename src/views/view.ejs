@@ -9,88 +9,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="/bootstrap/bootstrap.min.css" media="print" rel="stylesheet">
   <link href="/bootstrap/bootstrap.min.css"  rel="stylesheet">
-  <link rel="stylesheet"  media="print" href="/css/style-cargarInforme.css">
-  <link rel="stylesheet"  href="/css/style-cargarInforme.css">
+  <link rel="stylesheet"  href="/css/style.css">
 
 <script src="/sweetalert/sweetalert2@11"></script>
 <script src="/dayjs/dayjs.min.js"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-dark header" aria-label="Dark offcanvas navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" id="title" href="/index">Sistema de Gestión de Informes</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarDark" aria-controls="offcanvasNavbarDark" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbarDark" aria-labelledby="offcanvasNavbarDarkLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarDarkLabel">Menú</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Informes
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/informes/create">Cargar</a></li>
-                  <li><a class="dropdown-item" href="/informes/views">Filtros</a></li>
-                  <li><a class="dropdown-item" href="#">Gráficos</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                </ul>
-              </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Personas
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/personas/buscar">Buscar</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Usuarios
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/view/usuarios">Ver</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Informes" aria-label="Search">
-            <button class="btn btn-success" type="submit">Buscar</button>
-          </form>
-          
-        </div>
-        <div id="btn-close">
-          <a href="/closeSesion" class="btn btn-danger">Cerrar Sesión</a>
-        </div>
+  <%- include('./partials/headers-aside.ejs');%>
+  <div class="container col-10" style="background-color: rgb(233, 233, 233); ;" >
+    <div class="card mt-2 shadow">
+      <div class="card-body ">
+        <h2> Informe Completo </h2>
       </div>
     </div>
-  </nav>
-  <main>
-    <br>
-    <div class="container" id="info">
+      <div class="row">
+        <div class="col-6">
+          <div class=" mt-4">
+            <div class="card-body" style="background-color: rgb(233, 233, 233);">
+              <div class="card shadow">
+                <div class="container m-3" id="titles">
+                  <!-- Contenido del div #titles -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="card rounded bg-black shadow" id="imagen">
+            <!-- Contenido del div #imagen -->
+            <img src="/css/images/imagen-no-disponible.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card mt-4 shadow">
+            <div class="m-3 d-flex justify-content-center" id="titleReport">
+              <!-- Contenido del div #titleReport -->
+            </div>
+            <div class="container d-flex align-items-center justify-content-center" id="informeView">
+              <!-- Contenido del div #informe -->
+            </div>
+          </div>
+          <div class="mb-5" style="background-color: rgb(233, 233, 233);">
+            <br><br><br>
+      </div>
+        </div>
+
     </div>
-  </main>
-  <button class="btn btn-outline-secondary btn-imprimir" id="btn-Imprimir"><img id="img-imprimir" src="/css/images/imprimir.png" alt=""></button>
-  <br><br>
+</main>
+
   <%- include('./partials/footer.ejs');%>
   </div>
 
-  <!--scripts Localidades-->
-  <!-- <script src="/js/app.js"></script> -->
-  <!-- <script src="/js/reports/create.js" ></script> -->
   <script src="/js/reports/obtener.js"></script>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="/popper/popper.min.js">

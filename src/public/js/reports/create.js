@@ -23,11 +23,13 @@ guardarPersona.addEventListener('click',(e) => {
     addresses:addresses,
     descriptions:descriptions,
   }
+ 
   arrayPersonas.push(person);
+  console.log(arrayPersonas);
   Swal.fire({
     icon: 'success',
   });
-  formPerson.reset();
+
 
 
 

@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 clases.add('col-12');
             } else {
                 aside.style.display = 'block';
-                let canvasContent = document.querySelector('.graficos.col-9');
+                let canvasContent = document.querySelector('.graficos.col-12');
                 let clases = canvasContent.classList;
                 clases.remove('col-12');
                 clases.add('col-9');

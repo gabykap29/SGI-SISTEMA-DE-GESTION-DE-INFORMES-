@@ -81,6 +81,10 @@ const obtenerImagen = (rutaImagen) => {
 
         // Funcion para obtener los datos de la reserva cuando se carga la página
         document.addEventListener('DOMContentLoaded', async () => {
+            const titles = document.getElementById('titles');
+            const informe = document.getElementById('informeView');
+            const tituloInforme = document.getElementById('titleReport');
+            const imagenDiv = document.getElementById('imagen')
             //capturar el id desde la url
             const url = window.location.href;
             const parts = url.split('/');
@@ -93,26 +97,29 @@ const obtenerImagen = (rutaImagen) => {
                 let Tipo = tipo[data.Tipo_idTipo]
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
                 let imagen = obtenerImagen(data.RutaImagen);
-                Info.innerHTML += `
-                <section id="seccionInforme">
-                  <div class="Informe-Completo ">
-                    <div id="tituloInfo"><h5><u>${data.Titulo}</u></h5></div>
-                    <br>
-                      <div id="departamento"><p><b>Departamento:</b> ${Departamento}</p></div>
-                      <div id="localidad"><p><b>Localidad:</b> ${Localidad}</p></div>
-                    <div id="fecha"><p><b>Fecha:</b> ${fecha}</p></div>
-                    <div id= "tipo"><p><b>Tipo:</b>  ${Tipo}</p></div>
-                    <div class="Informe">
-                        <p><b>Infome: </b></p>
-                        <p>${data.Informe}</p>
-                        </div>
-                        <div class='container div-imagen'>${imagen}</div> <!-- Mostrar la imagen -->
-                        <div "><p class="observaciones">${data.Observaciones}</p></div>
-                        <div><p>Creado por: ${data.usuario}</p></div>
-                    </div>
-                </section>
+                titles.innerHTML += `
+                  <h5 class="mx-2 mb-4"> <b>  Departamento: </b> ${Departamento}</h5>
+                  <h5 class="mx-2 mb-4"> <b> Localidad:</b> ${Localidad}<h5>
+                  <h5 class="mx-2 mb-4"> <b> Fecha: </b> ${fecha}</h5>
+                  <h5 class="mx-2 mb-4"> <b> Tipo: </b> ${Tipo}</h5>
+            </div>`;
+            tituloInforme.innerHTML=`
+            <h2> <u>${data.Titulo}</u></h2>
+            `
+            informe.innerHTML= `
+            <p >
+            ${data.Informe}
+            <br>
+            <br>
+            </p>`;
 
-                        `;
+            if(imagen){
+              imagenDiv.innerHTML = `
+              ${imagen}
+              `
+            }
+
+
             });
             btnImprimir.addEventListener('click', () => {
               // Ocultar el botón de impresión para que no se imprima en el documento.

@@ -95,8 +95,7 @@
       transform: rotate(360deg);
     }
   }
-
-body{
+  body{
     background-color: rgb(238, 238, 238);
 
 }
@@ -118,8 +117,10 @@ body{
     margin-top: 15px;
     padding-left: 40px;
     padding-bottom: 5px;
-}#aside{
+    }
+#aside{
   background-color: white;
+  bottom: 1;
 }
 #home{
     color: white;
@@ -157,5 +158,12 @@ li{
   height: 5%;
 }
 /*      
-  Media Query
+  vista de informe
 */
+#informeView{
+    padding-right: 10px;
+    margin-bottom: 33%;
+}
+#imagen{
+  margin-top: 10px;
+}
