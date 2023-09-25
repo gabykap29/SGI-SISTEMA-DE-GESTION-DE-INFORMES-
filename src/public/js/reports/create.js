@@ -2,12 +2,10 @@ const formNuevoInforme = document.getElementById('formNuevoInforme');
 const formPeople = document.getElementById('formPeople');
 const btnPeople = document.getElementById('btnPeople')
 const guardarPersona = document.getElementById('guardarPersona');
-
 let arrayPersonas = [];
 
-
 guardarPersona.addEventListener('click',(e) => {
-  e.preventDefault()
+  e.preventDefault();
   
   const formPerson = document.getElementById('formPerson');
   const dni = document.getElementById('dni').value;
@@ -15,7 +13,6 @@ guardarPersona.addEventListener('click',(e) => {
   const lastNames = document.getElementById('lastName').value;
   const addresses = document.getElementById('address').value;
   const descriptions = document.getElementById('description').value;
-
   const person = {
     dni:dni,
     firstNames:firstNames,
@@ -25,7 +22,7 @@ guardarPersona.addEventListener('click',(e) => {
   }
  
   arrayPersonas.push(person);
-  console.log(arrayPersonas);
+  
   Swal.fire({
     icon: 'success',
   });
@@ -44,8 +41,6 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   const Titulo = document.getElementById('titulo').value;
   const Observaciones = document.getElementById('observaciones').value
   const Informe = document.getElementById('informe').value;
-
-
   const formData = new FormData();
   const personsJson = JSON.stringify(arrayPersonas);
   formData.append('Departamento_idDepartamento', Departamento_idDepartamento);
