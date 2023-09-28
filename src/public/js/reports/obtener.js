@@ -1,5 +1,8 @@
 const Info = document.getElementById('info');
-const btnImprimir = document.getElementById('btn-Imprimir');
+const cargarPersona = document.getElementById('cargarPersona');
+const cantPersonas = document.getElementById('cantPersonas');
+const personas = document.getElementById('personas');
+let cant = 0;
 const obtenerImagen = (rutaImagen) => {
   if (rutaImagen) {
     // Construye la URL completa de la imagen utilizando el origen del sitio web y la ruta de la imagen
@@ -77,8 +80,6 @@ const obtenerImagen = (rutaImagen) => {
             "Hidricos"
         ]
           
-
-
         // Funcion para obtener los datos de la reserva cuando se carga la página
         document.addEventListener('DOMContentLoaded', async () => {
             const titles = document.getElementById('titles');
@@ -92,6 +93,7 @@ const obtenerImagen = (rutaImagen) => {
           
             const response = await fetch(`/api/informe/${id}`);
             const data = await response.json();
+                cant = data.informePersons.length;
                 let Departamento = departamento[data.Departamento_idDepartamento];
                 let Localidad = localidad[data.Localidad_idLocalidad]
                 let Tipo = tipo[data.Tipo_idTipo]
@@ -116,24 +118,90 @@ const obtenerImagen = (rutaImagen) => {
             if(imagen){
               imagenDiv.innerHTML = `
               ${imagen}
+              <p style="color: rgb(233, 233, 233);>${data.Observaciones}</p>
+              `
+            }
+                cant = data.informePersons.length;
+                cantPersonas.innerHTML = `<h6>Personas Cargadas: ${cant}</h6>`
+            console.log(data);
+            for(let i = 0; i< data.informePersons.length; i++){
+              let fecha = dayjs(data.informePersons[i].fechaNac).format('DD/MM/YYYY');
+              personas.innerHTML += `
+              <tr>
+              <td>${data.informePersons[i].dni}</td>
+              <td>${data.informePersons[i].lastName}</td>
+              <td>${data.informePersons[i].firstName}</td>
+              <td>${fecha}</td>
+              <td>${data.informePersons[i].address}</td>
+            </tr>
+              
               `
             }
 
-
-            });
-            btnImprimir.addEventListener('click', () => {
-              // Ocultar el botón de impresión para que no se imprima en el documento.
-              document.getElementById("btn-Imprimir").style.display = "none";
-            
-              // Obtener el contenido del div con id "info".
-              let contenido = document.getElementById("info").innerHTML;
-              document.querySelector('.navbar').style.display = 'none';
-              window.print();
-
-            
-              // Mostrar nuevamente el botón de impresión.
-              document.getElementById("btn-Imprimir").style.display = "block";
-              document.querySelector('.navbar').style.display = '';
             });
             
+const formPerson = document.getElementById('formPerson');
 
+formPerson.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+              //capturar el id desde la url
+              const url = window.location.href;
+              const parts = url.split('/');
+              const id = parts[parts.length - 1];
+
+
+  const dni = document.getElementById('dni').value;
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const address = document.getElementById('address').value;
+  const descriptions = document.getElementById('description').value;
+  const fechaNac = document.getElementById('fechaNac').value;
+
+try {
+  const res = await fetch(`/api/informe/${id}/persons`,{
+          method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+              dni,
+              firstName,
+              lastName,
+              address,
+              descriptions,
+              fechaNac
+            }),
+          });
+          Swal.fire({
+              icon:'success',
+              title: 'Persona cargada con éxito!',
+              message: res.message
+          });
+          formPerson.reset();
+          const ress = await fetch(`/api/informe/${id}`);
+          const dat = await ress.json();
+              cant = dat.informePersons.length;
+              cantPersonas.innerHTML = `<h6>Personas Cargadas: ${cant}</h6>`
+              for(let i = 0; i< dat.informePersons.length; i++){
+                let fecha = dayjs(daa.informePersons[i].fechaNac).format('DD/MM/YYYY');
+                personas.innerHTML += `
+                <tr>
+                <td>${dat.informePersons[i].dni}</td>
+                <td>${dat.informePersons[i].lastName}</td>
+                <td>${dat.informePersons[i].firstName}</td>
+                <td>${fecha}</td>
+                <td>${dat.informePersons[i].address}</td>
+              </tr>
+                
+                `
+              }
+        
+} catch (error) {
+  console.log(error);
+  Swal.fire({
+    icon:'error',
+    title: 'Error interno del servidor!',
+});
+}
+});

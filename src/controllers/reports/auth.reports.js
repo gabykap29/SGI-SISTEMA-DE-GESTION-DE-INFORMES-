@@ -1,6 +1,7 @@
 const ctrlReports = {};
 const jwt = require('jsonwebtoken');
 const Report = require('../../models/Informe');
+const Informe = require('../../models/Informe');
 const Person = require('../../models/Person');
 const Departamento = require('../../models/Departamento');
 const Localidad = require('../../models/Localidad');
@@ -45,44 +46,29 @@ ctrlReports.create = async (req, res) => {
           mesagge: 'Favor, verifique todos los campos esten completos.'
         };
       }
-      console.log('Este es el array',Persons[0]);
-      const personsArray = JSON.parse(Persons);
-
-        for (let i = 0; i < personsArray.length; i++) {
-            let dni = personsArray[i].dni;
-            let firstName = personsArray[i].firstNames; // Corregido a "firstNames"
-            let lastName = personsArray[i].lastNames;   // Corregido a "lastNames"
-            let address = personsArray[i].addresses;
-            let description = personsArray[i].descriptions; // Corregido a "descriptions"
-    
-            const [person, created] = await Person.findOrCreate({
-                where: { dni },
-                defaults: {
-                    firstName,
-                    lastName,
-                    address,
-                    description
-                }
-            });
-            await informe.addInformePerson(person);
-        }
-
       return res.json(informe);
     }catch (error) {
       console.error(error);
       return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
     }};
 
-
-
 //Obtener un INFORME
 
 ctrlReports.Read = async (req, res) => {
     const { id } = req.params;
     try {
-      const informe = await Report.findByPk(id);
-      const idUser = informe.id_IdUser;
-
+      const informe = await Informe.findOne(
+        {
+            where:{ 
+            idInforme:id, 
+        },
+        include:[{
+            model:Person,
+            as:'informePersons'
+        }]
+    }
+    )
+    const idUser = informe.id_IdUser;
       const usuario = await Usuario.findByPk(idUser)
       if (!informe) {
         throw {
@@ -103,7 +89,7 @@ ctrlReports.Read = async (req, res) => {
         RutaImagen: rutaImagen,
         usuario: usuario.username
       };
-  
+
       return res.json(informeConImagen);
     } catch (error) {
       console.log(error);

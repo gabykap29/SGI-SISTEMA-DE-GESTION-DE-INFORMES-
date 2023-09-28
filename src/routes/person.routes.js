@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const isAutenticated = require('../middlewares/autenticate');
-const { findDni } = require('../controllers/person/auth.person');
+const { findDni, create } = require('../controllers/person/auth.person');
 const obtenerUsername = require('../helpers/username');
 
 router.get('/ver/personas', isAutenticated,async(req,res)=>{
@@ -14,5 +14,6 @@ router.get('/ver/personas', isAutenticated,async(req,res)=>{
   });
   //api
 router.post('/api/find/person',isAutenticated,findDni );
+router.post('/api/informe/:id/persons',isAutenticated,create);
 
 module.exports = router;
