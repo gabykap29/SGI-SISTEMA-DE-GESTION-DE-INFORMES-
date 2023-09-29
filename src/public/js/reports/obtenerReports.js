@@ -24,7 +24,7 @@ const mostrarInformes = (informes) => {
     if(informes.length === 0){
         listadoInformes.innerHTML = `
             <tr>
-                <td colspan="3" class="text-center">No hay tareas registradas</td>
+                <td colspan="6" class="text-center">No hay informes cargados!</td>
             </tr>
         `;
         return;
@@ -184,6 +184,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         eliminarInforme(idInforme);
       });
     });
+
+    const url = window.location.href;
+    const parts = url.split('/');
+    const id = parts[parts.length - 1];
+
+
+    if(id != null || undefined){
+
+
+
+      
+    }
+
+
   } catch (error) {
     console.log({ error });
 

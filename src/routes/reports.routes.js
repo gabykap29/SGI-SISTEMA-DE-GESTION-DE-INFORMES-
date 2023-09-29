@@ -80,10 +80,18 @@ router.get('/informes/graficos/titulo', isAutenticated,async(req,res)=>{
     console.log('Error al obtener el username del usuario!');
   }
  
+});
+
+router.get('/informes/:id', async (req,res)=>{
+  try {
+    const username = await obtenerUsername(req)
+    res.render('views' ,{ username:username ,id: req.params.id});
+  } catch (error) {
+    console.log('Error al obtener el username del usuario!');
+  }
+ 
 })
 
-
-  // Resto de las rutas
 
 
 // APIs

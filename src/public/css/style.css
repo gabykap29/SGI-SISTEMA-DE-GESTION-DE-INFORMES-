@@ -176,12 +176,24 @@ li{
 /*   Inicio   */
 
 .tarjetas{
-  height: 120px;
+width: 320px;
+height: 130px;
 }
 
-.tarjetas:hover{
+.cardDiv:hover{
   background: #b1b1b1;
 }
 a{
   text-decoration: none;
+}
+a:hover{
+  color:grey
+}
+
+.cardDiv{
+  border-radius: 15px 50px;
+}
+
+#user{
+  color: #0A58C8;
 }

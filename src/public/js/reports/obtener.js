@@ -100,10 +100,10 @@ const obtenerImagen = (rutaImagen) => {
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
                 let imagen = obtenerImagen(data.RutaImagen);
                 titles.innerHTML += `
-                  <h5 class="mx-2 mb-4"> <b>  Departamento: </b> ${Departamento}</h5>
-                  <h5 class="mx-2 mb-4"> <b> Localidad:</b> ${Localidad}<h5>
-                  <h5 class="mx-2 mb-4"> <b> Fecha: </b> ${fecha}</h5>
-                  <h5 class="mx-2 mb-4"> <b> Tipo: </b> ${Tipo}</h5>
+                  <h5 class="mx-2 mb-4">   Departamento:  ${Departamento}</h5>
+                  <h5 class="mx-2 mb-4">  Localidad: ${Localidad}<h5>
+                  <h5 class="mx-2 mb-4">  Fecha:  ${fecha}</h5>
+                  <h5 class="mx-2 mb-4">  Tipo:  ${Tipo}</h5>
             </div>`;
             tituloInforme.innerHTML=`
             <h2> <u>${data.Titulo}</u></h2>
