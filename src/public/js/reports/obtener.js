@@ -85,7 +85,7 @@ const obtenerImagen = (rutaImagen) => {
             const titles = document.getElementById('titles');
             const informe = document.getElementById('informeView');
             const tituloInforme = document.getElementById('titleReport');
-            const imagenDiv = document.getElementById('imagen')
+            const imagenDiv = document.getElementById('imagen');
             //capturar el id desde la url
             const url = window.location.href;
             const parts = url.split('/');
@@ -118,7 +118,7 @@ const obtenerImagen = (rutaImagen) => {
             if(imagen){
               imagenDiv.innerHTML = `
               ${imagen}
-              <p style="color: rgb(233, 233, 233);>${data.Observaciones}</p>
+              <div class="d-flex justify-content-center align-items-center"><span id="Observaciones">${data.Observaciones}</span> </div>
               `
             }
                 cant = data.informePersons.length;
@@ -175,16 +175,18 @@ try {
           });
           Swal.fire({
               icon:'success',
-              title: 'Persona cargada con éxito!',
-              message: res.message
+              title: 'Persona cargada con éxito!'
+
           });
           formPerson.reset();
           const ress = await fetch(`/api/informe/${id}`);
           const dat = await ress.json();
               cant = dat.informePersons.length;
               cantPersonas.innerHTML = `<h6>Personas Cargadas: ${cant}</h6>`
+              personas.innerHTML = "";
               for(let i = 0; i< dat.informePersons.length; i++){
-                let fecha = dayjs(daa.informePersons[i].fechaNac).format('DD/MM/YYYY');
+                let fecha = dayjs(dat.informePersons[i].fechaNac).format('DD/MM/YYYY');
+
                 personas.innerHTML += `
                 <tr>
                 <td>${dat.informePersons[i].dni}</td>

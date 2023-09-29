@@ -167,3 +167,21 @@ li{
 #imagen{
   margin-top: 10px;
 }
+
+#Observaciones{
+  color: rgb(0, 0, 0);
+}
+
+
+/*   Inicio   */
+
+.tarjetas{
+  height: 120px;
+}
+
+.tarjetas:hover{
+  background: #b1b1b1;
+}
+a{
+  text-decoration: none;
+}

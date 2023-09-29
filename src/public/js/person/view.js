@@ -133,6 +133,7 @@ formFind.addEventListener('submit', async(e)=>{
  
             ;
         };
+        let fechaNac = dayjs(res.Fecha).format('DD/MM/YYYY');
         seccionBuscar.innerHTML = `<div class='container'>
                                         <div class='row'>
                                             <div class='col-md-3'>
@@ -142,7 +143,8 @@ formFind.addEventListener('submit', async(e)=>{
                                                 <p><b><u>Nombre y Apellido:</u></b> ${res.firstName} ${res.lastName}</p>
                                                 <p><b><u>Documento:</u></b> ${res.dni}</p>
                                                 <p><b><u>Domicilio:</u></b> ${res.address}</p>
-                                                <p><b><u>Observaciones:</u></b> ${res.description}</p>
+                                                <p><b><u>Fecha de Nacimiento:</u></b> ${fechaNac}</p>
+                                                <p><b><u>Observaciones:</u></b> ${res.description || "-"}</p>
                                             </div>
                                         </div>
                                     </div>

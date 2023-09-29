@@ -21,7 +21,7 @@ crtlPerson.findDni = async (req,res)=>{
         if (!person){
             return res.status(401).json({message:'no hay token en la petición'});
           }
-        return res.json(person);
+        return res.status(201).json(person);
 
     } catch (error) {
         console.log(error);
