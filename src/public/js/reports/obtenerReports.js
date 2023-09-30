@@ -1,7 +1,7 @@
 const listadoInformes = document.querySelector('#registros');
 
 const obtenerInformes = async () => {
-    const res = await fetch('/api/informes', {
+    const res = await fetch(`/api/informes`, {
     });
 
     if(res.status === 404 ) {
@@ -24,7 +24,7 @@ const mostrarInformes = (informes) => {
     if(informes.length === 0){
         listadoInformes.innerHTML = `
             <tr>
-                <td colspan="3" class="text-center">No hay tareas registradas</td>
+                <td colspan="6" class="text-center">No hay informes cargados!</td>
             </tr>
         `;
         return;
@@ -174,16 +174,49 @@ const eliminarInforme = async (idInforme) => {
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const informes = await obtenerInformes();
-    mostrarInformes(informes);
 
-    const deleteButton = document.querySelectorAll('.eliminar-informe');
-    deleteButton.forEach((boton) => {
-      boton.addEventListener('click', (event) => {
-        const idInforme = obtenerIdInforme(event.target);
-        eliminarInforme(idInforme);
+    const url = window.location.href;
+    const parts = url.split('/');
+    const id = parts[parts.length - 1];
+    let confirmarId = parseInt(id); 
+    if(confirmarId){
+      const informesDepar = async ()=>{
+        const res = await fetch(`/api/filtrar?departamentoId=${id}`, {
+        });
+    
+        if(res.status === 404 ) {
+            return [];
+        }
+    
+        const data = await res.json();
+        return data;
+      }
+
+
+      const informes = await informesDepar();
+      mostrarInformes(informes);
+  
+      const deleteButton = document.querySelectorAll('.eliminar-informe');
+      deleteButton.forEach((boton) => {
+        boton.addEventListener('click', (event) => {
+          const idInforme = obtenerIdInforme(event.target);
+          eliminarInforme(idInforme);
+        });
       });
-    });
+      
+    }else{
+      
+      const informes = await obtenerInformes();
+      mostrarInformes(informes);
+  
+      const deleteButton = document.querySelectorAll('.eliminar-informe');
+      deleteButton.forEach((boton) => {
+        boton.addEventListener('click', (event) => {
+          const idInforme = obtenerIdInforme(event.target);
+          eliminarInforme(idInforme);
+        });
+      });
+    }
   } catch (error) {
     console.log({ error });
 

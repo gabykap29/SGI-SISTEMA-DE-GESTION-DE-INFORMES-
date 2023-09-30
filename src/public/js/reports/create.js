@@ -1,39 +1,9 @@
 const formNuevoInforme = document.getElementById('formNuevoInforme');
 const formPeople = document.getElementById('formPeople');
 const btnPeople = document.getElementById('btnPeople')
-const guardarPersona = document.getElementById('guardarPersona');
-let arrayPersonas = [];
-
-guardarPersona.addEventListener('click',(e) => {
-  e.preventDefault();
-  
-  const formPerson = document.getElementById('formPerson');
-  const dni = document.getElementById('dni').value;
-  const firstNames = document.getElementById('firstName').value;
-  const lastNames = document.getElementById('lastName').value;
-  const addresses = document.getElementById('address').value;
-  const descriptions = document.getElementById('description').value;
-  const person = {
-    dni:dni,
-    firstNames:firstNames,
-    lastNames:lastNames,
-    addresses:addresses,
-    descriptions:descriptions,
-  }
- 
-  arrayPersonas.push(person);
-  
-  Swal.fire({
-    icon: 'success',
-  });
-
-});
-
-
 
 formNuevoInforme.addEventListener('submit', async (e) => {
   e.preventDefault();
-
   const Departamento_idDepartamento = document.getElementById('selecDepartamento').value;
   const Localidad_idLocalidad = document.getElementById('selecLocalidad').value;
   const Tipo_idTipo = document.getElementById('tipo').value;
@@ -42,7 +12,6 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   const Observaciones = document.getElementById('observaciones').value
   const Informe = document.getElementById('informe').value;
   const formData = new FormData();
-  const personsJson = JSON.stringify(arrayPersonas);
   formData.append('Departamento_idDepartamento', Departamento_idDepartamento);
   formData.append('Localidad_idLocalidad', Localidad_idLocalidad);
   formData.append('Tipo_idTipo', Tipo_idTipo);
@@ -51,9 +20,6 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   formData.append('Observaciones', Observaciones);
   formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
   formData.append('Informe', Informe);
-  console.log(arrayPersonas);
-  formData.append('Persons',personsJson);
-
   try {
     const response = await fetch('/api/informes/create', {
       method: 'POST',

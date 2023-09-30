@@ -35,7 +35,7 @@
             </div>
           </div>
           <br>
-          <div class="card rounded bg-black shadow" id="imagen">
+          <div class="card rounded shadow" id="imagen">
             <!-- Contenido del div #imagen -->
             <img src="/css/images/imagen-no-disponible.jpg" alt="">
           </div>
@@ -48,8 +48,87 @@
             <div class="container d-flex align-items-center justify-content-center" id="informeView">
               <!-- Contenido del div #informe -->
             </div>
+            <!--modal-->
+            <div class="modal fade" id="modalCategoryCreate" tabindex="-1" aria-labelledby="modalCategoryCreateLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalCategoryCreateLabel">Personas</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="" id="formPerson">
+                  <div class="modal-body">
+
+                      <div class="mb-3">
+                        <label for="dni" class="form-label">DNI</label>
+                        <input type="text" class="form-control" id="dni" name="dni" placeholder="41176787">
+                      </div>
+                      <div class="mb-3">
+                        <label for="lastName" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName">
+                      </div>
+                      <div class="mb-3">
+                        <label for="firstName" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName">
+                      </div>
+                      <div class="mb-3">
+                        <label for="address" class="form-label">Domicilio</label>
+                        <input type="text" class="form-control" id="address" name="address">
+                      </div>
+                      <div class="mb-3">
+                        <label for="address" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNac" name="fechaNac">
+                      </div>
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Observaciones</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-secondary" type="reset">Borrar Campos</button>
+                    <button  id="cargarPersona" type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="mb-5" style="background-color: rgb(233, 233, 233);">
+            <div class="card shadow mt-2">
+              <div class="card-body">
+                <div class="mb-1" id="seccionPersonas">
+                  <div id="cantPersonas"></div>
+                  <div class="container table table-responsive">
+                    <div class="table-responsive">
+                      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCategoryCreate" >
+                        Agregar personas
+                       </button>
+                          <table class=" table table-bordered table-hover table-striped mt-2" id="tablaInformes">
+                              <thead class="table-primary">
+                                  <tr>
+                                      <th>DNI</th>
+                                      <th>Apellido</th>
+                                      <th>Nombress</th>
+                                      <th>Fecha de Nac. </th>
+                                      <th>Domicilio </th>
+                                  </tr>
+                              </thead>
+                              <tbody  id="personas">
+                    
+                              </tbody>
+                          </table>
+                  </div>
+                  </div>
+                  <div>
+                    <div class="container">
+                      <div class="row" id="formPeople">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <br><br><br>
       </div>
         </div>

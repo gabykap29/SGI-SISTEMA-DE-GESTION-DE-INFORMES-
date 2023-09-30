@@ -167,3 +167,34 @@ li{
 #imagen{
   margin-top: 10px;
 }
+
+#Observaciones{
+  color: rgb(0, 0, 0);
+}
+
+
+/*   Inicio   */
+
+.tarjetas{
+width: 300px;
+height: 130px;
+}
+
+.cardDiv:hover{
+  background: #b1b1b1;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color:grey
+}
+
+.cardDiv{
+  border-radius: 15px 50px;
+}
+
+#user{
+  color: #0A58C8;
+}

@@ -28,7 +28,11 @@ const Person = sequelize.define('Person', {
     description: {
         type: DataTypes.STRING,
         allowNull: true,
-    }
+    },
+    fechaNac:{
+        type: DataTypes.DATE,
+        allowNull:true,
+    },
 }, {
     sequelize,
     paranoid: true,

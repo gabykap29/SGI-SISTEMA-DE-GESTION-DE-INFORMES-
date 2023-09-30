@@ -1,18 +1,11 @@
 const crtlPerson = {};
-const jwt = require('jsonwebtoken');
 const Person = require('../../models/Person');
-const Usuario = require('../../models/Usuario');
 const Informe = require('../../models/Informe');
 
 //BUscar personas
 crtlPerson.findDni = async (req,res)=>{
     const {dni} = req.body;
 
-    const token = req.cookies.jwt;
-
-    if(!token){
-      return res.status(401).json({message:'no hay token en la petición'});
-    }
     try {
         const person = await Person.findOne(
             {
@@ -28,11 +21,50 @@ crtlPerson.findDni = async (req,res)=>{
         if (!person){
             return res.status(401).json({message:'no hay token en la petición'});
           }
-        return res.json(person);
+        return res.status(201).json(person);
 
     } catch (error) {
         console.log(error);
         return res.json({status:500, message:'Error interno en el servidor'})
     }
+};
+
+crtlPerson.create = async (req,res)=>{
+    console.log(req.body);
+    const {dni,
+        firstName,
+        lastName,
+        address,
+        description,
+        fechaNac,} = req.body;
+        const {id} = req.params;
+
+        try {
+            const informe = await Informe.findByPk(id);
+
+            if(!dni && !lastName && !firstName){
+                throw({
+                    status:400,
+                    message:'El campo dni, nombre y apellido son obligatorios!'
+                })
+            };
+            
+            const [person, created] = await Person.findOrCreate({
+                where: { dni },
+                defaults: {
+                    firstName,
+                    lastName,
+                    address,
+                    description,
+                    fechaNac
+                }
+            });
+            console.log(person);
+            await informe.addInformePerson(person);
+            return res.status(201).json({message:'Persona creadas con éxito'});
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({message:"Error interno del servidor!"});
+        }
 }
 module.exports = crtlPerson;

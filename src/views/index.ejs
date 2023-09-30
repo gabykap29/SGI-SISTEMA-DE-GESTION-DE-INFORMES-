@@ -18,22 +18,65 @@
 
 <body>
   <%- include('./partials/headers-aside.ejs');%>
-  <div class="graficos col-9 bgForm d-flex flex-wrap" id="contentCanvas">
-    <div class="card shadow">
+  <div class="graficos col-10 bgForm " style="padding-bottom: 12%;">
+    <div class="card shadow mt-3 mb-3">
       <div class="card-body">
-        <h4 class="card-title">Dashboard</h4>
+        <h2>Informes por Departamento</h2>
       </div>
     </div>
-    <div class="col-12 mb-5">
-      <div class="card shadow" id="card">
-        <div class="contentCanvas col-12" >
-          <h4 class="card-title container" id="title">Informes por Departamento</h4>
-          <canvas class="" id="grafica"></canvas>
+      <div class="d-flex flex-wrap col-12" >
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center text-decoration cardDiv">
+            <a href="/informes/1" class="m-5"><h4>Formosa</h4></a>
+          </div>
         </div>
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+            <a href="/informes/2" class="m-5"><h4>Pilcomayo</h4></a>
+          </div>
+        </div>
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+            <a href="/informes/3" class="m-5"><h4>Laishi</h4></a>
+          </div>
+        </div>
+        <br>
+        <div class=" m-3 tarjetas" >
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+            <a href="/informes/4" class="m-5"><h4>Pilagás</h4></a>
+          </div>
+        </div>
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+            <a href="/informes/5" class="m-5"><h4>Pirané</h4></a>
+          </div>
+        </div>
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+            <a href="/informes/6" class="m-5"><h4>Patiño</h4></a>
+          </div>
+        </div>
+        <br>
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+            <a href="/informes/7" class="m-5"><h4>Bermejo</h4></a>
+          </div>
+        </div>
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+           <a href="/informes/8" class="m-5"><h4> Ramon Lista</h4></a>
+          </div>
+        </div>
+        <div class=" m-3 tarjetas">
+          <div class="card shadow  justify-content-center align-items-center cardDiv">
+            <a href="/informes/9" class="m-5"><h4>Matacos</h4></a>
+          </div>
+        </div>       
       </div>
-    </div>
 
-      </div>
+
+
+  </div>
 
 </main>
   <%- include('./partials/footer.ejs');%>
