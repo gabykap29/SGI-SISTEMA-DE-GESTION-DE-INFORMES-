@@ -173,12 +173,23 @@ try {
               fechaNac
             }),
           });
-          Swal.fire({
+          //si hubo errores en la peticion el si sistema devolverá un error 400
+          if(!res.ok){
+            Swal.fire({
+              icon:'error',
+              title: 'El campo dni debe ser un número!, evite usar puntos!',
+            })
+          }else{
+            Swal.fire({
               icon:'success',
               title: 'Persona cargada con éxito!'
 
           });
           formPerson.reset();
+          };
+
+
+
           const ress = await fetch(`/api/informe/${id}`);
           const dat = await ress.json();
               cant = dat.informePersons.length;

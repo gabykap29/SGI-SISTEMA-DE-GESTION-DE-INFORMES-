@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <link rel="icon" href="/css/images/OIG.png">
+  <title>SGI-Usuarios</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/sweetalert/sweetalert2@11"></script>
+<script src="/dayjs/dayjs.min.js"></script>
+</head>
+
+<body>
+  <%- include('../partials/headers-aside.ejs');%>
+    <div class="container col-10 bgForm" style="margin-bottom: 23%;">
+      <div class="card mt-3 mb-2">
+        <div class="card-body">
+          <div class="container d-flex ">
+            <h4>Usuarios del Sistema</h4>
+          </div>
+        </div>
+      </div>
+      <div class="card ">
+        <div class="card-body">
+          <div class="row mt-1 table-responsive ">
+            <div class="col">
+              <a href="/view/usuarios/create" class="btn btn-success mb-2">Crear Usuario</a>
+                <table class="table table-bordered table-hover bg-white ">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>Función</th>
+                            <th>Fecha de creación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody  id="usuarios">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </main>
+  <%- include('../partials/footer.ejs');%>
+  <script src="/popper/popper.min.js">
+  </script>
+  <script src="/js/users/obtenerUsuarios.js"></script>
+  <script src="/bootstrap/bootstrap.min.js">
+  </script>
+    <script src="/js/loaded.js"></script>
+    <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+</body>
+
+</html>

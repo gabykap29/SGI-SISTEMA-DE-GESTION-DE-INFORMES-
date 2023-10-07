@@ -48,7 +48,11 @@ crtlPerson.create = async (req,res)=>{
                     message:'El campo dni, nombre y apellido son obligatorios!'
                 })
             };
-            
+            let comprobarDni = parseInt(dni);
+            if(!comprobarDni){
+                return res.status(400).json({message:'El campo dni debe ser un número, evite usar puntos!'});
+            }
+
             const [person, created] = await Person.findOrCreate({
                 where: { dni },
                 defaults: {
@@ -67,4 +71,6 @@ crtlPerson.create = async (req,res)=>{
             return res.status(500).json({message:"Error interno del servidor!"});
         }
 }
+
+
 module.exports = crtlPerson;

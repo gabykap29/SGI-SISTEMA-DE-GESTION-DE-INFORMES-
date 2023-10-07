@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const isAutenticated = require('../middlewares/autenticate');
-const { findDni, create } = require('../controllers/person/auth.person');
+const { findDni, create, update } = require('../controllers/person/auth.person');
 const obtenerUsername = require('../helpers/username');
+const { verificarRolUser } = require('../middlewares/checkRol');
 
 router.get('/ver/personas', isAutenticated,async(req,res)=>{
   try {
