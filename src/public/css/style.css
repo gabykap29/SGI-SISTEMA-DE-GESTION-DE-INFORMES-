@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 .hidden{
     overflow: hidden;
@@ -197,4 +196,14 @@ a:hover{
 
 #user{
   color: #0A58C8;
+}
+/*
+Vista del perfil
+*/ 
+
+#usern{
+  margin-top: 55px;
+}
+#imgProfile{
+  margin-left: 60px;
 }

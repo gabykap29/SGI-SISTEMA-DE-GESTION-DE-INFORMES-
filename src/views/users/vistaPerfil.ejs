@@ -17,46 +17,37 @@
 
 <body>
   <%- include('../partials/headers-aside.ejs');%>
-    <div class="container col-10 bgForm" style="margin-bottom: 23%;">
-      <div class="card mt-3 mb-2">
-        <div class="card-body">
-          <div class="container d-flex ">
-            <h4>Usuarios del Sistema</h4>
-          </div>
-        </div>
-      </div>
-      <div class="card ">
-        <div class="card-body">
-          <div class="row mt-1 table-responsive ">
-            <div class="col">
-              <a href="/view/usuarios/create" class="btn btn-success mb-2">Crear Usuario</a>
-                <table class="table table-bordered table-hover bg-white ">
-                    <thead class="table-success">
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Apellido</th>
-                            <th>Nombre</th>
-                            <th>Función</th>
-                            <th>Fecha de creación</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody  id="usuarios">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        </div>
+  <div class="col-10 bgForm" style="margin-bottom: 20%;" >
+    <div class="card shadow m-1">
+      <div class="card-body">
+        <h4 class="card-title">Perfil de Usuario</h4>
       </div>
     </div>
+
+        <div class="row bg-white border shadow pb-5  d-flex m-2">
+            <div class="col-4 py-2">
+              <img id="imgProfile"src="/css/images/perfil.png" style="width: 70%;" alt="">
+            </div>
+            <div class="col-6 bg-white py-2">
+                  <h6 class="" id="usern">Usuario: No disponible</h6>
+                  <h6 class="mt-4" id="nameComplete">Apellido y nombre: No disponible</h6>
+                  <h6 class="mt-4" id="role">Rol: No disponible</h6>
+                  <h6 class="mt-4" id="createAt">Fecha de creacion:No disponible</h6>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center">
+              <a href="/usuario/edit/<%= uid %>" class="btn btn-outline-secondary" id="btnEdit">Modificar</a>
+            </div>
+</div>
+</div>
   </div>
   </main>
   <%- include('../partials/footer.ejs');%>
   <script src="/popper/popper.min.js">
   </script>
-  <script src="/js/users/obtenerUsuarios.js"></script>
   <script src="/bootstrap/bootstrap.min.js">
   </script>
+  <script src="/js/users/profileShow.js" ></script>
     <script src="/js/loaded.js"></script>
     <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
 </body>

@@ -1,3 +1,9 @@
+const itemsUser = document.querySelectorAll(".itemsUser");
+const selecTipo = document.getElementById('tipo');
+const divTipo = document.getElementById('divTipo');
+
+
+
 let departamentOption = document.getElementById('selecDepartamento');
     // Obtener la fecha actual
 departamentOption.addEventListener('change',()=>{
@@ -120,7 +126,24 @@ departamentOption.addEventListener('change',()=>{
     else{
         alert("Error: Por favor, elija un Departamento de la lista!")
     }
+});
+
+selecTipo.addEventListener('change',()=>{
+    let setValue = selecTipo.value;
+
+    if(setValue == "10"){
+        divTipo.innerHTML = `
+        <label for="validationTooltip02" class="form-label"><b>Tipo</b></label>
+        <input type="text" class="form-control input" id="tipo" value="" required>
+        `
+    }
+
 })
+
 let fechaActual = new Date().toISOString().split("T")[0];
 // Asignar la fecha actual al campo de fecha
 document.getElementById("fecha").value = fechaActual;
+
+document.addEventListener('DOMContentLoaded',()=>{
+    
+})

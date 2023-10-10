@@ -75,6 +75,7 @@ authCtrl.login = async (req, res) => {
     res.cookie('jwt', token, cookiesOptions);
     res.cookie('rol', usuarioEncontrado.rol, cookiesOptions);
     res.cookie('user',usuarioEncontrado.username);
+    res.cookie('uid',usuarioEncontrado.id);
     res.json({
       message: 'Login Correcto',
       token,

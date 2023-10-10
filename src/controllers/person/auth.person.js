@@ -63,7 +63,6 @@ crtlPerson.create = async (req,res)=>{
                     fechaNac
                 }
             });
-            console.log(person);
             await informe.addInformePerson(person);
             return res.status(201).json({message:'Persona creadas con éxito'});
         } catch (error) {

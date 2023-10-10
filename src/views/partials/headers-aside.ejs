@@ -11,6 +11,25 @@
       <div></div>
     </div>
 </div>
+
+
+<% if (rol!= "Moderate" && rol!= "User"){%>
+  <style>
+      .itemsUser{
+        display: none;
+      }
+  </style>
+  <% } %>
+
+  <% if (rol!= "Moderate"){%>
+    <style>
+        .itemsAdmin{
+          display: none;
+        }
+    </style>
+    <% } %>
+
+
     <div class="row " >
       <header class="p-3 text-bg-dark shadow" id="Headers">
         <div class="container">
@@ -23,7 +42,7 @@
               <li><a href="/index" class="nav-link px-2 text-secondary">Home</a></li>
               <li><a href="/informes/views" class="nav-link px-2 text-white">Informes</a></li>
               <li><a href="/ver/personas" class="nav-link px-2 text-white">Personas</a></li>
-              <li><a href="/view/usuarios" class="nav-link px-2 text-white">Usuarios</a></li>
+              <li><a href="/view/usuarios" class="nav-link px-2 text-white itemsAdmin ">Usuarios</a></li>
               <li><a href="#" class="nav-link px-2 text-white">About</a></li>
             </ul>
     
@@ -39,7 +58,7 @@
                 </a>
                 <ul class="dropdown-menu text-small ">
                   <li><a class="dropdown-item" href="#">Modificar</a></li>
-                  <li><a class="dropdown-item" href="#">Perfil</a></li>
+                  <li><a class="dropdown-item" href="/usuarios/<%= uid %>/show">Perfil</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="/closeSesion">Cerrar sesión</a></li>
                 </ul>
@@ -82,7 +101,7 @@
                           <img src="/css/images/formulario-de-llenado.png" alt="" style="width: 35px;"> Informes
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item"  href="/informes/create">Cargar</a></li>
+                          <li><a class="dropdown-item itemsUser"  href="/informes/create">Cargar</a></li>
                           <li><a class="dropdown-item" href="/informes/views">Filtros</a></li>
                           <li>
                             <hr class="dropdown-divider">
@@ -101,11 +120,11 @@
                       </ul>
                     </li>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle mx-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <a class="nav-link dropdown-toggle mx-2 itemsAdmin" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="/css/images/personas.png" alt="" style="width: 35px;"> Usuarios
                       </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/view/usuarios">Ver</a></li>
+                      <ul class="dropdown-menu ">
+                        <li><a class="dropdown-item itemsAdmin" href="/view/usuarios">Ver</a></li>
                         <li>
                           <hr class="dropdown-divider">
                         </li>

@@ -84,24 +84,13 @@ const mostrarInformes = (informes) => {
         "El Potrillo",
         "Ing. Juarez"
       ];
-    let tipo = [
-        null, 
-        "Politica", 
-        "Institucional", 
-        "Educación",
-        "Religioso",
-        "Proselitismo",
-        "Salud",
-        "Seguridad",
-        "Eventos Climáticos",
-        "Hídricos"
-    ]
       
 
     informes.forEach(informe => {
+      console.log(informe)
         let Departamento = departamento[informe.Departamento_idDepartamento];
         let Localidad = localidad[informe.Localidad_idLocalidad]
-        let Tipo = tipo[informe.Tipo_idTipo]
+        let Tipo = informe.Informes.nombre
         let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
         listadoInformes.innerHTML += `
                     <tr>

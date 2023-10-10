@@ -11,8 +11,9 @@ const Usuario = require('../../models/Usuario')
 // Crear un Informe
 
 ctrlReports.create = async (req, res) => {
-    const { Departamento_idDepartamento, Localidad_idLocalidad, Tipo_idTipo, Titulo,
-            Fecha,Observaciones ,Informe,Persons /* persons es un array de objetos enviados desde el cliente */  } = req.body;
+    const { Departamento_idDepartamento, Localidad_idLocalidad, Titulo,
+            Fecha,Observaciones ,Informe} = req.body;
+    let {Tipo_idTipo} = req.body;
     console.log('Esto es lo que recibe',req.body);
             const token = req.cookies.jwt;
 
@@ -30,6 +31,17 @@ ctrlReports.create = async (req, res) => {
         // Si se ha cargado una imagen, obtener la ruta relativa de la imagen
         rutaImagen =  req.file.filename;
       }
+      //Si el usuario ingresa un tipo personalizado y 
+      if(Tipo_idTipo.length !== 2){
+        const [tipo, created] = await Tipo.findOrCreate({
+          where:{nombre: Tipo_idTipo},
+          defaults:{
+            nombre: Tipo_idTipo
+          }
+        });
+        Tipo_idTipo = tipo.idTipo;
+      };
+
       const informe = await Report.create({
         Departamento_idDepartamento,
         Localidad_idLocalidad,
@@ -43,7 +55,7 @@ ctrlReports.create = async (req, res) => {
       });
       if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !Informe){
         throw {
-          mesagge: 'Favor, verifique todos los campos esten completos.'
+          message: 'Favor, verifique todos los campos esten completos.'
         };
       }
       return res.json(informe);
@@ -65,6 +77,9 @@ ctrlReports.Read = async (req, res) => {
         include:[{
             model:Person,
             as:'informePersons'
+        },{
+          model:Tipo,
+          as:'Informes'
         }]
     }
     )
@@ -104,6 +119,9 @@ ctrlReports.readsAll = async (req, res)=>{
         const informes = await Report.findAll({
             where: {
                 estado:true,
+            },include:{
+              model:Tipo,
+              as:'Informes'
             },
           limit:20,
           order: [['createdAt', 'DESC']],

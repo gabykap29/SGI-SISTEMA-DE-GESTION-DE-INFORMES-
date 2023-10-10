@@ -11,13 +11,15 @@ const {
     userDelete
 } = require('../controllers/auth/user');
 
-const {verificarRolAdmin} = require('../middlewares/checkRol');
+const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol');
 
 
 router.get('/view/usuarios', isAutenticated,verificarRolAdmin,async(req,res)=>{
     try {
         const username = await obtenerUsername(req)
-        res.render('users/vistaUsuario',{username:username});
+        const rol = req.cookies.rol;
+        const uid = req.cookies.uid;
+        res.render('users/vistaUsuario',{username:username, uid,rol});
       } catch (error) {
         console.log('error al obtener el username')
       }
@@ -25,8 +27,10 @@ router.get('/view/usuarios', isAutenticated,verificarRolAdmin,async(req,res)=>{
 
 router.get('/view/usuarios/create',isAutenticated,verificarRolAdmin,async(req,res)=>{
     try {
-        const username = await obtenerUsername(req)
-        res.render('users/vistaCrear',{username:username});
+        const username = await obtenerUsername(req);
+        const rol = req.cookies.rol;
+        const uid = req.cookies.uid;
+        res.render('users/vistaCrear',{username:username,uid,rol});
       } catch (error) {
         console.log('error al obtener el username')
       }
@@ -34,19 +38,30 @@ router.get('/view/usuarios/create',isAutenticated,verificarRolAdmin,async(req,re
 
 router.get('/usuario/edit/:id',isAutenticated, verificarRolAdmin,async(req,res)=>{
     try {
-        const username = await obtenerUsername(req)
-        res.render(('users/vistaEditar'),{ id: req.params.id ,username:username});
+        const username = await obtenerUsername(req);
+        const rol = req.cookies.rol;
+        const uid = req.cookies.uid;
+        res.render(('users/vistaEditar'),{ id: req.params.id ,username:username,uid,rol});
       } catch (error) {
         console.log('error al obtener el username')
       }
 });
-
+router.get('/usuarios/:id/show',isAutenticated, async(req,res)=>{
+  try {
+    const rol = req.cookies.rol;
+    const username = await obtenerUsername(req);
+    const uid = req.cookies.uid;
+    res.render(('users/vistaPerfil'),{username:username,uid, rol})
+  } catch (error) {
+    
+  }
+})
 
 
 //APIS
 router.put('/api/usuario/delete/:id',isAutenticated,userDelete);
 router.get('/api/usuarios', isAutenticated,verificarRolAdmin,usersRead);
-router.get('/api/usuario/:id',isAutenticated,verificarRolAdmin,userRead);
+router.get('/api/usuario/:id',isAutenticated,userRead);
 router.put('/api/usuario/:id',isAutenticated,verificarRolAdmin,userUpdate);
 router.post('/api/create',verificarRolAdmin,verificarRolAdmin,create);
 

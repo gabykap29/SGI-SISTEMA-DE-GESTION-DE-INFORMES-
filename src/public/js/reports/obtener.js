@@ -67,18 +67,6 @@ const obtenerImagen = (rutaImagen) => {
             "El Potrillo",
             "Ing. Juarez"
           ];
-        let tipo = [
-            null, 
-            "Politica", 
-            "Institucional", 
-            "Educación",
-            "Religioso",
-            "Proselitismo",
-            "Salud",
-            "Seguridad",
-            "Eventos Climáticos",
-            "Hidricos"
-        ]
           
         // Funcion para obtener los datos de la reserva cuando se carga la página
         document.addEventListener('DOMContentLoaded', async () => {
@@ -96,7 +84,7 @@ const obtenerImagen = (rutaImagen) => {
                 cant = data.informePersons.length;
                 let Departamento = departamento[data.Departamento_idDepartamento];
                 let Localidad = localidad[data.Localidad_idLocalidad]
-                let Tipo = tipo[data.Tipo_idTipo]
+                let Tipo = data.Informes.nombre;
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
                 let imagen = obtenerImagen(data.RutaImagen);
                 titles.innerHTML += `
