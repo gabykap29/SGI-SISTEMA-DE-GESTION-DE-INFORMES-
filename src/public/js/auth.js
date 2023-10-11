@@ -18,12 +18,12 @@ formLogin.addEventListener('submit', async(e)=>{
         const {message}= await response.json();
         return Swal.fire('Error',message, 'error');
     }
-    const {message,token} = await response.json();
+    const {message} = await response.json();
     Swal.fire('Correcto', message,'success');
-    localStorage.setItem('token',token);
-
     setTimeout(()=>{
         window.location.href='/index';
     },2000);
 
 })
+
+///Aministrador

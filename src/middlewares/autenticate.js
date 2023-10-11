@@ -2,8 +2,6 @@ const Usuario = require('../models/Usuario');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
-
-
 const isAutenticated = async (req, res, next) => {
   if (req.cookies.jwt) {
     try {

@@ -103,18 +103,6 @@ formFind.addEventListener('submit', async(e)=>{
             "El Potrillo",
             "Ing. Juarez"
           ];
-          let tipo = [
-            null, 
-            "Politica", 
-            "Institucional", 
-            "Educación",
-            "Religioso",
-            "Proselitismo",
-            "Salud",
-            "Seguridad",
-            "Eventos Climáticos",
-            "Hídricos"
-        ]
         if(!res.informePersons){
             seccionBuscar.innerHTML = '';
             registros.innerHTML='';
@@ -153,7 +141,7 @@ formFind.addEventListener('submit', async(e)=>{
         res.informePersons.forEach(informe =>{
             let Departamento = departamento[informe.Departamento_idDepartamento];
             let Localidad = localidad[informe.Localidad_idLocalidad]
-            let Tipo = tipo[informe.Tipo_idTipo]
+            let Tipo = informe.Informes.nombre;
             let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
             registros.innerHTML += `
             <tr>

@@ -111,7 +111,6 @@ const obtenerImagen = (rutaImagen) => {
             }
                 cant = data.informePersons.length;
                 cantPersonas.innerHTML = `<h6>Personas Cargadas: ${cant}</h6>`
-            console.log(data);
             for(let i = 0; i< data.informePersons.length; i++){
               let fecha = dayjs(data.informePersons[i].fechaNac).format('DD/MM/YYYY');
               personas.innerHTML += `

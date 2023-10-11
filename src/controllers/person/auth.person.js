@@ -1,6 +1,7 @@
 const crtlPerson = {};
 const Person = require('../../models/Person');
 const Informe = require('../../models/Informe');
+const Tipo = require('../../models/Tipo');
 
 //BUscar personas
 crtlPerson.findDni = async (req,res)=>{
@@ -14,7 +15,10 @@ crtlPerson.findDni = async (req,res)=>{
             },
             include:{
                 model:Informe,
-                as:'informePersons'
+                as:'informePersons',include:{
+                    model:Tipo,
+                    as:'Informes'
+                }
             }
         }
         )

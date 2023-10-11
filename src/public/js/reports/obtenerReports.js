@@ -90,7 +90,7 @@ const mostrarInformes = (informes) => {
       console.log(informe)
         let Departamento = departamento[informe.Departamento_idDepartamento];
         let Localidad = localidad[informe.Localidad_idLocalidad]
-        let Tipo = informe.Informes.nombre
+        let Tipo = informe.Informes.nombre;
         let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
         listadoInformes.innerHTML += `
                     <tr>

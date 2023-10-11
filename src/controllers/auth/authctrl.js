@@ -5,7 +5,7 @@ const { generarJWT } = require('../../helpers/generar_jwt');
 const authCtrl = {};
 const MAX_FAILED_LOGIN_ATTEMPTS = 3;
 const LOCK_TIME = 10 * 60 * 1000;
-var intentos = 0;
+let intentos = 0;
 
 authCtrl.login = async (req, res) => {
   const { username, password } = req.body;
@@ -65,7 +65,7 @@ authCtrl.login = async (req, res) => {
       where: { id: usuarioEncontrado.id }
     });
 
-    // Resto del código para el inicio de sesión exitoso y la generación del token...
+    // inicio de sesión exitoso y la generación del token...
     const token = await generarJWT(usuarioEncontrado.id, usuarioEncontrado.rol);
     const cookiesOptions = {
       expires: new Date(Date.now() + process.env.CookiesExpireIn * 24 * 60 * 1000),
@@ -92,6 +92,8 @@ authCtrl.login = async (req, res) => {
 authCtrl.closeSesion = async (req, res) => {
   res.clearCookie('jwt');
   res.clearCookie('rol');
+  res.clearCookie('user');
+  res.clearCookie('uid');
   return res.redirect('/login');
 };
 

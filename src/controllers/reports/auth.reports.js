@@ -32,7 +32,7 @@ ctrlReports.create = async (req, res) => {
         rutaImagen =  req.file.filename;
       }
       //Si el usuario ingresa un tipo personalizado y 
-      if(Tipo_idTipo.length !== 2){
+      if(Tipo_idTipo.length > 2){
         const [tipo, created] = await Tipo.findOrCreate({
           where:{nombre: Tipo_idTipo},
           defaults:{
