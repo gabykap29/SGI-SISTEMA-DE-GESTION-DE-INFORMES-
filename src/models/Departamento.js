@@ -28,9 +28,6 @@ Departamento.hasMany(Informe, {
     foreignKey: 'Departamento_idDepartamento',
     as: 'Localidad',
   });
-console.log(Departamento);
-
-
 (async () => {
     try {
         await sequelize.sync()

@@ -18,7 +18,12 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   formData.append('Fecha', Fecha);
   formData.append('Titulo', Titulo);
   formData.append('Observaciones', Observaciones);
-  formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
+  const filesInput = document.getElementById('rutaImagen');
+  const files = filesInput.files;
+  
+  for (let i = 0; i < files.length; i++) {
+    formData.append('rutaImagen', files[i]);
+  }
   formData.append('Informe', Informe);
   try {
     const response = await fetch('/api/informes/create', {

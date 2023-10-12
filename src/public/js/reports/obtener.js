@@ -2,17 +2,23 @@ const Info = document.getElementById('info');
 const cargarPersona = document.getElementById('cargarPersona');
 const cantPersonas = document.getElementById('cantPersonas');
 const personas = document.getElementById('personas');
+const Observaciones = document.getElementById('Observaciones');
 let cant = 0;
+const divImagen = document.getElementById('imagem');
+ const firstImg = document.getElementById('firstImg');
+ const secondtImg = document.getElementById('secondtImg');
+ const thirdImg = document.getElementById('thirdImg');
+ const fourtImg = document.getElementById('fourtImg');
+ const fifthImg = document.getElementById('fifthImg');
 const obtenerImagen = (rutaImagen) => {
   if (rutaImagen) {
     // Construye la URL completa de la imagen utilizando el origen del sitio web y la ruta de la imagen
     const imageURL = window.location.origin + '/uploads/' + rutaImagen;
-    return `<img src="${imageURL}" class="container" alt="Imagen del informe" id="Img-Info">`;
+    return imageURL;
   } else {
     return '';
   }
 };
-  
         let departamento = [null, 'Formosa','Pilcomayo','Pilagas','Laishi','Pirané','Patiño','Bermejo', 'Ramon Lista', 'Matacos'];
         let localidad = [
             null,
@@ -86,7 +92,6 @@ const obtenerImagen = (rutaImagen) => {
                 let Localidad = localidad[data.Localidad_idLocalidad]
                 let Tipo = data.Informes.nombre;
                 let fecha = dayjs(data.Fecha).format('DD/MM/YYYY');
-                let imagen = obtenerImagen(data.RutaImagen);
                 titles.innerHTML += `
                   <h5 class="mx-2 mb-4">   Departamento:  ${Departamento}</h5>
                   <h5 class="mx-2 mb-4">  Localidad: ${Localidad}<h5>
@@ -102,13 +107,42 @@ const obtenerImagen = (rutaImagen) => {
             <br>
             <br>
             </p>`;
-
-            if(imagen){
-              imagenDiv.innerHTML = `
-              ${imagen}
-              <div class="d-flex justify-content-center align-items-center"><span id="Observaciones">${data.Observaciones}</span> </div>
-              `
+            if(data.Files.length >0){
+              for(let i = 0; i < data.Files.length; i++){
+                const imagen = obtenerImagen(data.Files[i].filesRoute);
+                Observaciones.innerHTML= `${data.Observaciones}`
+                
+                switch (i){
+                  case 0:{
+                    firstImg.src = imagen;
+                    console.log('entro aqui');
+                    break;
+                  }
+                  case 1:{
+                    secondtImg.src = imagen;
+                    console.log('entro aqui');
+                    break;
+                  }
+                  case 2:{
+                    thirdImg.src =  imagen;
+                    console.log('entro aqui');
+                    break;
+                  }
+                  case 3:{
+                    fourtImg.src = imagen;
+                    console.log('entro aqui');
+                    break;
+                  }
+                  case 4:{
+                    fifthImg.src = imagen;
+                    console.log('entro aqui');
+                    break;
+                  }
+                }
+              }
+              
             }
+
                 cant = data.informePersons.length;
                 cantPersonas.innerHTML = `<h6>Personas Cargadas: ${cant}</h6>`
             for(let i = 0; i< data.informePersons.length; i++){

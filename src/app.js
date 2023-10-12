@@ -18,7 +18,9 @@ app.use(express.static('public'));
 
 //guardar todas las peticiones al servidor en un archivo de texto
 const accessLogStream = fs.createWriteStream('access.log', { flags: 'a' });
-
+if(!fs.existsSync(__dirname + '/public/uploads')){
+  fs.mkdirSync(__dirname + '/public/uploads')
+}
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));

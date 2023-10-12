@@ -6,7 +6,8 @@ const Person = require('../../models/Person');
 const Departamento = require('../../models/Departamento');
 const Localidad = require('../../models/Localidad');
 const Tipo = require('../../models/Tipo');
-const Usuario = require('../../models/Usuario')
+const Usuario = require('../../models/Usuario');
+const Files = require('../../models/Files');
 
 // Crear un Informe
 
@@ -14,23 +15,19 @@ ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Titulo,
             Fecha,Observaciones ,Informe} = req.body;
     let {Tipo_idTipo} = req.body;
-    console.log('Esto es lo que recibe',req.body);
-            const token = req.cookies.jwt;
 
+//---------Se pide el token por si hacen peticiones directamente a las rutas ----------------------
+    const token = req.cookies.jwt;
     if(!token){
       return res.status(401).json({message:'no hay token en la petición'});
     }
+
     try {
       //obtener id de usuario
       const decoded = jwt.verify(token,process.env.SECRET_KEY);
       const id = decoded.id
+      let rutaImagen =[];  // Variable para almacenar la ruta de la imagen
 
-      let rutaImagen  // Variable para almacenar la ruta de la imagen
-    
-      if (req.file) {
-        // Si se ha cargado una imagen, obtener la ruta relativa de la imagen
-        rutaImagen =  req.file.filename;
-      }
       //Si el usuario ingresa un tipo personalizado y 
       if(Tipo_idTipo.length > 2){
         const [tipo, created] = await Tipo.findOrCreate({
@@ -48,7 +45,6 @@ ctrlReports.create = async (req, res) => {
         Tipo_idTipo,
         Titulo,
         Fecha,
-        RutaImagen: rutaImagen,
         Observaciones,   // Asignar la ruta de la imagen a la propiedad RutaImagen
         Informe,
         id_IdUser:id,
@@ -58,6 +54,20 @@ ctrlReports.create = async (req, res) => {
           message: 'Favor, verifique todos los campos esten completos.'
         };
       }
+      let filesIds = [];
+      if (req.files) {
+        for(const file of req.files){
+          console.log(file);
+          rutaImagen.push(file.filename);
+          const newFile = await Files.create({
+            filesRoute: `${file.filename}`
+          })
+          filesIds.push(newFile.idFiles)
+
+        }
+    }
+    await informe.addFiles(filesIds)
+
       return res.json(informe);
     }catch (error) {
       console.error(error);
@@ -80,7 +90,11 @@ ctrlReports.Read = async (req, res) => {
         },{
           model:Tipo,
           as:'Informes'
-        }]
+        },{
+          model:Files,
+          as:'Files'
+        }
+      ]
     }
     )
     const idUser = informe.id_IdUser;

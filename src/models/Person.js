@@ -9,9 +9,8 @@ const Person = sequelize.define('Person', {
         primaryKey: true,
     },
     dni: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(10),
         allowNull: true,
-        unique: true
     },
     firstName: {
         type: DataTypes.STRING,

@@ -1,6 +1,7 @@
 const {sequelize, DataTypes} = require('../db');
 const Person = require('./Person')
 const InformePerson = require('./InformePerson')
+const Files = require('./Files')
 const Informe = sequelize.define('Informe',{
     idInforme: {type: DataTypes.INTEGER,
         primaryKey:true, 
@@ -37,9 +38,13 @@ const Informe = sequelize.define('Informe',{
         type: DataTypes.STRING,
         allowNull:false
      },
-     RutaImagen:{
-        type:DataTypes.STRING,
-        allowNull:true
+     filesId:{
+        type:DataTypes.INTEGER,
+        allowNull:true,
+        references:{
+          model:'Files',
+          key:'IdFiles'
+        }
      },
      Observaciones:{
             type:DataTypes.STRING,
@@ -82,7 +87,11 @@ const Informe = sequelize.define('Informe',{
     deletedAt:true,
     modelName: 'Informe',
     tableName: 'informes',
-  //   underscored: true
+
+
+//Asociaciones con Informes
+
+//-----------------Personas-----------------
   })
   Informe.belongsToMany(Person, {
     through: InformePerson,
@@ -94,6 +103,8 @@ const Informe = sequelize.define('Informe',{
         foreignKey: 'personId',
         as: 'informePersons'
     });
+
+//--------------Tipo--------------------------
     const Tipo = require('./Tipo')
     Informe.belongsTo(Tipo, {
         foreignKey: 'Tipo_idTipo',
@@ -103,6 +114,9 @@ const Informe = sequelize.define('Informe',{
         foreignKey: 'Tipo_idTipo',
         as: 'Informes',
       });
+
+
+//Si la tabla TIPOS esta vacia, esta se carga por defecto!-----------
       (async () => {
         try {
             await sequelize.sync()
@@ -135,6 +149,15 @@ const Informe = sequelize.define('Informe',{
           console.error('Error al conectar a la base de datos:', error);
         }
       })();
+
+
+//Asociación con Files
+//Esta tabla es para cargar las imagenes u otros archivos, creeme, te van a pedir mas adelante!
+
+Informe.hasMany(Files, { foreignKey: 'informeId', as: 'Files' });
+Files.belongsTo(Informe, { foreignKey: 'informeId', as: 'Informe' });
+
+
 Informe.sync();
 Person.sync();
 

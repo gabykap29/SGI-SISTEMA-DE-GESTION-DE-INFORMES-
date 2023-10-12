@@ -128,7 +128,7 @@ router.get('/informes/:id', async (req,res)=>{
 
 
 // APIs
-router.post('/api/informes/create', isAutenticated, upload.single('rutaImagen'), ctrlReports.create);
+router.post('/api/informes/create', isAutenticated, upload.array('rutaImagen',5), ctrlReports.create);
 router.get('/api/informe/:id', isAutenticated,ctrlReports.Read);
 router.get('/api/informes', isAutenticated,ctrlReports.readsAll);
 router.put('/api/informes/edit/:id', isAutenticated, upload.single('rutaImagen'),verificarRolAdmin,ctrlReports.update);
