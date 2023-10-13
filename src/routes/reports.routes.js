@@ -52,6 +52,10 @@ router.get('/informes/view/:id', isAutenticated,async(req, res) => {
     console.log('error al obtener el username')
   }
 });
+router.get('/informes/:id/print',isAutenticated,(req,res)=>{
+    res.render('printReport');
+});
+
 router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin, async(req, res) => {
   try {
     const username = await obtenerUsername(req);

@@ -1,6 +1,6 @@
 // controllers/auth/authCtrl.js
 const bcrypt = require('bcryptjs');
-const Usuario = require('../../models/Usuario');
+const Usuario = require('../../models/asossiations');
 const { generarJWT } = require('../../helpers/generar_jwt');
 const authCtrl = {};
 const MAX_FAILED_LOGIN_ATTEMPTS = 3;

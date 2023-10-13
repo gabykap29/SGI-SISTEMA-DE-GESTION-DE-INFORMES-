@@ -1,7 +1,5 @@
 const crtlPerson = {};
-const Person = require('../../models/Person');
-const Informe = require('../../models/Informe');
-const Tipo = require('../../models/Tipo');
+const {Person, Informe,Tipo}= require('../../models/asossiations')
 
 //BUscar personas
 crtlPerson.findDni = async (req,res)=>{

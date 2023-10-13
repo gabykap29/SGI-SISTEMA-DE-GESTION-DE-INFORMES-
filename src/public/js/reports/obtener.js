@@ -80,11 +80,14 @@ const obtenerImagen = (rutaImagen) => {
             const informe = document.getElementById('informeView');
             const tituloInforme = document.getElementById('titleReport');
             const imagenDiv = document.getElementById('imagen');
+            const print = document.getElementById('print');
             //capturar el id desde la url
             const url = window.location.href;
             const parts = url.split('/');
             const id = parts[parts.length - 1];
-          
+            print.innerHTML=`
+            <a class='btn' href='/informes/${id}/print'> <img src='/css/images/print.png' > </a>
+            `
             const response = await fetch(`/api/informe/${id}`);
             const data = await response.json();
                 cant = data.informePersons.length;

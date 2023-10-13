@@ -1,13 +1,6 @@
 const ctrlReports = {};
 const jwt = require('jsonwebtoken');
-const Report = require('../../models/Informe');
-const Informe = require('../../models/Informe');
-const Person = require('../../models/Person');
-const Departamento = require('../../models/Departamento');
-const Localidad = require('../../models/Localidad');
-const Tipo = require('../../models/Tipo');
-const Usuario = require('../../models/Usuario');
-const Files = require('../../models/Files');
+const{Person, Informe, Files,Departamento,Localidad,Tipo}= require('../../models/asossiations')
 
 // Crear un Informe
 
@@ -39,7 +32,7 @@ ctrlReports.create = async (req, res) => {
         Tipo_idTipo = tipo.idTipo;
       };
 
-      const informe = await Report.create({
+      const informe = await Informe.create({
         Departamento_idDepartamento,
         Localidad_idLocalidad,
         Tipo_idTipo,
@@ -130,7 +123,7 @@ ctrlReports.Read = async (req, res) => {
 
 ctrlReports.readsAll = async (req, res)=>{
     try{
-        const informes = await Report.findAll({
+        const informes = await Informe.findAll({
             where: {
                 estado:true,
             },include:{
@@ -174,7 +167,7 @@ ctrlReports.update = async(req,res)=>{
     try{
       const decoded = jwt.verify(token,process.env.SECRET_KEY);
       const id = decoded.id
-        const informeUpdate = await Report.update({
+        const informeUpdate = await Informe.update({
             Departamento_idDepartamento,
             Localidad_idLocalidad,
             Tipo_idTipo,
@@ -209,7 +202,7 @@ ctrlReports.deleted = async (req, res) => {
   const { id } = req.params;
   const idInforme = id;
   try {
-    const informeDeleted = await Report.update(
+    const informeDeleted = await Informe.update(
       {
         estado: false
       },

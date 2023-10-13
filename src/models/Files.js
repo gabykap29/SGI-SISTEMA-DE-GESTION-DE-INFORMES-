@@ -27,8 +27,4 @@ const Files = sequelize.define('Files',{
 });
 
 
-
-
-Files.sync();
-
 module.exports = Files;

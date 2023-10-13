@@ -1,7 +1,7 @@
 const {sequelize, DataTypes} = require('../db');
 const Person = require('./Person')
 const InformePerson = require('./InformePerson')
-const Files = require('./Files')
+
 const Informe = sequelize.define('Informe',{
     idInforme: {type: DataTypes.INTEGER,
         primaryKey:true, 
@@ -89,76 +89,8 @@ const Informe = sequelize.define('Informe',{
     tableName: 'informes',
 
 
-//Asociaciones con Informes
-
-//-----------------Personas-----------------
-  })
-  Informe.belongsToMany(Person, {
-    through: InformePerson,
-    foreignKey: 'informeId',
-    as: 'informePersons'
-})
-  Person.belongsToMany(Informe, {
-        through: InformePerson,
-        foreignKey: 'personId',
-        as: 'informePersons'
-    });
-
-//--------------Tipo--------------------------
-    const Tipo = require('./Tipo')
-    Informe.belongsTo(Tipo, {
-        foreignKey: 'Tipo_idTipo',
-        as: 'Informes', // Alias para la relación
-      });
-      Tipo.hasMany(Informe, {
-        foreignKey: 'Tipo_idTipo',
-        as: 'Informes',
-      });
+  });
 
 
-//Si la tabla TIPOS esta vacia, esta se carga por defecto!-----------
-      (async () => {
-        try {
-            await sequelize.sync()
-          // Verifica si la base de datos está vacía
-          const count = await Tipo.count();
-          if (count === 0) {
-            // Agrega un usuario por defecto si la base de datos está vacía
-            const array =[
-                "Politica", 
-                "Institucional", 
-                "Educación",
-                "Religioso",
-                "Proselitismo",
-                "Salud",
-                "Seguridad",
-                "Eventos Climáticos",
-                "Hídricos"
-            ]
-            for(let i = 0; i< array.length; i++){
-                await Tipo.create({
-                    nombre:array[i]
-                  });
-            };
-            console.log('Tipos de informes cargados!');
-          }else{
-            console.log('Los Tipos de informes ya estan cargados!')
-          };
-          // Realiza operaciones con el modelo aquí
-        } catch (error) {
-          console.error('Error al conectar a la base de datos:', error);
-        }
-      })();
-
-
-//Asociación con Files
-//Esta tabla es para cargar las imagenes u otros archivos, creeme, te van a pedir mas adelante!
-
-Informe.hasMany(Files, { foreignKey: 'informeId', as: 'Files' });
-Files.belongsTo(Informe, { foreignKey: 'informeId', as: 'Informe' });
-
-
-Informe.sync();
-Person.sync();
 
 module.exports = Informe;

@@ -21,7 +21,4 @@ const Tipo = sequelize.define('Tipo',{
 
 
 
-
-
-Tipo.sync(); 
 module.exports = Tipo;

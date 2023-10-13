@@ -1,5 +1,4 @@
-const Departamento = require('../../models/Departamento');
-const Informe = require('../../models/Informe');
+const {Informe,Departamento}= require('../../models/asossiations')
 const { Op } = require('sequelize');
 
 // Controlador para filtrar Informes

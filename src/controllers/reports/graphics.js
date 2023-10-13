@@ -1,6 +1,6 @@
 const { sequelize } = require('../../db');
-const Informe = require('../../models/Informe');
-const Report = require('../../models/Informe');
+const {Informe} = require('../../models/asossiations');
+
 const { Op } = require('sequelize');
 const crtlGraphics = {};
 
@@ -12,7 +12,7 @@ crtlGraphics.findDate= async(req,res)=> {
     //     return res.status(401).json({message:'No se encuentra autorizado para solicitar recursos '})
     // }
     try {
-        const reports = await Report.findAll({
+        const reports = await Informe.findAll({
             attributes:[
                 'fecha',
                 'tipo_idTipo',
