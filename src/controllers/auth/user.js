@@ -1,6 +1,6 @@
 const crtlUsuario = {};
 const bcrypt = require('bcryptjs');
-const Usuario = require('../../models/asossiations');
+const Usuario = require('../../models/Usuario');
 
 crtlUsuario.create = async (req, res) => {
   const { firstName, lastName, username, password, rol } = req.body;

@@ -7,6 +7,7 @@ const upload = require('../middlewares/multer');
 const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol');
 const { findDate, findTitle } = require('../controllers/reports/graphics');
 const obtenerUsername = require('../helpers/username');
+const ctrlFiles = require('../controllers/files/files.controllers');
 
 // Vistas
 router.get('/informes/views', isAutenticated , async (req, res) => {
@@ -132,7 +133,8 @@ router.get('/informes/:id', async (req,res)=>{
 
 
 // APIs
-router.post('/api/informes/create', isAutenticated, upload.array('rutaImagen',5), ctrlReports.create);
+router.post('/api/informes/create', isAutenticated, ctrlReports.create);
+router.post('/api/informes/:id/imagen', isAutenticated, verificarRolUser, upload.single('rutaImagen'), ctrlFiles.create);
 router.get('/api/informe/:id', isAutenticated,ctrlReports.Read);
 router.get('/api/informes', isAutenticated,ctrlReports.readsAll);
 router.put('/api/informes/edit/:id', isAutenticated, upload.single('rutaImagen'),verificarRolAdmin,ctrlReports.update);

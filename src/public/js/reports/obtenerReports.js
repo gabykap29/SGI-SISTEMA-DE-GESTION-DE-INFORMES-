@@ -90,7 +90,12 @@ const mostrarInformes = (informes) => {
       console.log(informe)
         let Departamento = departamento[informe.Departamento_idDepartamento];
         let Localidad = localidad[informe.Localidad_idLocalidad]
-        let Tipo = informe.Informes.nombre;
+        let Tipo;
+        if(informe.Informes.nombre == undefined|| informe.Informes.nombre == null){
+           Tipo = 'Personalizado'
+        }else{
+           Tipo = informe.Informes.nombre || 'Personalizado'
+        }
         let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
         listadoInformes.innerHTML += `
                     <tr>
@@ -162,6 +167,104 @@ const eliminarInforme = async (idInforme) => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const showInformes = (informes) => {
+
+    // Si no hay tareas, mostrar un mensaje
+    if(informes.length === 0){
+        listadoInformes.innerHTML = `
+            <tr>
+                <td colspan="6" class="text-center">No hay informes cargados!</td>
+            </tr>
+        `;
+        return;
+    };
+
+    let departamento = [null, 'Formosa','Pilcomayo','Pilagas','Laishi','Pirané','Patiño','Bermejo', 'Ramon Lista', 'Matacos'];
+    let localidad = [
+        null,
+        "Formosa",
+        "Colonia pastoril",
+        "Gran Guardia",
+        "San Hilario",
+        "Mariano Boedo",
+        "Villa del Carmen",
+        "Clorinda",
+        "Laguna Naick Neck",
+        "Riacho He He",
+        "Monte Lindo",
+        "S.F Laishí",
+        "Gral. Mansilla",
+        "Herradura",
+        "Yatai",
+        "Misión Tacaagle",
+        "Laguna Gallo",
+        "Tres Lagunas",
+        "El Espinillo",
+        "Pirané",
+        "El Colorado",
+        "Villa Dos Trece",
+        "Mayor Villafañe",
+        "Palo Santo",
+        "Las Lomitas",
+        "Comandante Fontana",
+        "Villa Gral Guemes",
+        "Estanislao del Campo",
+        "Pozo del Tigre",
+        "Gral. Belgrano",
+        "San Martin I",
+        "San Martin II",
+        "Fortin Lugones",
+        "Subt. Perin",
+        "Posta Cambio Zalazar",
+        "Colonia Sarmiento",
+        "Juan G. Bazan",
+        "Bartolomé De Las Casas",
+        "El Recreo",
+        "Fortin Sargento Leyes",
+        "Fortin Soledad",
+        "Guadalcazar",
+        "Lamadrid",
+        "La Rinconada",
+        "Los Chiriguanos",
+        "Pozo de Maza",
+        "Pozo del Mortero",
+        "Vaca Perdida",
+        "Gral. Mosconi",
+        "El Potrillo",
+        "Ing. Juarez"
+      ];
+      
+
+    informes.forEach(informe => {
+      console.log(informe)
+        let Departamento = departamento[informe.Departamento_idDepartamento];
+        let Localidad = localidad[informe.Localidad_idLocalidad]
+        tipoArray = [null,'Politica','Institucional','Educación','Religioso','Proselitismo','Salud','Seguridad','Eventos Climáticos','Hídricos']
+        let Tipo;
+        if(informe.Tipo_idTipo > 9 || informe.Tipo_idTipo == null){
+           Tipo = 'Personalizado'
+        }else{
+           Tipo = tipoArray[informe.Tipo_idTipo];
+        }
+        let fecha = dayjs(informe.Fecha).format('DD/MM/YYYY');
+        listadoInformes.innerHTML += `
+                    <tr>
+                        <td>${Departamento}</td>
+                        <td>${Localidad}</td>
+                        <td>${Tipo}</td>
+                        <td>${fecha}</td>
+                        <td>${informe.Titulo}</td>
+                        <td>
+                            <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm">Ver</a>
+                            <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm">Editar</a>
+                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>
+                            
+                        </td>
+                    </tr>
+                `;
+    });
+};
+
   try {
 
     const url = window.location.href;
@@ -183,7 +286,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
       const informes = await informesDepar();
-      mostrarInformes(informes);
+      showInformes(informes);
   
       const deleteButton = document.querySelectorAll('.eliminar-informe');
       deleteButton.forEach((boton) => {
@@ -197,7 +300,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       const informes = await obtenerInformes();
       mostrarInformes(informes);
-  
+//Mostrar aqui  
       const deleteButton = document.querySelectorAll('.eliminar-informe');
       deleteButton.forEach((boton) => {
         boton.addEventListener('click', (event) => {

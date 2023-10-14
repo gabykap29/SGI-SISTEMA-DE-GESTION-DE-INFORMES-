@@ -10,10 +10,13 @@ const divImagen = document.getElementById('imagem');
  const thirdImg = document.getElementById('thirdImg');
  const fourtImg = document.getElementById('fourtImg');
  const fifthImg = document.getElementById('fifthImg');
+
+
+//-----------------------Obtener Imagenes-------------------------------------
 const obtenerImagen = (rutaImagen) => {
   if (rutaImagen) {
     // Construye la URL completa de la imagen utilizando el origen del sitio web y la ruta de la imagen
-    const imageURL = window.location.origin + '/uploads/' + rutaImagen;
+    const imageURL = window.location.origin + rutaImagen;
     return imageURL;
   } else {
     return '';
@@ -74,7 +77,7 @@ const obtenerImagen = (rutaImagen) => {
             "Ing. Juarez"
           ];
           
-        // Funcion para obtener los datos de la reserva cuando se carga la página
+
         document.addEventListener('DOMContentLoaded', async () => {
             const titles = document.getElementById('titles');
             const informe = document.getElementById('informeView');
@@ -118,27 +121,22 @@ const obtenerImagen = (rutaImagen) => {
                 switch (i){
                   case 0:{
                     firstImg.src = imagen;
-                    console.log('entro aqui');
                     break;
                   }
                   case 1:{
                     secondtImg.src = imagen;
-                    console.log('entro aqui');
                     break;
                   }
                   case 2:{
                     thirdImg.src =  imagen;
-                    console.log('entro aqui');
                     break;
                   }
                   case 3:{
                     fourtImg.src = imagen;
-                    console.log('entro aqui');
                     break;
                   }
                   case 4:{
                     fifthImg.src = imagen;
-                    console.log('entro aqui');
                     break;
                   }
                 }
@@ -164,9 +162,10 @@ const obtenerImagen = (rutaImagen) => {
 
             });
             
-const formPerson = document.getElementById('formPerson');
 
-formPerson.addEventListener('submit', async (e) => {
+//-----------------------formulario de Personas-----------------------------------
+        const formPerson = document.getElementById('formPerson');
+        formPerson.addEventListener('submit', async (e) => {
   e.preventDefault();
   
               //capturar el id desde la url
@@ -241,4 +240,47 @@ try {
     title: 'Error interno del servidor!',
 });
 }
-});
+        });
+
+//----------------------formulario de Imagenes-------------------------------------
+
+const formFiles = document.getElementById('formFiles');
+formFiles.addEventListener('submit', async(e)=>{
+  e.preventDefault();
+  const rutaImagen = document.getElementById('rutaImagen').files[0];
+  const descriptions = document.getElementById('descriptions').value;
+  console.log(rutaImagen,descriptions);
+  const url = window.location.href;
+  const parts = url.split('/');
+  const id = parts[parts.length - 1];
+  const formData = new FormData();
+  formData.append('rutaImagen',rutaImagen);
+  formData.append('descriptions',descriptions);
+
+  try {
+    const response = await fetch(`/api/informes/${id}/imagen`,{
+      method:'POST',
+      body:formData
+    });
+    const respToJson = await response.json();
+    if (response.status !== 201 && response.status !== 200) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Algunos campos del formulario están incompletos!'
+      });
+      return;}
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Imagen cargada con éxito',
+        text: respToJson.message
+      });
+      formFiles.reset();
+      setTimeout(() => {
+        window.location.href = `/informes/view/${id}`;
+      }, 2000);
+  } catch (error) {
+    
+  }
+})

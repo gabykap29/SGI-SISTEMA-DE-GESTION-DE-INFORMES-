@@ -1,6 +1,5 @@
 const formNuevoInforme = document.getElementById('formNuevoInforme');
-const formPeople = document.getElementById('formPeople');
-const btnPeople = document.getElementById('btnPeople')
+
 
 formNuevoInforme.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -9,27 +8,23 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   const Tipo_idTipo = document.getElementById('tipo').value;
   const Fecha = document.getElementById('fecha').value;
   const Titulo = document.getElementById('titulo').value;
-  const Observaciones = document.getElementById('observaciones').value
-  const Informe = document.getElementById('informe').value;
-  const formData = new FormData();
-  formData.append('Departamento_idDepartamento', Departamento_idDepartamento);
-  formData.append('Localidad_idLocalidad', Localidad_idLocalidad);
-  formData.append('Tipo_idTipo', Tipo_idTipo);
-  formData.append('Fecha', Fecha);
-  formData.append('Titulo', Titulo);
-  formData.append('Observaciones', Observaciones);
-  const filesInput = document.getElementById('rutaImagen');
-  const files = filesInput.files;
-  
-  for (let i = 0; i < files.length; i++) {
-    formData.append('rutaImagen', files[i]);
-  }
-  formData.append('Informe', Informe);
+  const informe = document.getElementById('informe').value;
+
   try {
     const response = await fetch('/api/informes/create', {
-      method: 'POST',
-      body: formData
-    });
+      method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+              Departamento_idDepartamento,
+              Localidad_idLocalidad,
+              Tipo_idTipo,
+              Fecha,
+              Titulo,
+              informe,
+            }),
+          });
 
     const respToJson = await response.json();
     if (response.status !== 201 && response.status !== 200) {

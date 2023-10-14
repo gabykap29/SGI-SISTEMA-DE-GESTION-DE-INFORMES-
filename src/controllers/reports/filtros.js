@@ -1,4 +1,4 @@
-const {Informe,Departamento}= require('../../models/asossiations')
+const {Informe,Departamento,Tipo}= require('../../models/asossiations')
 const { Op } = require('sequelize');
 
 // Controlador para filtrar Informes
@@ -96,8 +96,6 @@ const filtroDepar = async (req, res) => {
     res.status(500).json({ error: 'Error al obtener los informes filtrados por Departamento' });
   }
 };
-
-
 module.exports = {
   filtrarInformes,
   filtroDepar,

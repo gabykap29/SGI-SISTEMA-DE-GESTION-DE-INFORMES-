@@ -1,12 +1,13 @@
 const ctrlReports = {};
 const jwt = require('jsonwebtoken');
+const Usuario = require('../../models/Usuario')
 const{Person, Informe, Files,Departamento,Localidad,Tipo}= require('../../models/asossiations')
 
 // Crear un Informe
 
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Titulo,
-            Fecha,Observaciones ,Informe} = req.body;
+            Fecha,Observaciones ,informe} = req.body;
     let {Tipo_idTipo} = req.body;
 
 //---------Se pide el token por si hacen peticiones directamente a las rutas ----------------------
@@ -32,36 +33,22 @@ ctrlReports.create = async (req, res) => {
         Tipo_idTipo = tipo.idTipo;
       };
 
-      const informe = await Informe.create({
+      const newInforme = await Informe.create({
         Departamento_idDepartamento,
         Localidad_idLocalidad,
         Tipo_idTipo,
         Titulo,
         Fecha,
         Observaciones,   // Asignar la ruta de la imagen a la propiedad RutaImagen
-        Informe,
+        Informe: informe,
         id_IdUser:id,
       });
-      if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !Informe){
+      if (!Departamento_idDepartamento|| !Localidad_idLocalidad || !Tipo_idTipo || !Titulo || !Fecha || !informe){
         throw {
           message: 'Favor, verifique todos los campos esten completos.'
         };
       }
-      let filesIds = [];
-      if (req.files) {
-        for(const file of req.files){
-          console.log(file);
-          rutaImagen.push(file.filename);
-          const newFile = await Files.create({
-            filesRoute: `${file.filename}`
-          })
-          filesIds.push(newFile.idFiles)
-
-        }
-    }
-    await informe.addFiles(filesIds)
-
-      return res.json(informe);
+      return res.json(newInforme);
     }catch (error) {
       console.error(error);
       return res.status(error.status || 500).json(error.message || 'Error interno del servidor');
@@ -126,10 +113,10 @@ ctrlReports.readsAll = async (req, res)=>{
         const informes = await Informe.findAll({
             where: {
                 estado:true,
-            },include:{
+            },include:[{
               model:Tipo,
               as:'Informes'
-            },
+            }],
           limit:20,
           order: [['createdAt', 'DESC']],
         });

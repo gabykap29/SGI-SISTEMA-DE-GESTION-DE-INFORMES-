@@ -11,13 +11,10 @@ const Files = sequelize.define('Files',{
         type: DataTypes.STRING,
         allowNull:false,
     },
-    informeId:{
-        type:DataTypes.INTEGER,
-        references:{
-            model:'Informe',
-            key:'idInforme'
-        }
-    }
+    descriptions:{
+        type: DataTypes.STRING,
+        allowNull:false
+    },
 },
 {
     sequelize,

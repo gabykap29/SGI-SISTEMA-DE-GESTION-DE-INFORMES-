@@ -63,14 +63,16 @@
               </button>
             </div>
 
-
             <div class="d-flex justify-content-center align-items-center"><span id="Observaciones"></span></div>
+          </div>
+          <div class="row">
+            <button class="btn "  data-bs-toggle="modal" data-bs-target="#modalFiles">Ajuntar archivos</button>
           </div>
         </div>
         <div class="col-6">
           <div class="card mt-4 shadow">
             <div class="row">
-              <div class="d-flex justify-content-end align-items-center" id="print">
+              <div class="d-flex justify-content-end align-items-center" id="print" style="position: absolute;">
                   
               </div>
           </div>
@@ -127,6 +129,34 @@
                 </div>
               </div>
             </div>
+            <!--Modal files-->
+            <div class="modal fade" id="modalFiles" tabindex="-1" aria-labelledby="modalCategoryCreateLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalCategoryCreateLabel">Imagenes</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="" id="formFiles" enctype="multipart/form-data">
+                  <div class="modal-body">
+                      <div class="mb-3">
+                        <label for="address" class="form-label">Archivos</label>
+                        <input type="file" class="form-control" id="rutaImagen" name="rutaImagen">
+                      </div>
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descriptions" name="descriptions"></textarea>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-secondary" type="reset">Borrar Campos</button>
+                    <button  id="cargarPersona" type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="mb-5" style="background-color: rgb(233, 233, 233);">
             <div class="card shadow mt-2">
@@ -155,7 +185,7 @@
                   </div>
                   </div>
                   <div>
-                    <div class="container">
+                    <div class="container mb-5">
                       <div class="row" id="formPeople">
                       </div>
                     </div>
@@ -164,7 +194,7 @@
               </div>
             </div>
 
-            <br><br><br>
+            <br><br><br><br>
       </div>
         </div>
 
