@@ -143,7 +143,7 @@ ctrlReports.update = async(req,res)=>{
         Tipo_idTipo,
         Titulo,
         Fecha,Observaciones,
-        Informe} = req.body;
+        informe} = req.body;
         let rutaImagen;  // Variable para almacenar la ruta de la imagen
           //obtener id de usuario
 
@@ -162,7 +162,7 @@ ctrlReports.update = async(req,res)=>{
             Fecha,Observaciones,
             RutaImagen: rutaImagen,
             id_IdUser:id,
-            Informe,
+            Informe: informe,
         },{
             where:{
                 idInforme:req.params.id,

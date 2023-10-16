@@ -41,25 +41,24 @@ formEditar.addEventListener('submit',async(e)=>{
     const Tipo_idTipo = document.getElementById('tipo').value;
     const Fecha = document.getElementById('fecha').value;
     const Titulo = document.getElementById('titulo').value;
-    const Observaciones = document.getElementById('observaciones').value;
-    const RutaImagen = document.getElementById('rutaImagen').value;
     const Informe = document.getElementById('informe').value;
 
-    const formData = new FormData();
-    formData.append('Departamento_idDepartamento', Departamento_idDepartamento);
-    formData.append('Localidad_idLocalidad', Localidad_idLocalidad);
-    formData.append('Tipo_idTipo', Tipo_idTipo);
-    formData.append('Fecha', Fecha);
-    formData.append('Titulo', Titulo);
-    formData.append('Observaciones',Observaciones)
-    formData.append('rutaImagen', document.getElementById('rutaImagen').files[0]);
-    formData.append('Informe', Informe);
+
 
 try {
     const response = await fetch(`/api/informes/edit/${id}`,{
         method:'PUT',
-        body: formData
-        
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify({
+          Departamento_idDepartamento,
+          Localidad_idLocalidad,
+          Tipo_idTipo,
+          Fecha,
+          Titulo,
+          informe:Informe,
+        }),
     });
     const respToJson = await response.json();
     if(response.status !== 201 && response.status !== 200){

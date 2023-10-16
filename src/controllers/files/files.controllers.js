@@ -10,12 +10,14 @@ ctrlFiles.create = async(req,res)=>{
     const {id}= req.params;
     try {
         
-        const informe = await Informe.findByPk(id);
+        const informe = await Informe.findOne({where:{idInforme: id},include:[{model:Files,as:'Files'}]});
         if(!informe){
             return res.status(404).json({message:'Error al obtener el informe!'})
         };
         let filename = `/uploads/${req.file.filename}`
-        console.log(filename)
+        if(informe.Files.length > 4){
+            return res.status(400).json({message:'Solo se pueden subir 4 imagenes!'});
+        }
         const newFile = await Files.create({
             filesRoute: filename,
             descriptions:descriptions

@@ -3,14 +3,15 @@ const Observaciones = document.getElementById('Observaciones');
 let cant = 0;
 const divImagen = document.getElementById('imagem');
  const firstImg = document.getElementById('firstImg');
- const secondtImg = document.getElementById('secondtImg');
+ const secondImg = document.getElementById('secondImg');
  const thirdImg = document.getElementById('thirdImg');
  const fourtImg = document.getElementById('fourtImg');
  const fifthImg = document.getElementById('fifthImg');
+
 const obtenerImagen = (rutaImagen) => {
   if (rutaImagen) {
     // Construye la URL completa de la imagen utilizando el origen del sitio web y la ruta de la imagen
-    const imageURL = window.location.origin + '/uploads/' + rutaImagen;
+    const imageURL = window.location.origin  + rutaImagen;
     return imageURL;
   } else {
     return '';
@@ -78,6 +79,7 @@ const obtenerImagen = (rutaImagen) => {
             const url = window.location.href;
             const parts = url.split('/');
             const id = parts[4];
+
             const response = await fetch(`/api/informe/${id}`);
             const data = await response.json();
             const Departamento = document.getElementById('departamento');
@@ -99,28 +101,27 @@ const obtenerImagen = (rutaImagen) => {
                 tipo.innerHTML=`Tipo de Informe: ${Tipo}`
             if(data.Files.length >0){
               for(let i = 0; i < data.Files.length; i++){
-                const imagen = obtenerImagen(data.Files[i].filesRoute);
-                Observaciones.innerHTML= `${data.Observaciones}`
+                let imagen = obtenerImagen(data.Files[i].filesRoute);
                 
                 switch (i){
                   case 0:{
                     firstImg.src = imagen;
+                    descriptionOne.innerHTML= data.Files[i].descriptions;
                     break;
                   }
                   case 1:{
-                    secondtImg.src = imagen;
+                    secondImg.src = imagen;
+                    descriptionSecond.innerHTML= data.Files[i].descriptions;
                     break;
                   }
                   case 2:{
                     thirdImg.src =  imagen;
+                    descriptionTrird.innerHTML = data.Files[i].descriptions;
                     break;
                   }
                   case 3:{
                     fourtImg.src = imagen;
-                    break;
-                  }
-                  case 4:{
-                    fifthImg.src = imagen;
+                    descriptionFourt.innerHTML = data.Files[i].descriptions;
                     break;
                   }
                 }

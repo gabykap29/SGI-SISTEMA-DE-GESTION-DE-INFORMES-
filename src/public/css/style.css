@@ -207,3 +207,9 @@ Vista del perfil
 #imgProfile{
   margin-left: 60px;
 }
+#btnFiles{
+  background-color: #5c788f;
+  margin-top: 5px;
+  margin-left: 2px;
+  border-radius: 5px;
+}
