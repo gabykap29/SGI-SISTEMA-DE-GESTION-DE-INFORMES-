@@ -145,8 +145,6 @@ ctrlReports.update = async(req,res)=>{
         Fecha,Observaciones,
         informe} = req.body;
         let rutaImagen;  // Variable para almacenar la ruta de la imagen
-          //obtener id de usuario
-
         if (req.file) {
           // Si se ha cargado una imagen, obtener la ruta relativa de la imagen
           rutaImagen =  req.file.filename;
