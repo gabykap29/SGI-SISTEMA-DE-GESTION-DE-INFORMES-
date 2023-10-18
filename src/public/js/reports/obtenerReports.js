@@ -2,12 +2,14 @@ const listadoInformes = document.querySelector("#registros");
 
 const obtenerInformes = async () => {
   const res = await fetch(`/api/informes`, {});
+  
 
   if (res.status === 404) {
     return [];
   }
 
   const data = await res.json();
+  console.log(data);
   return data;
 };
 

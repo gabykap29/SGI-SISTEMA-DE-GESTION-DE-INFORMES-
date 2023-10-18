@@ -14,10 +14,7 @@ const Localidad = sequelize.define('Localidad',{
     Departamento_idDepartamento:{
         type: DataTypes.INTEGER,
         allowNull:false,
-        references:{
-            model:'Departamento',
-            key:'idDepartamento'
-        }
+
     }
 },{
     sequelize,

@@ -9,26 +9,17 @@ const Informe = sequelize.define('Informe',{
      Departamento_idDepartamento: {
         type: DataTypes.INTEGER,
         allowNull:false,
-        references:{
-            model:'Departamento',
-            key:'idDepartamento'
-        }
+
      },
      Localidad_idLocalidad:{
         type: DataTypes.INTEGER,
         allowNull:false,
-        references:{
-            model:'Localidad',
-            key:'idLocalidad'
-        }
+
      },
      Tipo_idTipo:{
         type: DataTypes.INTEGER,
         allowNull:false,
-        references:{
-            model:'Tipo',
-            key:'idTipo'
-        }
+
      },
      Fecha:{
         type: DataTypes.DATE,
@@ -41,10 +32,7 @@ const Informe = sequelize.define('Informe',{
      filesId:{
         type:DataTypes.INTEGER,
         allowNull:true,
-        references:{
-          model:'Files',
-          key:'IdFiles'
-        }
+
      },
      Observaciones:{
             type:DataTypes.STRING,
@@ -57,10 +45,7 @@ const Informe = sequelize.define('Informe',{
     id_IdUser:{
         type: DataTypes.INTEGER,
         allowNull:false,
-        references:{
-            model:'Usuarios',
-            key:'id'
-        }},
+},
     estado:{
         type: DataTypes.BOOLEAN,
         defaultValue:true
