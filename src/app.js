@@ -14,9 +14,9 @@ app.set("view engine", "ejs");
 
 // Carpeta pública
 app.use(express.static("public"));
-
+const nameLog = new Date().toISOString().slice(0, 10).replace(/:/g, "-");
 //guardar todas las peticiones al servidor en un archivo de texto
-const accessLogStream = fs.createWriteStream("access.log", { flags: "a" });
+const accessLogStream = fs.createWriteStream(`./logs/${nameLog}.log`, { flags: "a" });
 if (!fs.existsSync(__dirname + "/public/uploads")) {
   fs.mkdirSync(__dirname + "/public/uploads");
 }
