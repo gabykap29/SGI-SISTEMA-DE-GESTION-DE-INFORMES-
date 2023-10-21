@@ -93,7 +93,7 @@
                     <h1 class="modal-title fs-5" id="modalCategoryCreateLabel">Personas</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <form action="" id="formPerson">
+                  <form action="" id="formPerson" enctype="multipart/form-data">
                   <div class="modal-body">
 
                       <div class="mb-3">
@@ -119,6 +119,10 @@
                       <div class="mb-3">
                         <label for="description" class="form-label">Observaciones</label>
                         <textarea class="form-control" id="description" name="description"></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label for="rutaImagen" class="form-label">Adjuntar Foto</label>
+                        <input type="file" class="form-control" id="rutaImagen" name="rutaImagen"></input>
                       </div>
                   </div>
                   <div class="modal-footer">

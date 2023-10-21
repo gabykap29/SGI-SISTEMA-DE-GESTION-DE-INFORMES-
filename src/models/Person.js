@@ -32,6 +32,26 @@ const Person = sequelize.define('Person', {
         type: DataTypes.DATE,
         allowNull:true,
     },
+        imgPersonId:{
+            type: DataTypes.INTEGER,
+            allowNull:true,
+        }
+    ,facebook:{
+        type: DataTypes.STRING,
+        allowNull:true,
+    },
+    instagram:{
+        type: DataTypes.STRING,
+        allowNull:true,
+    },
+    phone:{
+        type: DataTypes.STRING,
+        allowNull:true,
+    },work:{
+        type:DataTypes.STRING,
+        allowNull:true,
+    },
+
 }, {
     sequelize,
     paranoid: true,

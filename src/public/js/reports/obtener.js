@@ -192,21 +192,20 @@ formPerson.addEventListener("submit", async (e) => {
   const address = document.getElementById("address").value;
   const descriptions = document.getElementById("description").value;
   const fechaNac = document.getElementById("fechaNac").value;
+  const formData = new FormData;
+  const rutaImagen = document.getElementById("rutaImagen").files[0];
+  formData.append("dni", dni);
+  formData.append("firstName", firstName);
+  formData.append("lastName", lastName);
+  formData.append("address", address);
+  formData.append("descriptions", descriptions);
+  formData.append("fechaNac", fechaNac);
+  formData.append("rutaImagen", rutaImagen);
 
   try {
     const res = await fetch(`/api/informe/${id}/persons`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        dni,
-        firstName,
-        lastName,
-        address,
-        descriptions,
-        fechaNac,
-      }),
+      body: formData,
     });
     //si hubo errores en la peticion el si sistema devolverá un error 400
     if (!res.ok) {

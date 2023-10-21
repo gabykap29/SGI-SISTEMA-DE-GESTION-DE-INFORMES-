@@ -45,7 +45,7 @@ const filtrarInformes = async (req, res) => {
       where: filtro,
     });
 
-    res.json(informes);
+     res.json(informes);
   } catch (error) {
     console.error('Error al filtrar Informes:', error);
     res.status(500).json({ error: 'Error al filtrar Informes' });

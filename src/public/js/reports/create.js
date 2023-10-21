@@ -42,7 +42,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
     });
     formNuevoInforme.reset();
     setTimeout(() => {
-      window.location.href = '/informes/views';
+      window.location.href = '/informes/view/'+ respToJson.idInforme;
     }, 2000);
   } catch (error) {
     console.log(error);

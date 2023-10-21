@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <link rel="icon" href="/css/images/OIG.png">
+  <title>SGI - Personas</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/sweetalert/sweetalert2@11"></script>
+<script src="/dayjs/dayjs.min.js"></script>
+</head>
+<body>
+  <%- include('../partials/headers-aside.ejs');%>
+  <div class="container col-10 bgForm" style="margin-bottom: 22%;">
+    <div class="card mt-3 mb-3 shadow">
+      <div class="card-body">
+        <h4 class="card-title">Datos Personales</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="container">
+
+    <div class="card col-12 ">
+        <div class="row mx-2">
+            <div class="  col-3 my-3 " style="border-right: 1px solid rgb(184, 184, 184);">
+                <img class="rounded mx-2" id="imgPerson" src="/css/images/avatar.jpg" style="width: 200px;" >
+                <hr>
+                <p>Fecha de actualización: 23/10/2023</p>
+                
+            </div>
+
+            <div class=" col-9 mt-2">
+                <ul class="mx-2 list-unstyled">
+                    <li>
+                        <div class=" d-flex justify-content-center align-items-center m-2">
+                            <h6 id="completeName"><b>Sin Datos --</b></h6>
+                        </div>
+                        <hr>
+                    </li>
+                    <div class="row">
+                        <div class=" col-6">
+                            <ul class="">
+                                <li>
+                                    <div >
+                                        <div><p id="dni">DNI: No hay datos.-</p>
+                                        </div> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p id="fechaNac">Fecha de Nac: No hay datos.- </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div><p id="adress">Domicilio: No hay datos.-</p></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class=" col-6">
+                            <ul>
+                                <li>
+                                    <div class="">
+                                        <p>Situación laboral: No hay datos.- </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p>Celular: No hay datos.-.-</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div><p>Correo: No hay datos.- -</p></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <li class="my-3">
+                        <b>REDES SOCIALES</b>
+                        <ul>
+                            <li class="my-2">Facebook: <a href="#">Sin Datos</a></li>
+                            <li>
+                                Instagram: <a href="#">Sin DAtos.-</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+     </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <div class="card-body m-2">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Departamento</th>
+                            <th scope="col">Localidad</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody id="registros">
+
+                            
+
+
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+</div>
+        
+</div>
+</div>
+    </main>
+      <%- include('../partials/footer.ejs');%>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="/popper/popper.min.js">
+  </script>
+  <script src="/js/person/view.js"></script>
+  <script src="/bootstrap/bootstrap.min.js">
+  </script>
+  <script src="/js/loaded.js"></script>
+  <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+</body>
+
+</html>

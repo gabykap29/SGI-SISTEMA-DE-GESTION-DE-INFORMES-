@@ -7,9 +7,16 @@ const Localidad = require("./Localidad");
 const Tipo = require('./Tipo');
 const Person = require("./Person");
 const InformePerson = require("./InformePerson");
-//Asociaciones con Informes
+const ImgPerson = require("./ImgPerson");
 
-//--------------Tipo--------------------------
+Person.hasOne(ImgPerson, {
+  foreignKey: "personId",
+  as: "ImgPersons",
+});
+ImgPerson.belongsTo(Person, {
+  foreignKey: "personId",
+  as: "ImgPersons",
+})
 
 Tipo.hasMany(Informe, {
   foreignKey: "Tipo_idTipo",
