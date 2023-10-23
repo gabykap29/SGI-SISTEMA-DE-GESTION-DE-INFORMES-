@@ -3,6 +3,12 @@ const imgPerson = document.getElementById('imgPerson');
 const fechaNac = document.getElementById('fechaNac');
 const adress = document.getElementById('adress');
 const completeName = document.getElementById('completeName');
+const created = document.getElementById('created');
+const work = document.getElementById('work');
+const mail = document.getElementById('mail');
+const phone = document.getElementById('phone');
+const facebook = document.getElementById('facebook');
+const instagram = document.getElementById('instagram');
 const registros = document.getElementById('registros');
 //capturar el id desde la url
 const url = window.location.href;
@@ -95,6 +101,11 @@ const showPerson = async ()=>{
     fechaNac.innerHTML = `Fecha de Nac: ${dayjs(res.birthDate).format('DD/MM/YYYY')}`;
     adress.innerHTML = `Dirección: ${res.address}`;
     imgPerson.src = 'https://'+Url + res.ImgPersons.rutaImagen;
+    work.innerHTML = `Trabajo: ${res.work}`;
+    mail.innerHTML = `Email: ${res.mail}`;
+    phone.innerHTML = `Teléfono: ${res.phone}`;
+    facebook.innerHTML = `Facebook: ${res.facebook}`;
+    instagram.innerHTML = `Instagram: ${res.instagram}`;
 
     for(let i = 0; i < res.informePersons.length; i++){
         let idDepar = res.informePersons[i].Departamento_idDepartamento; 

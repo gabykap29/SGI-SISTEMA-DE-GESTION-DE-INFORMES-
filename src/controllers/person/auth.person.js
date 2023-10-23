@@ -60,7 +60,7 @@ crtlPerson.findDni = async (req, res) => {
 }
 
 crtlPerson.create = async (req,res)=>{
-    const {rutaImagen} = req.file;
+    const {rutaImagen}= req.file;
     const {dni,
         firstName,
         lastName,

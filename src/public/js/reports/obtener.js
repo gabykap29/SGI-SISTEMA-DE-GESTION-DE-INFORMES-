@@ -192,8 +192,13 @@ formPerson.addEventListener("submit", async (e) => {
   const address = document.getElementById("address").value;
   const descriptions = document.getElementById("description").value;
   const fechaNac = document.getElementById("fechaNac").value;
+  const facebook = document.getElementById('facebook').value;
+  const instagram = document.getElementById('instagram').value;
+  const phone = document.getElementById('phone').value;
+  const work = document.getElementById('work').value;
+  const mail = document.getElementById('mail').value;
   const formData = new FormData;
-  const rutaImagen = document.getElementById("rutaImagen").files[0];
+  const rutaImagen = document.getElementById("rutaImagenPerson").files[0];
   formData.append("dni", dni);
   formData.append("firstName", firstName);
   formData.append("lastName", lastName);
@@ -201,6 +206,11 @@ formPerson.addEventListener("submit", async (e) => {
   formData.append("descriptions", descriptions);
   formData.append("fechaNac", fechaNac);
   formData.append("rutaImagen", rutaImagen);
+  formData.append("facebook", facebook);
+  formData.append("instagram", instagram);
+  formData.append("phone", phone);
+  formData.append("work", work);
+  formData.append("mail", mail);
 
   try {
     const res = await fetch(`/api/informe/${id}/persons`, {
@@ -254,8 +264,21 @@ formPerson.addEventListener("submit", async (e) => {
 const formFiles = document.getElementById("formFiles");
 formFiles.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const rutaImagen = document.getElementById("rutaImagen").files[0];
+  console.log("Selected file:", document.getElementById("rutaImagen").files[0]);
+
+  const rutaImagenInput = document.getElementById("rutaImagen");
   const descriptions = document.getElementById("descriptions").value;
+
+  // Check if a file is selected
+  let rutaImagen;
+  if (rutaImagenInput.files.length > 0) {
+    rutaImagen = rutaImagenInput.files[0];
+  } else {
+    console.error("No file selected for rutaImagen");
+    // Handle the case where no file is selected
+    return;
+  }
+
   console.log(rutaImagen, descriptions);
   const url = window.location.href;
   const parts = url.split("/");

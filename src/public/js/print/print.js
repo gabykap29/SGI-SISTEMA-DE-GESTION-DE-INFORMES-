@@ -88,6 +88,7 @@ const obtenerImagen = (rutaImagen) => {
             const tituloInforme = document.getElementById('titleReport');
             const Fecha = document.getElementById('Fecha');
             const tipo = document.getElementById('Tipo');
+            const imgs = document.getElementById('imgs')
                 cant = data.informePersons.length;
                 let Depart = departamento[data.Departamento_idDepartamento];
                 let Local = arrayLocal[data.Localidad_idLocalidad]
@@ -102,33 +103,15 @@ const obtenerImagen = (rutaImagen) => {
             if(data.Files.length >0){
               for(let i = 0; i < data.Files.length; i++){
                 let imagen = obtenerImagen(data.Files[i].filesRoute);
-                
-                switch (i){
-                  case 0:{
-                    firstImg.src = imagen;
-                    descriptionOne.innerHTML= data.Files[i].descriptions;
-                    break;
-                  }
-                  case 1:{
-                    secondImg.src = imagen;
-                    descriptionSecond.innerHTML= data.Files[i].descriptions;
-                    break;
-                  }
-                  case 2:{
-                    thirdImg.src =  imagen;
-                    descriptionTrird.innerHTML = data.Files[i].descriptions;
-                    break;
-                  }
-                  case 3:{
-                    fourtImg.src = imagen;
-                    descriptionFourt.innerHTML = data.Files[i].descriptions;
-                    break;
-                  }
-                }
-              }
-              
-            }});
+                    imgs.innerHTML += `<div class="col mt-2">
+                    <img class="img" src="${imagen}" alt="" id="firstImg">
+                    <div class="d-flex justify-content-center align-items-center">
+                      <span id="descriptionOne">${data.Files[i].descriptions}</span>
+                    </div>`
+
+
+              }}
 
 
 
-
+            })

@@ -1,6 +1,6 @@
 const { sequelize, Model, DataTypes } = require('../db');
 const Informe = require('./Informe');
-// const InformePerson = require('./InformePerson')
+
 
 const Person = sequelize.define('Person', {
     idPerson: {
@@ -22,11 +22,13 @@ const Person = sequelize.define('Person', {
     },
     address: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: true,
+        defaultValue:'No hay datos',
     },
     description: {
         type: DataTypes.STRING,
         allowNull: true,
+        defaultValue:'No hay datos',
     },
     fechaNac:{
         type: DataTypes.DATE,
@@ -35,19 +37,27 @@ const Person = sequelize.define('Person', {
         imgPersonId:{
             type: DataTypes.INTEGER,
             allowNull:true,
+
         }
     ,facebook:{
         type: DataTypes.STRING,
         allowNull:true,
+        defaultValue:'No hay datos',
     },
     instagram:{
         type: DataTypes.STRING,
         allowNull:true,
+        defaultValue:'No hay datos',
     },
     phone:{
         type: DataTypes.STRING,
         allowNull:true,
+        defaultValue:'No hay datos',
     },work:{
+        type:DataTypes.STRING,
+        allowNull:true,
+        defaultValue:'No hay datos',
+    },mail:{
         type:DataTypes.STRING,
         allowNull:true,
     },

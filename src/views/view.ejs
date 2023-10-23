@@ -67,7 +67,7 @@
             <div class="d-flex justify-content-center align-items-center"><span id="Observaciones"></span></div>
           </div>
           <div class="row container" id="btnFiles">
-            <button class="btn "  data-bs-toggle="modal" data-bs-target="#modalFiles">Ajuntar archivos</button>
+            <button class="btn "  data-bs-toggle="modal" data-bs-target="#modalFiles" style="color: white;">Ajuntar archivos</button>
           </div>
         </div>
         <div class="col-6">
@@ -117,12 +117,32 @@
                         <input type="date" class="form-control" id="fechaNac" name="fechaNac">
                       </div>
                       <div class="mb-3">
+                        <label for="description" class="form-label">Celular</label>
+                        <input type="number" class="form-control" id="phone" name="phone"></input>
+                      </div>
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Correo Electrónico</label>
+                        <input type="text" class="form-control" id="mail" name="mail"></input>
+                      </div>
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Situación Laboral</label>
+                        <input type="text" class="form-control" id="work" name="work"></input>
+                      </div>
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Facebook</label>
+                        <input type="text" class="form-control" id="facebook" name="facebook"></input>
+                      </div>
+                      <div class="mb-3">
+                        <label for="description" class="form-label">Instagram</label>
+                        <input type="text" class="form-control" id="instagram" name="instagram"></input>
+                      </div>
+                      <div class="mb-3">
                         <label for="description" class="form-label">Observaciones</label>
                         <textarea class="form-control" id="description" name="description"></textarea>
                       </div>
                       <div class="mb-3">
                         <label for="rutaImagen" class="form-label">Adjuntar Foto</label>
-                        <input type="file" class="form-control" id="rutaImagen" name="rutaImagen"></input>
+                        <input type="file" class="form-control" id="rutaImagenPerson" name="rutaImagenPerson"></input>
                       </div>
                   </div>
                   <div class="modal-footer">
@@ -156,7 +176,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button class="btn btn-secondary" type="reset">Borrar Campos</button>
-                    <button  id="cargarPersona" type="submit" class="btn btn-primary">Guardar</button>
+                    <button  id="cargarImagen" type="submit" class="btn btn-primary">Guardar</button>
                   </div>
                 </form>
                 </div>
