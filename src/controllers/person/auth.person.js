@@ -71,6 +71,7 @@ crtlPerson.create = async (req,res)=>{
         instagram,
         phone,
         work,
+        mail,
       } = req.body;
         const {id} = req.params;
 
@@ -101,6 +102,7 @@ crtlPerson.create = async (req,res)=>{
                     instagram,
                     phone,
                     work,
+                    mail,
                 }
             });
             if(req.file && created){

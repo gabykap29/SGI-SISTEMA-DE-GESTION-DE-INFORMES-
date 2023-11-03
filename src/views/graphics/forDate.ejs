@@ -18,7 +18,7 @@
 
 <body>
   <%- include('../partials/headers-aside.ejs');%>
-  <div class=" graficos col-10 bgForm d-flex flex-wrap mb-5">
+  <div class=" graficos col-7 bgForm d-flex flex-wrap mb-5" style="margin-top: 75px;">
     <div class="col-12">
       <div class="card" id="card">
         <div class="contentCanvas col-12" id="contentCanvas">
@@ -28,6 +28,21 @@
       </div>
     </div>
       </div>
+      <div class=" col-3 card text-start " style="margin-top: 76px;">
+        <div class="m-3">
+          <span>Ingrese fechas</span>
+          <div class="d-flex flex-column">
+            <span>Inicio</span>
+            <input class="form-control" type="date">
+            <span>Final</span>
+            <input class="form-control" type="date">
+
+            <button class="btn btn-primary mt-2">Buscar</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
 </main>
 
   <%- include('../partials/footer.ejs');%>

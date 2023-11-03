@@ -41,7 +41,7 @@ Person.belongsToMany(Informe, {
 //Esta tabla es para cargar las imagenes u otros archivos, creeme, te van a pedir mas adelante!
 Informe.hasMany(Files, { foreignKey: "informeId", as: "Files" });
 Files.belongsTo(Informe, { foreignKey: "informeId", as: "Informe" });
-sequelize.sync();
+sequelize.sync({ alter: false });
 //Si localidad esta vacia lo llenará
 (async () => {
   try {

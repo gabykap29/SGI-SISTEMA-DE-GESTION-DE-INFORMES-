@@ -1,13 +1,13 @@
 const ctrlReports = {};
 const jwt = require('jsonwebtoken');
 const Usuario = require('../../models/Usuario')
-const{Person, Informe, Files,Departamento,Localidad,Tipo}= require('../../models/asossiations')
+const{Person, Informe, Files,Departamento,Localidad,Tipo,}= require('../../models/asossiations')
 
 // Crear un Informe
 
 ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Titulo,
-            Fecha,Observaciones ,informe} = req.body;
+            Fecha,Observaciones ,informe,isComplete} = req.body;
     let {Tipo_idTipo} = req.body;
 
 //---------Se pide el token por si hacen peticiones directamente a las rutas ----------------------
@@ -39,7 +39,8 @@ ctrlReports.create = async (req, res) => {
         Tipo_idTipo,
         Titulo,
         Fecha,
-        Observaciones,   // Asignar la ruta de la imagen a la propiedad RutaImagen
+        Observaciones,
+        isComplete,   // Asignar la ruta de la imagen a la propiedad RutaImagen
         Informe: informe,
         id_IdUser:id,
       });

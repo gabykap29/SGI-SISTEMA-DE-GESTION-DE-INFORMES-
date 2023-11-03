@@ -17,10 +17,10 @@
 
 <body>
   <%- include('./partials/headers-aside.ejs');%>
-  <div class="container col-10" style="background-color: rgb(233, 233, 233); ;" >
-    <div class="card mt-2 shadow">
+  <div class="container col-10" style="background-color: rgb(233, 233, 233); margin-top: 70px;" >
+    <div class="card mt-4 shadow">
       <div class="card-body ">
-        <h2> Informe Completo </h2>
+        <h3 class="" id="titleEstado"> Informe Completo </h3>
       </div>
     </div>
       <div class="row">
@@ -38,19 +38,19 @@
             <div id="carouselExample" class="carousel slide">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="firstImg">
+                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="firstImg" style="height: 300px;">
                   <span class= "d-flex justify-content-center align-items-center" id="descriptionOne"></span>
                 </div>
                 <div class="carousel-item">
-                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="secondtImg">
+                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="secondtImg" style="height: 300px;">
                   <span class= "d-flex justify-content-center align-items-center" id="descriptionTwo"></span>
                 </div>
                 <div class="carousel-item">
-                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="thirdImg">
+                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="thirdImg" style="height: 300px;">
                   <span class= "d-flex justify-content-center align-items-center" id="descriptionTree"></span>
                 </div>
                 <div class="carousel-item">
-                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="fourtImg">
+                  <img src="/css/images/imagen-no-disponible.jpg" class="d-block w-100" alt="..." id="fourtImg" style="height: 300px;">
                   <span class= "d-flex justify-content-center align-items-center" id="descriptionFour"></span>
                 </div>
               </div>
@@ -136,6 +136,7 @@
                         <label for="description" class="form-label">Instagram</label>
                         <input type="text" class="form-control" id="instagram" name="instagram"></input>
                       </div>
+
                       <div class="mb-3">
                         <label for="description" class="form-label">Observaciones</label>
                         <textarea class="form-control" id="description" name="description"></textarea>

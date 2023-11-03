@@ -50,6 +50,10 @@ const Informe = sequelize.define('Informe',{
         type: DataTypes.BOOLEAN,
         defaultValue:true
     },
+    isComplete:{
+      type: DataTypes.BOOLEAN,
+      defaultValue:false,
+    },
     
     createdAt:{
       type: DataTypes.DATE,

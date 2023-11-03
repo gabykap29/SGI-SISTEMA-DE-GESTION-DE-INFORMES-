@@ -53,11 +53,13 @@ const Person = sequelize.define('Person', {
         type: DataTypes.STRING,
         allowNull:true,
         defaultValue:'No hay datos',
-    },work:{
+    },
+    work:{
         type:DataTypes.STRING,
         allowNull:true,
         defaultValue:'No hay datos',
-    },mail:{
+    },
+    mail:{
         type:DataTypes.STRING,
         allowNull:true,
     },

@@ -16,7 +16,7 @@
 
 <body>
   <%- include('./partials/headers-aside.ejs');%>
-              <div class="col-10 bgForm py-2">
+              <div class="col-9 bgForm px-5" style="margin-top: 76px;">
                 <div class="card shadow">
                   <div class="card-body ">
                     <div class="container d-flex ">
@@ -28,7 +28,7 @@
                 <div class="card  shadow">
                   <div class="card-body">
                     <div class=" form-cargar">
-                      <form action="" class="row g-3 needs-validation" id="formNuevoInforme" enctype="multipart/form-data">
+                      <form action="" class="row  needs-validation" id="formNuevoInforme" enctype="multipart/form-data">
                           <div class="col-md-3 position-relative">
                               <label for="validationTooltip04" class="form-label"><b>Departamento</b></label>
                               <select class="form-select input" id="selecDepartamento" required>
@@ -71,17 +71,22 @@
                             <label for="validationTooltip02" class="form-label"><b>Fecha</b></label>
                             <input type="date" class="form-control input" id="fecha" value="" required>
                           </div>
+
                           <div class="col-md-3 position-relative">
                             <label for="validationTooltipUsername" class="form-label"><b>Titulo</b></label>
                             <div class="input-group has-validation">
                               <input type="text" class="form-control input" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
                             </div>
-                          </div>          
+                          </div>
+         
                             <div class="mb-1">
                               <label for="exampleFormControlTextarea1" class="form-label"><b>Informe</b></label>
                               <textarea class="form-control input" id="informe" rows="3" style="height:180px;"></textarea>                
                               
-
+                              <div class="col-12 position-relative">
+                                <label for="exampleFormControlTextarea1" class="form-label">Completado</label>
+                                <input type="checkbox" class="form-check-input" id="isCompleted">          
+                              </div> 
                               <button class="btn btn-primary" type="submit">Cargar Informe</button>
                               <button class="btn btn-secondary" type="reset">Borrar campos</button>
                               

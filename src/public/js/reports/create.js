@@ -9,6 +9,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
   const Fecha = document.getElementById('fecha').value;
   const Titulo = document.getElementById('titulo').value;
   const informe = document.getElementById('informe').value;
+  const isComplete = document.getElementById('isCompleted').checked;
 
   try {
     const response = await fetch('/api/informes/create', {
@@ -23,6 +24,7 @@ formNuevoInforme.addEventListener('submit', async (e) => {
               Fecha,
               Titulo,
               informe,
+              isComplete,
             }),
           });
 

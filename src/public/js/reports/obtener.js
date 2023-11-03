@@ -14,6 +14,7 @@ const descriptionOne = document.getElementById("descriptionOne");
 const descriptionTwo = document.getElementById("descriptionTwo");
 const descriptionTree = document.getElementById("descriptionTree");
 const descriptionFour = document.getElementById("descriptionFour");
+const titleEstado = document.getElementById("titleEstado");
 
 //-----------------------Obtener Imagenes-------------------------------------
 const obtenerImagen = (rutaImagen) => {
@@ -106,6 +107,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
   const response = await fetch(`/api/informe/${id}`);
   const data = await response.json();
+  if(data.isComplete === true){
+    titleEstado.innerHTML = `Reporte Completo <a href='/informes/${id}/edit'> <img src='/css/images/comprobado.png' style='width: 30px; height: 30px;' </a>`;
+  }else{
+    titleEstado.innerHTML = `Reporte Incompleto <a href='/informes/${id}/edit'> <img src='/css/images/incompleto.png' style='width: 30px; height: 30px;' </a>`;
+  }
   cant = data.informePersons.length;
   let Departamento = departamento[data.Departamento_idDepartamento];
   let Localidad = localidad[data.Localidad_idLocalidad];

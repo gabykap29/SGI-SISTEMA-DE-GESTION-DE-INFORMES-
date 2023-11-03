@@ -106,7 +106,7 @@ const showPerson = async ()=>{
     phone.innerHTML = `Teléfono: ${res.phone}`;
     facebook.innerHTML = `Facebook: ${res.facebook}`;
     instagram.innerHTML = `Instagram: ${res.instagram}`;
-
+    console.log(res)
     for(let i = 0; i < res.informePersons.length; i++){
         let idDepar = res.informePersons[i].Departamento_idDepartamento; 
         let Departamento = departamento[idDepar];

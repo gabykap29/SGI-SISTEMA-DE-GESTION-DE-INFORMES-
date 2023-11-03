@@ -13,16 +13,16 @@ window.addEventListener('DOMContentLoaded', () => {
         try {
             if (window.innerWidth <= 876) {
                 aside.style.display = 'none';
-                let canvasContent = document.querySelector('.graficos.col-9');
-                let clases = canvasContent.classList;
-                clases.remove('col-9');
-                clases.add('col-12');
+                let headers = document.getElementById('Headers');
+                let clases = headers.classList;
+                clases.remove('Headers');
+                clases.remove('col-10');
             } else {
                 aside.style.display = 'block';
-                let canvasContent = document.querySelector('.graficos.col-12');
-                let clases = canvasContent.classList;
-                clases.remove('col-12');
-                clases.add('col-9');
+                let headers = document.getElementById('Headers');
+                let clases = headers.classList;
+                clases.add('Headers');
+                clases.add('col-10');
             }
         } catch (error) {
             console.log(error);
