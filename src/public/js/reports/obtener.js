@@ -92,6 +92,68 @@ let localidad = [
   "Ing. Juarez",
 ];
 
+
+const completeReport = async (id)=>{
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "Estás por completar un Informe, este proceso es irreversible",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Estoy seguro",
+    cancelButtonText: "Cancelar",
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const url = window.location.href;
+        const parts = url.split("/");
+        const id = parts[parts.length - 1];
+        const res = await fetch(`/api/informes/complete/${id}`, {
+          method: "PUT",
+        });
+
+        const data = await res.json();
+        if(data.message === 'El informe ya fue completado!'){
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: data.message,
+          });
+          return;
+        }
+        Swal.fire({
+          icon: "success",
+          title: "Informes completados",
+          text: data.message,
+        });
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2200);
+      } catch (error) {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: error.message,
+        });
+      }
+    }
+  });
+}
+
+
+
+
+
+titleEstado.addEventListener("click", async(e) => {
+  e.preventDefault();
+  completeReport();
+})
+
+
+
 document.addEventListener("DOMContentLoaded", async () => {
   const titles = document.getElementById("titles");
   const informe = document.getElementById("informeView");

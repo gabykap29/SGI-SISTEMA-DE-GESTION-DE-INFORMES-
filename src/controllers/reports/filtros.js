@@ -96,7 +96,23 @@ const filtroDepar = async (req, res) => {
     res.status(500).json({ error: 'Error al obtener los informes filtrados por Departamento' });
   }
 };
+const filtroIncompleted = async(req,res)=>{
+  try {
+    const informes = await Informe.findAll({
+      where:{
+        estado:true,
+        isComplete:false
+      }
+    });
+
+    res.json(informes);
+  } catch (error) {
+    console.log(error);
+    return res.json({message:'No hay informes incompletos. Hurra!'})
+  }
+}
 module.exports = {
   filtrarInformes,
   filtroDepar,
+  filtroIncompleted
 };

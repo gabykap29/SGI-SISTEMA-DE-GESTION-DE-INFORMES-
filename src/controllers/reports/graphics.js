@@ -8,9 +8,9 @@ const crtlGraphics = {};
 crtlGraphics.findDate= async(req,res)=> {
     const {fechaInicio, fechaFinal, tipo} = req.body;
     const token = req.cookies.jwt;
-    // if(!token){
-    //     return res.status(401).json({message:'No se encuentra autorizado para solicitar recursos '})
-    // }
+    if(!token){
+        return res.status(401).json({message:'No se encuentra autorizado para solicitar recursos '})
+    }
     try {
         const reports = await Informe.findAll({
             attributes:[

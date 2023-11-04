@@ -216,4 +216,36 @@ ctrlReports.deleted = async (req, res) => {
   }
 };
 
+ctrlReports.complete = async (req,res)=>{
+  const {id}= req.params;
+  try {
+    const informe = await Informe.findByPk(id);
+    if(!informe){
+      throw({
+        status:404,
+        message:'El informe no existe!'
+      })
+    };
+    if(informe.isComplete === true){
+       throw({
+        status:400,
+        message:'El informe ya fue completado!'
+       })
+    }
+    const complete = await Informe.update({
+
+      isComplete:true
+    },{
+      where:{
+      idInforme:id,
+    }});
+    return res.status(201).json({message:'Informe completado con exito!'});
+  } catch (error) {
+    console.log(error);
+    return res.status(error.status || 500).json({
+      message: error.message || 'Error Interno del Servidor'
+    })
+  }
+};
+
 module.exports = ctrlReports;

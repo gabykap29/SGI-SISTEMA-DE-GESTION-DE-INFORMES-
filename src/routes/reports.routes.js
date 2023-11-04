@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ctrlReports = require('../controllers/reports/auth.reports');
-const { filtrarInformes, filtroDepar } = require('../controllers/reports/filtros');
+const { filtrarInformes, filtroDepar, filtroIncompleted } = require('../controllers/reports/filtros');
 const isAutenticated = require('../middlewares/autenticate');
 const upload = require('../middlewares/multer');
 const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol');
@@ -143,5 +143,6 @@ router.get('/api/filtrar', isAutenticated,filtrarInformes);
 router.get('/api/porDepar', isAutenticated,filtroDepar);
 router.post('/api/informes/findDate',findDate);
 router.get('/api/informes/forTitle',findTitle);
-
+router.put('/api/informes/complete/:id',isAutenticated,verificarRolUser,ctrlReports.complete);
+router.get('/api/informes/incomplete',isAutenticated,filtroIncompleted);
 module.exports = router;
