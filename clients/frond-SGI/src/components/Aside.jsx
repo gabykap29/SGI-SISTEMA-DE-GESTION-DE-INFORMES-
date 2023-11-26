@@ -4,6 +4,7 @@ import iconoDashboard from '../assets/dashboard.png';
 import iconoNotas from '../assets/notas.png';
 import iconoPersonas from '../assets/persona.png';
 import iconoUsuarios from '../assets/usuarios.png';
+import { Link } from 'react-router-dom';
 const MenuLateral = () => {
     return (
         <div className="col-2  m-0 p-0 aling-self-start">
@@ -43,7 +44,7 @@ const MenuLateral = () => {
       <span className="pt-3">Informes</span>
     </div>
       <ul className="menu list-unstyled">
-        <li className="px-5 mb-2"><a className="nav-link itemsUser"  href="/informes/create">Cargar</a></li>
+        <li className="px-5 mb-2"><Link className="nav-link itemsUser"  to="/main/informes/cargar">Cargar</Link></li>
         <li className="px-5 "><a className="nav-link" href="/informes/views">Filtros</a></li>
 
       </ul>

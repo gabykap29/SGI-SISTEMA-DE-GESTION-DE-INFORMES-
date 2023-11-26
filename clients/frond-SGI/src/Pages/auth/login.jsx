@@ -1,6 +1,6 @@
 import iconoLogin from "../../assets/iconoLogin.png"
 import { useContext, useState } from "react";
-import {AuthContext} from "../../context/AuthContext.jsx";
+import { AuthContext } from "../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm.js";
 
