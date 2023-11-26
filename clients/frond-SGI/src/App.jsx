@@ -1,24 +1,19 @@
-import MenuLateral from "./components/Aside.jsx"
-import Footer from "./components/Footer.jsx";
 import Main from "./components/Main.jsx";
-import Navbar from "./components/Navbar.jsx"
-
-const App = ()=>{
+import { Routes, Route, Router } from "react-router-dom";
+import Login from "./Pages/auth/login.jsx";
+import { PrivateRoutes } from "./context/PrivateRoutes.jsx";
+import Error from "./Pages/error/404.jsx";
+const App = () => {
   return (
-    <div className="container-fluid" style={{fontSize:"small"}}>
-      <div className="row"> 
-        <div className="col-2 text-bg-dark">
-          <MenuLateral />
-        </div>
-        <div className="col">
-          <Navbar />
-          {/* Contenido principal */}
-          <Main />
+      <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<PrivateRoutes />} />
+          <Route path="/main" element={<Main />}>
 
-        </div>
-      </div>
-    </div>
+          <Route path="*" element={<Error />} />
+        </Route>
+      </Routes>
   );
-}
+};
 
-export default App
+export default App;

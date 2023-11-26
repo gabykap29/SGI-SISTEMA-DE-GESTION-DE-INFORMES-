@@ -6,7 +6,7 @@ import iconoPersonas from '../assets/persona.png';
 import iconoUsuarios from '../assets/usuarios.png';
 const MenuLateral = () => {
     return (
-        <div class="col-2  m-0 p-0 aling-self-start">
+        <div className="col-2  m-0 p-0 aling-self-start">
         <aside className=" d-flex flex-column justify-content-center ">
 <div className="d-flex flex-column p-3 bg-body-tertiary" >
     <div className="d-flex" id="logo">
@@ -51,7 +51,7 @@ const MenuLateral = () => {
   <li className="mx-3">
     <div className="d-flex">
       <a className="nav-link mx-2" href="#" role="button"  data-bs-toggle="dropdown" aria-expanded="false">
-        <img src={iconoPersonas} alt="" class="iconosAside"  /> 
+        <img src={iconoPersonas} alt="" className="iconosAside"  /> 
       </a>
       <span className="pt-3">Personas</span>
     </div>

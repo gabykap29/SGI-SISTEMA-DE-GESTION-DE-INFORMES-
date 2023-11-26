@@ -3,18 +3,18 @@ import notificaciones from '../assets/notificaciones.png';
 const Navbar = ()=>{
     return (
         <>
-          <header className="p-3  border-bottom col Headers " id="Headers" >
+          <header className="p-3  border-bottom col Headers  " id="Headers" >
           <div className="container">
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       
               <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/index" className="nav-link px-2 text-dark">Home</a></li>
-                <li><a href="/informes/views" className="nav-link px-2 text-dark">Informes</a></li>
-                <li><a href="/ver/personas" className="nav-link px-2 text-dark">Personas</a></li>
-                <li><a href="/view/usuarios" className="nav-link px-2 text-dark itemsAdmin ">Usuarios</a></li>
-                <li><a href="#" className="nav-link px-2 text-dark">About</a></li>
+                <li><a href="/index" className="nav-link px-2 text-white">Home</a></li>
+                <li><a href="/informes/views" className="nav-link px-2 text-white">Informes</a></li>
+                <li><a href="/ver/personas" className="nav-link px-2 text-white">Personas</a></li>
+                <li><a href="/view/usuarios" className="nav-link px-2 text-white itemsAdmin ">Usuarios</a></li>
+                <li><a href="#" className="nav-link px-2 text-white">About</a></li>
               </ul>
-              <div className="dropdown">
+              <div className="dropdown p-2">
                 <a className="dropdown-toggle"   role="button" href="#" id="notifications" data-bs-toggle="dropdown" aria-expanded="true"><img src={notificaciones} alt="" style={{width:"30px"}} /></a>
                 <ul className="dropdown-menu alert alert-primary" id="itemsNotifications">
                   <li><a className="dropdown-item" href="#">Sin notificaciones</a></li>

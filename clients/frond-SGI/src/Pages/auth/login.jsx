@@ -1,11 +1,60 @@
-import iconoLogin from "../../assets/images/iconoLogin.png";
+import iconoLogin from "../../assets/iconoLogin.png"
+import { useContext, useState } from "react";
+import {AuthContext} from "../../context/AuthContext.jsx";
+import { Navigate } from "react-router-dom";
+import { useForm } from "../../hooks/useForm.js";
+
+
+
 const Login = () => {
+
+  const {loginUser , isAuthenticated} = useContext(AuthContext)
+
+  if (isAuthenticated()) {
+    return <Navigate to="/" replace />;
+  };
+
+  const [loading, setLoading ] = useState(false);
+
+  const {
+    form: datos,
+    handleInputChange,
+    reset,
+  } = useForm({
+    username: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true)
+      await loginUser(datos);
+      reset();
+      <Navigate to="/" replace />;
+    } catch (error) {
+      console.log(error);
+      setLoading(false)
+      if (error.includes("Failed to fetch")) {
+        return alert(
+          "error al iniciar sesión: El servidor no respondió a la petición."
+          );
+        }
+      return alert("error al iniciar sesión: " + error);
+    }
+
+
+
+
+  }
+
   return (
     <div classNameName="text-center">
       <main className="form-signin  container">
         <form
           action="#"
           id="formLogin"
+          onSubmit={handleSubmit}
           className="col-11 col-lg-6 text-start p-4 rounded border border-2 shadow-sm mx-auto gap-2"
         >
           <div className="container d-flex flex-column justify-content-center align-items-center">
@@ -31,6 +80,8 @@ const Login = () => {
                   className="form-control"
                   id="username"
                   placeholder="admin"
+                  value={datos.username}
+                  onChange={handleInputChange}
                   name="username"
                 />
                 <label for="floatingInput">Usuario</label>
@@ -39,8 +90,11 @@ const Login = () => {
                 <input
                   type="password"
                   className="form-control "
+                  value={datos.password}
+                  onChange={handleInputChange}
                   id="password"
                   placeholder="Password"
+                  name="password"
                 />
                 <label for="floatingPassword">Contraseña</label>
               </div>
@@ -57,9 +111,11 @@ const Login = () => {
               className=" btn btn-lg btn-primary "
               id="btn-submit"
               type="submit"
+              disabled={loading}
             >
               Iniciar
             </button>
+            {loading &&  <div className="spinner-border spinner-border-sm" role="status"></div> }
             <p className="mt-5 mb-3 text-body-secondary">
               © Todos los derechos reservados 2023
             </p>
