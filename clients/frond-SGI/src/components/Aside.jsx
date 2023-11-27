@@ -45,7 +45,7 @@ const MenuLateral = () => {
     </div>
       <ul className="menu list-unstyled">
         <li className="px-5 mb-2"><Link className="nav-link itemsUser"  to="/main/informes/cargar">Cargar</Link></li>
-        <li className="px-5 "><a className="nav-link" href="/informes/views">Filtros</a></li>
+        <li className="px-5 "><Link className="nav-link" to="/main/informes/verTodos">Filtros</Link></li>
 
       </ul>
     </li>

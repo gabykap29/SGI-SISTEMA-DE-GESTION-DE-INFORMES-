@@ -5,6 +5,7 @@ import Error from "./Pages/error/404.jsx";
 import { ReportRoutes } from "./routes/ReportRoutes.jsx";
 import { AuthContextProvider } from "./context/AuthContext.jsx";
 import Store from "./Pages/reports/Store.jsx";
+import ShowReport from "./Pages/reports/Show.jsx";
 
 
 
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/main/*" element={<Main />}>
           {/* Ruta relativa a /main */}
           <Route path="informes/cargar" element={<Store />} />
+          <Route path="informes/verTodos" element={<ShowReport />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>
