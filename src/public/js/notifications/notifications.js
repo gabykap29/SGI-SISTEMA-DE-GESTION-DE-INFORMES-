@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </a>
                 <hr class="dropdown-divider">
             `
-        })
+        });
+        
     }
 });

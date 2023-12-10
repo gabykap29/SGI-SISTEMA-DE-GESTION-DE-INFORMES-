@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -9,7 +9,7 @@
     <meta content="" name="description">
     <link href="/img/informe.ico" rel="icon">
 
-
+    
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,29 +43,156 @@
         <%- include('./partials/Navbar.ejs');%>
             <!-- Navbar End -->
 
-
-            <!-- Blank Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>This is blank page</h3>
+            <!-- Chart informes pendientes -->
+            <div class="container-fluid pt-4 px-4 ">
+                <div class="row vh-100 bg-light rounded  mx-0">
+                    <div class="col-md-6 ">
+                        <div class="col-sm-12 col-xl-12">
+                            <div class="bg-light rounded h-100 p-4 mt-4">
+                                <h6 class="mb-4">Cantidad de Informes por Departamento</h6>
+                                <canvas id="bar-chart"></canvas>
+                            </div>
+                        </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="container-fluid pt-4 px-4">
+                            <div class="bg-light text-center rounded p-4">
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Informes no completados...</h6>
+                                    <a href="">Ver Todos</a>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                        <thead>
+                                            <tr class="text-dark">
+                                                
+                                                <th scope="col">Fecha</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Titulo</th>
+
+                                                <th scope="col">Actiones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>01 Jan 2045</td>
+                                                <td>INV-0123</td>
+                                                <td>Jhon Doe</td>
+
+                                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>01 Jan 2045</td>
+                                                <td>INV-0123</td>
+                                                <td>Jhon Doe</td>
+
+                                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>01 Jan 2045</td>
+                                                <td>INV-0123</td>
+                                                <td>Jhon Doe</td>
+
+                                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <h6 class="mb-4 text-center">Ultimas personas cargadas...</h6>
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <div class=" bg-light">
+                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body">
+                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
+                                        <p class="mb-0 mt-2" id="dni">22147893</p>
+                                        <button class="btn btn-primary">Ver más</button>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="carousel-item active">
+                            <div class=" bg-light d-flex justify-content-between">
+                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body">
+                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
+                                        <p class="mb-0 mt-2" id="dni">22147893</p>
+                                        <button class="btn btn-primary">Ver más</button>
+                                    </div>
+                                </div>
+                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body">
+                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
+                                        <p class="mb-0 mt-2" id="dni">22147893</p>
+                                        <button class="btn btn-primary">Ver más</button>
+                                    </div>
+                                </div>
+                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body">
+                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
+                                        <p class="mb-0 mt-2" id="dni">22147893</p>
+                                        <button class="btn btn-primary">Ver más</button>
+                                    </div>
+                                </div>
+                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body">
+                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
+                                        <p class="mb-0 mt-2" id="dni">22147893</p>
+                                        <button class="btn btn-primary">Ver más</button>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          <div class="carousel-item ">
+                            <div class=" bg-light">
+                                <div class="card col-md-2 d-flex justify-content-center align-items-center">
+                                    <div class="card-body">
+                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
+                                        <p class="mb-0 mt-2" id="dni">22147893</p>
+                                        <button class="btn btn-primary">Ver más</button>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                          
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
                 </div>
             </div>
-            <!-- Blank End -->
-
+            <!-- Chart informes pendientes End -->
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a href="#">Sistema de Gestión de Informes</a>, 2023. 
                         </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        <!-- <div class="col-12 col-sm-6 text-center text-sm-end">
+                            /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/
                             Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -89,13 +216,13 @@
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="/popper/popper.min.js">
     </script>
-    <script src="/js/reports/home.js"></script>
+    <script src="/js/main.js"></script>
+
     <script src="/bootstrap/bootstrap.min.js"></script>
     <script src="/chart.js/cdn.jsdelivr.net_npm_chart.js@latest_dist_Chart.min.js"></script>
-    <script src="/js/loaded.js"></script>
     <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
     <!-- Template Javascript -->
-    <script src="/js/main.js"></script>
+    <script src="/js/dashboard/main.js"></script>
 </body>
 
 </html>
