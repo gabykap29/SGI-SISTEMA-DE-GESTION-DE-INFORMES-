@@ -1,211 +1,277 @@
-/* Aminación de carga!  */
+/********** Template CSS **********/
+:root {
+    --primary: #009CFF;
+    --light: #F3F6F9;
+    --dark: #191C24;
+}
 
-.contenedorCarga{
-    height: 100vh;
-    background-color: #fcfcfcb7;
-    display: flex;
-    justify-content: center;
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*** Button ***/
+.btn {
+    transition: .5s;
+}
+
+.btn.btn-primary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 50px;
 }
-.hidden{
-    overflow: hidden;
+
+
+/*** Layout ***/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--light);
+    transition: 0.5s;
+    z-index: 999;
 }
-.lds-roller {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
-  .lds-roller div {
-    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    transform-origin: 40px 40px;
-  }
-  .lds-roller div:after {
-    content: " ";
-    display: block;
+
+.content {
+    margin-left: 250px;
+    min-height: 100vh;
+    background: #FFFFFF;
+    transition: 0.5s;
+}
+
+@media (min-width: 992px) {
+    .sidebar {
+        margin-left: 0;
+    }
+
+    .sidebar.open {
+        margin-left: -250px;
+    }
+
+    .content {
+        width: calc(100% - 250px);
+    }
+
+    .content.open {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        margin-left: -250px;
+    }
+
+    .sidebar.open {
+        margin-left: 0;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+
+/*** Navbar ***/
+.sidebar .navbar .navbar-nav .nav-link {
+    padding: 7px 20px;
+    color: var(--dark);
+    font-weight: 500;
+    border-left: 3px solid var(--light);
+    border-radius: 0 30px 30px 0;
+    outline: none;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover,
+.sidebar .navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+    background: #FFFFFF;
+    border-color: var(--primary);
+}
+
+.sidebar .navbar .navbar-nav .nav-link i {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 40px;
+}
+
+.sidebar .navbar .navbar-nav .nav-link:hover i,
+.sidebar .navbar .navbar-nav .nav-link.active i {
+    background: var(--light);
+}
+
+.sidebar .navbar .dropdown-toggle::after {
     position: absolute;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgb(0, 0, 0);
-    margin: -4px 0 0 -4px;
-  }
-  .lds-roller div:nth-child(1) {
-    animation-delay: -0.036s;
-  }
-  .lds-roller div:nth-child(1):after {
-    top: 63px;
-    left: 63px;
-  }
-  .lds-roller div:nth-child(2) {
-    animation-delay: -0.072s;
-  }
-  .lds-roller div:nth-child(2):after {
-    top: 68px;
-    left: 56px;
-  }
-  .lds-roller div:nth-child(3) {
-    animation-delay: -0.108s;
-  }
-  .lds-roller div:nth-child(3):after {
-    top: 71px;
-    left: 48px;
-  }
-  .lds-roller div:nth-child(4) {
-    animation-delay: -0.144s;
-  }
-  .lds-roller div:nth-child(4):after {
-    top: 72px;
-    left: 40px;
-  }
-  .lds-roller div:nth-child(5) {
-    animation-delay: -0.18s;
-  }
-  .lds-roller div:nth-child(5):after {
-    top: 71px;
-    left: 32px;
-  }
-  .lds-roller div:nth-child(6) {
-    animation-delay: -0.216s;
-  }
-  .lds-roller div:nth-child(6):after {
-    top: 68px;
-    left: 24px;
-  }
-  .lds-roller div:nth-child(7) {
-    animation-delay: -0.252s;
-  }
-  .lds-roller div:nth-child(7):after {
-    top: 63px;
-    left: 17px;
-  }
-  .lds-roller div:nth-child(8) {
-    animation-delay: -0.288s;
-  }
-  .lds-roller div:nth-child(8):after {
-    top: 56px;
-    left: 12px;
-  }
-  @keyframes lds-roller {
-    0% {
-      transform: rotate(0deg);
+    top: 15px;
+    right: 15px;
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transition: .5s;
+}
+
+.sidebar .navbar .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+.sidebar .navbar .dropdown-item {
+    padding-left: 25px;
+    border-radius: 0 30px 30px 0;
+}
+
+.content .navbar .navbar-nav .nav-link {
+    margin-left: 25px;
+    padding: 12px 0;
+    color: var(--dark);
+    outline: none;
+}
+
+.content .navbar .navbar-nav .nav-link:hover,
+.content .navbar .navbar-nav .nav-link.active {
+    color: var(--primary);
+}
+
+.content .navbar .sidebar-toggler,
+.content .navbar .navbar-nav .nav-link i {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border-radius: 40px;
+}
+
+.content .navbar .dropdown-toggle::after {
+    margin-left: 6px;
+    vertical-align: middle;
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    transition: .5s;
+}
+
+.content .navbar .dropdown-toggle[aria-expanded=true]::after {
+    transform: rotate(-180deg);
+}
+
+@media (max-width: 575.98px) {
+    .content .navbar .navbar-nav .nav-link {
+        margin-left: 15px;
     }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  body{
-    background-color: rgb(238, 238, 238);
-
-}
-#btn-submit{
-    width: 200px;
-}
-#formLogin{
-    margin-top:85px ;
-    border-radius: 5px;
-    background-color: white;
-}
-
-*{
-    margin: 0px;
-    padding: 0px;
-    font-size: small;
-}
-#icons{
-    margin-top: 15px;
-    padding-left: 40px;
-    padding-bottom: 5px;
-    }
-#aside{
-  height: 100vh;
-}
-#home{
-    color: white;
-}
-#home:hover{
-    color: #72a7f5;
-}
-.bgForm{
-    background-color: rgb(228, 228, 228);
-}
-#iconPerson{
-    width: 30px;
-}
-li{
-    border-radius: 10px;
-}
-
-.graficos .card{
-    width: 100%;
-    margin: 2px;
-}
-.contentCanvas{
-    margin: 10px;
-}
-.btnGraphics{
-    background-color: #f0bcc3;
-}
-.btnGraphics:hover{
-    background-color: #bb727c;
-}
-#footerView{
-  bottom: 0;
-  position: fixed;
-  width: 100%;
-  height: 8%;
-}
-/*      
-  vista de informe
-*/
-#informeView{
-    padding-right: 10px;
-    margin-bottom: 33%;
-}
-#imagen{
-  margin-top: 10px;
-  border-radius: 10px;
-}
-
-#Observaciones{
-  color: rgb(0, 0, 0);
 }
 
 
-/*   Inicio   */
-
-.cardDiv:hover{
-  background: #b1b1b1;
-}
-a{
-  text-decoration: none;
-  color: black;
-}
-a:hover{
-  color:grey
+/*** Date Picker ***/
+.bootstrap-datetimepicker-widget.bottom {
+    top: auto !important;
 }
 
-.cardDiv{
-  border-radius: 15px 50px;
+.bootstrap-datetimepicker-widget .table * {
+    border-bottom-width: 0px;
 }
 
-#user{
-  color: #0A58C8;
+.bootstrap-datetimepicker-widget .table th {
+    font-weight: 500;
 }
-/*
-Vista del perfil
-*/ 
 
-#usern{
-  margin-top: 55px;
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    padding: 10px;
+    border-radius: 2px;
 }
-#imgProfile{
-  margin-left: 60px;
-}
-#btnFiles{
-  background-color: #5c788f;
-  margin-top: 5px;
-  margin-left: 2px;
-  border-radius: 5px;
-};
 
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+    background: var(--primary);
+}
+
+.bootstrap-datetimepicker-widget table td.today::before {
+    border-bottom-color: var(--primary);
+}
+
+
+/*** Testimonial ***/
+.progress .progress-bar {
+    width: 0px;
+    transition: 2s;
+}
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-dots {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 5px solid var(--primary);
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--dark);
+    border-color: var(--primary);
+}

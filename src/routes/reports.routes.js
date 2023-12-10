@@ -32,7 +32,7 @@ router.get('/informes/create', isAutenticated, verificarRolUser, async(req, res)
   }
 });
 
-router.get('/index', isAutenticated, async(req, res) => {
+router.get('/index',isAutenticated, async(req, res) => {
   try {
     const username = await obtenerUsername(req);
     const rol = req.cookies.rol;
