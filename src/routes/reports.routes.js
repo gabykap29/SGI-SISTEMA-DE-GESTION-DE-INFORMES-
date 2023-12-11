@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ctrlReports = require('../controllers/reports/auth.reports');
+const ctrlReports = require('../controllers/reports/reports.controller');
 const { filtrarInformes, filtroDepar, filtroIncompleted } = require('../controllers/reports/filtros');
 const isAutenticated = require('../middlewares/autenticate');
 const upload = require('../middlewares/multer');
@@ -15,7 +15,7 @@ router.get('/informes/views', isAutenticated , async (req, res) => {
     const username = await obtenerUsername(req);
     const rol = req.cookies.rol;
     const uid = req.cookies.uid;
-    res.render('views',{username:username,uid,rol});
+    res.render('reports/views',{username:username,uid,rol});
   } catch (error) {
     console.log('error al obtener el username')
   }
@@ -26,7 +26,7 @@ router.get('/informes/create', isAutenticated, verificarRolUser, async(req, res)
     const username = await obtenerUsername(req);
     const uid = req.cookies.uid;
     const rol = req.cookies.rol;
-    res.render('create',{username:username,uid,rol});
+    res.render('reports/create',{username:username,uid,rol});
   } catch (error) {
     console.log('error al obtener el username')
   }
@@ -37,7 +37,7 @@ router.get('/index',isAutenticated, async(req, res) => {
     const username = await obtenerUsername(req);
     const rol = req.cookies.rol;
     const uid = req.cookies.uid;
-    res.render('index',{username:username,uid,rol});
+    res.render('reports/index',{username:username,uid,rol});
   } catch (error) {
     console.log('error al obtener el username')
   }
@@ -48,13 +48,13 @@ router.get('/informes/view/:id', isAutenticated,async(req, res) => {
     const username = await obtenerUsername(req);
     const rol = req.cookies.rol;
     const uid = req.cookies.uid;
-    res.render('view',{ id: req.params.id ,username:username,uid,rol});
+    res.render('reports/view',{ id: req.params.id ,username:username,uid,rol});
   } catch (error) {
     console.log('error al obtener el username')
   }
 });
 router.get('/informes/:id/print',isAutenticated,(req,res)=>{
-    res.render('printReport');
+    res.render('reports/printReport');
 });
 
 router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin, async(req, res) => {
@@ -62,7 +62,7 @@ router.get('/informe/edit/:id', isAutenticated, verificarRolAdmin, async(req, re
     const username = await obtenerUsername(req);
     const rol = req.cookies.rol;
     const uid = req.cookies.uid;
-    res.render('edit',{username:username,id: req.params.id ,uid,rol});
+    res.render('reports/edit',{username:username,id: req.params.id ,uid,rol});
   } catch (error) {
     console.log('error al obtener el username')
   }
@@ -123,7 +123,7 @@ router.get('/informes/:id', async (req,res)=>{
     const username = await obtenerUsername(req);
     const uid = req.cookies.uid;
     const rol = req.cookies.rol;
-    res.render('views' ,{ username:username ,id: req.params.id,uid,rol});
+    res.render('reports/views' ,{ username:username ,id: req.params.id,uid,rol});
   } catch (error) {
     console.log('Error al obtener el username del usuario!');
   }
@@ -145,4 +145,5 @@ router.post('/api/informes/findDate',findDate);
 router.get('/api/informes/forTitle',findTitle);
 router.put('/api/informes/complete/:id',isAutenticated,verificarRolUser,ctrlReports.complete);
 router.get('/api/informes/incomplete',isAutenticated,filtroIncompleted);
+
 module.exports = router;

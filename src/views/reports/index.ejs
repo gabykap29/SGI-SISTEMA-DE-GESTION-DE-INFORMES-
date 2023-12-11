@@ -33,14 +33,14 @@
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Sidebar Start -->
-        <%- include('./partials/Sidebar.ejs');%>
+        <%- include('../partials/Sidebar.ejs');%>
         <!-- Sidebar End -->
 
 
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-        <%- include('./partials/Navbar.ejs');%>
+        <%- include('../partials/Navbar.ejs');%>
             <!-- Navbar End -->
 
             <!-- Chart informes pendientes -->
@@ -73,28 +73,8 @@
                                                 <th scope="col">Actiones</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>01 Jan 2045</td>
-                                                <td>INV-0123</td>
-                                                <td>Jhon Doe</td>
-
-                                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>01 Jan 2045</td>
-                                                <td>INV-0123</td>
-                                                <td>Jhon Doe</td>
-
-                                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>01 Jan 2045</td>
-                                                <td>INV-0123</td>
-                                                <td>Jhon Doe</td>
-
-                                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                            </tr>
+                                        <tbody id="registros">
+                                            
 
                                         </tbody>
                                     </table>
@@ -119,40 +99,8 @@
                             </div>
                           </div>
                           <div class="carousel-item active">
-                            <div class=" bg-light d-flex justify-content-between">
-                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
-                                    <div class="card-body">
-                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
-                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
-                                        <p class="mb-0 mt-2" id="dni">22147893</p>
-                                        <button class="btn btn-primary">Ver más</button>
-                                    </div>
-                                </div>
-                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
-                                    <div class="card-body">
-                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
-                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
-                                        <p class="mb-0 mt-2" id="dni">22147893</p>
-                                        <button class="btn btn-primary">Ver más</button>
-                                    </div>
-                                </div>
-                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
-                                    <div class="card-body">
-                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
-                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
-                                        <p class="mb-0 mt-2" id="dni">22147893</p>
-                                        <button class="btn btn-primary">Ver más</button>
-                                    </div>
-                                </div>
-                                <div class="card col-md-3 d-flex justify-content-center align-items-center">
-                                    <div class="card-body">
-                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
-                                        <h6 class="mb-0 mt-3" id="nameComplete">Jhon Doe</h6>
-                                        <p class="mb-0 mt-2" id="dni">22147893</p>
-                                        <button class="btn btn-primary">Ver más</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class=" bg-light d-flex justify-content-between" id="personas">
+                                
                           </div>
                           <div class="carousel-item ">
                             <div class=" bg-light">

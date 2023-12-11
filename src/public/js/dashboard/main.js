@@ -1,3 +1,29 @@
+const registros = document.querySelector('#registros');
+const registrosPersonas = document.querySelector('#personas');
+const getInc = async () => {
+    const res = await fetch('/api/informes/incomplete')
+    if(res.status === 404) {
+        return []
+    }
+    const data = await res.json()
+    return data;
+};
+
+const getPeoples = async () => {
+    try {
+        const res = await fetch('/api/persons');
+        if(res.status === 404) {
+            return []
+        }
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    };
+};
+
+
+
 document.addEventListener('DOMContentLoaded', async() => {
         // Single Bar Chart
         var ctx4 = $("#bar-chart").get(0).getContext("2d");
@@ -89,4 +115,40 @@ document.addEventListener('DOMContentLoaded', async() => {
                 responsive: true
             }
         });
+
+        //Tabla informes incompletos
+        const incompletos = await getInc();
+        if(incompletos.length > 0) {
+
+            incompletos.forEach(incompleto => {
+                let fecha = dayjs(incompleto.Fecha).format("DD/MM/YYYY");
+                registros.innerHTML += `
+                <tr>
+                    <td>${fecha}</td>
+                    <td>${incompleto.Informes.Nombre}</td>
+                    <td>${incompleto.Titulo}</td>
+                    <td><a class="btn btn-sm btn-primary" href="/informes/${incompleto.idInforme}">Detalles</a></td>
+                </tr>
+                `
+            });
+            
+        }
+        //Tabla personas
+        const personas = await getPeoples();
+        if(personas.length > 0) {
+            personas.forEach(persona => {
+                registrosPersonas.innerHTML += `
+                <div class="card col-md-3 d-flex justify-content-center align-items-center">
+                                    <div class="card-body">
+                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                        <h6 class="mb-0 mt-3" id="nameComplete">${persona.lastName} ${persona.firstName}</h6>
+                                        <p class="mb-0 mt-2" id="dni">${persona.DNI}</p>
+                                        <a href="/ver/persona/${persona.id}" class="btn btn-primary">Ver más</a>
+                                    </div>
+                 </div>
+                `
+            });
+            
+        }
+
 });

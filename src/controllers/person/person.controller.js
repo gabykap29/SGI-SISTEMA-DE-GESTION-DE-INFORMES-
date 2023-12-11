@@ -7,7 +7,10 @@ crtlPerson.getAll = async(req,res)=>{
 
   try {
     
-    const persons = await Person.findAll();
+    const persons = await Person.findAll({
+      limit: 10,
+      order: [['idPerson', 'DESC']],
+    });
 
     if(!persons){
       return res.status(404).json({message:'no hay personas cargadas en base de datos'});

@@ -102,8 +102,18 @@ const filtroIncompleted = async(req,res)=>{
       where:{
         estado:true,
         isComplete:false
-      }
-    });
+      },include:[{
+        model:Departamento,
+        as:'InformesDepart',
+        attributes:['Nombre']
+      },{
+        model:Tipo,
+        as:'Informes',
+        attributes:['Nombre']
+      }], limit:10,
+      order: [['createdAt', 'DESC']],
+    }
+    );
 
     res.json(informes);
   } catch (error) {

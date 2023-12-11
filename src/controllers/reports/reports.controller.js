@@ -9,7 +9,7 @@ ctrlReports.create = async (req, res) => {
     const { Departamento_idDepartamento, Localidad_idLocalidad, Titulo,
             Fecha,Observaciones ,informe,isComplete} = req.body;
     let {Tipo_idTipo} = req.body;
-
+console.log(req.body)
 //---------Se pide el token por si hacen peticiones directamente a las rutas ----------------------
     const token = req.cookies.jwt;
     if(!token){
@@ -22,7 +22,7 @@ ctrlReports.create = async (req, res) => {
       const id = decoded.id
       let rutaImagen =[];  // Variable para almacenar la ruta de la imagen
 
-      //Si el usuario ingresa un tipo personalizado y 
+      //Si el usuario ingresa un tipo personalizado
       if(Tipo_idTipo.length > 2){
         const [tipo, created] = await Tipo.findOrCreate({
           where:{nombre: Tipo_idTipo},
@@ -49,7 +49,7 @@ ctrlReports.create = async (req, res) => {
           message: 'Favor, verifique todos los campos esten completos.'
         };
       }
-      return res.json(newInforme);
+      return res.status(201).json({message:'Informe creado con exito!'});
     }catch (error) {
       console.error(error);
       return res.status(error.status || 500).json(error.message || 'Error interno del servidor');

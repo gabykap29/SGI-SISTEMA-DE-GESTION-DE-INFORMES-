@@ -8,6 +8,13 @@ const Tipo = require('./Tipo');
 const Person = require("./Person");
 const InformePerson = require("./InformePerson");
 const ImgPerson = require("./ImgPerson");
+Departamento.hasMany(Informe, {
+  foreignKey: "Departamento_idDepartamento",
+  as: "InformesDepart",
+});
+Informe.belongsTo(Departamento,{
+  foreignKey: "Departamento_idDepartamento",
+  as: "InformesDepart"});
 
 Person.hasOne(ImgPerson, {
   foreignKey: "personId",
@@ -36,6 +43,14 @@ Person.belongsToMany(Informe, {
   through: InformePerson,
   foreignKey: "personId",
   as: "informePersons",
+});
+Departamento.hasMany(Localidad, {
+  foreignKey: "Departamento_idDepartamento",
+  as: "Departamento",
+});
+Localidad.belongsTo(Departamento, {
+  foreignKey: "Departamento_idDepartamento",
+  as: "Departamento",
 });
 //Asociación con Files
 //Esta tabla es para cargar las imagenes u otros archivos, creeme, te van a pedir mas adelante!
