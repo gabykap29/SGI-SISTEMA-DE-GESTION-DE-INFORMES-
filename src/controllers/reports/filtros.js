@@ -108,7 +108,7 @@ const filtroIncompleted = async(req,res)=>{
         attributes:['Nombre']
       },{
         model:Tipo,
-        as:'Informes',
+        as:'Tipo',
         attributes:['Nombre']
       }], limit:10,
       order: [['createdAt', 'DESC']],

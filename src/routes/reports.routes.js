@@ -10,7 +10,7 @@ const obtenerUsername = require('../helpers/username');
 const ctrlFiles = require('../controllers/files/files.controllers');
 
 // Vistas
-router.get('/informes/views', isAutenticated , async (req, res) => {
+router.get('/informes/filtros', isAutenticated , async (req, res) => {
   try {
     const username = await obtenerUsername(req);
     const rol = req.cookies.rol;

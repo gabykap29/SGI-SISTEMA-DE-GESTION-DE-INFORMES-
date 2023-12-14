@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                 registros.innerHTML += `
                 <tr>
                     <td>${fecha}</td>
-                    <td>${incompleto.Informes.Nombre}</td>
+                    <td>${incompleto.Tipo.Nombre}</td>
                     <td>${incompleto.Titulo}</td>
                     <td><a class="btn btn-sm btn-primary" href="/informes/${incompleto.idInforme}">Detalles</a></td>
                 </tr>

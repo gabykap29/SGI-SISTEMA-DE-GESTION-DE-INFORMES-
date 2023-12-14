@@ -12,10 +12,19 @@ Departamento.hasMany(Informe, {
   foreignKey: "Departamento_idDepartamento",
   as: "InformesDepart",
 });
-Informe.belongsTo(Departamento,{
+Informe.belongsTo(Departamento, {
   foreignKey: "Departamento_idDepartamento",
-  as: "InformesDepart"});
+  as: "InformesDepart"
+});
 
+Localidad.hasMany(Informe, {
+  foreignKey: "Localidad_idLocalidad",
+  as: "InformesLocal",
+});
+Informe.belongsTo(Localidad, {
+  foreignKey: "Localidad_idLocalidad",
+  as: "InformesLocal"
+});
 Person.hasOne(ImgPerson, {
   foreignKey: "personId",
   as: "ImgPersons",
@@ -27,11 +36,11 @@ ImgPerson.belongsTo(Person, {
 
 Tipo.hasMany(Informe, {
   foreignKey: "Tipo_idTipo",
-  as: "Informes",
+  as: "Tipo",
 });
-Informe.belongsTo(Tipo,{
+Informe.belongsTo(Tipo, {
   foreignKey: "Tipo_idTipo",
-  as: "Informes"
+  as: "Tipo"
 })
 //-----------------Personas-----------------
 Informe.belongsToMany(Person, {
@@ -60,7 +69,7 @@ sequelize.sync({ alter: false });
 //Si localidad esta vacia lo llenará
 (async () => {
   try {
-    
+
     // Verifica si la base de datos está vacía
     const Count = await Localidad.count();
     if (Count === 0) {
@@ -339,7 +348,7 @@ sequelize.sync({ alter: false });
 //Si la tabla TIPOS esta vacia, esta se carga por defecto!-----------
 (async () => {
   try {
-   
+
     // Verifica si la base de datos está vacía
     const count = await Tipo.count();
     if (count === 0) {
