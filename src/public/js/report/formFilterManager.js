@@ -1,15 +1,16 @@
+const btnPrevious = document.getElementById("btnPrevious");
+const btnNext = document.getElementById("btnNext");
 const listadoInformes = document.querySelector("#registros");
-
+let page = 1;
 const obtenerInformes = async () => {
   const res = await fetch(`/api/informes`, {});
-  
 
   if (res.status === 404) {
     return [];
   }
 
   const data = await res.json();
-  console.log(data);
+
   return data;
 };
 
@@ -19,18 +20,16 @@ deleteButton.forEach((boton) => {
 });
 
 const mostrarInformes = (informes) => {
-  // Si no hay tareas, mostrar un mensaje
   if (informes.length === 0) {
     listadoInformes.innerHTML = `
             <tr>
-                <td colspan="6" class="text-center">No hay informes cargados!</td>
+                <td colspan="6" class="text-center">Ningun informe cargado coincide con la busqueda!</td>
             </tr>
         `;
     return;
   }
-
+  listadoInformes.innerHTML = "";
   informes.forEach((informe) => {
-    console.log(informe);
     let fecha = dayjs(informe.Fecha).format("DD/MM/YYYY");
     listadoInformes.innerHTML += `
                   <tr>
@@ -40,15 +39,14 @@ const mostrarInformes = (informes) => {
                       <td>${fecha}</td>
                       <td>${informe.Titulo}</td>
                       <td>
-                          <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm">Ver</a>
-                          <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm">Editar</a>
-                          <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>    
+                          <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
+                          <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm"><i class="bi bi-pencil-square"></i></a>
+                          <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}"><i class="bi bi-trash"></i></button>    
                       </td>
                   </tr>
               `;
   });
 };
-
 
 const obtenerIdInforme = (elemento) => {
   while (elemento) {
@@ -100,9 +98,48 @@ const eliminarInforme = async (idInforme) => {
   });
 };
 
+document
+  .getElementById("formSearch")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault(); // Evitar el envío del formulario por defecto
+
+    // Obtener los valores ingresados en el formulario
+    const departamentoId = document.getElementById("selecDepartamento").value;
+    const localidadId = document.getElementById("selecLocalidad").value;
+    const tipo = document.getElementById("tipo").value;
+    const fechaInicio = document.getElementById("fechaInicio").value;
+    const fechaFinal = document.getElementById("fechaFinal").value;
+    const titulo = document.getElementById("titulo").value;
+    const informe = document.getElementById("informe").value;
+
+    let url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      mostrarInformes(data);
+    } catch (error) {
+      console.error("Error al enviar la solicitud:", error);
+    }
+
+    btnPrevious.addEventListener("click", async () => {
+      if (page > 1) {
+        page--;
+      }
+      url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      mostrarInformes(data);
+    });
+    btnNext.addEventListener("click", async () => {
+      url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      mostrarInformes(data);
+    });
+  });
+
 document.addEventListener("DOMContentLoaded", async () => {
   const showInformes = (informes) => {
-    // Si no hay tareas, mostrar un mensaje
     if (informes.length === 0) {
       listadoInformes.innerHTML = `
             <tr>
@@ -112,9 +149,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-
     informes.forEach((informe) => {
-      console.log(informe);
       let fecha = dayjs(informe.Fecha).format("DD/MM/YYYY");
       listadoInformes.innerHTML += `
                     <tr>
@@ -124,9 +159,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <td>${fecha}</td>
                         <td>${informe.Titulo}</td>
                         <td>
-                            <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm">Ver</a>
-                            <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm">Editar</a>
-                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}">Eliminar</button>    
+                            <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
+                            <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm"><i class="bi bi-pencil-square"></i></a>
+                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}"><i class="bi bi-trash"></i></button>    
                         </td>
                     </tr>
                 `;

@@ -1,10 +1,10 @@
-const {Informe,Departamento,Tipo}= require('../../models/asossiations')
+const {Informe,Departamento,Tipo, Localidad}= require('../../models/asossiations')
 const { Op } = require('sequelize');
 
 // Controlador para filtrar Informes
 const filtrarInformes = async (req, res) => {
   try {
-    const { departamentoId, localidadId, fechaInicio, fechaFinal, tipo, titulo, informe } = req.query;
+    const { departamentoId, localidadId, fechaInicio, fechaFinal, tipo, titulo, informe,page = 0, size = 10 } = req.query;
 
     // Construir el objeto de filtro dinámicamente
     const filtro = {};
@@ -43,6 +43,25 @@ const filtrarInformes = async (req, res) => {
     // Realizar la consulta con los filtros
     const informes = await Informe.findAll({
       where: filtro,
+      include: [
+        {
+          model: Departamento,
+          as: 'InformesDepart',
+          attributes: ['nombre'],
+        },
+        {
+          model:Localidad,
+          as:'InformesLocal',
+          attributes:['nombre']
+        },
+        {
+          model: Tipo,
+          as: 'Tipo',
+          attributes: ['nombre'],
+        },
+      ],
+      limit:size,
+      offset:(page)*size,
     });
 
      res.json(informes);
@@ -52,7 +71,7 @@ const filtrarInformes = async (req, res) => {
   }
 };
 const filtroDepar = async (req, res) => {
-
+  
   try {
     const departamentos = await Departamento.findAll({
       include: [
@@ -61,6 +80,7 @@ const filtroDepar = async (req, res) => {
           as: 'Informes',
         },
       ],
+ 
     });
 
     const informesTotales = [];
