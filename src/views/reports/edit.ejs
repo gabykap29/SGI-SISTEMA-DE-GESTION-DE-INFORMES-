@@ -1,107 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <link rel="icon" href="/css/images/OIG.png">
-  <title>SGI - CARGAR INFORMES</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <title>SGI - Editar</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="/img/informe.ico" rel="icon">
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css">
-<script src="/sweetalert/sweetalert2@11"></script>
+    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-  <%- include('./partials/headers-aside.ejs');%>
-    <div class="form-editar col-9 bgForm py-2" style="margin-top: 70px;" >
-      <br>
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">        
-            <div class=" container d-flex">
-            <h4>Editar Informes</h4>
-          </div>
-        </h4>
-        </div>
-      </div>
-      <br>
-      <div class="card mb-5">
-        <div class="card-body">
-          <div class="container d-flex">
-            <form action="" class="row g-3 needs-validation" id="form-editar">
-              <div class="col-md-3 position-relative">
-                  <label for="validationTooltip04" class="form-label">Departamento</label>
-                  <select class="form-select" id="selecDepartamento" required>
-                    <option value="1">Formosa</option>
-                    <option value="2">Pilcomayo</option>
-                    <option value="3">Pilagás</option>
-                    <option value="4">Laishí</option>
-                    <option value="5">Pirané</option>
-                    <option value="6">Patiño</option>
-                    <option value="7">Bermejo</option>
-                    <option value="8">Ramon Lista</option> 
-                    <option value="9">Matacos</option>
-                  </select>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Sidebar Start -->
+        <%- include('../partials/Sidebar.ejs');%>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+        <%- include('../partials/Navbar.ejs');%>
+            <!-- Navbar End -->
+            <main>
+              
+              <div class="container-fluid pt-4 px-4 ">
+                <div class=" rounded  mx-0">
+                  <div class="col-12  ">
+                    <div class=" bg-light shadow">
+                  <div class="card-header">
+                    <h6 class="text-center mb-2 ">Editar Informe</h6>
+                  </div>
+                  <div class="card-body">
+                    
+                    <div class="container d-flex">
+                      
+                      <form action="" class="row g-3 needs-validation" id="form-editar">
+                        <div class="col-md-3 position-relative">
+                            <label for="validationTooltip04" class="form-label">Departamento</label>
+                            <select class="form-select" id="selecDepartamento" required>
+                            </select>
+                          </div>
+                          <div class="col-md-3 position-relative">
+                            <label for="validationTooltip04" class="form-label">Localidad</label>
+                            <select class="form-select" id="selecLocalidad" required>
+                              <option selected disabled>Selecciona una opción</option>
+                            </select>
+                          </div>
+                          <div class="col-md-3 position-relative">
+                            <label for="validationTooltip04" class="form-label">Tipo</label>
+                            <select class="form-select" id="tipo" required>
+                              <option value="1">Política</option>
+                              <option value="2">Institucional</option>
+                              <option value="3">Educación</option>
+                              <option value="4">Religioso</option>
+                              <option value="5">Proselitismo</option>
+                              <option value="6">Salud</option>
+                              <option value="7">Seguridad</option>
+                              <option value="8">Eventos Climáticos</option>
+                              <option value="9">Hídricos</option>
+                            </select>
+                          </div>
+                        <div class="col-md-2 position-relative">
+                          <label for="validationTooltip02" class="form-label">Fecha</label>
+                          <input type="date" class="form-control" id="fecha" value="" required>
+                        </div>
+                        <div class="col-md-3 position-relative">
+                          <label for="validationTooltipUsername" class="form-label">Titulo</label>
+                          <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
+                          </div>
+                        </div>             
+                          <div class="mb-1">
+                            <label for="exampleFormControlTextarea1" class="form-label">Informe</label>
+                            <textarea class="form-control" id="informe" rows="3" style="height:180px;" required></textarea>
+                            <button class="btn btn-success" type="submit">Editar Informe</button>
+                            <button class="btn btn-secondary" type="reset">Borrar campos</button>
+                          </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-3 position-relative">
-                  <label for="validationTooltip04" class="form-label">Localidad</label>
-                  <select class="form-select" id="selecLocalidad" required>
-                    <option selected disabled>Selecciona una opción</option>
-                  </select>
-                </div>
-                <div class="col-md-3 position-relative">
-                  <label for="validationTooltip04" class="form-label">Tipo</label>
-                  <select class="form-select" id="tipo" required>
-                    <option value="1">Política</option>
-                    <option value="2">Institucional</option>
-                    <option value="3">Educación</option>
-                    <option value="4">Religioso</option>
-                    <option value="5">Proselitismo</option>
-                    <option value="6">Salud</option>
-                    <option value="7">Seguridad</option>
-                    <option value="8">Eventos Climáticos</option>
-                    <option value="9">Hídricos</option>
-                  </select>
-                </div>
-              <div class="col-md-2 position-relative">
-                <label for="validationTooltip02" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="fecha" value="" required>
               </div>
-              <div class="col-md-3 position-relative">
-                <label for="validationTooltipUsername" class="form-label">Titulo</label>
-                <div class="input-group has-validation">
-                  <input type="text" class="form-control" id="titulo" aria-describedby="validationTooltipUsernamePrepend" required>
                 </div>
-              </div>             
-                <div class="mb-1">
-                  <label for="exampleFormControlTextarea1" class="form-label">Informe</label>
-                  <textarea class="form-control" id="informe" rows="3" style="height:180px;" required></textarea>
-                  <button class="btn btn-success" type="submit">Editar Informe</button>
-                  <button class="btn btn-secondary" type="reset">Borrar campos</button>
+            </main>
+            <!-- Footer Start -->
+            <div class="container-fluid mt-3 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Sistema de Gestión de Informes</a>, 2023. 
+                        </div>
+                        <!-- <div class="col-12 col-sm-6 text-center text-sm-end">
+                            /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </div> -->
+                    </div>
                 </div>
-            </form>
-          </div>
+            </div>
+            <!-- Footer End -->
         </div>
-      </div>
     </div>
-  </main>
-  <div class="">
+        <!-- Content End -->
 
-  </div>
-  <!--scripts Localidades-->
-  <script src="/js/app.js"></script>
-  <script src="/js/reports/edit.js" ></script>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="/popper/popper.min.js">
-  </script>
 
-  <script src="/bootstrap/bootstrap.min.js">
-  </script>
-    <script src="/js/loaded.js"></script>
+        <!-- Back to Top -->
+    </div>
+    </div>
+    <!-- JavaScript Libraries -->
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/chart/chart.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="/popper/popper.min.js">
+    </script>
+    <script src="/js/main.js"></script>
+    <script src="/sweetalert/sweetalert2@11"></script>
+    <script src="/bootstrap/bootstrap.min.js"></script>
+    <script src="/chart.js/cdn.jsdelivr.net_npm_chart.js@latest_dist_Chart.min.js"></script>
     <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="/js/departament/main.js"></script>
+    <script src="/js/localities/main.js"></script>
+    <script src="/js/report/editForm.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+

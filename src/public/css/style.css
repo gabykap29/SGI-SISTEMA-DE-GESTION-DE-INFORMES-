@@ -354,3 +354,15 @@
     font-size: small;
   }
 
+/* Agrega una sombra en la parte inferior */
+.shadow-bottom {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  }
+  /* Añade una línea vertical a la derecha */
+.with-vertical-line {
+    border-right: 1px solid #ddd; /* Cambia el color y el grosor según tus preferencias */
+    padding-right: 15px; /* Opcional: ajusta el espaciado si es necesario */
+  }
+  
+  
