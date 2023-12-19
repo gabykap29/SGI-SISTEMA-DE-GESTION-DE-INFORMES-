@@ -4,8 +4,8 @@ const { Op } = require('sequelize');
 // Controlador para filtrar Informes
 const filtrarInformes = async (req, res) => {
   try {
-    const { departamentoId, localidadId, fechaInicio, fechaFinal, tipo, titulo, informe,page = 0, size = 10 } = req.query;
-
+    const { departamentoId, localidadId, fechaInicio, fechaFinal, tipo, titulo, informe,isComplete,page = 0, size = 10 } = req.query;
+  
     // Construir el objeto de filtro dinámicamente
     const filtro = {};
 
@@ -38,6 +38,9 @@ const filtrarInformes = async (req, res) => {
       filtro.Informe = {
         [Op.like]: `%${informe}%`
       };
+    }
+    if(isComplete){
+      filtro.isComplete = isComplete;
     }
 
     // Realizar la consulta con los filtros
@@ -130,7 +133,7 @@ const filtroIncompleted = async(req,res)=>{
         model:Tipo,
         as:'Tipo',
         attributes:['Nombre']
-      }], limit:10,
+      }], limit:5,
       order: [['createdAt', 'DESC']],
     }
     );

@@ -275,3 +275,82 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+/* tooltip de completado */
+.completed{
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .completed::before {
+    content: "Completado!";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .completed:hover::before {
+    opacity: 1;
+  }
+  
+
+  .incomplete{
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .incomplete::before {
+    content: "No completado!";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #cc220b;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .incomplete:hover::before {
+    opacity: 1;
+  }
+
+
+  .incomplete{
+    position: relative;
+    cursor: pointer;
+  }
+
+
+  .notificaciones:before {
+    content: "Hay notificaciones!";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #000000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .notificaciones:hover::before {
+    opacity: 1;
+  }
+
+  #tableNotCompleted{
+    font-size: small;
+  }
+

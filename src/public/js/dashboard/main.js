@@ -11,7 +11,7 @@ const getInc = async () => {
 
 const getPeoples = async () => {
     try {
-        const res = await fetch('/api/persons');
+        const res = await fetch('/api/persons/all');
         if(res.status === 404) {
             return []
         }
@@ -124,10 +124,11 @@ document.addEventListener('DOMContentLoaded', async() => {
                 let fecha = dayjs(incompleto.Fecha).format("DD/MM/YYYY");
                 registros.innerHTML += `
                 <tr>
+                    <td>${incompleto.InformesDepart.Nombre}</td>
                     <td>${fecha}</td>
                     <td>${incompleto.Tipo.Nombre}</td>
                     <td>${incompleto.Titulo}</td>
-                    <td><a class="btn btn-sm btn-primary" href="/informes/${incompleto.idInforme}">Detalles</a></td>
+                    <td><a class="btn btn-sm btn-outline-primary" href="/informes/${incompleto.idInforme}"><i class="bi bi-eye-fill"></i></a></td>
                 </tr>
                 `
             });
@@ -137,13 +138,16 @@ document.addEventListener('DOMContentLoaded', async() => {
         const personas = await getPeoples();
         if(personas.length > 0) {
             personas.forEach(persona => {
+                let urlImage = persona.ImgPersons.rutaImagen;
+                urlImage ?? '/img/user.png';
+                console.log(persona);
                 registrosPersonas.innerHTML += `
-                <div class="card col-md-3 d-flex justify-content-center align-items-center">
+                <div class="card col-md-3 d-flex text-center ">
                                     <div class="card-body">
-                                        <img class="img-fluid rounded-circle rounded-circle-custom" src="/img/user.png" alt="" style="width: 70px;">
+                                    <img class="rounded-circle" width="70" height="72" src="${urlImage}" alt="">
                                         <h6 class="mb-0 mt-3" id="nameComplete">${persona.lastName} ${persona.firstName}</h6>
-                                        <p class="mb-0 mt-2" id="dni">${persona.DNI}</p>
-                                        <a href="/ver/persona/${persona.id}" class="btn btn-primary">Ver más</a>
+                                        <p class="mb-0 mt-2" id="dni">${persona.dni}</p>
+                                        <a href="/ver/persona/${persona.idPerson}" class="btn btn-primary mt-2">Ver más</a>
                                     </div>
                  </div>
                 `

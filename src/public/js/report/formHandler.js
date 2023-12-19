@@ -42,7 +42,10 @@ newReport.addEventListener('submit', async (e) => {
         Swal.fire({
             title: 'Informe creado con éxito!',
             icon: 'success',
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Aceptar',
+            customClass: {
+              confirmButton: 'btn btn-primary', // Agrega la clase 'btn btn-primary' de Bootstrap
+            }
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = '/index';
@@ -52,7 +55,10 @@ newReport.addEventListener('submit', async (e) => {
         Swal.fire({
             title: 'Error al crear el informe',
             icon: 'error',
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'btn btn-primary', // Agrega la clase 'btn btn-primary' de Bootstrap
+              }
         });
     }
 });

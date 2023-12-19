@@ -19,7 +19,13 @@ formLogin.addEventListener('submit', async(e)=>{
         return Swal.fire('Error',message, 'error');
     }
     const {message} = await response.json();
-    Swal.fire('Correcto', message,'success');
+    Swal.fire({
+        title: message,
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+          confirmButton: 'btn btn-primary', // Agrega la clase 'btn btn-primary' de Bootstrap
+        }});
     setTimeout(()=>{
         window.location.href='/index';
     },2000);

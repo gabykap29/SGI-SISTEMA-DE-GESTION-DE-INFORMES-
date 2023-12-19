@@ -1,7 +1,44 @@
 const btnPrevious = document.getElementById("btnPrevious");
 const btnNext = document.getElementById("btnNext");
 const listadoInformes = document.querySelector("#registros");
-let page = 1;
+const completed = document.querySelectorAll(".completed");
+const incomplete = document.querySelectorAll(".incomplete");
+let page = 0;
+
+completed.forEach((element) => {
+  const tooltip = document.createElement("span");
+  tooltip.innerHTML = `<i class="bi bi-x-circle-fill"></i> Completado`;
+  tooltip.classList.add("tooltip-content");
+
+  element.appendChild(tooltip);
+
+  element.addEventListener("mouseenter", () => {
+    tooltip.style.display = "inline";
+  });
+
+  element.addEventListener("mouseleave", () => {
+    tooltip.style.display = "none";
+  });
+});
+
+incomplete.forEach((element) => {
+  const tooltip = document.createElement("span");
+  tooltip.innerHTML = `<i class="bi bi-x-circle-fill"></i> No completado`;
+  tooltip.classList.add("tooltip-content");
+
+  element.appendChild(tooltip);
+
+  element.addEventListener("mouseenter", () => {
+    tooltip.style.display = "inline";
+  });
+
+  element.addEventListener("mouseleave", () => {
+    tooltip.style.display = "none";
+  });
+});
+
+
+
 const obtenerInformes = async () => {
   const res = await fetch(`/api/informes`, {});
 
@@ -28,9 +65,19 @@ const mostrarInformes = (informes) => {
         `;
     return;
   }
+  let isComplete;
   listadoInformes.innerHTML = "";
   informes.forEach((informe) => {
     let fecha = dayjs(informe.Fecha).format("DD/MM/YYYY");
+    informe.isComplete == true
+      ? (isComplete = `<button class="btn btn-outline-success completed">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                    </button>`)
+      : (isComplete = `
+                                    <button class="btn btn-outline-warning incomplete">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                    </button>
+                                    `);
     listadoInformes.innerHTML += `
                   <tr>
                       <td>${informe.InformesDepart.nombre}</td>
@@ -38,6 +85,7 @@ const mostrarInformes = (informes) => {
                       <td>${informe.Tipo.nombre}</td>
                       <td>${fecha}</td>
                       <td>${informe.Titulo}</td>
+                      <td>${isComplete}</td>
                       <td>
                           <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
                           <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm"><i class="bi bi-pencil-square"></i></a>
@@ -111,8 +159,8 @@ document
     const fechaFinal = document.getElementById("fechaFinal").value;
     const titulo = document.getElementById("titulo").value;
     const informe = document.getElementById("informe").value;
-
-    let url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}`;
+    const isComplete = document.getElementById('isComplete').value;
+    let url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}&isComplete=${isComplete}`;
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -122,15 +170,16 @@ document
     }
 
     btnPrevious.addEventListener("click", async () => {
-      if (page > 1) {
+      if (page >= 1) {
         page--;
       }
-      url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}`;
+      url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}&isComplete=${isComplete}`;
       const response = await fetch(url);
       const data = await response.json();
       mostrarInformes(data);
     });
     btnNext.addEventListener("click", async () => {
+      page++;
       url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}`;
       const response = await fetch(url);
       const data = await response.json();
@@ -139,35 +188,6 @@ document
   });
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const showInformes = (informes) => {
-    if (informes.length === 0) {
-      listadoInformes.innerHTML = `
-            <tr>
-                <td colspan="6" class="text-center">No hay informes cargados!</td>
-            </tr>
-        `;
-      return;
-    }
-
-    informes.forEach((informe) => {
-      let fecha = dayjs(informe.Fecha).format("DD/MM/YYYY");
-      listadoInformes.innerHTML += `
-                    <tr>
-                        <td>${informe.InformesDepart.nombre}</td>
-                        <td>${informe.InformesLocal.nombre}</td>
-                        <td>${informe.Tipo.nombre}</td>
-                        <td>${fecha}</td>
-                        <td>${informe.Titulo}</td>
-                        <td>
-                            <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
-                            <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm"><i class="bi bi-pencil-square"></i></a>
-                            <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}"><i class="bi bi-trash"></i></button>    
-                        </td>
-                    </tr>
-                `;
-    });
-  };
-
   try {
     const url = window.location.href;
     const parts = url.split("/");
@@ -186,7 +206,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       const informes = await informesDepar();
-      showInformes(informes);
+      mostrarInformes(informes);
 
       const deleteButton = document.querySelectorAll(".eliminar-informe");
       deleteButton.forEach((boton) => {

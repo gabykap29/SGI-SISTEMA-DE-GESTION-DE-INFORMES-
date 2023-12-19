@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const isAutenticated = require('../middlewares/autenticate');
-const { findDni, create, update, index, findPerson } = require('../controllers/person/person.controller');
+const { findDni, create, update, index, findPerson, getAll } = require('../controllers/person/person.controller');
 const obtenerUsername = require('../helpers/username');
 const { verificarRolUser } = require('../middlewares/checkRol');
 const upload = require('../middlewares/multer');
@@ -34,5 +34,6 @@ router.post('/api/find/person/:dni',isAutenticated,findDni );
 router.get('/api/person/:idPerson',isAutenticated,index)
 router.post('/api/informe/:id/persons',isAutenticated,upload.single('rutaImagen'),create);
 router.get('/api/persons',isAutenticated,findPerson);
+router.get('/api/persons/all',isAutenticated,getAll);
 
 module.exports = router;
