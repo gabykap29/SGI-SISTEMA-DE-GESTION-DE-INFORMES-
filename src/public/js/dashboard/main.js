@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                     <td>${fecha}</td>
                     <td>${incompleto.Tipo.Nombre}</td>
                     <td>${incompleto.Titulo}</td>
-                    <td><a class="btn btn-sm btn-outline-primary" href="/informes/${incompleto.idInforme}"><i class="bi bi-eye-fill"></i></a></td>
+                    <td><a class="btn btn-sm btn-outline-primary" href="/informes/view/${incompleto.idInforme}"><i class="bi bi-eye-fill"></i></a></td>
                 </tr>
                 `
             });

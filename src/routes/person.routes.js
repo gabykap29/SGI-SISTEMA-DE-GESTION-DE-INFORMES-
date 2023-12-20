@@ -6,7 +6,7 @@ const obtenerUsername = require('../helpers/username');
 const { verificarRolUser } = require('../middlewares/checkRol');
 const upload = require('../middlewares/multer');
 
-router.get('/ver/personas', isAutenticated,async(req,res)=>{
+router.get('/personas/buscar', isAutenticated,async(req,res)=>{
   try {
     const username = await obtenerUsername(req);
     const uid = req.cookies.uid;
