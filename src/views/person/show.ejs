@@ -1,143 +1,190 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <link rel="icon" href="/css/images/OIG.png">
-  <title>SGI - Personas</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css">
-<script src="/sweetalert/sweetalert2@11"></script>
-<script src="/dayjs/dayjs.min.js"></script>
+    <meta charset="utf-8">
+    <title>SGI - Personas</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <link href="/img/informe.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
 </head>
+
 <body>
-  <%- include('../partials/headers-aside.ejs');%>
-  <div class="container col-9 bgForm" style="margin-bottom: 22%; margin-top: 70px;">
-    <div class="card mt-3 mb-3 shadow">
-      <div class="card-body">
-        <h4 class="card-title">Datos Personales</h4>
-      </div>
-    </div>
-    <div class="row">
-        <div class="container">
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Sidebar Start -->
+        <%- include('../partials/Sidebar.ejs');%>
+            <!-- Sidebar End -->
 
-    <div class="card col-12 ">
-        <div class="row mx-2">
-            <div class="  col-3 my-3 " style="border-right: 1px solid rgb(184, 184, 184);">
-                <img class="rounded mx-2" id="imgPerson" src="/css/images/avatar.jpg" style="width: 200px;height: 200px;" >
-                <hr>
-                <p id="created">Fecha de actualización: 23/10/2023</p>
-                
-            </div>
+            <!-- Content Start -->
+            <div class="content">
+                <!-- Navbar Start -->
+                <%- include('../partials/Navbar.ejs');%>
+                    <!-- Navbar End -->
+                    <main>
+                        <div class="container bg-light">
+                            <div class="row">
+                                <div class="container">
 
-            <div class=" col-9 mt-2">
-                <ul class="mx-2 list-unstyled">
-                    <li>
-                        <div class=" d-flex justify-content-center align-items-center m-2">
-                            <h6 id="completeName"><b>Sin Datos --</b></h6>
+                                    <div class="card col-12 mt-4">
+                                        <div class="card-header bg-white">
+                                            <h6>Datos Personales</h6>
+                                        </div>
+                                        <div class="row mx-2">
+                                            <div class=" col-12 my-1 text-center ">
+                                                <img class="rounded mx-2" id="imgPerson" src="/css/images/avatar.jpg"
+                                                    style="width: 200px;height: 200px;">
+                                                <div class=" d-flex justify-content-center align-items-center m-2">
+                                                    <h5 id="completeName"><b>Sin Datos --</b></h5>
+
+                                                </div>
+                                                <p id="created">Fecha de actualización: 23/10/2023</p>
+
+
+                                            </div>
+
+                                            <div class=" col-12 mt-2">
+                                                <ul class="mx-2 list-unstyled">
+                                                    <li>
+                                                        <hr>
+                                                    </li>
+                                                    <div class="row">
+                                                        <h6 class="text-center"><u>Datos Básicos</u></h6>
+                                                        <div class=" col-8 ">
+
+                                                            <ul class="text-start">
+                                                                <li>
+                                                                    <div>
+                                                                        <div>
+                                                                            <p id="dni">DNI: No hay datos.-</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div>
+                                                                        <p id="fechaNac">Fecha de Nac: No hay datos.-
+                                                                        </p>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div>
+                                                                        <p id="adress">Domicilio: No hay datos.-</p>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class=" col-4">
+                                                            <ul class="text-start">
+                                                                <li>
+                                                                    <div>
+                                                                        <p id="work">Situación laboral: No hay datos.-
+                                                                        </p>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div>
+                                                                        <p id="phone">Celular: No hay datos.-.-</p>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div id="mail">
+                                                                        <p>Correo: No hay datos.- -</p>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <li class="my-3">
+                                                        <b>REDES SOCIALES</b>
+                                                        <ul>
+                                                            <li class="my-2">
+                                                                <p id="facebook">Facebook: <a href="#">Sin Datos</a></p>
+                                                            </li>
+                                                            <li>
+                                                                <p id="instagram"> Instagram: <a href="#" id="">Sin
+                                                                        DAtos.-</a></p>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="container">
+                                    <div class="card ">
+                                        <div class="card-header bg-white">
+                                            <h6 class="text-center">Informes </h6>
+                                        </div>
+                                        <div class="card-body m-2 table-responsive">
+                                            <table class="table ">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Departamento</th>
+                                                        <th scope="col">Localidad</th>
+                                                        <th scope="col">Tipo</th>
+                                                        <th scope="col">Fecha</th>
+                                                        <th scope="col">Titulo</th>
+                                                        <th scope="col">Acciones</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="registros">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                    </li>
-                    <div class="row">
-                        <div class=" col-6">
-                            <ul class="">
-                                <li>
-                                    <div >
-                                        <div><p id="dni">DNI: No hay datos.-</p>
-                                        </div> 
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <p id="fechaNac">Fecha de Nac: No hay datos.- </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div><p id="adress">Domicilio: No hay datos.-</p></div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class=" col-6">
-                            <ul>
-                                <li>
-                                    <div class="">
-                                        <p id="work">Situación laboral: No hay datos.- </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <p id="phone">Celular: No hay datos.-.-</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="mail"><p>Correo: No hay datos.- -</p></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <hr>
-                    <li class="my-3">
-                        <b>REDES SOCIALES</b>
-                        <ul>
-                            <li class="my-2"><p id="facebook">Facebook: <a href="#">Sin Datos</a></p></li>
-                            <li>
-                               <p id="instagram"> Instagram: <a href="#" id="">Sin DAtos.-</a></p>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
             </div>
-        </div>
-     </div>
-        </div>
+            </main>
+            <!-- Chart informes pendientes End -->
     </div>
-    <div class="row">
-        <div class="container">
-            <div class="card">
-                <div class="card-body m-2">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Departamento</th>
-                            <th scope="col">Localidad</th>
-                            <th scope="col">Tipo</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Titulo</th>
-                            <th scope="col">Acciones</th>
-                          </tr>
-                        </thead>
-                        <tbody id="registros">
-
-                            
-
-
-                        </tbody>
-                      </table>
-                </div>
-            </div>
-        </div>
     </div>
+    </div>
+    <!-- JavaScript Libraries -->
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/chart/chart.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/waypoints/waypoints.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="/popper/popper.min.js">
+    </script>
+    <script src="/js/main.js"></script>
+    <script src="/sweetalert/sweetalert2@11"></script>
+    <script src="/bootstrap/bootstrap.min.js"></script>
+    <script src="/chart.js/cdn.jsdelivr.net_npm_chart.js@latest_dist_Chart.min.js"></script>
+    <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <script src="/js/persons/showPerson.js"></script>
+    <!-- Template Javascript -->
 
-
-</div>
-
-</div>
-        
-</div>
-</div>
-    </main>
-      <!-- <%- include('../partials/footer.ejs');%> -->
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="/popper/popper.min.js">
-  </script>
-  <script src="/js/person/view.js"></script>
-  <script src="/bootstrap/bootstrap.min.js">
-  </script>
-  <script src="/js/loaded.js"></script>
-  <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
 </body>
 
 </html>

@@ -48,7 +48,7 @@ find.addEventListener('submit', async (e)=>{
         <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
-                <tr class="table-dark">
+                <tr class="">
                     <th scope="col">#</th>
                     <th scope="col">DNI</th>
                     <th scope="col">Apellido</th>

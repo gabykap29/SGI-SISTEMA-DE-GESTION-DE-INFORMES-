@@ -1,5 +1,5 @@
 const crtlPerson = {};
-const { Person, Informe, Tipo } = require("../../models/asossiations");
+const { Person, Informe, Tipo, Departamento, Localidad } = require("../../models/asossiations");
 const ImgPerson = require("../../models/ImgPerson");
 const { Op } = require("sequelize");
 //BUscar personas
@@ -145,10 +145,20 @@ crtlPerson.index = async (req, res) => {
         {
           model: Informe,
           as: "informePersons",
-          include: {
+          include: [{
             model: Tipo,
-            as: "Informes",
-          },
+            as: "Tipo",
+            attributes:['nombre']
+          },{
+            model:Departamento,
+            as:'InformesDepart',
+            attributes:['nombre']
+          },{
+            model:Localidad,
+            as:'InformesLocal',
+            attributes:['nombre']
+          }
+        ],
         },
         {
           model: ImgPerson,

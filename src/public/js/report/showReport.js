@@ -135,9 +135,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const response = await fetch(`/api/informe/${id}`);
   const data = await response.json();
   if (data.isComplete === true) {
-    titleEstado.innerHTML = `Informe Completado <a href='' id='btnComplete'> <img src='/img/completado.png' style='width: 30px; height: 30px;' </a>`;
+    titleEstado.innerHTML = `Informe Completado <a href='#' id='btnComplete'> <img src='/img/completado.png' style='width: 30px; height: 30px;' </a>`;
   } else {
-    titleEstado.innerHTML = `Informe no completado <a href='' id='btnComplete'> <img src='/img/incompleto.png' style='width: 30px; height: 30px;' </a>`;
+    titleEstado.innerHTML = `Informe no completado <a href='#' id='btnComplete'> <img src='/img/incompleto.png' style='width: 30px; height: 30px;' </a>`;
   }
   if (data.informePersons) {
     cant = data.informePersons.length;
