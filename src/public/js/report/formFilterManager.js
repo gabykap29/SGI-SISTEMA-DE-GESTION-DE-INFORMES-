@@ -4,6 +4,7 @@ const listadoInformes = document.querySelector("#registros");
 const completed = document.querySelectorAll(".completed");
 const incomplete = document.querySelectorAll(".incomplete");
 let page = 0;
+let url = `/api/filtrar?`;
 
 completed.forEach((element) => {
   const tooltip = document.createElement("span");
@@ -39,8 +40,11 @@ incomplete.forEach((element) => {
 
 
 
+
+
+
 const obtenerInformes = async () => {
-  const res = await fetch(`/api/informes`, {});
+  const res = await fetch(url, {});
 
   if (res.status === 404) {
     return [];
@@ -150,7 +154,7 @@ document
   .getElementById("formSearch")
   .addEventListener("submit", async function (event) {
     event.preventDefault(); // Evitar el envío del formulario por defecto
-
+    page = 0;
     // Obtener los valores ingresados en el formulario
     const departamentoId = document.getElementById("selecDepartamento").value;
     const localidadId = document.getElementById("selecLocalidad").value;
@@ -160,8 +164,8 @@ document
     const titulo = document.getElementById("titulo").value;
     const informe = document.getElementById("informe").value;
     const isComplete = document.getElementById('isComplete').value;
-    let url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}&isComplete=${isComplete}`;
     try {
+      url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}&isComplete=${isComplete}`;
       const response = await fetch(url);
       const data = await response.json();
       mostrarInformes(data);
@@ -169,22 +173,8 @@ document
       console.error("Error al enviar la solicitud:", error);
     }
 
-    btnPrevious.addEventListener("click", async () => {
-      if (page >= 1) {
-        page--;
-      }
-      url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}&isComplete=${isComplete}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      mostrarInformes(data);
-    });
-    btnNext.addEventListener("click", async () => {
-      page++;
-      url = `/api/filtrar?departamentoId=${departamentoId}&localidadId=${localidadId}&tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFinal=${fechaFinal}&titulo=${titulo}&informe=${informe}&page=${page}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      mostrarInformes(data);
-    });
+
+
   });
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -236,4 +226,27 @@ document.addEventListener("DOMContentLoaded", async () => {
       text: error.message,
     });
   }
+});
+
+btnPrevious.addEventListener("click", async () => {
+  if (page >= 1) {
+    page--;
+    url = url.replace (`&page=${page+1}`,`&page=${page}`);
+  };
+  const response = await fetch(url);
+  const data = await response.json();
+  mostrarInformes(data);
+});
+
+btnNext.addEventListener("click", async () => {
+  page++;
+  if(url.includes('&page=')){
+    url = url.replace (`&page=${page-1}`,`&page=${page}`);
+  }else{
+    url = url.concat(`&page=${page}`);
+  };
+  
+  const response = await fetch(url);
+  const data = await response.json();
+  mostrarInformes(data);
 });
