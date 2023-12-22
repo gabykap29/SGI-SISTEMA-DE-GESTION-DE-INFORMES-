@@ -71,7 +71,7 @@ const mostrarInformes = (informes) => {
   }
   let isComplete;
   listadoInformes.innerHTML = "";
-  informes.forEach((informe) => {
+  informes.forEach((informe, index) => {
     let fecha = dayjs(informe.Fecha).format("DD/MM/YYYY");
     informe.isComplete == true
       ? (isComplete = `<button class="btn btn-outline-success completed">
@@ -84,6 +84,7 @@ const mostrarInformes = (informes) => {
                                     `);
     listadoInformes.innerHTML += `
                   <tr>
+                      <td>${index + 1}</td>
                       <td>${informe.InformesDepart.nombre}</td>
                       <td>${informe.InformesLocal.nombre}</td>
                       <td>${informe.Tipo.nombre}</td>

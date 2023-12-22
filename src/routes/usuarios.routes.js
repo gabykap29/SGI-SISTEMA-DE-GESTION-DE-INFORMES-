@@ -14,23 +14,23 @@ const {
 const {verificarRolAdmin, verificarRolUser} = require('../middlewares/checkRol');
 
 
-router.get('/view/usuarios', isAutenticated,verificarRolAdmin,async(req,res)=>{
+router.get('/usuarios', isAutenticated,verificarRolAdmin,async(req,res)=>{
     try {
         const username = await obtenerUsername(req)
         const rol = req.cookies.rol;
         const uid = req.cookies.uid;
-        res.render('users/vistaUsuario',{username:username, uid,rol});
+        res.render('users/index',{username:username, uid,rol});
       } catch (error) {
         console.log('error al obtener el username')
       }
 });
 
-router.get('/view/usuarios/create',isAutenticated,verificarRolAdmin,async(req,res)=>{
+router.get('/usuarios/crear',isAutenticated,verificarRolAdmin,async(req,res)=>{
     try {
         const username = await obtenerUsername(req);
         const rol = req.cookies.rol;
         const uid = req.cookies.uid;
-        res.render('users/vistaCrear',{username:username,uid,rol});
+        res.render('users/create',{username:username,uid,rol});
       } catch (error) {
         console.log('error al obtener el username')
       }
@@ -41,7 +41,7 @@ router.get('/usuario/edit/:id',isAutenticated, verificarRolAdmin,async(req,res)=
         const username = await obtenerUsername(req);
         const rol = req.cookies.rol;
         const uid = req.cookies.uid;
-        res.render(('users/vistaEditar'),{ id: req.params.id ,username:username,uid,rol});
+        res.render(('users/edit'),{ id: req.params.id ,username:username,uid,rol});
       } catch (error) {
         console.log('error al obtener el username')
       }
