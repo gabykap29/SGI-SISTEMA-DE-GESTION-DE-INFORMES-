@@ -92,9 +92,9 @@ const mostrarInformes = (informes) => {
                       <td>${informe.Titulo}</td>
                       <td>${isComplete}</td>
                       <td>
-                          <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm"><i class="bi bi-eye-fill"></i></a>
-                          <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm"><i class="bi bi-pencil-square"></i></a>
-                          <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe" data-id="${informe.idInforme}"><i class="bi bi-trash"></i></button>    
+                          <a href="/informes/view/${informe.idInforme}" target="_blank" class="btn btn-outline-primary btn-sm "><i class="bi bi-eye-fill"></i></a>
+                          <a href="/informe/edit/${informe.idInforme}" target="_blank" class="btn btn-outline-success btn-sm itemsAdmin"><i class="bi bi-pencil-square"></i></a>
+                          <button id= "deleteButton" class="btn btn-outline-danger btn-sm eliminar-informe itemsAdmin" data-id="${informe.idInforme}"><i class="bi bi-trash"></i></button>    
                       </td>
                   </tr>
               `;

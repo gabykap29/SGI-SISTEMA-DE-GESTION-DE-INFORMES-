@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle notificaciones" data-bs-toggle="dropdown" >
+            <a href="#" class="nav-link dropdown-toggle notificaciones" data-bs-toggle="dropdown" id="notif">
                 <i class="fa fa-bell me-lg-2 bg-primary" id="iconoNotificacion"></i>
                 <span class="d-none d-lg-inline-flex">Notificaciones</span>
             </a>
@@ -39,9 +39,9 @@
                 <span class="d-none d-lg-inline-flex"><%= username %></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="/usuarios/<%= uid %>/show" class="dropdown-item">Mi Perfil</a>
                 <a href="#" class="dropdown-item">Settings</a>
-                <a href="#" class="dropdown-item">Log Out</a>
+                <a href="/closeSesion" class="dropdown-item">Cerrar sesión</a>
             </div>
         </div>
     </div>

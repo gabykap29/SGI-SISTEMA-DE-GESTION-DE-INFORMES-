@@ -51,7 +51,7 @@ router.get('/usuarios/:id/show',isAutenticated, async(req,res)=>{
     const rol = req.cookies.rol;
     const username = await obtenerUsername(req);
     const uid = req.cookies.uid;
-    res.render(('users/vistaPerfil'),{username:username,uid, rol})
+    res.render(('users/profile'),{username:username,uid, rol})
   } catch (error) {
     
   }

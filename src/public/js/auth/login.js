@@ -26,6 +26,7 @@ formLogin.addEventListener('submit', async(e)=>{
         customClass: {
           confirmButton: 'btn btn-primary', // Agrega la clase 'btn btn-primary' de Bootstrap
         }});
+
     setTimeout(()=>{
         window.location.href='/index';
     },2000);

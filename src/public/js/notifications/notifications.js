@@ -1,6 +1,6 @@
 const notification = document.getElementById("iconoNotificacion");
 const itemsNotifications = document.getElementById("notificaciones");
-
+const notif = document.getElementById('notif')
 let classListNotificacionIcon = notification.classList;
 const getIncompleted = async () => {
   const res = await fetch("/api/informes/incomplete");
@@ -14,6 +14,7 @@ const getIncompleted = async () => {
 document.addEventListener("DOMContentLoaded", async () => {
   const incompletos = await getIncompleted();
   if (incompletos.length > 0) {
+    notif.innerHTML = `<img src="/img/iconoNotificaciones.png" alt="notificaciones" width=50>Notificaciones`    
     classListNotificacionIcon.remove("bg-primary");
     classListNotificacionIcon.add("bg-danger");
     incompletos.forEach((incompleto) => {
