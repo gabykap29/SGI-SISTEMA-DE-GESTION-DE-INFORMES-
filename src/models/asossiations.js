@@ -4,49 +4,54 @@ const Files = require("./Files");
 const Informe = require("./Informe");
 const Departamento = require("./Departamento");
 const Localidad = require("./Localidad");
-const Tipo = require('./Tipo');
+const Tipo = require("./Tipo");
 const Person = require("./Person");
 const InformePerson = require("./InformePerson");
 const ImgPerson = require("./ImgPerson");
 Departamento.hasMany(Informe, {
   foreignKey: "Departamento_idDepartamento",
   as: "InformesDepart",
+  onDelete: "CASCADE",
 });
 Informe.belongsTo(Departamento, {
   foreignKey: "Departamento_idDepartamento",
-  as: "InformesDepart"
+  as: "InformesDepart",
 });
 
 Localidad.hasMany(Informe, {
   foreignKey: "Localidad_idLocalidad",
   as: "InformesLocal",
+  onDelete: "CASCADE",
 });
 Informe.belongsTo(Localidad, {
   foreignKey: "Localidad_idLocalidad",
-  as: "InformesLocal"
+  as: "InformesLocal",
 });
 Person.hasOne(ImgPerson, {
   foreignKey: "personId",
   as: "ImgPersons",
+  onDelete: "CASCADE",
 });
 ImgPerson.belongsTo(Person, {
   foreignKey: "personId",
   as: "ImgPersons",
-})
+});
 
 Tipo.hasMany(Informe, {
   foreignKey: "Tipo_idTipo",
   as: "Tipo",
+  onDelete: "CASCADE",
 });
 Informe.belongsTo(Tipo, {
   foreignKey: "Tipo_idTipo",
-  as: "Tipo"
-})
+  as: "Tipo",
+});
 //-----------------Personas-----------------
 Informe.belongsToMany(Person, {
   through: InformePerson,
   foreignKey: "informeId",
   as: "informePersons",
+  onDelete: "CASCADE",
 });
 Person.belongsToMany(Informe, {
   through: InformePerson,
@@ -56,6 +61,7 @@ Person.belongsToMany(Informe, {
 Departamento.hasMany(Localidad, {
   foreignKey: "Departamento_idDepartamento",
   as: "Departamento",
+  onDelete: "CASCADE",
 });
 Localidad.belongsTo(Departamento, {
   foreignKey: "Departamento_idDepartamento",
@@ -63,13 +69,16 @@ Localidad.belongsTo(Departamento, {
 });
 //Asociación con Files
 //Esta tabla es para cargar las imagenes u otros archivos, creeme, te van a pedir mas adelante!
-Informe.hasMany(Files, { foreignKey: "informeId", as: "Files" });
+Informe.hasMany(Files, {
+  foreignKey: "informeId",
+  as: "Files",
+  onDelete: "CASCADE",
+});
 Files.belongsTo(Informe, { foreignKey: "informeId", as: "Informe" });
 sequelize.sync({ alter: false });
 //Si localidad esta vacia lo llenará
 (async () => {
   try {
-
     // Verifica si la base de datos está vacía
     const Count = await Localidad.count();
     if (Count === 0) {
@@ -348,7 +357,6 @@ sequelize.sync({ alter: false });
 //Si la tabla TIPOS esta vacia, esta se carga por defecto!-----------
 (async () => {
   try {
-
     // Verifica si la base de datos está vacía
     const count = await Tipo.count();
     if (count === 0) {

@@ -1,11 +1,27 @@
-const {Informe,Departamento,Tipo, Localidad}= require('../../models/asossiations')
-const { Op } = require('sequelize');
+const {
+  Informe,
+  Departamento,
+  Tipo,
+  Localidad,
+} = require("../../models/asossiations");
+const { Op } = require("sequelize");
 
 // Controlador para filtrar Informes
 const filtrarInformes = async (req, res) => {
   try {
-    const { departamentoId, localidadId, fechaInicio, fechaFinal, tipo, titulo, informe,isComplete,page = 0, size = 10 } = req.query;
-  
+    const {
+      departamentoId,
+      localidadId,
+      fechaInicio,
+      fechaFinal,
+      tipo,
+      titulo,
+      informe,
+      isComplete,
+      page = 0,
+      size = 10,
+    } = req.query;
+
     // Construir el objeto de filtro dinámicamente
     const filtro = {};
 
@@ -17,7 +33,7 @@ const filtrarInformes = async (req, res) => {
     }
     if (fechaInicio) {
       filtro.Fecha = {
-        [Op.gte]: fechaInicio
+        [Op.gte]: fechaInicio,
       };
     }
     if (tipo) {
@@ -26,20 +42,20 @@ const filtrarInformes = async (req, res) => {
     if (fechaFinal) {
       filtro.Fecha = {
         ...filtro.Fecha,
-        [Op.lte]: fechaFinal
+        [Op.lte]: fechaFinal,
       };
     }
     if (titulo) {
       filtro.Titulo = {
-        [Op.like]: `%${titulo}%`
+        [Op.like]: `%${titulo}%`,
       };
     }
     if (informe) {
       filtro.Informe = {
-        [Op.like]: `%${informe}%`
+        [Op.like]: `%${informe}%`,
       };
     }
-    if(isComplete){
+    if (isComplete) {
       filtro.isComplete = isComplete;
     }
 
@@ -49,41 +65,40 @@ const filtrarInformes = async (req, res) => {
       include: [
         {
           model: Departamento,
-          as: 'InformesDepart',
-          attributes: ['nombre'],
+          as: "InformesDepart",
+          attributes: ["nombre"],
         },
         {
-          model:Localidad,
-          as:'InformesLocal',
-          attributes:['nombre']
+          model: Localidad,
+          as: "InformesLocal",
+          attributes: ["nombre"],
         },
         {
           model: Tipo,
-          as: 'Tipo',
-          attributes: ['nombre'],
+          as: "Tipo",
+          attributes: ["nombre"],
         },
       ],
-      limit:size,
-      offset:(page)*size,
+      order: [["createdAt", "DESC"]],
+      limit: size,
+      offset: page * size,
     });
 
-     res.json(informes);
+    res.json(informes);
   } catch (error) {
-    console.error('Error al filtrar Informes:', error);
-    res.status(500).json({ error: 'Error al filtrar Informes' });
+    console.error("Error al filtrar Informes:", error);
+    res.status(500).json({ error: "Error al filtrar Informes" });
   }
 };
 const filtroDepar = async (req, res) => {
-  
   try {
     const departamentos = await Departamento.findAll({
       include: [
         {
           model: Informe,
-          as: 'Informes',
+          as: "Informes",
         },
       ],
- 
     });
 
     const informesTotales = [];
@@ -102,7 +117,7 @@ const filtroDepar = async (req, res) => {
       cantidadInformes.push({
         Departamento: departamento.idDepartamento,
         CantidadInformes: informesDepartamento.length,
-    })
+      });
       informesTotales.push({
         Departamento: departamento.idDepartamento,
         Informes: informesDepartamento,
@@ -110,42 +125,53 @@ const filtroDepar = async (req, res) => {
     }
 
     res.json({
-      cantidadInformes:cantidadInformes,
+      cantidadInformes: cantidadInformes,
       informes: informesTotales,
       totalDepartamentos: departamentos.length,
     });
   } catch (error) {
-    console.error('Error al obtener los informes filtrados por Departamento:', error);
-    res.status(500).json({ error: 'Error al obtener los informes filtrados por Departamento' });
+    console.error(
+      "Error al obtener los informes filtrados por Departamento:",
+      error
+    );
+    res
+      .status(500)
+      .json({
+        error: "Error al obtener los informes filtrados por Departamento",
+      });
   }
 };
-const filtroIncompleted = async(req,res)=>{
+const filtroIncompleted = async (req, res) => {
   try {
     const informes = await Informe.findAll({
-      where:{
-        estado:true,
-        isComplete:false
-      },include:[{
-        model:Departamento,
-        as:'InformesDepart',
-        attributes:['Nombre']
-      },{
-        model:Tipo,
-        as:'Tipo',
-        attributes:['Nombre']
-      }], limit:5,
-      order: [['createdAt', 'DESC']],
-    }
-    );
+      where: {
+        estado: true,
+        isComplete: false,
+      },
+      include: [
+        {
+          model: Departamento,
+          as: "InformesDepart",
+          attributes: ["Nombre"],
+        },
+        {
+          model: Tipo,
+          as: "Tipo",
+          attributes: ["Nombre"],
+        },
+      ],
+      limit: 5,
+      order: [["createdAt", "DESC"]],
+    });
 
     res.json(informes);
   } catch (error) {
     console.log(error);
-    return res.json({message:'No hay informes incompletos. Hurra!'})
+    return res.json({ message: "No hay informes incompletos. Hurra!" });
   }
-}
+};
 module.exports = {
   filtrarInformes,
   filtroDepar,
-  filtroIncompleted
+  filtroIncompleted,
 };

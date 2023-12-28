@@ -133,6 +133,12 @@ document.addEventListener('DOMContentLoaded', async() => {
                 `
             });
             
+        }else{
+            registros.innerHTML = `
+            <tr>
+                <td colspan="5" class="text-center">No hay informes incompletos!</td>
+            </tr>
+            `
         }
         //Tabla personas
         const personas = await getPeoples();
@@ -142,7 +148,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                 urlImage ?? '/img/user.png';
                 console.log(persona);
                 registrosPersonas.innerHTML += `
-                <div class="card col-md-3 d-flex text-center ">
+                <div class="card col-md-2 d-flex text-center m-5 shadow">
                                     <div class="card-body">
                                     <img class="rounded-circle" width="70" height="72" src="${urlImage}" alt="">
                                         <h6 class="mb-0 mt-3" id="nameComplete">${persona.lastName} ${persona.firstName}</h6>
@@ -153,6 +159,12 @@ document.addEventListener('DOMContentLoaded', async() => {
                 `
             });
             
+        }else{
+            registrosPersonas.innerHTML = `
+            <tr>
+                <td colspan="5" class="text-center">aqui apareceran las ultimas personas cargadas!</td>
+            </tr>
+            `
         }
 
 });

@@ -20,12 +20,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     incompletos.forEach((incompleto) => {
       let fecha = dayjs(incompleto.Fecha).format("DD/MM/YYYY");
       itemsNotifications.innerHTML += `
-            <a href="#" class="dropdown-item">
-                    <a class="fw-normal mb-0" href="/informes/view/${incompleto.idInforme}"><h6 class="">${incompleto.Titulo}</h6></a>
-                    <small>${fecha}</small>
-            </a>
-                <hr class="dropdown-divider">
+      <div class="dropdown-item d-flex flex-row flex-wrap dropdown-item-custom">
+      <a href="/informes/view/${incompleto.idInforme}" class="dropdown-item">
+        <img src="/img/portapapeles.png" class="rounded" width="30" alt="Imagen de informe">
+        <div class="ml-3">
+          <b>${incompleto.Titulo}</b>
+          <p class="mb-0 text-muted">${fecha}</p>
+        </div>
+      </a>
+    </div>
             `;
     });
+  }else{
+    itemsNotifications.innerHTML = `
+    <div class="dropdown-item d-flex flex-row flex-wrap dropdown-item-custom">
+    <a href="#" class="dropdown-item">
+      <img src="/img/completado.png" class="rounded" width="30" alt="Imagen de informe">
+      <div class="ml-3">
+        <p class="mb-0 text-muted">Sin notificaciones!</p>
+      </div>
+    </a>
+  </div>
+    `
   }
 });

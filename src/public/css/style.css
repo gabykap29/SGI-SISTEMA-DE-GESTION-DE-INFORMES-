@@ -382,3 +382,30 @@
   #btnAddUser:hover::before {
     opacity: 1;
   }
+
+  .dropdown-item-custom {
+    width: 300px; /* Ajusta el ancho según tus necesidades */
+  }
+
+  .dropdown-item-custom img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  .dropdown-item-custom a {
+    text-decoration: none; /* Evita subrayado en los enlaces */
+    color: #000; /* Color del texto */
+  }
+  #table-localities{
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  #table-deparment{
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  #tableTypes{
+    max-height: 300px;
+    overflow-y: auto;
+  }

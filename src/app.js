@@ -16,7 +16,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 const nameLog = new Date().toISOString().slice(0, 10).replace(/:/g, "-");
 //guardar todas las peticiones al servidor en un archivo de texto
-const accessLogStream = fs.createWriteStream(`./logs/${nameLog}.log`, { flags: "a" });
+const accessLogStream = fs.createWriteStream(`./logs/${nameLog}.log`, {
+  flags: "a",
+});
 if (!fs.existsSync(__dirname + "/public/uploads")) {
   fs.mkdirSync(__dirname + "/public/uploads");
 }
@@ -39,6 +41,7 @@ app.use(require("./routes/reports.routes"));
 app.use(require("./routes/person.routes"));
 app.use(require("./routes/departament.routes"));
 app.use(require("./routes/locality.routes"));
+app.use(require("./routes/tools.routes"));
 const server = https.createServer(
   {
     key: fs.readFileSync("./server.key"), // Ruta al archivo de clave privada

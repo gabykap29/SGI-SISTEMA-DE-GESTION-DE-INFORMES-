@@ -21,7 +21,7 @@
                     </div>
                 </a>
                 <hr class="dropdown-divider">
-               
+
             </div>
         </div>
         <div class="nav-item dropdown">
@@ -29,14 +29,19 @@
                 <i class="fa fa-bell me-lg-2 bg-primary" id="iconoNotificacion"></i>
                 <span class="d-none d-lg-inline-flex">Notificaciones</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0" id="notificaciones">
-
+            <div class="dropdown-menu  bg-light shadow-lg " id="notificaciones">
+                <div class="card-header bg-light">
+                    <h6>Notificaciones</h6>
+                </div>
             </div>
         </div>
         <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                <img class="rounded-circle me-lg-2" src="/img/profileUser.png" alt="" style="width: 40px; height: 40px;">
-                <span class="d-none d-lg-inline-flex"><%= username %></span>
+                <img class="rounded-circle me-lg-2" src="/img/profileUser.png" alt=""
+                    style="width: 40px; height: 40px;">
+                <span class="d-none d-lg-inline-flex">
+                    <%= username %>
+                </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 <a href="/usuarios/<%= uid %>/show" class="dropdown-item">Mi Perfil</a>
@@ -44,8 +49,9 @@
                 <a href="/closeSesion" class="dropdown-item">Cerrar sesión</a>
             </div>
         </div>
+
     </div>
-<!--script notificiones-->
-<script src="/js/notifications/notifications.js"></script>
-<script src="/dayjs/dayjs.min.js"></script>
+    <!--script notificiones-->
+    <script src="/js/notifications/notifications.js"></script>
+    <script src="/dayjs/dayjs.min.js"></script>
 </nav>

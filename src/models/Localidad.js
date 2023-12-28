@@ -1,29 +1,29 @@
-const {sequelize, DataTypes} = require('../db');
+const { sequelize, DataTypes } = require("../db");
 // 'use strict';
 
-const {Departamento} = require('./Departamento');
-const Localidad = sequelize.define('Localidad',{
-    idLocalidad:{
-        type:DataTypes.INTEGER,
-        primaryKey:true,
-        autoIncrement:true,
+const { Departamento } = require("./Departamento");
+const Localidad = sequelize.define(
+  "Localidad",
+  {
+    idLocalidad: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    nombre:{
-        type: DataTypes.STRING,
+    nombre: {
+      type: DataTypes.STRING,
     },
-    Departamento_idDepartamento:{
-        type: DataTypes.INTEGER,
-        allowNull:false,
-
-    }
-},{
+    Departamento_idDepartamento: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
     sequelize,
-    paranoid:true,
-    modelName: 'Localidad',
-    tableName: 'localidad'
-});
-
-
-
+    paranoid: true,
+    modelName: "Localidad",
+    tableName: "localidad",
+  }
+);
 
 module.exports = Localidad;

@@ -93,18 +93,21 @@ ctrlReports.Read = async (req, res) => {
         {
           model: Departamento,
           as: "InformesDepart",
-          attributes:["nombre"],
-        },{
+          attributes: ["nombre"],
+        },
+        {
           model: Localidad,
           as: "InformesLocal",
-          attributes:["nombre"],
-        },{
-          model:Tipo,
-          as:"Tipo",
-          attributes:["nombre"],
-        },{
-          model:Person,
-          as:"informePersons",
+          attributes: ["nombre"],
+        },
+        {
+          model: Tipo,
+          as: "Tipo",
+          attributes: ["nombre"],
+        },
+        {
+          model: Person,
+          as: "informePersons",
         },
         {
           model: Tipo,
@@ -303,6 +306,69 @@ ctrlReports.complete = async (req, res) => {
       }
     );
     return res.status(201).json({ message: "Informe completado con exito!" });
+  } catch (error) {
+    console.log(error);
+    return res.status(error.status || 500).json({
+      message: error.message || "Error Interno del Servidor",
+    });
+  }
+};
+
+ctrlReports.getTypeReport = async (req, res) => {
+  try {
+    const type = await Tipo.findAll();
+    if (!type) {
+      throw {
+        status: 404,
+        message: "No se encontraron tipos",
+      };
+    }
+
+    return res.status(200).json({ data: type });
+  } catch (error) {
+    console.log(error);
+    return res.status(error.status || 500).json({
+      message: error.message || "Error Interno del Servidor",
+    });
+  }
+};
+
+ctrlReports.createType = async (req, res) => {
+  const { nombre } = req.body;
+  try {
+    const [type, created] = await Tipo.findOrCreate({
+      where: { nombre },
+      defaults: {
+        nombre,
+      },
+    });
+    if (!created) {
+      throw {
+        status: 400,
+        message: "El tipo ya existe",
+      };
+    }
+    return res.status(201).json({ message: "Tipo creado con exito!" });
+  } catch (error) {
+    console.log(error);
+    return res.status(error.status || 500).json({
+      message: error.message || "Error Interno del Servidor",
+    });
+  }
+};
+
+ctrlReports.destroyType = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const type = await Tipo.findByPk(id);
+    if (!type) {
+      throw {
+        status: 404,
+        message: "El tipo no existe",
+      };
+    }
+    await type.destroy();
+    return res.status(200).json({ message: "Tipo eliminado con exito!" });
   } catch (error) {
     console.log(error);
     return res.status(error.status || 500).json({

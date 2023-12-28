@@ -1,24 +1,27 @@
-const Usuario = require('../models/Usuario');
-const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
+const Usuario = require("../models/Usuario");
+const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 
 const isAutenticated = async (req, res, next) => {
   if (req.cookies.jwt) {
     try {
-      const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.SECRET_KEY);
+      const decodificada = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.SECRET_KEY
+      );
       const user = await Usuario.findOne({ _id: decodificada.id });
       if (!user) {
         return next();
       }
       let username = user.username;
       req.user = user;
-      return  next();
+      return next();
     } catch (error) {
       console.log(error);
       return next();
     }
   } else {
-    res.redirect('/login');
+    res.redirect("/login");
   }
 };
 

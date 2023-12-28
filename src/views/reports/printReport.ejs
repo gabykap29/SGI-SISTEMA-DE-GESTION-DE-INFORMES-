@@ -1,75 +1,75 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <link rel="icon" href="/css/images/OIG.png">
-  <title>SGI - Vista Imprimir</title>
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="/bootstrap/bootstrap.min.css" media="print" rel="stylesheet">
-  <link href="/bootstrap/bootstrap.min.css"  rel="stylesheet">
-  <link rel="stylesheet"  href="/css/print.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SGI - Vista Imprimir</title>
+    <link rel="icon" href="/css/images/OIG.png">
 
-<script src="/sweetalert/sweetalert2@11"></script>
-<script src="/dayjs/dayjs.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/bootstrap-print.css" media="print">
+
+    <!-- External Libraries -->
+    <script defer src="/sweetalert/sweetalert2@11"></script>
+    <script defer src="/dayjs/dayjs.min.js"></script>
 </head>
 
-<body>
-  <main>
+<body class="bg-light">
+    <main class="container mt-5">
+        <!-- Card for Report -->
+        <div class="card shadow">
+            <!-- Card Header -->
+            <div class="card-header bg-light text-center">
+                <h5 class="m-2" id="titleReport"><b>Titulo de Informe</b></h5>
+            </div>
 
-    <div class="container card shadow mt-5 ">
-            <div class="card col-11 d-flex justify-content-center align-items-center mb-3 mr-1">
-                <h3 class="m-2" id="titleReport"><b>Titulo de Informe</b></h3>
-        </div>
-        <div class="row">
-            <div class="card col-5 mx-1">
-                <div class="m-2">
-                    <h6 id="departamento"></h6>
-                    <h6 id="localidad"></h6>
-                </div>
-            </div>
-            <div class="card col-5 " style="margin-left: 7%;">
-                <div class="m-2">
-                    <h6 id="Fecha"></h6>
-                    <h6 id="Tipo"></h6>
-                </div>
-            </div>
-    
-            <div class="card col-11 mt-4">
-                <p class="m-2" id="informe"></p>
-            </div>
-            <div class="card col-11 mt-4  mb-5">
-              <div id="carouselExample" class=" mt-1">
-                <div class="row" id="imgs">
-                  
-                  </div>
-
-                      </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <!-- Información Básica -->
+                <div class="mx-5">
+                    <div class="m-2 d-flex justify-content-between">
+                        <h6 id="departamento"></h6>
+                        <h6 id="localidad"></h6>
                     </div>
-          </div>
+                </div>
+
+                <!-- Más Información -->
+                <div class="mx-5">
+                    <div class="m-2 d-flex justify-content-between">
+                        <h6 id="Fecha"></h6>
+                        <h6 id="Tipo"></h6>
+                    </div>
+                </div>
+
+                <!-- Línea Divisoria -->
+                <hr class="my-4">
+
+                <!-- Sección de Informe -->
+                <div class="col-11 mx-auto">
+                    <div class="card bg-light border-0">
+                        <div class="card-body">
+                            <p class="card-text" id="informe"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sección de Imágenes -->
+                <div class="col-12 mt-4 mb-5 text-center">
+                    <img src="/img/noDisponible.avif" class="img-fluid rounded" width="90%" alt="No Disponible" id="imgs">
+                </div>
+            </div>
+            <div class="card-footer"></div>
         </div>
+    </main>
 
-
-
-    
-    
-        
-    </div>
-    
-    
-    
-  </main>
-
-  <script src="/js/print/print.js"></script>
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="/popper/popper.min.js">
-  </script>
-
-  <script src="/bootstrap/bootstrap.min.js">
-  </script>
-    <script src="/js/loaded.js"></script>
-    <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <!-- JavaScript y jQuery -->
+    <script defer src="/js/report/print.js"></script>
+    <script defer src="/popper/popper.min.js"></script>
+    <script defer src="/bootstrap/bootstrap.min.js"></script>
+    <script defer src="/js/loaded.js"></script>
+    <script defer src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
 </body>
 
 </html>

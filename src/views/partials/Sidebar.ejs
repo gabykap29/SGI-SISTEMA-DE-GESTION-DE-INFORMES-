@@ -1,58 +1,76 @@
-<% if (rol!= "Moderate" && rol!= "User"){%>
+<% if (rol!="Moderate" && rol!="User" ){%>
   <style>
-      .itemsUser{
-        display: none;
-      }
-      #rolUser{
-        display: none;
-      }
+    .itemsUser {
+      display: none;
+    }
+
+    #rolUser {
+      display: none;
+    }
   </style>
   <% } %>
 
-  <% if (rol!= "Moderate"){%>
-    <style>
-        .itemsAdmin{
+    <% if (rol!="Moderate" ){%>
+      <style>
+        .itemsAdmin {
           display: none;
         }
-    </style>
-    <% } %>
-    <% if ( rol!= "User"){%>
-        <style>
-            #rolUser{
+      </style>
+      <% } %>
+        <% if ( rol!="User" ){%>
+          <style>
+            #rolUser {
               display: none;
             }
-        </style>
-        <% } %>
+          </style>
+          <% } %>
 
 
 
-<div class="sidebar pe-4 pb-3 with-vertical-line">
-  <nav class="navbar bg-light navbar-light">
-      <a href="/index" class="navbar-brand mx-5 mb-3">
-          <h3 class="text-primary"><img src="/img/sgi.png" alt="icono sgi" style="width: 50px;">SGI</h3>
-      </a>
-      <div class="d-flex align-items-center ms-4 mb-4">
-          <div class="position-relative">
-              <img class="rounded-circle" src="/img/profileUser.png" alt="" style="width: 40px; height: 40px;">
-              <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
-          </div>
-          <div class="ms-3">
-              <h6 class="mb-0"><%= username %></h6>
-              <span id="rolUser">Usuario del Sistema</span>
-              <span class="itemsAdmin">Administrador</span>
-          </div>
-      </div>
-      <div class="navbar-nav w-100">
-          <a href="/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-          <div class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Informes</a>
-              <div class="dropdown-menu bg-transparent border-0">
-                  <a href="/informes/create" class="dropdown-item itemsUser">Crear Nuevo</a>
-                  <a href="/informes/filtros" class="dropdown-item">Filtrar</a>
-              </div>
-          </div>
-          <a href="/personas/buscar" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Personas</a>
-          <a href="/usuarios" class="nav-item nav-link itemsAdmin"><i class="fa fa-keyboard me-2"></i>Usuarios</a>
-      </div>
-  </nav>
-</div>
+            <div class="sidebar pe-4 pb-3 with-vertical-line">
+              <nav class="navbar bg-light navbar-light">
+                <a href="/index" class="navbar-brand mx-5 mb-3">
+                  <h3 class="text-primary"><img src="/img/sgi.png" alt="icono sgi" style="width: 50px;">SGI</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                  <div class="position-relative">
+                    <img class="rounded-circle" src="/img/profileUser.png" alt="" style="width: 40px; height: 40px;">
+                    <div
+                      class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                    </div>
+                  </div>
+                  <div class="ms-3">
+                    <h6 class="mb-0">
+                      <%= username %>
+                    </h6>
+                    <span id="rolUser">Usuario del Sistema</span>
+                    <span class="itemsAdmin">Administrador</span>
+                  </div>
+                </div>
+                <div class="navbar-nav w-100">
+                  <a href="/index" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                  <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                        class="fa fa-laptop me-2"></i>Informes</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                      <a href="/informes/create" class="dropdown-item itemsUser">Crear Nuevo</a>
+                      <a href="/informes/filtros" class="dropdown-item">Filtrar</a>
+                    </div>
+                  </div>
+                  <a href="/personas/buscar" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Personas</a>
+                  <a href="/usuarios" class="nav-item nav-link itemsAdmin"><i
+                      class="fa fa-keyboard me-2"></i>Usuarios</a>
+                </div>
+                <div class="navbar-nav w-100 itemsAdmin">
+                  <div class="nav-item ">
+                    <a href="/config" class="nav-link "><i class="bi bi-gear me-2"></i>Ajustes</a>
+                  </div>
+                </div>
+                <div class="navbar-nav w-100">
+                  <div class="nav-item ">
+                    <a href="/closeSesion" class="nav-link "><i class="bi bi-box-arrow-left me-2"></i>Salir</a>
+                  </div>
+                </div>
+
+              </nav>
+            </div>

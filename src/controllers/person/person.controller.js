@@ -1,5 +1,11 @@
 const crtlPerson = {};
-const { Person, Informe, Tipo, Departamento, Localidad } = require("../../models/asossiations");
+const {
+  Person,
+  Informe,
+  Tipo,
+  Departamento,
+  Localidad,
+} = require("../../models/asossiations");
 const ImgPerson = require("../../models/ImgPerson");
 const { Op } = require("sequelize");
 //BUscar personas
@@ -8,13 +14,13 @@ crtlPerson.getAll = async (req, res) => {
     const persons = await Person.findAll({
       limit: 4,
       order: [["idPerson", "DESC"]],
-      include:[
+      include: [
         {
           model: ImgPerson,
           as: "ImgPersons",
-          attributes:["rutaImagen"],
+          attributes: ["rutaImagen"],
         },
-      ]
+      ],
     });
 
     if (!persons) {
@@ -97,11 +103,9 @@ crtlPerson.create = async (req, res) => {
 
     let comprobarDni = parseInt(dni);
     if (!comprobarDni) {
-      return res
-        .status(400)
-        .json({
-          message: "El campo dni debe ser un número, evite usar puntos!",
-        });
+      return res.status(400).json({
+        message: "El campo dni debe ser un número, evite usar puntos!",
+      });
     }
 
     const [person, created] = await Person.findOrCreate({
@@ -145,20 +149,23 @@ crtlPerson.index = async (req, res) => {
         {
           model: Informe,
           as: "informePersons",
-          include: [{
-            model: Tipo,
-            as: "Tipo",
-            attributes:['nombre']
-          },{
-            model:Departamento,
-            as:'InformesDepart',
-            attributes:['nombre']
-          },{
-            model:Localidad,
-            as:'InformesLocal',
-            attributes:['nombre']
-          }
-        ],
+          include: [
+            {
+              model: Tipo,
+              as: "Tipo",
+              attributes: ["nombre"],
+            },
+            {
+              model: Departamento,
+              as: "InformesDepart",
+              attributes: ["nombre"],
+            },
+            {
+              model: Localidad,
+              as: "InformesLocal",
+              attributes: ["nombre"],
+            },
+          ],
         },
         {
           model: ImgPerson,
