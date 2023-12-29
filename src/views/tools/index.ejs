@@ -2,203 +2,256 @@
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <title>SGI - Configuración</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-    <link href="/img/informe.ico" rel="icon">
+  <meta charset="utf-8">
+  <title>SGI - Configuración</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <link href="/img/informe.ico" rel="icon">
 
-    
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="/css/style.css" rel="stylesheet">
+  <!-- Libraries Stylesheet -->
+  <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Sidebar Start -->
-        <%- include('../partials/Sidebar.ejs');%>
-        <!-- Sidebar End -->
+  <div class="container-xxl position-relative bg-white d-flex p-0">
+    <!-- Sidebar Start -->
+    <%- include('../partials/Sidebar.ejs');%>
+      <!-- Sidebar End -->
 
 
-        <!-- Content Start -->
-        <div class="content">
-            <!-- Navbar Start -->
+      <!-- Content Start -->
+      <div class="content">
+        <!-- Navbar Start -->
         <%- include('../partials/Navbar.ejs');%>
-            <!-- Navbar End -->
+          <!-- Navbar End -->
           <main>
             <!-- Chart informes pendientes -->
             <div class="container-fluid pt-4 px-4 ">
-                <div class="  rounded  mx-0">
+              <div class="  rounded  mx-0">
 
-                    <div class="card bg-light">
-                        <div class="card-header">
-                            <h6>Ajustes</h6>
+                <div class="card bg-light">
+                  <div class="card-header">
+                    <h6>Ajustes</h6>
+                  </div>
+                  <div class="container">
+                    <form id="formDeparment">
+                      <div class="row m-2">
+                        <h6 class="text-center m-2"><u>Agregar o Eliminar Departamentos</u></h6>
+                        <div class="col-md-3 ">
+                          <label for="validationTooltipUsername" class="form-label"><b>Departamento</b></label>
+                          <div class="input-group has-validation">
+                            <input type="text" class="form-control input" id="Department" name="Department"
+                              aria-describedby="validationTooltipUsernamePrepend" required>
+                          </div>
+                          <button class="btn btn-primary mt-1" id="addDepartment">Agregar</button>
                         </div>
-                        <div class="container">
-                            <form id="formDeparment">
-                            <div class="row m-2">
-                                <h6 class="text-center m-2"><u>Agregar o Eliminar Departamentos</u></h6>
-                                    <div class="col-md-3 ">
-                                        <label for="validationTooltipUsername" class="form-label"><b>Departamento</b></label>
-                                        <div class="input-group has-validation">
-                                          <input type="text" class="form-control input" id="Department" name="Department" aria-describedby="validationTooltipUsernamePrepend" required>
-                                        </div>
-                                        <button class="btn btn-primary mt-1" id="addDepartment">Agregar</button>
-                                    </div>
-                                <div class="col-md-5"></div>
-                                <div class="col-md-4" id="table-deparment">
-                                    <table class="table table-bordered ">
-                                        <thead class="table-dark">
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Departamento</th>
-                                            <th scope="col">Acciones</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody id="tableDepartment">
-                                        </tbody>
-                                      </table>
-                                </div>
-                            </form>
-                            </div>
-                            <hr class="m-3">
-                            <form id="formLocalities">
-                            <div class="row m-2">
-                                <h6 class="text-center"><u>Agregar o Eliminar Localidades</u></h6>
-
-                                    <div class="col-md-3 ">
-                                        <label for="validationTooltipUsername" class="form-label"><b>Localidad</b></label>
-                                        <div class="input-group has-validation">
-                                          <input type="text" class="form-control input" id="Locality" name="Locality" aria-describedby="validationTooltipUsernamePrepend" required>
-                                        </div>
-                                        <button class="btn btn-primary mt-2" id="addLocality">Agregar</button>
-                                    </div>
-                                    <div class="col-md-3 position-relative">
-                                        <label for="validationTooltip04" class="form-label"><b>Departamento</b></label>
-                                        <select class="form-select input" name="Departamento_idDepartamento" id="selecDepartamento" required>
-                                          <option selected disabled>Selecciona una opción</option>
-                                          
-                                        </select>
-                                      </div>
-
-                                <div class="col-md-2"></div>
-                                <div class="col-md-4" id="table-localities">
-                                    <table class="table table-bordered" >
-                                        <thead class="table-dark" >
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Departamento</th>
-                                            <th scope="col">Localidad</th>
-                                            <th scope="col">Acciones</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody id="localities">
-                                        </tbody>
-                                      </table>
-                                </div>
-                            </div>
-                        </form>
-                            <hr class="m-3">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-4" id="table-deparment">
+                          <table class="table table-bordered ">
+                            <thead class="table-dark">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Departamento</th>
+                                <th scope="col">Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tableDepartment">
+                            </tbody>
+                          </table>
                         </div>
+                    </form>
+                  </div>
+                  <hr class="m-3">
+                  <form id="formLocalities">
+                    <div class="row m-2">
+                      <h6 class="text-center"><u>Agregar o Eliminar Localidades</u></h6>
 
-                        <form id="formTipo">
-                            <div class="row m-2">
-                                <h6 class="text-center"><u>Agregar o Eliminar Tipos de Informes</u></h6>
+                      <div class="col-md-3 ">
+                        <label for="validationTooltipUsername" class="form-label"><b>Localidad</b></label>
+                        <div class="input-group has-validation">
+                          <input type="text" class="form-control input" id="Locality" name="Locality"
+                            aria-describedby="validationTooltipUsernamePrepend" required>
+                        </div>
+                        <button class="btn btn-primary mt-2" id="addLocality">Agregar</button>
+                      </div>
+                      <div class="col-md-3 position-relative">
+                        <label for="validationTooltip04" class="form-label"><b>Departamento</b></label>
+                        <select class="form-select input" name="Departamento_idDepartamento" id="selecDepartamento"
+                          required>
+                          <option selected disabled>Selecciona una opción</option>
 
-                                    <div class="col-md-3 ">
-                                        <label for="validationTooltipUsername" class="form-label"><b>Tipo</b></label>
-                                        <div class="input-group has-validation">
-                                          <input type="text" class="form-control input" id="Tipo" name="Tipo" aria-describedby="validationTooltipUsernamePrepend" required>
-                                        </div>
-                                        <button class="btn btn-primary mt-2" id="addTipo">Agregar</button>
-                                    </div>
-                                <div class="col-md-5"></div>
-                                <div class="col-md-4" id="tableTypes">
-                                    <table class="table table-bordered ">
-                                        <thead class="table-dark" >
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tipo</th>
-                                            <th scope="col">Acciones</th>
-                                          </tr>
-                                        </thead >
-                                        <tbody id="table-types">
-                                        </tbody>
-                                      </table>
-                                </div>
-                            </div>
-                        </form>
+                        </select>
+                      </div>
+
+                      <div class="col-md-2"></div>
+                      <div class="col-md-4" id="table-localities">
+                        <table class="table table-bordered">
+                          <thead class="table-dark">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Departamento</th>
+                              <th scope="col">Localidad</th>
+                              <th scope="col">Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody id="localities">
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </form>
+                  <hr class="m-3">
+                </div>
+
+                <form id="formTipo">
+                  <div class="row m-2">
+                    <h6 class="text-center"><u>Agregar o Eliminar Tipos de Informes</u></h6>
+
+                    <div class="col-md-3 ">
+                      <label for="validationTooltipUsername" class="form-label"><b>Tipo</b></label>
+                      <div class="input-group has-validation">
+                        <input type="text" class="form-control input" id="Tipo" name="Tipo"
+                          aria-describedby="validationTooltipUsernamePrepend" required>
+                      </div>
+                      <button class="btn btn-primary mt-2" id="addTipo">Agregar</button>
+                    </div>
+                    <div class="col-md-5"></div>
+                    <div class="col-md-4" id="tableTypes">
+                      <table class="table table-bordered ">
+                        <thead class="table-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody id="table-types">
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </form>
+
+                <hr class="m-3">
+
+                <form id="form-destroy">
+                  <div class="row m-2 d-flex justify-content-center aling-items-center">
+
+                    <h6 class="text-center"> <u> Zona de Peligro </u> <a href="#" class="btn btn-danger btn-sm"><i
+                          class="bi bi-exclamation-octagon-fill"></i></a> </h6>
+
+                    <div class="col-md-3">
+                      <div class="card bg-light mt-3">
+                        <h6 class="text-center text-secondary m-3">Eliminar todos los registros</h6>
+                        <button type="button" class="btn btn-danger mt-2" id="deleteAll" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar Todo</button>
+                      </div>
                     </div>
 
-                </div>
-            
-                     
-            </div>
-            <div class="container-fluid pt-4 px-4 ">
-              <div class=" card bg-light rounded-top p-4 shadow">
-                  <div class="row">
-                      <div class="col-12 col-sm-6 text-center text-sm-start">
-                          &copy; <a href="#">Sistema de Gestión de Informes</a>, 2023. 
+                  </div>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">¿Estas Seguro?</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <h6>Escriba "CONFIRMACION" para confirmar</h6>
+                              <input id="confirmation" name="confirmation" class="form-control" type="text">
+                            </div>
+                            <div class="col-md-12 mt-2">
+                              <h6>Ingrese su contraseña</h6>
+                              <input id="pass" name="pass" class="form-control" type="password">
+                          </div>
+                        </div>
+                        <p class="mb-2"><b>Nota:</b>  Este proceso es irreversible y eliminará todos los datos!</p>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="submit"  class="btn btn-danger">Confirmar</button>
+                        </div>
                       </div>
-                      <!-- <div class="col-12 col-sm-6 text-center text-sm-end">
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+
+
+            </div>
+
+
+      </div>
+      <div class="container-fluid pt-4 px-4 ">
+        <div class=" card bg-light rounded-top p-4 shadow">
+          <div class="row">
+            <div class="col-12 col-sm-6 text-center text-sm-start">
+              &copy; <a href="#">Sistema de Gestión de Informes</a>, 2023.
+            </div>
+            <!-- <div class="col-12 col-sm-6 text-center text-sm-end">
                           /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/
                           Designed By <a href="https://htmlcodex.com">HTML Codex</a>
                       </div> -->
-                  </div>
-              </div>
           </div>
-            <!-- Chart informes pendientes End -->
-          </main>
-            <!-- Footer Start -->
-            
-            <!-- Footer End -->
         </div>
-        <!-- Content End -->
+      </div>
+      <!-- Chart informes pendientes End -->
+      </main>
+      <!-- Footer Start -->
+
+      <!-- Footer End -->
+  </div>
+  <!-- Content End -->
 
 
-        <!-- Back to Top -->
-    </div>
-    </div>
-    <!-- JavaScript Libraries -->
-    <script src="/jquery/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/lib/chart/chart.min.js"></script>
-    <script src="/lib/easing/easing.min.js"></script>
-    <script src="/lib/waypoints/waypoints.min.js"></script>
-    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="/popper/popper.min.js">
-    </script>
-    <script src="/js/main.js"></script>
-    <script src="/sweetalert/sweetalert2@11"></script>
-    <script src="/bootstrap/bootstrap.min.js"></script>
-    <script src="/chart.js/cdn.jsdelivr.net_npm_chart.js@latest_dist_Chart.min.js"></script>
-    <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
-    <!-- Template Javascript -->
-    <script src="/js/departament/main.js"></script>
-    <script src="/js/tools/formManagerDeparment.js"></script>
-    <script src="/js/tools/formManagerLocalities.js"></script>
-    <script src="/js/tools/formManagerType.js"></script>
+  <!-- Back to Top -->
+  </div>
+  </div>
+  <!-- JavaScript Libraries -->
+  <script src="/jquery/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/lib/chart/chart.min.js"></script>
+  <script src="/lib/easing/easing.min.js"></script>
+  <script src="/lib/waypoints/waypoints.min.js"></script>
+  <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/lib/tempusdominus/js/moment.min.js"></script>
+  <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="/popper/popper.min.js">
+  </script>
+  <script src="/js/main.js"></script>
+  <script src="/sweetalert/sweetalert2@11"></script>
+  <script src="/bootstrap/bootstrap.min.js"></script>
+  <script src="/chart.js/cdn.jsdelivr.net_npm_chart.js@latest_dist_Chart.min.js"></script>
+  <script src="/jquery/code.jquery.com_jquery-3.7.1.min.js"></script>
+  <!-- Template Javascript -->
+  <script src="/js/departament/main.js"></script>
+  <script src="/js/tools/formManagerDeparment.js"></script>
+  <script src="/js/tools/formManagerLocalities.js"></script>
+  <script src="/js/tools/formManagerType.js"></script>
+  <script src="/js/tools/main.js"></script>
 </body>
 
 </html>
-
