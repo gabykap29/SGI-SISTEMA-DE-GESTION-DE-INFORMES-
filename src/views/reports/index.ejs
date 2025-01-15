@@ -43,76 +43,76 @@
 
                     <!-- Chart informes pendientes -->
                     <div class="container-fluid pt-4 px-4 ">
-                        <div class=" card vh-120 bg-light rounded shadow  mx-0">
+                        <div class="vh-120 bg-light rounded shadow-lg  mx-0">
                             <div class="row">
                                 <div class="col-md-6 ">
-                                    <div class="col-sm-12 col-xl-12">
-                                        <div class="bg-light rounded h-100 p-4 mt-4">
-                                            <h6 class="mb-4">Cantidad de Informes por Departamento</h6>
-                                            <canvas id="bar-chart"></canvas>
+                                    <div class="card m-4">
+                                        <div class="card-header">
+                                            <h6 class="">
+                                                <img src="/img/grafico.png" alt="icono-grafica" class="icon-medium me-2">
+                                                Cantidad de Informes por Departamento</h6>
+                                        </div>
+                                        <div class="col-sm-12 col-xl-12">
+                                            <div class="bg-light rounded h-100 p-4 mt-4">
+                                                <canvas id="bar-chart"></canvas>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="container-fluid pt-4 px-4">
-                                        <div class="bg-light text-center rounded p-4">
-                                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                                <h6 class="mb-0">Informes no completados...</h6>
+                                    <div class="card m-4">
+                                        <div class="card-header">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="">
+                                                    <img src="/img/error.png" alt="error" class="icon-medium me-2"> 
+                                                    Informes no completos </h6>
                                                 <a href="/informes/filtros">Ver Todos</a>
                                             </div>
-                                            <div class="table-responsive" id="tableNotCompleted">
-                                                <table
-                                                    class="table text-start align-middle table-bordered table-hover mb-0">
-                                                    <thead>
-                                                        <tr class="text-dark">
-                                                            <th scope="col">Depart.</th>
-                                                            <th scope="col">Fecha</th>
-                                                            <th scope="col">Tipo</th>
-                                                            <th scope="col">Titulo</th>
-                                                            <th scope="col">Actiones</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="registros">
-    
-    
-                                                    </tbody>
-                                                </table>
+                                        </div>
+                                        <div class="container-fluid pt-4 px-4" style="max-height: 280px; overflow-y: auto;">
+                                            <div class="bg-light text-center rounded ">
+                                                <div class="table-responsive" id="tableNotCompleted">
+                                                    <table class="table text-start align-middle table-bordered table-hover mb-2">
+                                                        <thead class="table-primary text-white">
+                                                            <tr class="text-dark text-center">
+                                                                <th scope="col">Depart.</th>
+                                                                <th scope="col">Fecha</th>
+                                                                <th scope="col">Tipo</th>
+                                                                <th scope="col">Titulo</th>
+                                                                <th scope="col">Acciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="registros">
+                                                            <!-- Registros dinámicos -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                            </div>
+                                        
+                                    </div>
                                 </div>
                             </div>
                             <hr>
-                            <div class="row mb-2">
-                                <h6 class="mb-4 text-center">Ultimas personas cargadas...</h6>
-                                <div class="d-flex flex-row justify-content-center align-items-center " id="personas">
-
+                            <div class="row mb-4">
+                                <!-- Título -->
+                                <div class="col-12">
+                                    <h6 class="text-center text-primary ">Últimas personas cargadas</h6>
+                                </div>
+                                
+                                <!-- Contenedor dinámico -->
+                                <div class="col-12">
+                                    <div class="d-flex flex-wrap justify-content-start align-items-start gap-3" id="personas" style="min-height: 150px;">
+                                        <!-- Personas dinámicas -->
+                                    </div>
                                 </div>
                             </div>
+                            
                         </div>
-                        <!-- Chart informes pendientes End -->
-
-                        <!-- Footer Start -->
-                        
-                        <!-- Footer End -->
                     </div>
                     <!-- Content End -->
-
-
                     <!-- Back to Top -->
-                    <div class="container-fluid mt-5 pt-4 px-4">
-                        <div class="card bg-light rounded-top p-4 shadow">
-                            <div class="row">
-                                <div class="col-12 col-sm-6 text-center text-sm-start">
-                                    &copy; <a >Sistema de Gestión de Informes</a>, 2023.
-                                </div>
-                                <!-- <div class="col-12 col-sm-6 text-center text-sm-end">
-                        /*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/
-                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                    </div> -->
-                            </div>
-                        </div>
-                    </div>
+
             </div>
 
             <!-- JavaScript Libraries -->

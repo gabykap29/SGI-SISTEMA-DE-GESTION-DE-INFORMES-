@@ -409,3 +409,24 @@
     max-height: 300px;
     overflow-y: auto;
   }
+
+  .icon-small {
+    width: 15px;
+  }
+  
+  .me-2 {
+    margin-right: 0.5rem;
+  }
+
+  table tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.icon-medium {
+    width: 25px;
+}

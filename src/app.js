@@ -51,7 +51,7 @@ const server = https.createServer(
 );
 
 const port = process.env.PORT || 3000;
-const host = "0.0.0.0";
+const host = process.env.HOST || "localhost";
 
 // Si ingresan a una ruta no declarada, se redirigirá al inicio.
 app.use((req, res, next) => {

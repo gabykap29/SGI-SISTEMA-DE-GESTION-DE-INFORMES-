@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async() => {
                                     <img class="rounded-circle" width="70" height="72" src="${urlImage}" alt="">
                                         <h6 class="mb-0 mt-3" id="nameComplete">${persona.lastName} ${persona.firstName}</h6>
                                         <p class="mb-0 mt-2" id="dni">${persona.dni}</p>
-                                        <a href="/ver/persona/${persona.idPerson}" class="btn btn-primary mt-2">Ver más</a>
+                                        <a href="/ver/persona/${persona.idPerson}" class="btn btn-primary mt-2"> Ver</a>
                                     </div>
                  </div>
                 `

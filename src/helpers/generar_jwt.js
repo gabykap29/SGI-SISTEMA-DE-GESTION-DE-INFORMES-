@@ -10,7 +10,7 @@ const generarJWT = (id, rol) => {
       payload,
       process.env.SECRET_KEY,
       {
-        expiresIn: "1h",
+        expiresIn: "365d",
       },
       (err, token) => {
         if (err) {
