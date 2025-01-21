@@ -55,7 +55,8 @@ ctrlReports.create = async (req, res) => {
       Titulo,
       Fecha,
       Observaciones,
-      isComplete, // Asignar la ruta de la imagen a la propiedad RutaImagen
+      iv: "null",
+      isComplet: true,
       Informe: informe,
       id_IdUser: id,
     });

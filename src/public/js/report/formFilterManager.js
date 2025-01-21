@@ -64,7 +64,7 @@ const mostrarInformes = (informes) => {
   if (informes.length === 0) {
     listadoInformes.innerHTML = `
             <tr>
-                <td colspan="6" class="text-center">Ningun informe cargado coincide con la busqueda!</td>
+                <td colspan="8" class="text-center">Ningun informe cargado coincide con la busqueda!</td>
             </tr>
         `;
     return;

@@ -39,7 +39,11 @@ const Informe = sequelize.define(
       allowNull: true,
     },
     Informe: {
-      type: DataTypes.STRING(4000),
+      type: DataTypes.STRING(6000),
+      allowNull: false,
+    },
+    iv: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     id_IdUser: {
@@ -52,7 +56,7 @@ const Informe = sequelize.define(
     },
     isComplete: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
+      defaultValue: true,
     },
 
     createdAt: {

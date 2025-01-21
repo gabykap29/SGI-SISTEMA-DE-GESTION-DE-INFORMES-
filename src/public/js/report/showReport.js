@@ -144,11 +144,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   let fecha = dayjs(data.Fecha).format("DD/MM/YYYY");
   titles.innerHTML += `
-                  <h6 class=" mb-4">   Departamento:  ${data.InformesDepart.nombre}</h6>
-                  <h6 class=" mb-4">  Localidad: ${data.InformesLocal.nombre}<h6>
-                  <h6 class=" mb-4">  Fecha:  ${fecha}</h6>
-                  <h6 class=" mb-4">  Tipo:  ${data.Tipo.nombre}</h6>
-            </div>`;
+  <div class="info-section">
+    <h6 class="mb-2">Departamento: ${data.InformesDepart.nombre}</h6>
+    <h6 class="mb-2">Localidad: ${data.InformesLocal.nombre}</h6>
+    <h6 class="mb-2">Fecha: ${fecha}</h6>
+    <h6 class="mb-2">Tipo: ${data.Tipo.nombre}</h6>
+  </div>
+`;
   tituloInforme.innerHTML = `
             <h6> <u>${data.Titulo}</u></h6>
             `;
