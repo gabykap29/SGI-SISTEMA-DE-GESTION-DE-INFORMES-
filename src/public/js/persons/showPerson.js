@@ -10,6 +10,8 @@ const phone = document.getElementById('phone');
 const facebook = document.getElementById('facebook');
 const instagram = document.getElementById('instagram');
 const registros = document.getElementById('registros');
+const locality = document.getElementById('locality');
+const province = document.getElementById('province');
 //capturar el id desde la url
 const url = window.location.href;
 const parts = url.split("/");
@@ -33,10 +35,12 @@ const showPerson = async ()=>{
     created.innerHTML = `Ultima actualización: ${dayjs(res.createdAt).format('DD/MM/YYYY')}`;
     completeName.innerHTML= `${res.firstName} ${res.lastName}`;
     dni.innerHTML = `DNI: ${res.dni}`;
-    fechaNac.innerHTML = `Fecha de Nac: ${dayjs(res.birthDate).format('DD/MM/YYYY')}`;
+    fechaNac.innerHTML = `Fecha de Nac: ${res.birthDate}`;
     adress.innerHTML = `Dirección: ${res.address}`;
     imgPerson.src = 'https://'+Url + res.ImgPersons.rutaImagen;
     imgPerson.src ?? 'https://'+Url + '/img/user.png';
+    locality.innerHTML = `Localidad: ${res.locality}`;
+    province.innerHTML = `Provincia: ${res.province}`;
     work.innerHTML = `Trabajo: ${res.work}`;
     mail.innerHTML = `Email: ${res.mail}`;
     phone.innerHTML = `Teléfono: ${res.phone}`;

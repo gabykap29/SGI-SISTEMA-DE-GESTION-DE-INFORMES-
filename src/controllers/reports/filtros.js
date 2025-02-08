@@ -146,7 +146,7 @@ const filtroIncompleted = async (req, res) => {
     const informes = await Informe.findAll({
       where: {
         estado: true,
-        isComplete: false,
+        isComplete: true,
       },
       include: [
         {

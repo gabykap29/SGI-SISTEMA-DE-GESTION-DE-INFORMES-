@@ -26,14 +26,24 @@ const Person = sequelize.define(
       allowNull: true,
       defaultValue: "No hay datos",
     },
-    description: {
+    fechaNac: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    locality: {
       type: DataTypes.STRING,
       allowNull: true,
       defaultValue: "No hay datos",
     },
-    fechaNac: {
-      type: DataTypes.DATE,
+    province: {
+      type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "No hay datos",
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: "No hay datos",
     },
     imgPersonId: {
       type: DataTypes.INTEGER,

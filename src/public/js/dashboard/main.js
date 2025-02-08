@@ -161,9 +161,9 @@ document.addEventListener('DOMContentLoaded', async() => {
             
         }else{
             registrosPersonas.innerHTML = `
-            <tr>
-                <td colspan="5" class="text-center">aqui apareceran las ultimas personas cargadas!</td>
-            </tr>
+            <div class="col-md-12 text-center">
+                <td colspan="5" class="text-center">Aquí apareceran las ultimas personas cargadas!</td>
+            </div>
             `
         }
 
