@@ -85,7 +85,10 @@ function display() {
 
   const row = document.getElementById("rowPrincipal"); // Selecciona el elemento row que contiene las tarjetas
 
-  const displayWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  const displayWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
 
   if (displayWidth < 600) {
     row.classList.remove("row-cols-2"); // Elimina la clase que divide en 2 columnas
@@ -93,9 +96,9 @@ function display() {
     titleContainer.classList.remove("col-6");
     titleContainer.classList.add("col-12");
     imageContainer.classList.add("col-12");
-    reportContainer.classList.remove('col-6');
-    reportContainer.classList.add('col-12');
-    personContainer.classList.add('col-12');
+    reportContainer.classList.remove("col-6");
+    reportContainer.classList.add("col-12");
+    personContainer.classList.add("col-12");
     Footer.style.display = "none";
   } else {
     row.classList.remove("flex-column"); // Elimina la clase que apila verticalmente
@@ -103,17 +106,13 @@ function display() {
     titleContainer.classList.remove("col-12");
     titleContainer.classList.add("col-6");
     imageContainer.classList.remove("col-12");
-    
-    reportContainer.classList.remove('col-12');
-    reportContainer.classList.add('col-6');
-    personContainer.classList.remove('col-12');
-    Footer.style.display = 'block';
-    
+
+    reportContainer.classList.remove("col-12");
+    reportContainer.classList.add("col-6");
+    personContainer.classList.remove("col-12");
+    Footer.style.display = "block";
   }
 }
-
-
-
 
 document.addEventListener("DOMContentLoaded", async () => {
   const titles = document.getElementById("titles");
@@ -123,7 +122,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const print = document.getElementById("print");
 
   display();
-
 
   //capturar el id desde la url
   const url = window.location.href;
@@ -206,7 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <td>${fecha}</td>
                 <td>${data.informePersons[i].address}</td>
               </tr>
-              
+
               `;
     }
     const btnComplete = document.getElementById("btnComplete");
@@ -231,7 +229,7 @@ formPerson.addEventListener("submit", async (e) => {
   const lastName = document.getElementById("lastName").value;
   const address = document.getElementById("address").value;
   const descriptions = document.getElementById("description").value;
-  const fechaNac = document.getElementById("fechaNac").value;
+  const fechaNac = document.getElementById("clase").value;
   const facebook = document.getElementById("facebook").value;
   const instagram = document.getElementById("instagram").value;
   const phone = document.getElementById("phone").value;
@@ -244,7 +242,7 @@ formPerson.addEventListener("submit", async (e) => {
   formData.append("lastName", lastName);
   formData.append("address", address);
   formData.append("descriptions", descriptions);
-  formData.append("fechaNac", fechaNac);
+  formData.append("fechaNac", clase);
   formData.append("rutaImagen", rutaImagen);
   formData.append("facebook", facebook);
   formData.append("instagram", instagram);
@@ -286,7 +284,7 @@ formPerson.addEventListener("submit", async (e) => {
                 <td>${fecha}</td>
                 <td>${dat.informePersons[i].address}</td>
               </tr>
-                
+
                 `;
     }
   } catch (error) {
