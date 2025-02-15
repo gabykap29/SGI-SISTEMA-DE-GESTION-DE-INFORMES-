@@ -34,7 +34,7 @@ const showPerson = async () => {
   created.innerHTML = `Ultima actualización: ${dayjs(res.createdAt).format("DD/MM/YYYY")}`;
   completeName.innerHTML = `${res.firstName} ${res.lastName}`;
   dni.innerHTML = `DNI: ${res.dni}`;
-  fechaNac.innerHTML = `Fecha de Nac: ${res.clase}`;
+  fechaNac.innerHTML = `Clase: ${res.fechaNac}`;
   adress.innerHTML = `Dirección: ${res.address}`;
   imgPerson.src = "https://" + Url + res.ImgPersons.rutaImagen;
   imgPerson.src ?? "https://" + Url + "/img/user.png";
