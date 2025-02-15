@@ -70,6 +70,22 @@ crtlPerson.findPerson = async (req, res) => {
 
 crtlPerson.findDni = async (req, res) => {
   const { dni } = req.params;
+  try {
+    const person = await Person.findOne({
+      where: {
+        dni: dni,
+      },
+    });
+
+    if (!person) {
+      return res.status(404).json({ message: "Persona no encontrada" });
+    }
+
+    return res.status(200).json(person);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Error interno del servidor!" });
+  }
 };
 
 crtlPerson.create = async (req, res) => {

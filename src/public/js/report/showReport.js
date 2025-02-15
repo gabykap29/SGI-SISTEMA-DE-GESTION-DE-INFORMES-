@@ -15,6 +15,7 @@ const descriptionTwo = document.getElementById("descriptionTwo");
 const descriptionTree = document.getElementById("descriptionTree");
 const descriptionFour = document.getElementById("descriptionFour");
 const titleEstado = document.getElementById("titleEstado");
+const dni = document.getElementById("dni");
 
 //-----------------------Obtener Imagenes-------------------------------------
 const obtenerImagen = (rutaImagen) => {
@@ -359,3 +360,44 @@ window.addEventListener("resize", () => {
   console.log("Window resize event");
   display();
 });
+
+dni.addEventListener("change",async (e) => {
+  try {
+    let dni = e.target.value;
+  if (dni.length > 8) {
+    Swal.fire({
+      icon: "error",
+      title: "El campo dni debe ser un número!, evite usar puntos!",
+    });
+  }
+  const res = await fetch(`/api/find/person/${dni}`);
+  const data = await res.json();
+  const firstName = document.getElementById("firstName");
+  const lastName = document.getElementById("lastName");
+  const address = document.getElementById("address");
+  const descriptions = document.getElementById("description");
+  const fechaNac = document.getElementById("clase");
+  const facebook = document.getElementById("facebook");
+  const instagram = document.getElementById("instagram");
+  const phone = document.getElementById("phone");
+  const work = document.getElementById("work");
+  const mail = document.getElementById("mail");
+  
+  if (data.person) {
+    firstName.value = data.person.firstName || "";
+    lastName.value = data.person.lastName || "";
+    address.value = data.person.address || "";
+    descriptions.value = data.person.descriptions || "";
+    fechaNac.value = data.person.fechaNac || "";
+    facebook.value = data.person.facebook || "";
+    instagram.value = data.person.instagram || "";
+    phone.value = data.person.phone || "";
+    work.value = data.person.work || "";
+    mail.value = data.person.mail || ""; 
+  }
+  
+  } catch (error) {
+    console.log(error);
+    
+  }
+})
