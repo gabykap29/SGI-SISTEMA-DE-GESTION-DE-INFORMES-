@@ -57,7 +57,7 @@ find.addEventListener("submit", async (e) => {
         let dni = person[i].dni;
         let firstName = person[i].firstName;
         let lastName = person[i].lastName;
-        let fechaNac = person[i].clase;
+        let fechaNac = person[i].fechaNac;
         let address = person[i].address;
         tablePerson.innerHTML = `
             <div class="table-responsive">
@@ -68,7 +68,7 @@ find.addEventListener("submit", async (e) => {
                         <th scope="col">DNI</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">Clase</th>
                         <th scope="col">Domicilio</th>
                         <th scope="col">Acciones</th>
                     </tr>
