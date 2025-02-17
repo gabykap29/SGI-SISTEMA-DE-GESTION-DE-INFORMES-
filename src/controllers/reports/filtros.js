@@ -55,9 +55,7 @@ const filtrarInformes = async (req, res) => {
         [Op.like]: `%${informe}%`,
       };
     }
-    if (isComplete) {
-      filtro.isComplete = isComplete;
-    }
+    filtro.estado = 1;
 
     // Realizar la consulta con los filtros
     const informes = await Informe.findAll({
@@ -97,6 +95,9 @@ const filtroDepar = async (req, res) => {
         {
           model: Informe,
           as: "Informes",
+          where: {
+            estado: 1
+          }
         },
       ],
     });

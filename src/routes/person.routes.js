@@ -35,7 +35,7 @@ router.get("/ver/persona/:id", isAutenticated, async (req, res) => {
   }
 });
 //api
-router.post("/api/find/person/:dni", isAutenticated, findDni);
+router.get("/api/find/person/:dni", isAutenticated, findDni);
 router.get("/api/person/:idPerson", isAutenticated, index);
 router.post(
   "/api/informe/:id/persons",

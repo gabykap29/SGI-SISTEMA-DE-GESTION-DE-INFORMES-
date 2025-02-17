@@ -42,10 +42,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   informe.innerHTML = `${data.Informe}`;
   Fecha.innerHTML = `Fecha: ${fecha}`;
   tipo.innerHTML = `Tipo:: ${Tipo}`;
-  if (data.Files.length > 0) {
+
+const sectionImg = document.getElementById('sectionImg');
+
+if (data.Files.length > 0) {
+    // Recorre cada archivo en data.Files
     for (let i = 0; i < data.Files.length; i++) {
-      let imagen = obtenerImagen(data.Files[i].filesRoute);
-      imgs.src = imagen;
+      imgs.style.display = "none";
+        // Crea un contenedor para cada imagen
+        const imgContainer = document.createElement('div');
+        imgContainer.style.flex = '1 1 calc(50% - 10px)'; // Cada imagen ocupa el 50% del espacio, menos el gap
+        imgContainer.style.maxWidth = 'calc(50% - 10px)'; // Limita el ancho al 50% del contenedor
+
+        // Crea la etiqueta de imagen
+        const imgElement = document.createElement('img');
+        imgElement.src = obtenerImagen(data.Files[i].filesRoute); // Asigna la ruta de la imagen
+        imgElement.style.width = '100%'; // La imagen ocupa el 100% del contenedor
+        imgElement.style.height = '400px'; // Mantiene la proporción de la imagen
+
+        // Añade la imagen al contenedor
+        imgContainer.appendChild(imgElement);
+
+        // Añade el contenedor al sectionImg
+        sectionImg.appendChild(imgContainer);
     }
 }
 });

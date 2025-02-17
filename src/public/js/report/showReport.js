@@ -124,6 +124,50 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   display();
 
+  dni.addEventListener("change",async (e) => {
+    try {
+      let dni = document.getElementById('dni').value;
+      console.log(dni);
+      
+    if (dni.length > 8) {
+      Swal.fire({
+        icon: "error",
+        title: "El campo dni debe ser un número!, evite usar puntos!",
+      });
+    }
+    const res = await fetch(`/api/find/person/${dni}`);
+    const data = await res.json();
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const address = document.getElementById("address");
+    const descriptions = document.getElementById("description");
+    const fechaNac = document.getElementById("fechaNac");
+    const facebook = document.getElementById("facebook");
+    const instagram = document.getElementById("instagram");
+    const phone = document.getElementById("phone");
+    const work = document.getElementById("work");
+    const mail = document.getElementById("mail");
+    console.log(data);
+    
+    if (data) {
+      firstName.value = data.firstName || "";
+      lastName.value = data.lastName || "";
+      address.value = data.address || "";
+      descriptions.value = data.descriptions || "";
+      fechaNac.value = data.fechaNac || "";
+      facebook.value = data.facebook || "";
+      instagram.value = data.instagram || "";
+      phone.value = data.phone || "";
+      work.value = data.work || "";
+      mail.value = data.mail || ""; 
+    }
+    
+    } catch (error) {
+      console.log(error);
+      
+    }
+  })
+
   //capturar el id desde la url
   const url = window.location.href;
   const parts = url.split("/");
@@ -153,11 +197,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   tituloInforme.innerHTML = `
             <h6> <u>${data.Titulo}</u></h6>
             `;
-  informe.innerHTML = `
-            <p >
-            ${data.Informe}
-            <br>
-            <br>
+            informe.innerHTML = `
+            <p style="white-space: pre-wrap;">
+                ${data.Informe}
             </p>`;
   if (data.Files.length > 0) {
     for (let i = 0; i < data.Files.length; i++) {
@@ -230,7 +272,7 @@ formPerson.addEventListener("submit", async (e) => {
   const lastName = document.getElementById("lastName").value;
   const address = document.getElementById("address").value;
   const descriptions = document.getElementById("description").value;
-  const fechaNac = document.getElementById("clase").value;
+  const fechaNac = document.getElementById("fechaNac").value;
   const facebook = document.getElementById("facebook").value;
   const instagram = document.getElementById("instagram").value;
   const phone = document.getElementById("phone").value;
@@ -243,7 +285,7 @@ formPerson.addEventListener("submit", async (e) => {
   formData.append("lastName", lastName);
   formData.append("address", address);
   formData.append("descriptions", descriptions);
-  formData.append("fechaNac", clase);
+  formData.append("fechaNac", fechaNac);
   formData.append("rutaImagen", rutaImagen);
   formData.append("facebook", facebook);
   formData.append("instagram", instagram);
@@ -361,43 +403,3 @@ window.addEventListener("resize", () => {
   display();
 });
 
-dni.addEventListener("change",async (e) => {
-  try {
-    let dni = e.target.value;
-  if (dni.length > 8) {
-    Swal.fire({
-      icon: "error",
-      title: "El campo dni debe ser un número!, evite usar puntos!",
-    });
-  }
-  const res = await fetch(`/api/find/person/${dni}`);
-  const data = await res.json();
-  const firstName = document.getElementById("firstName");
-  const lastName = document.getElementById("lastName");
-  const address = document.getElementById("address");
-  const descriptions = document.getElementById("description");
-  const fechaNac = document.getElementById("clase");
-  const facebook = document.getElementById("facebook");
-  const instagram = document.getElementById("instagram");
-  const phone = document.getElementById("phone");
-  const work = document.getElementById("work");
-  const mail = document.getElementById("mail");
-  
-  if (data.person) {
-    firstName.value = data.person.firstName || "";
-    lastName.value = data.person.lastName || "";
-    address.value = data.person.address || "";
-    descriptions.value = data.person.descriptions || "";
-    fechaNac.value = data.person.fechaNac || "";
-    facebook.value = data.person.facebook || "";
-    instagram.value = data.person.instagram || "";
-    phone.value = data.person.phone || "";
-    work.value = data.person.work || "";
-    mail.value = data.person.mail || ""; 
-  }
-  
-  } catch (error) {
-    console.log(error);
-    
-  }
-})

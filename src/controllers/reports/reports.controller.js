@@ -157,7 +157,7 @@ ctrlReports.readsAll = async (req, res) => {
   try {
     const informes = await Informe.findAll({
       where: {
-        estado: true,
+        estado: 1,
       },
       include: [
         {
@@ -263,11 +263,11 @@ ctrlReports.deleted = async (req, res) => {
         },
       }
     );
-    if (informeDeleted[0] === 0) {
-      throw {
-        status: 400,
-        message: "Error al eliminar el Informe",
-      };
+    if(!informeDeleted){
+      console.log(informeDeleted);
+      return res.status(400).json({
+        message: "Error al eliminar el informe"
+      })
     }
     return res.json({
       message: "Informe eliminado con éxito!",
